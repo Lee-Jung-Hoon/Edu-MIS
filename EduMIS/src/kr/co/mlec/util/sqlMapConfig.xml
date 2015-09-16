@@ -4,8 +4,7 @@
 <configuration>
 
 	<typeAliases>
-		<typeAlias alias="member" type="member.Member" />
-<!-- 		<typeAlias alias="string" type="java.lang.String" /> -->
+		<!-- <typeAlias alias="member" type="member.Member" /> -->
 	</typeAliases>
 	
 	<environments default="development">
@@ -21,7 +20,7 @@
 	</environments>
 
 	<mappers>
-		<mapper resource="common/db/member.xml"/>
+		<!-- <mapper resource="common/db/member.xml"/> -->
 	</mappers>
 	<!-- 사용자가 실제 작성한 xml의 위치를 알수있다. -->
 </configuration>
