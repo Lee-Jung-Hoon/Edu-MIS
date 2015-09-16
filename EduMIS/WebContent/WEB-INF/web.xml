@@ -9,8 +9,6 @@
 		<init-param>
 			<param-name>controllers</param-name>
 			<param-value>
-  				kr.co.mlec.board.control.BoardController|
-				kr.co.mlec.login.controller.LoginController
   			</param-value>
 		</init-param>
 	</servlet>
