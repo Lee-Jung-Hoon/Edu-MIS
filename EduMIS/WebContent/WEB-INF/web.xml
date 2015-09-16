@@ -5,7 +5,7 @@
   
   	<servlet>
 		<servlet-name>frontController</servlet-name>
-		<servlet-class>kr.co.mlec.framework.DispatcherServlet</servlet-class>
+		<servlet-class>kr.co.framework.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>controllers</param-name>
 			<param-value>
