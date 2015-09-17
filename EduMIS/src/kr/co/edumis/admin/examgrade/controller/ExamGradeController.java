@@ -24,7 +24,7 @@ public class ExamGradeController {
 	public ModelAndView writeForm(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 
-		ModelAndView mav = new ModelAndView("redirect:/EduMIS/admin/examgrade/examwrite.jsp");
+		ModelAndView mav = new ModelAndView("redirect:/EduMIS/jsp/admin/examgrade/examwrite.jsp");
 		try {
 			List<ExamGradeVO> list = service.getList();
 		} catch (Exception e) {
