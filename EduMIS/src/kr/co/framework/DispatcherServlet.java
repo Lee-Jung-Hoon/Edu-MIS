@@ -1,4 +1,4 @@
-package kr.co.mlec.framework;
+package kr.co.framework;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
