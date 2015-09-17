@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.edumis.admin.examgrade.service.ExamGradeService;
 import kr.co.edumis.admin.examgrade.service.ExamGradeServiceImpl;
 import kr.co.edumis.admin.examgrade.vo.ExamGradeVO;
+import kr.co.edumis.framework.Controller;
 import kr.co.edumis.framework.ModelAndView;
 import kr.co.edumis.framework.RequestMapping;
 
+@Controller
 public class ExamGradeController {
 	private ExamGradeService service;
 

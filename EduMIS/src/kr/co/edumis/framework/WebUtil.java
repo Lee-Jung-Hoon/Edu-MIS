@@ -6,7 +6,7 @@ import java.util.Enumeration;
 import javax.servlet.http.HttpServletRequest;
 
 public class WebUtil {
-	public static Object getFormParamToVO(String className, HttpServletRequest req) {
+	public static Object getFromParamToVO(String className, HttpServletRequest req) {
 		Object obj = null;
 		try {
 			Class<?> clz = Class.forName(className);
