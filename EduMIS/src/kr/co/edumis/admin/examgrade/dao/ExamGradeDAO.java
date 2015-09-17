@@ -1,11 +1,11 @@
-package kr.co.admin.examgrade.dao;
+package kr.co.edumis.admin.examgrade.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
+import kr.co.edumis.admin.examgrade.vo.ExamGradeVO;
+import kr.co.edumis.common.db.MyAppSqlConfig;
 
-import common.db.MyAppSqlConfig;
-import kr.co.admin.examgrade.vo.ExamGradeVO;
+import org.apache.ibatis.session.SqlSession;
 
 public class ExamGradeDAO {
 	private static SqlSession session = null;

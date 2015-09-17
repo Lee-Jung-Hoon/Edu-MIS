@@ -1,4 +1,4 @@
-package kr.co.framework;
+package kr.co.edumis.framework;
 
 import java.lang.reflect.Method;
 import java.util.Enumeration;
