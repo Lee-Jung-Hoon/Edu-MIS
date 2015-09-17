@@ -7,11 +7,9 @@
 		<servlet-name>frontController</servlet-name>
 		<servlet-class>kr.co.framework.DispatcherServlet</servlet-class>
 		<init-param>
-			<param-name>controllers</param-name>
-			<param-value>
-  				kr.co.edumis.admin.examgrade.controller.ExamGradeController
-  			</param-value>
-		</init-param>
+	      <param-name>scan-package</param-name>
+	      <param-value>kr.co.edumis</param-value>
+	    </init-param>
 	</servlet>
 
 	<servlet-mapping>
