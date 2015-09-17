@@ -1,4 +1,4 @@
-package kr.co.framework;
+package kr.co.edumis.framework;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;

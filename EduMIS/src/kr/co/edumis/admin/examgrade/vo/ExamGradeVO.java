@@ -1,4 +1,4 @@
-package kr.co.admin.examgrade.vo;
+package kr.co.edumis.admin.examgrade.vo;
 
 public class ExamGradeVO {
 

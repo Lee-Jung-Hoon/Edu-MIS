@@ -1,4 +1,4 @@
-package kr.co.admin.examgrade.controller;
+package kr.co.edumis.admin.examgrade.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -7,11 +7,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.co.admin.examgrade.service.ExamGradeService;
-import kr.co.admin.examgrade.service.ExamGradeServiceImpl;
-import kr.co.admin.examgrade.vo.ExamGradeVO;
-import kr.co.framework.ModelAndView;
-import kr.co.framework.RequestMapping;
+import kr.co.edumis.admin.examgrade.service.ExamGradeService;
+import kr.co.edumis.admin.examgrade.service.ExamGradeServiceImpl;
+import kr.co.edumis.admin.examgrade.vo.ExamGradeVO;
+import kr.co.edumis.framework.ModelAndView;
+import kr.co.edumis.framework.RequestMapping;
 
 public class ExamGradeController {
 	private ExamGradeService service;

@@ -1,7 +1,7 @@
 /*
  * URI에 해당하는 Controller 클래스 정보를 관리함
  */
-package kr.co.framework;
+package kr.co.edumis.framework;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;

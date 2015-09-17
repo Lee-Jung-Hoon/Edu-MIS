@@ -1,4 +1,4 @@
-package kr.co.framework;
+package kr.co.edumis.framework;
 
 import java.util.HashMap;
 import java.util.Map;

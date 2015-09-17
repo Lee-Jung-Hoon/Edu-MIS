@@ -9,7 +9,7 @@
 		<init-param>
 			<param-name>controllers</param-name>
 			<param-value>
-  				kr.co.admin.examgrade.controller.ExamGradeController
+  				kr.co.edumis.admin.examgrade.controller.ExamGradeController
   			</param-value>
 		</init-param>
 	</servlet>

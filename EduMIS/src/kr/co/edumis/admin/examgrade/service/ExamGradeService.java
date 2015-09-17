@@ -1,8 +1,8 @@
-package kr.co.admin.examgrade.service;
+package kr.co.edumis.admin.examgrade.service;
 
 import java.util.List;
 
-import kr.co.admin.examgrade.vo.ExamGradeVO;
+import kr.co.edumis.admin.examgrade.vo.ExamGradeVO;
 
 public interface ExamGradeService {
 
