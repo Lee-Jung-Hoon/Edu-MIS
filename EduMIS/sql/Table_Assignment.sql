@@ -5,7 +5,9 @@ as_startDate date not null,
 as_endDate date not null,
 as_title varchar2(500) not null,
 as_content varchar2(3000),
-as_file varchar2(1000)
+as_orgFileName varchar2(1000),
+as_realFileName varchar2(1000),
+as_filePath varchar2(1000)
 );
 
 -- 과제 제출 DB (t_userassignment_board)--
@@ -14,7 +16,9 @@ us_id varchar2(30) not null,
 us_name varchar2(30) not null,
 as_no number not null,
 us_content varchar2(3000),
-us_file varchar2(1000),
+us_orgFileName varchar2(1000),
+us_realFileName varchar2(1000),
+us_filePath varchar2(1000),
 primary key(us_id,as_no)
 );
 
