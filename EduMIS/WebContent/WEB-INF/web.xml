@@ -5,7 +5,7 @@
   
   	<servlet>
 		<servlet-name>frontController</servlet-name>
-		<servlet-class>kr.co.framework.DispatcherServlet</servlet-class>
+		<servlet-class>kr.co.edumis.framework.DispatcherServlet</servlet-class>
 		<init-param>
 	      <param-name>scan-package</param-name>
 	      <param-value>kr.co.edumis</param-value>
