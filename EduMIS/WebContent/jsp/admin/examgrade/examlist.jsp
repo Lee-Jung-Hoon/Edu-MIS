@@ -9,7 +9,7 @@
 <script type="text/javascript">
 	function doWrite() {
 		if (confirm("시험을 등록하시겠습니까?")) {
-			location.href = "${pageContext.request.contextPath}/examgrade/wirteForm.do";
+			location.href = "${pageContext.request.contextPath}/examgrade/writeForm.do";
 		}
 	}
 </script>

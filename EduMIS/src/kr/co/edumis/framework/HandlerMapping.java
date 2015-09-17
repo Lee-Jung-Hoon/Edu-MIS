@@ -21,7 +21,6 @@ public class HandlerMapping {
 
 		// 컨트롤러 이름 얻기
 		List<String> ctrls = getControlList(packageName);
-		System.out.println(ctrls);
 		for (String ctrl : ctrls) {
 			if (! isConAnno(ctrl) ) continue;
 			addMap(ctrl.trim());
@@ -69,7 +68,6 @@ public class HandlerMapping {
 		}
 	}
 	
-	// addMap("kr.co.mlec.board.controller.ListBoardController");
 	private void addMap(String className) throws Exception {
 		
 		Class<?> clz = null;

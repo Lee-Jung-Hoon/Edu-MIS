@@ -4,7 +4,7 @@
 <configuration>
 
 	<typeAliases>
-		<typeAlias alias="examGradeVO" type="kr.co.edumis.admin.examgrade.vo.ExamGradeVO"/>
+		<typeAlias alias="memberVO" type="kr.co.edumis.user.member.vo.memberVO"/>
 	</typeAliases>
 	
 	<environments default="development">
