@@ -4,7 +4,7 @@
 <configuration>
 
 	<typeAliases>
-<!-- 		<typeAlias alias="string" type="java.lang.String" /> -->
+		<typeAlias alias="member" type="kr.co.admin.examgrade.vo.ExamGradeVO"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -18,9 +18,7 @@
 			</dataSource>
 		</environment>
 	</environments>
-
 	<mappers>
-<!-- 		<mapper resource="kr/co/mlec/board/dao/BoardSQL.xml"/> -->
-<!-- 		<mapper resource="kr/co/mlec/login/dao/LoginSQL.xml"/> -->
+		<mapper resource="kr/co/admin/examgrade/dao/ExamGradeSQL.xml"/>
 	</mappers>
 </configuration>

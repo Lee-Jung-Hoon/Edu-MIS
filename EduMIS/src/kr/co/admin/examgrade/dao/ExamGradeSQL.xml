@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="examgrade">
+	<!-- 학생 목록을 처리하는 쿼리 -->
+	<select id="selectBoard" resultType="kr.co.admin.examgrade.vo.ExamGradeVO">
+		select m_id,
+			   m_name
+		from t_member
+	</select>
+</mapper>

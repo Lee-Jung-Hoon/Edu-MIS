@@ -1,4 +1,4 @@
-package kr.co.mlec.framework;
+package kr.co.framework;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
