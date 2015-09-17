@@ -29,7 +29,13 @@ public class HandlerMapping {
 	}
 
 	private boolean isConAnno(String ctrl) throws Exception {
-		Class<?> clz = Class.forName(ctrl);
+		Class<?> clz = null; 
+		try {		
+			clz = Class.forName(ctrl);
+		} catch (ClassNotFoundException cnfe) {
+			return false;
+		}
+		
 		Controller con = clz.getAnnotation(Controller.class);
 		return (con != null);
 	}
@@ -65,7 +71,13 @@ public class HandlerMapping {
 	
 	// addMap("kr.co.mlec.board.controller.ListBoardController");
 	private void addMap(String className) throws Exception {
-		Class<?> clz = Class.forName(className);
+		
+		Class<?> clz = null;
+		try {		
+			clz = Class.forName(className);
+		} catch (ClassNotFoundException cnfe) {
+			return;
+		}
 		Object target = clz.newInstance();
 		
 		Method[] methods = clz.getDeclaredMethods();
