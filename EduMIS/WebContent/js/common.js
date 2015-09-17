@@ -20,3 +20,14 @@ $('.login .btn-close').on('click',function(){
 	$(this).parent().fadeOut();
 	$('body').removeClass('login-layer');
 });
+$('.btn-message').on('click', function(){
+	$(this).next().css('opacity', 0).slideDown('slow').animate(
+		{ opacity: 1 },
+		{ queue: false, duration: 'slow' }
+	).parent().addClass('primary-zindex');
+	$('body').addClass('login-layer');
+});
+$('.btn-message-close').on('click', function(){
+	$(this).parent().removeClass('primary-zindex').fadeOut();
+	$('body').removeClass('login-layer');
+});
