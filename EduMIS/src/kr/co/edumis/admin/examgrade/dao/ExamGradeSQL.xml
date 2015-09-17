@@ -5,9 +5,9 @@
 
 <mapper namespace="examgrade">
 	<!-- 학생 목록을 처리하는 쿼리 -->
-	<select id="selectBoard" resultType="examGradeVO">
-		select m_id,
-			   m_name
+	<select id="selectBoard" resultType="memberVO">
+		select id,
+			   name
 		from t_member
 	</select>
 </mapper>

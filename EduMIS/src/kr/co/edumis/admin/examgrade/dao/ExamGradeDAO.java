@@ -2,10 +2,10 @@ package kr.co.edumis.admin.examgrade.dao;
 
 import java.util.List;
 
-import kr.co.edumis.admin.examgrade.vo.ExamGradeVO;
-import kr.co.edumis.common.db.MyAppSqlConfig;
-
 import org.apache.ibatis.session.SqlSession;
+
+import kr.co.edumis.common.db.MyAppSqlConfig;
+import kr.co.edumis.user.member.vo.memberVO;
 
 public class ExamGradeDAO {
 	private static SqlSession session = null;
@@ -14,9 +14,8 @@ public class ExamGradeDAO {
 		session = MyAppSqlConfig.getSqlSessionInstance();
 	}
 	
-	public List<ExamGradeVO> selectBoard() throws Exception {
-		List<ExamGradeVO> list = session.selectList("examgrade.selectBoard");
-		System.out.println(list.size());
-		return null;
+	public List<memberVO> selectBoard() throws Exception {
+		List<memberVO> list = session.selectList("examgrade.selectBoard");
+		return list;
 	}
 }

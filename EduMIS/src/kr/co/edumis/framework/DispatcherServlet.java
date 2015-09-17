@@ -41,15 +41,12 @@ public class DispatcherServlet extends HttpServlet {
 		// 해야할 일
 		// 1. 사용자의 URL을 추출해야함...
 		String uri = req.getRequestURI();
-		System.out.println("내용 : " + uri);
 
 		// 사용자의 요청 정보중에서 의미없는 부분인 프로젝트 경로(웹어플리케이션 경로)를 제거한다.
 		String contextPath = req.getContextPath();
-		System.out.println("웹 어플리케이션 경로명 : " + contextPath);
 
 		// 전체 경로에서 웹 어플리케이션 경로로 제거하기
 		uri = uri.substring(contextPath.length());
-		System.out.println("사용자의 요구와 연관된 최종 경로 : " + uri);
 
 		// 2. 추출한 경로와 연관된 일을 처리할 클래스 호출하고 결과 받기
 		// - 컨트롤러에서 작업 처리 후 반환하는 경로를
@@ -60,7 +57,6 @@ public class DispatcherServlet extends HttpServlet {
 
 		// 매핑정보를 가지는 클래스를 활용해서 컨트롤러를 얻어온다.
 		CtrlAndMethod control = mappings.getCtrlAndMethod(uri);
-		System.out.println("control : " + control);
 
 		if (control == null) {
 			throw new ServletException("요청하신 URL이 올바르지 않습니다.");
@@ -109,7 +105,7 @@ public class DispatcherServlet extends HttpServlet {
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
-
+		
 		// sendRedirect로 이동할 페이지임
 		if (view.startsWith("redirect:")) {
 			res.sendRedirect(view.substring("redirect:".length()));

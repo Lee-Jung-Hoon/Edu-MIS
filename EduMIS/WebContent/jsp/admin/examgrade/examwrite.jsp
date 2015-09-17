@@ -9,5 +9,14 @@
 <body>
 	<h1>시험 등록</h1>
 	<hr/>
+	<form action="/EduMIS/examgrade/write.do">
+	<table>
+		<tr>
+			<td>id : <input type="text" name="id" id="id"></td>
+			<td>name : <input type="text" name="name" id="name"></td>
+		</tr>
+	</table>
+	<input type="submit" />
+	</form>
 </body>
 </html>
