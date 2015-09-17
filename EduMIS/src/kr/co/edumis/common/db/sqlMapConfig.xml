@@ -4,7 +4,7 @@
 <configuration>
 
 	<typeAliases>
-		<typeAlias alias="member" type="kr.co.admin.examgrade.vo.ExamGradeVO"/>
+		<typeAlias alias="examGradeVO" type="kr.co.edumis.admin.examgrade.vo.ExamGradeVO"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -19,6 +19,6 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="kr/co/admin/examgrade/dao/ExamGradeSQL.xml"/>
+		<mapper resource="kr/co/edumis/admin/examgrade/dao/ExamGradeSQL.xml"/>
 	</mappers>
 </configuration>

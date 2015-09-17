@@ -11,7 +11,7 @@ public class MyAppSqlConfig {
 	private static final SqlSession sqlMapper;
 	static {
 		try {
-			String resource = "common/db/sqlMapConfig.xml";
+			String resource = "kr/co/edumis/common/db/sqlMapConfig.xml";
 			Reader reader = Resources.getResourceAsReader(resource);
 			SqlSessionFactory sqlFactory = 
 					new SqlSessionFactoryBuilder().build(reader);
