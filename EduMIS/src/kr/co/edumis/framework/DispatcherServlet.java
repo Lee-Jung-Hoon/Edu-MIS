@@ -78,29 +78,37 @@ public class DispatcherServlet extends HttpServlet {
 
 		Object target = control.getTarget();
 		Method method = control.getMethod();
-		
-		ModelAndView mav;
+		String view = "";
 		try {
+			// 변경된 부분
+			// 파라미터 자동 설정 부분 추가함....
+			//===================================================
 			PreProcessor pre = new PreProcessor();
 			Object[] params = pre.process(method, req);
-			mav = (ModelAndView)method.invoke(target, params);
+			//===================================================
 			
-//			mav = (ModelAndView)method.invoke(target, req, res);
+			String retName = method.getReturnType().getSimpleName();
+			if ("ModelAndView".equalsIgnoreCase(retName)) {
+				ModelAndView mav = (ModelAndView)method.invoke(target, params);
+
+				// JSP에서 사용할 수 있도록 model안의 데이터들을 공유영역에 설정
+				Map<String, Object> model = mav.getModel();
+				
+				// 맵의 키값들을 모두 얻은 다음 반복 수행하면서 값을 꺼낸다.
+				Set<String> keys = model.keySet();
+				for (String key : keys) {
+					// req.setAttribute(key, value);
+					req.setAttribute(key, model.get(key));
+				}
+
+				view = mav.getView();
+			} else if ("String".equalsIgnoreCase(retName)) {
+				view = (String)method.invoke(target, params);
+			}
+			
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
-
-		// JSP에서 사용할 수 있도록 model 안의 데이터들을 공유영역에 설정
-		Map<String, Object> model = mav.getModel();
-
-		// 맵의 키값들을 모두 얻은 다음 반복 수행하면서 값을 꺼낸다.
-		Set<String> keys = model.keySet();
-		for (String key : keys) {
-			// req.setAttribute(key, value);
-			req.setAttribute(key, model.get(key));
-		}
-
-		String view = mav.getView();
 
 		// sendRedirect로 이동할 페이지임
 		if (view.startsWith("redirect:")) {
