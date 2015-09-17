@@ -1,7 +1,6 @@
 package kr.co.edumis.framework;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.Set;
@@ -19,10 +18,15 @@ import javax.servlet.http.HttpServletResponse;
 public class DispatcherServlet extends HttpServlet {
 	private HandlerMapping mappings;
 	
-	public void init(ServletConfig config) {
-		// init 메서드는 <servlet> 태그의 <init-param>에 설정된 값을 얻어올 수 있다.
-		String ctrls = config.getInitParameter("controllers");
-		mappings = new HandlerMapping(ctrls);
+	public void init(ServletConfig config) throws ServletException {
+		String packageName = config.getInitParameter("scan-package");
+		try {
+			mappings = new HandlerMapping(packageName);
+		} catch (Exception e) {
+			throw new ServletException(e);
+		}
+		
+		
 	}
 
 	@Override
@@ -55,9 +59,8 @@ public class DispatcherServlet extends HttpServlet {
 		// HandlerMapping mappings = new HandlerMapping();
 
 		// 매핑정보를 가지는 클래스를 활용해서 컨트롤러를 얻어온다.
-		CtrlAndMethod control = mappings.getController(uri);
-		
-		System.out.println(control);
+		CtrlAndMethod control = mappings.getCtrlAndMethod(uri);
+		System.out.println("control : " + control);
 
 		if (control == null) {
 			throw new ServletException("요청하신 URL이 올바르지 않습니다.");
@@ -78,7 +81,11 @@ public class DispatcherServlet extends HttpServlet {
 		
 		ModelAndView mav;
 		try {
-			mav = (ModelAndView)method.invoke(target, req, res);
+			PreProcessor pre = new PreProcessor();
+			Object[] params = pre.process(method, req);
+			mav = (ModelAndView)method.invoke(target, params);
+			
+//			mav = (ModelAndView)method.invoke(target, req, res);
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
