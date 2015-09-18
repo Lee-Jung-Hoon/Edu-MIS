@@ -1,5 +1,17 @@
 package kr.co.edumis.admin.assignment.service;
 
-public interface AdminAssService {
+import java.util.List;
 
+import kr.co.edumis.admin.assignment.vo.AdminAssVO;
+import kr.co.edumis.user.assignment.vo.UserAssVO;
+import kr.co.edumis.user.member.vo.MemberVO;
+
+
+public interface AdminAssService {
+	public AdminAssVO insert(AdminAssVO adAssvo) throws Exception;
+	public List<AdminAssVO> list() throws Exception;
+	public AdminAssVO detail(String no) throws Exception;
+	public List<MemberVO> memberList() throws Exception; 
+	public AdminAssVO modify() throws Exception; 
+	public UserAssVO userDetail(String id, String no) throws Exception;
 }
