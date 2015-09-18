@@ -211,13 +211,16 @@ html, body {
 	padding:30px 10px 10px;
 	box-sizing:border-box;
 	width:400px;
-	height:350px;
+	height:337px;
 	background:#fff;
+	/*
+	background:url('../images/note-bg.png') no-repeat;
+	background-position:-80px -15px;
+	*/
 	position:relative;
 	right:30%;
 	left:-100px;
 	z-index:9999;
-	border:1px solid #ddd;
 }
 .message-frame {
 	width:100%;
@@ -251,6 +254,9 @@ html, body {
 }
 .txt-photo {
 	background-image:url('../images/txt-photo.png');
+}
+.txt-search {
+	background-image:url('../images/txt-sch.png');
 }
 .btn-txt {
 	background-repeat:no-repeat;
@@ -454,136 +460,6 @@ section.common {
 	box-sizing:border-box;
 	letter-spacing:-1px;
 }
-section.lecture h3 {
-	position:absolute;
-	top:35px;
-	right:40px;
-	color:#000;
-	font-size:18px;
-	font-weight:bold;
-}
-.room {
-	width:100%;
-	overflow:hidden;
-	padding-bottom:30px;
-	border-bottom:2px solid #ddd;
-}
-.room ul {
-	width:100%;
-	overflow:hidden;
-}
-.room li {
-	float:left;
-	width:45%;
-	height:50px;
-	margin-top:30px;
-	border:1px solid #ddd;
-	border-radius:10px;
-	background:url('../images/wood-pattern.jpg') repeat;
-}
-.room li:nth-child(even) {
-	float:right;
-}
-.room div {
-	display:block;
-	float:left;
-	position:relative;
-	width:25%;
-	height:120%;
-	margin-top:-30px;
-}
-.room div::before {
-	content:"";
-	display:block;
-	position:relative;
-	margin:0 auto;
-	width:80px;
-	height:78px;
-	background:url('../images/icon-computer.png') no-repeat center;
-	background-size:100%;
-	z-index:10;
-}
-.room div::after {
-	content:"";
-	display:block;
-	position:absolute;
-    top:9px;
-    left:22px;
-	width:63px;
-	height:46px;
-	background:#000;
-}
-.room a {
-	display:block;
-	position:absolute;
-	top:12px;
-    left:22px;
-    width:60px;
-	height:41px;
-	z-index:99;
-}
-.room .desk {
-	display:block;
-	float:left;
-	width:200px;
-	height:50px;
-	margin-left:100px;
-	line-height:50px;
-	border:1px solid #ddd;
-	border-radius:10px;
-	background:url('../images/wood-pattern.jpg') repeat;
-	text-align:center;
-	color:#000;
-	font-family:'Arial';
-	font-size:25px;
-	font-weight:bold;
-}
-.room .screen {
-	display:block;
-	float:right;
-	width:600px;
-	height:20px;
-	line-height:20px;
-	text-align:center;
-	font-family:'Arial';
-	background:url('../images/bg-line.png') repeat;
-	font-weight:bold;
-}
-.room .yes::after {
-	background:#08b260;
-}
-.room .no::after {
-	background:#fbf31a;
-}
-.room .no em {
-	color:#000;
-}
-.room .sos::after {
-	background:#f31026;
-}
-.room div em {
-	display:block;
-	position:absolute;
-	top:9px;
-	left:1px;
-	z-index:99;
-	width:100%;
-	text-align:center;
-	font-size:22px;
-	color:#fff;
-	font-weight:bold;
-	letter-spacing:-1px;
-	font-family:'Arial';
-}
-.room .name {
-	top:7px;
-	font-size:18px;
-	font-family:'MalgunGothic';
-}
-.class-info {
-	width:100%;
-	padding-top:20px;
-}
 
 section.common h2 {
 	font-size:25px;
@@ -595,6 +471,44 @@ section.common h2 {
 	letter-spacing:-1px;
 	font-weight:bold;
 }
+.post-addr {
+	margin-bottom:10px;
+}
+.post-addr label {
+	padding-right:10px;
+}
+.btn-post {
+	width:100px; 
+	height:30px; 
+	margin-left:10px; 
+	background-image:url('../images/btn-post.png'); 
+	vertical-align:middle; 
+	text-indent:-5000px;
+}
+.board .board-frame th, .board .board-frame td {
+	text-align:center; 
+	vertical-align:middle;
+	height:50px;
+	color:#000;
+}
+.board .board-frame th {
+	font-size:20px;
+}
+.board .board-frame td {
+	font-size:15px;
+}
+.board .board-frame td:nth-child(3) {
+	text-align:left;
+}
+.board .board-frame td a {
+	display:block; 
+	width:500px; 
+	overflow:hidden; 
+	text-overflow:ellipsis; 
+	white-space:nowrap; 
+	color:#000;
+}
+/*
 section.board {
 	position:relative; 
 	width:1000px;  
@@ -691,6 +605,7 @@ section.board {
 	right:100px; 
 	width:100px;
 }
+*/
 ::-webkit-scrollbar {
 	width: 10px;
 	height: 10px;
@@ -712,11 +627,7 @@ section.board {
 ::-webkit-scrollbar-thumb:window-inactive {
 /*	background: rgba(255,0,0,0.4);	*/
 }
-.video {font-family:'NanumGothic'}
 
-.board {
-	font-family: 'jeju hallasan', sans-serif;
-}
 /* 회원가입 폼 공통 */
 .table-common {
 	width:100%;
@@ -820,4 +731,7 @@ section.board {
 }
 .size-input02 {
 	width:80%;
+}
+.size-input03 {
+	width:40px;
 }
