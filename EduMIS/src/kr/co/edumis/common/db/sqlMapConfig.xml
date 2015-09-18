@@ -7,6 +7,7 @@
 		<typeAlias alias="memberVO" type="kr.co.edumis.user.member.vo.MemberVO"/>
 		<typeAlias alias="ExamBoardVO" type="kr.co.edumis.admin.examgrade.vo.ExamBoardVO"/>
 		<typeAlias alias="ExamGradeVO" type="kr.co.edumis.admin.examgrade.vo.ExamGradeVO"/>
+		<typeAlias alias="userAssVO" type="kr.co.edumis.user.assignment.vo.UserAssVO"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -23,5 +24,6 @@
 	<mappers>
 		<mapper resource="kr/co/edumis/admin/examgrade/dao/ExamGradeSQL.xml"/>
 		<mapper resource="kr/co/edumis/user/member/dao/MemberSQL.xml"/>
+		<mapper resource="kr/co/edumis/user/assignment/dao/UserAssSQL.xml"/>
 	</mappers>
 </configuration>
