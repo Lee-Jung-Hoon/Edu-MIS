@@ -4,10 +4,23 @@
 
 
 <mapper namespace="examgrade">
-	<!-- 학생 목록을 처리하는 쿼리 -->
-	<select id="selectBoard" resultType="memberVO">
-		select id,
-			   name
-		from t_member
+	<!-- 회차정보를 저장하는 부분 -->
+	<insert id="inserExamBoard" parameterType="ExamBoardVO">
+		insert into t_exam_board(title, content, no)
+		values(#{title}, #{content}, seq_t_exam_board_no.nextVal)
+	</insert>
+	
+    <resultMap id="result" type="ExamBoardVO">
+        <result property="title"    column="title" />
+        <result property="content"  column="content" />
+        <result property="no"  column="no" />
+        <result property="regDate" column="reg_date" />
+    </resultMap>
+	
+	<select id="selectExamBoard"  resultMap="result">
+		select title, content, no, reg_date
+		from t_exam_board
+		order by no
 	</select>
+	
 </mapper>

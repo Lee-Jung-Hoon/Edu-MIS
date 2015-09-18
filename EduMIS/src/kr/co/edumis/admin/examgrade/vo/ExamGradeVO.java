@@ -1,11 +1,18 @@
 package kr.co.edumis.admin.examgrade.vo;
 
 public class ExamGradeVO {
-
+	private String id;
 	private String name;
-	private String title;
 	private int score;
 	private String regDate;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
@@ -13,14 +20,6 @@ public class ExamGradeVO {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
 	}
 
 	public int getScore() {
@@ -41,6 +40,6 @@ public class ExamGradeVO {
 
 	@Override
 	public String toString() {
-		return "ExamGradeVO [name=" + name + ", title=" + title + ", score=" + score + ", regDate=" + regDate + "]";
+		return "ExamGradeVO [name=" + name + ", score=" + score + ", regDate=" + regDate + "]";
 	}
 }

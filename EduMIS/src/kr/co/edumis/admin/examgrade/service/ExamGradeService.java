@@ -2,9 +2,14 @@ package kr.co.edumis.admin.examgrade.service;
 
 import java.util.List;
 
-import kr.co.edumis.user.member.vo.memberVO;
+import kr.co.edumis.admin.examgrade.vo.ExamBoardVO;
+import kr.co.edumis.user.member.vo.MemberVO;
 
 public interface ExamGradeService {
 
-	public List<memberVO> getList() throws Exception;
+	public void insertExamBoard(ExamBoardVO board) throws Exception;
+
+	public List<ExamBoardVO> getBoardList() throws Exception;
+
+
 }
