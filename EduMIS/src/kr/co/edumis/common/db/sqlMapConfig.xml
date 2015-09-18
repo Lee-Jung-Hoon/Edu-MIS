@@ -5,6 +5,8 @@
 
 	<typeAliases>
 		<typeAlias alias="memberVO" type="kr.co.edumis.user.member.vo.MemberVO"/>
+		<typeAlias alias="ExamBoardVO" type="kr.co.edumis.admin.examgrade.vo.ExamBoardVO"/>
+		<typeAlias alias="ExamGradeVO" type="kr.co.edumis.admin.examgrade.vo.ExamGradeVO"/>
 	</typeAliases>
 	
 	<environments default="development">
