@@ -5,7 +5,6 @@
 
 	<typeAliases>
 		<typeAlias alias="memberVO" type="kr.co.edumis.user.member.vo.memberVO"/>
-		<typeAlias alias="memberVO" type="kr.co.edumis.user.member.vo.MemberVO"/>
 	</typeAliases>
 	
 	<environments default="development">
