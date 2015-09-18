@@ -80,7 +80,7 @@ public class DispatcherServlet extends HttpServlet {
 			// 파라미터 자동 설정 부분 추가함....
 			//===================================================
 			PreProcessor pre = new PreProcessor();
-			Object[] params = pre.process(method, req);
+			Object[] params = pre.process(method, req, res);
 			//===================================================
 			
 			String retName = method.getReturnType().getSimpleName();
