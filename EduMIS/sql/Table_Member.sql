@@ -13,5 +13,5 @@ create table t_member(
 	drop_check varchar2(3),
 	drop_date date,
 	drop_reason varchar2(100),
-	group varchar2(5)		 
+	team varchar2(5)		
 );
