@@ -1,110 +1,110 @@
 package kr.co.edumis.user.member.vo;
 
 public class MemberVO {
-	private String No;
-	private String Id;
-	private String Pass;
-	private String Name;
-	private String Zcode;
-	private String Zaddr;
-	private String Email;
-	private String Birth;
-	private String Phone;
-	private String Major;
-	private String JoinDate;
-	private String DropCheck;
-	private String DropDate;
-	private String DropReason;
-	private String Group;
-	
+	private String no;
+	private String id;
+	private String pass;
+	private String name;
+	private String zcode;
+	private String zaddr;
+	private String email;
+	private String birth;
+	private String phone;
+	private String major;
+	private String joinDate;
+	private String dropCheck;
+	private String dropDate;
+	private String dropReason;
+	private String team;
 	public String getNo() {
-		return No;
+		return no;
 	}
 	public void setNo(String no) {
-		No = no;
+		this.no = no;
 	}
 	public String getId() {
-		return Id;
+		return id;
 	}
 	public void setId(String id) {
-		Id = id;
+		this.id = id;
 	}
 	public String getPass() {
-		return Pass;
+		return pass;
 	}
 	public void setPass(String pass) {
-		Pass = pass;
+		this.pass = pass;
 	}
 	public String getName() {
-		return Name;
+		return name;
 	}
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 	public String getZcode() {
-		return Zcode;
+		return zcode;
 	}
 	public void setZcode(String zcode) {
-		Zcode = zcode;
+		this.zcode = zcode;
 	}
 	public String getZaddr() {
-		return Zaddr;
+		return zaddr;
 	}
 	public void setZaddr(String zaddr) {
-		Zaddr = zaddr;
+		this.zaddr = zaddr;
 	}
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
 	public String getBirth() {
-		return Birth;
+		return birth;
 	}
 	public void setBirth(String birth) {
-		Birth = birth;
+		this.birth = birth;
 	}
 	public String getPhone() {
-		return Phone;
+		return phone;
 	}
 	public void setPhone(String phone) {
-		Phone = phone;
+		this.phone = phone;
 	}
 	public String getMajor() {
-		return Major;
+		return major;
 	}
 	public void setMajor(String major) {
-		Major = major;
+		this.major = major;
 	}
 	public String getJoinDate() {
-		return JoinDate;
+		return joinDate;
 	}
 	public void setJoinDate(String joinDate) {
-		JoinDate = joinDate;
+		this.joinDate = joinDate;
 	}
 	public String getDropCheck() {
-		return DropCheck;
+		return dropCheck;
 	}
 	public void setDropCheck(String dropCheck) {
-		DropCheck = dropCheck;
+		this.dropCheck = dropCheck;
 	}
 	public String getDropDate() {
-		return DropDate;
+		return dropDate;
 	}
 	public void setDropDate(String dropDate) {
-		DropDate = dropDate;
+		this.dropDate = dropDate;
 	}
 	public String getDropReason() {
-		return DropReason;
+		return dropReason;
 	}
 	public void setDropReason(String dropReason) {
-		DropReason = dropReason;
+		this.dropReason = dropReason;
 	}
-	public String getGroup() {
-		return Group;
+	public String getTeam() {
+		return team;
 	}
-	public void setGroup(String group) {
-		Group = group;
-	}	
+	public void setTeam(String team) {
+		this.team = team;
+	}
+	
 }
