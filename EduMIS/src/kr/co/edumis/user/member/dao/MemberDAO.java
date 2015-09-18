@@ -2,9 +2,9 @@ package kr.co.edumis.user.member.dao;
 
 
 
-import org.apache.ibatis.session.SqlSession;
+import kr.co.edumis.user.member.vo.MemberVO;
 
-import minipro.memberVO.MemberVO;
+import org.apache.ibatis.session.SqlSession;
 
 
 public class MemberDAO {
