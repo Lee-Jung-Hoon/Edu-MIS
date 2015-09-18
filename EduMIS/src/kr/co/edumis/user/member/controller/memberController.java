@@ -6,11 +6,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import minipro.framework.Controller;
-import minipro.framework.ModelAndView;
-import minipro.framework.RequestMapping;
-import minipro.memberDAO.MemberDAO;
-import minipro.memberVO.MemberVO;
+import kr.co.edumis.framework.Controller;
+import kr.co.edumis.framework.RequestMapping;
+import kr.co.edumis.user.member.dao.MemberDAO;
+import kr.co.edumis.user.member.vo.MemberVO;
 
 @Controller
 public class memberController {
@@ -19,13 +18,13 @@ public class memberController {
 		req.setCharacterEncoding("utf-8");
 
 		MemberVO join = new MemberVO();
-		join.setmId(req.getParameter("mId"));
-		join.setmName(req.getParameter("mName"));
-		join.setmPw(req.getParameter("mPw"));
-		join.setmBirth(req.getParameter("mBirth"));
-		join.setmEmail(req.getParameter("mEmail"));
-		join.setmZaddr(req.getParameter("mZaddr"));
-		join.setmZcode(req.getParameter("mZcode"));
+		join.setId(req.getParameter("id"));
+		join.setName(req.getParameter("name"));
+		join.setPass(req.getParameter("pass"));
+		join.setBirth(req.getParameter("birth"));
+		join.setEmail(req.getParameter("email"));
+		join.setZaddr(req.getParameter("zaddr"));
+		join.setZcode(req.getParameter("zcode"));
 
 		System.out.println(1111);
 		
