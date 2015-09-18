@@ -1,0 +1,20 @@
+* {font-family: 'Nanum Gothic', serif;}
+
+/* #kCalendar {width: 250px; height: 250px; border: 1px solid black;} */
+
+#kCalendar #header {height: 50px; line-height: 50px; text-align: center; font-size: 18px; font-weight: bold}
+#kCalendar .button {color: #000; text-decoration: none;}
+
+#kCalendar table {text-align: center; width: 250px; height: 0px; border:1px solid #ddd; border-bottom:0; border-right:0;}
+#kCalendar caption {display: none;}
+
+
+#kCalendar .sun {color: deeppink;}
+#kCalendar .mon {text-align: center;}
+#kCalendar .tue {text-align: center;}
+#kCalendar .wed {text-align: center;}
+#kCalendar .thu {text-align: center;}
+#kCalendar .fri {text-align: center;}
+#kCalendar .sat {text-align: center; color: deepskyblue;}
+#kCalendar .test {display:none;}
+#kCalendar th, #kCalendar td {border-right:1px solid #ddd; border-bottom:1px solid #ddd;} 
