@@ -1,80 +1,110 @@
 package kr.co.edumis.user.member.vo;
 
 public class MemberVO {
-	private String mNo;
-	private String mId;
-	private String mPw;
-	private String mName;
-	private String mZcode;
-	private String mZaddr;
-	private String mEmail;
-	private String mBirth;
-	private String mPhone;
-	private String mMajor;
-	public String getmNo() {
-		return mNo;
+	private String No;
+	private String Id;
+	private String Pass;
+	private String Name;
+	private String Zcode;
+	private String Zaddr;
+	private String Email;
+	private String Birth;
+	private String Phone;
+	private String Major;
+	private String JoinDate;
+	private String DropCheck;
+	private String DropDate;
+	private String DropReason;
+	private String Group;
+	
+	public String getNo() {
+		return No;
 	}
-	public void setmNo(String mNo) {
-		this.mNo = mNo;
+	public void setNo(String no) {
+		No = no;
 	}
-	public String getmId() {
-		return mId;
+	public String getId() {
+		return Id;
 	}
-	public void setmId(String mId) {
-		this.mId = mId;
+	public void setId(String id) {
+		Id = id;
 	}
-	public String getmPw() {
-		return mPw;
+	public String getPass() {
+		return Pass;
 	}
-	public void setmPw(String mPw) {
-		this.mPw = mPw;
+	public void setPass(String pass) {
+		Pass = pass;
 	}
-	public String getmName() {
-		return mName;
+	public String getName() {
+		return Name;
 	}
-	public void setmName(String mName) {
-		this.mName = mName;
+	public void setName(String name) {
+		Name = name;
 	}
-	public String getmZcode() {
-		return mZcode;
+	public String getZcode() {
+		return Zcode;
 	}
-	public void setmZcode(String mZcode) {
-		this.mZcode = mZcode;
+	public void setZcode(String zcode) {
+		Zcode = zcode;
 	}
-	public String getmZaddr() {
-		return mZaddr;
+	public String getZaddr() {
+		return Zaddr;
 	}
-	public void setmZaddr(String mZaddr) {
-		this.mZaddr = mZaddr;
+	public void setZaddr(String zaddr) {
+		Zaddr = zaddr;
 	}
-	public String getmEmail() {
-		return mEmail;
+	public String getEmail() {
+		return Email;
 	}
-	public void setmEmail(String mEmail) {
-		this.mEmail = mEmail;
+	public void setEmail(String email) {
+		Email = email;
 	}
-	public String getmBirth() {
-		return mBirth;
+	public String getBirth() {
+		return Birth;
 	}
-	public void setmBirth(String mBirth) {
-		this.mBirth = mBirth;
+	public void setBirth(String birth) {
+		Birth = birth;
 	}
-	public String getmPhone() {
-		return mPhone;
+	public String getPhone() {
+		return Phone;
 	}
-	public void setmPhone(String mPhone) {
-		this.mPhone = mPhone;
+	public void setPhone(String phone) {
+		Phone = phone;
 	}
-	public String getmMajor() {
-		return mMajor;
+	public String getMajor() {
+		return Major;
 	}
-	public void setmMajor(String mMajor) {
-		this.mMajor = mMajor;
+	public void setMajor(String major) {
+		Major = major;
 	}
-	@Override
-	public String toString() {
-		return "JoinVO [mNo=" + mNo + ", mId=" + mId + ", mPw=" + mPw + ", mName=" + mName + ", mZcode=" + mZcode
-				+ ", mZaddr=" + mZaddr + ", mEmail=" + mEmail + ", mBirth=" + mBirth + ", mPhone=" + mPhone
-				+ ", mMajor=" + mMajor + "]";
+	public String getJoinDate() {
+		return JoinDate;
 	}
+	public void setJoinDate(String joinDate) {
+		JoinDate = joinDate;
+	}
+	public String getDropCheck() {
+		return DropCheck;
+	}
+	public void setDropCheck(String dropCheck) {
+		DropCheck = dropCheck;
+	}
+	public String getDropDate() {
+		return DropDate;
+	}
+	public void setDropDate(String dropDate) {
+		DropDate = dropDate;
+	}
+	public String getDropReason() {
+		return DropReason;
+	}
+	public void setDropReason(String dropReason) {
+		DropReason = dropReason;
+	}
+	public String getGroup() {
+		return Group;
+	}
+	public void setGroup(String group) {
+		Group = group;
+	}	
 }
