@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Member.dao.MemberMapper">
+
+<insert id="memberJoin" parameterType="MemberVO">
+		insert into t_member(         			
+		   mNo,
+		   mId,
+		   mPw,
+	       mName,
+	       mZcode,
+	       mZaddr,
+	       mEmail,
+		   mBirth,
+		   mPhone,
+		   mMajor
+		   ) values ( 
+		   seq_member_no.nextVal,
+		   #{mId}, 
+		   #{mPw},
+		   #{mName},
+		   #{mZcode},
+		   #{mZaddr},  
+		   #{mEmail},  
+		   #{mBirth},  
+		   #{mPhone},  
+		   #{mMajor}  
+		   )
+</insert>
+
+</mapper>
