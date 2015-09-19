@@ -1,1 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+
+<mapper namespace="userAssMapper">
+
+<!-- 과제목록을 불러오는 쿼리 -->
+<select id="assList" resultType="userAssVO">
+select no,title, start_Date,end_Date
+from t_adm_assignment_board
+</select>
+</mapper>
