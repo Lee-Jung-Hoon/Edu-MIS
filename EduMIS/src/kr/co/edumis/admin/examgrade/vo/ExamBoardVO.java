@@ -6,6 +6,16 @@ public class ExamBoardVO {
 	private String regDate;
 	private String ck;
 	private String no;
+	
+	
+
+	public String getCk() {
+		return ck;
+	}
+
+	public void setCk(String ck) {
+		this.ck = ck;
+	}
 
 	public String getContent() {
 		return content;

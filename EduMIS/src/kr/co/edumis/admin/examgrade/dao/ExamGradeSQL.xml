@@ -6,8 +6,8 @@
 <mapper namespace="examgrade">
 	<!-- 회차정보를 저장하는 부분 -->
 	<insert id="inserExamBoard" parameterType="ExamBoardVO">
-		insert into t_exam_board(title, content, no, ck)
-		values(#{title}, #{content}, seq_t_exam_board_no.nextVal, 'false')
+		insert into t_exam_board(title, content, no, ck, reg_date)
+		values(#{title}, #{content}, seq_t_exam_board_no.nextVal, 'false', #{regDate})
 	</insert>
 	
     <resultMap id="result" type="ExamBoardVO">
@@ -15,12 +15,13 @@
         <result property="content"  column="content" />
         <result property="no"  column="no" />
         <result property="regDate" column="reg_date" />
+        <result property="ck" column="ck" />
     </resultMap>
 	
 	<select id="selectExamBoardList"  resultMap="result">
-		select title, content, no, reg_date
-		from t_exam_board
-		order by no
+		select title, content, no, to_char(reg_date, 'yyyy-mm-dd') as reg_date, ck
+		from t_exam_board	
+		order by no desc
 	</select>
 	
 	<select id="selectMember"  resultType="MemberVO">
@@ -29,8 +30,26 @@
 	</select>
 	
 	<select id="selectExamBoard" parameterType="string" resultMap="result">
-		select title, content, no, reg_date
+		select title, content, no, to_char(reg_date, 'yyyy-mm-dd') as reg_date
 		from t_exam_board
 		where no = #{no}
 	</select>	
+	
+	<insert id="insertExamGrade" parameterType="ExamGradeVO">
+		insert into t_exam_grade(name, id, title, content, no, score)
+		values(#{name}, #{id}, #{title}, #{content}, #{no}, #{score})
+	</insert>
+		
+	<update id="updateBoardCheck" parameterType="string">
+		update t_exam_board
+		set ck = 'true'
+		where no = #{no}
+	</update>
+	
+	<select id="getGradeList"  resultType="ExamGradeVO" parameterType="string">
+		select name, id, title, content, no, score
+		from t_exam_grade
+		where no = #{no}
+	</select>
+	
 </mapper>
