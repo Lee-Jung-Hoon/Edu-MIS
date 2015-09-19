@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import kr.co.edumis.admin.examgrade.vo.ExamBoardVO;
+import kr.co.edumis.admin.examgrade.vo.ExamGradeVO;
 import kr.co.edumis.common.db.MyAppSqlConfig;
 import kr.co.edumis.user.member.vo.MemberVO;
 
@@ -34,6 +35,21 @@ public class ExamGradeDAO {
 	public ExamBoardVO selectBoard(String no) {
 		ExamBoardVO board = session.selectOne("examgrade.selectExamBoard", no);
 		return board;
+	}
+
+	public void insertExamGrade(ExamGradeVO grade) {
+		session.insert("examgrade.insertExamGrade", grade);
+		session.commit();
+	}
+
+	public void updateBoardCheck(String no) {
+		session.update("examgrade.updateBoardCheck", no);
+		session.commit();
+	}
+
+	public List<ExamGradeVO> getGradeList(String no) {
+		List<ExamGradeVO> list = session.selectList("examgrade.getGradeList", no);
+		return list;
 	}
 
 }
