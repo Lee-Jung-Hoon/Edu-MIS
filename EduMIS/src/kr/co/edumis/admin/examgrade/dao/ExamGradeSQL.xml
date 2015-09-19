@@ -24,7 +24,7 @@
 		order by no desc
 	</select>
 	
-	<select id="selectMember"  resultType="MemberVO">
+	<select id="selectMember"  resultType="memberVO">
 		select id, name
 		from t_member
 	</select>
