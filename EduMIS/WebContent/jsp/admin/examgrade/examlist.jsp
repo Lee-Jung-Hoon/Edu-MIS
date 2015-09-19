@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="ko">
@@ -12,7 +12,8 @@
 <link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
 <link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script><script type="text/javascript">
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script type="text/javascript">
 	function doWrite() {
 		if (confirm("시험을 등록하시겠습니까?")) {
 			location.href = "${pageContext.request.contextPath}/examgrade/ExamTurnWriteForm.do";
@@ -92,15 +93,29 @@
 										<th width="100px">등록</th>
 									</tr>
 									<c:forEach var="list" items="${list}">
-									<tr align="center">
-										<td width="100px">${list.no}</td>
-										<td width="200px">${list.title}</td>
-										<td width="300px">${list.content}</td>
-										<td width="300px">${list.regDate}</td>
-										<td width="100px">
-											<input type="button" value="성적등록" onclick="doInsert(${list.no})">
-										</td>
-									</tr>  
+										<tr align="center">
+											<td width="100px">${list.no}</td>
+											<td width="200px">${list.title}</td>
+											
+											<td width="300px">
+												<c:if test="${list.ck=='false'}">
+													${list.content}
+												</c:if> <c:if test="${list.ck=='true'}">
+													<a href="${pageContext.request.contextPath}/examgrade/ExamGradeDetail.do?no=${list.no}">${list.content}</a>
+												</c:if>
+											</td>
+
+											<td width="300px">${list.regDate}</td>
+											
+											<td width="100px">
+												<c:if test="${list.ck=='false'}">
+													<input type="button" value="성적등록" onclick="doInsert(${list.no})">
+												</c:if> 
+												<c:if test="${list.ck=='true'}">
+													<input type="button" value="성적수정" onclick="">
+												</c:if>
+											</td>
+										</tr>
 									</c:forEach>
 								</table>
 							</div>
