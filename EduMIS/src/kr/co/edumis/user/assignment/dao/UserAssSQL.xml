@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="userAssMapper">
 
+  <resultMap id="resultUserAss" type="UserAssVO">
+        <result property="orgFileName"    column="org_File_Name" />
+        <result property="realFileName"  column="real_File_Name" />
+        <result property="filePath"  column="file_Path" />
+ </resultMap>
+
+
 <!-- 과제목록을 불러오는 쿼리 -->
-<select id="assList" resultType="userAssVO">
-select no,title, start_Date,end_Date
-from t_adm_assignment_board
-</select>
+ <select id="assList" resultType="AdminAssVO">
+    select no,title, start_Date,end_Date
+    from t_adm_assignment_board
+ </select>
+ 
+ 
+
+<!-- 과제제출하는 쿼리 -->
+
 </mapper>
