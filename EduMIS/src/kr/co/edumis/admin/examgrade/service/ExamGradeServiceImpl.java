@@ -24,4 +24,16 @@ public class ExamGradeServiceImpl implements ExamGradeService {
 		return list;
 	}
 
+	@Override
+	public List<MemberVO> getMemeberList() throws Exception {
+		List<MemberVO> list = dao.selectMember();
+		return list;
+	}
+
+	@Override
+	public ExamBoardVO getBoard(String no) throws Exception {
+		ExamBoardVO board = dao.selectBoard(no);
+		return board;
+	}
+
 }

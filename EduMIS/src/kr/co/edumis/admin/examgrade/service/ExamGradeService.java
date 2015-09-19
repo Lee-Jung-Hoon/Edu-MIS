@@ -11,5 +11,10 @@ public interface ExamGradeService {
 
 	public List<ExamBoardVO> getBoardList() throws Exception;
 
+	public List<MemberVO> getMemeberList() throws Exception;
+
+	public ExamBoardVO getBoard(String no) throws Exception;
+
+
 
 }

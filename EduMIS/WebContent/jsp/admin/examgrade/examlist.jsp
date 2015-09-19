@@ -97,7 +97,9 @@
 										<td width="200px">${list.title}</td>
 										<td width="300px">${list.content}</td>
 										<td width="300px">${list.regDate}</td>
-<%-- 										<td width="100px"><input type="button" value="성적등록" onclick="doInsert(${list.no})"></td> --%>
+										<td width="100px">
+											<input type="button" value="성적등록" onclick="doInsert(${list.no})">
+										</td>
 									</tr>  
 									</c:forEach>
 								</table>

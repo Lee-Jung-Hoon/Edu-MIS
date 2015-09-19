@@ -22,7 +22,18 @@ public class ExamGradeDAO {
 	}
 
 	public List<ExamBoardVO> selectBoard() {
-		List<ExamBoardVO> list = session.selectList("examgrade.selectExamBoard");
+		List<ExamBoardVO> list = session.selectList("examgrade.selectExamBoardList");
 		return list;
 	}
+
+	public List<MemberVO> selectMember() {
+		List<MemberVO> list = session.selectList("examgrade.selectMember");
+		return list;
+	}
+
+	public ExamBoardVO selectBoard(String no) {
+		ExamBoardVO board = session.selectOne("examgrade.selectExamBoard", no);
+		return board;
+	}
+
 }

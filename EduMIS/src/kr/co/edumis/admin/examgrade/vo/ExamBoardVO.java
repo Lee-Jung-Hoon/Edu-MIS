@@ -4,6 +4,7 @@ public class ExamBoardVO {
 	private String title;
 	private String content;
 	private String regDate;
+	private String ck;
 	private String no;
 
 	public String getContent() {
