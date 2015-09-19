@@ -8,14 +8,15 @@ import kr.co.edumis.common.db.MyAppSqlConfig;
 import kr.co.edumis.user.assignment.vo.UserAssVO;
 
 public class UserAssDAO {
+	
 	private static SqlSession session = null;
 	
 	public UserAssDAO(){
 		session = MyAppSqlConfig.getSqlSessionInstance();
 	}
 	
-//	public List<UserAssVO> selectAssignment throws Exception{
-//		
-//	}
+	public List<UserAssVO> selectAssignment() throws Exception{
+		return session.selectList("userAssMapper.assList");
+	}
 
 }
