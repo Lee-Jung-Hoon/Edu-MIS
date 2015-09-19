@@ -32,6 +32,21 @@
 						  <span></span>
 						  <span></span>
 					</button>
+					<!-- 메시지 들어가는 부분 -->
+					<div class="top-message">
+						<button type="button" class="btn-message">
+							<img src="/EduMIS/images/message.png" alt="" />
+							<span class="count">1<!-- 메시지 개수 --></span>
+						</button>
+						<div class="message-layer">
+							<button type="button" class="btn-message-close">닫기</button>
+							<div class="message-frame">
+							<!-- 메시지 작업 시작영역 -->
+							<!--  메시지 작업 시작영역 끝 -->	
+							</div>
+						</div>
+					</div>
+					<!-- 메시지 들어가는 부분 끝 -->
 					<ul>
 						<li><a href="#"><img src="/EduMIS/images/icon-user.png" alt="" />마이페이지</a></li>
 						<li class="login">
@@ -56,8 +71,26 @@
 							<!--  작업부분 제목 써주세요 --><h2>과제목록</h2>
 							<!-- 작업시작부분 div안에 클래스명 넣어서 작업 해 주세요 나머지 url부분은 추후 취합할 예정이니 일단 MENU 부분의 링크태그에 값 넣어서 작업 해주시면 됩니다. 게시판 담당하시는 분들은 추후 공통 클래스 드릴테니 일단 테이블로 작업 부탁드립니다. -->
 
-							<div class="">
-								
+							<div class="AssignmentList">
+							<form action="" method="">
+							<table border='1' width ='100%'>
+							     <tr>
+							        <td>No.   </td>
+							        <td>과제명</td>
+							        <td>제출기간</td>
+							        <td>제출여부</td>
+							        <td>진행여부</td>
+							     </tr>
+							     <tr>
+							       <td>ex>번호</td>
+							       <td>ex>과제명</td>
+							       <td>ex>제출기간</td>
+							       <td>ex>제출여부</td>
+							       <td>ex>진행여부</td>
+							     </tr>
+							   </table>
+							
+							</form>
 							</div>
 							<!--  작업완료 부분 -->
 						</section>				
