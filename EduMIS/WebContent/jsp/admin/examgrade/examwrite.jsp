@@ -74,23 +74,17 @@
 									action="${pageContext.request.contextPath}/examgrade/writescore.do"
 									onsubmit="return ckForm()">
 									<table border="1">
-										<c:if test="${empty list}">
+										<c:if test="${empty member}">
 											<tr>
-												<td>게시글이 없습니다.</td>
+												<td>입력할 회원이 없습니다.</td>
 											</tr>
 										</c:if>
 
-										<c:if test="${!empty list }">
-											<tr>
-												<th>시험 제목</th>
-												<td><input type="text" size="50px" id="title"
-													name="title"></td>
-											</tr>
-											<c:forEach var="list" items="${list}">
+										<c:if test="${!empty member}">
+											<c:forEach var="member" items="${member}">
 												<tr>
-													<th>성적 입력</th>
-													<td><c:out value="${list.name}" /> <input type="text"
-														id="${list.id}" name="${list.id}"></td>
+													<td width="80px"><c:out value="${member.name}" /> <input type="text"
+														id="${member.id}" name="${member.id}"></td>
 												</tr>
 											</c:forEach>
 										</c:if>

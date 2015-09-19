@@ -12,45 +12,46 @@ import kr.co.edumis.framework.ModelAndView;
 import kr.co.edumis.framework.RequestMapping;
 import kr.co.edumis.user.member.vo.MemberVO;
 
-@Controller	
+@Controller
 public class ExamGradeController {
 	private ExamGradeService service;
 
 	public ExamGradeController() {
 		service = new ExamGradeServiceImpl();
 	}
-	
-//	@RequestMapping("/examgrade/examturnlist.do")
-//	public ModelAndView examTurnList(HttpServletRequest req, HttpServletResponse res)
-//			throws ServletException, IOException {
-//		ModelAndView mav = new ModelAndView("/jsp/admin/examgrade/examlist.jsp");
-//		
-//		try {
-//			List<ExamBoardVO> list = service.getBoardList();
-//			mav.addObject("list", list);
-//		}catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return mav;
-//	
-	
+
+	// @RequestMapping("/examgrade/examturnlist.do")
+	// public ModelAndView examTurnList(HttpServletRequest req,
+	// HttpServletResponse res)
+	// throws ServletException, IOException {
+	// ModelAndView mav = new ModelAndView("/jsp/admin/examgrade/examlist.jsp");
+	//
+	// try {
+	// List<ExamBoardVO> list = service.getBoardList();
+	// mav.addObject("list", list);
+	// }catch (Exception e) {
+	// e.printStackTrace();
+	// }
+	// return mav;
+	//
+
 	@RequestMapping("/examgrade/ExamTurnWriteForm.do")
 	public ModelAndView ExamTurnWriteForm() {
 		ModelAndView mav = new ModelAndView("redirect:/EduMIS/jsp/admin/examgrade/examturnwriteForm.jsp");
 		return mav;
 	}
-	
+
 	@RequestMapping("/examgrade/ExamTurnWrite.do")
 	public ModelAndView ExamTurnWrite(HttpServletRequest req) {
 		ModelAndView mav = new ModelAndView("redirect:/EduMIS/examgrade/ExamTurnList.do");
-		
+
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
-		
+
 		ExamBoardVO board = new ExamBoardVO();
 		board.setTitle(title);
 		board.setContent(content);
-		
+
 		try {
 			service.insertExamBoard(board);
 		} catch (Exception e) {
@@ -58,11 +59,11 @@ public class ExamGradeController {
 		}
 		return mav;
 	}
-	
+
 	@RequestMapping("/examgrade/ExamTurnList.do")
 	public ModelAndView ExamTurnList() {
 		ModelAndView mav = new ModelAndView("/jsp/admin/examgrade/examlist.jsp");
-		
+
 		try {
 			List<ExamBoardVO> list = service.getBoardList();
 			mav.addObject("list", list);
@@ -71,20 +72,40 @@ public class ExamGradeController {
 		}
 		return mav;
 	}
-	
+
 	@RequestMapping("/examgrade/ExamGradeWriteForm.do")
 	public ModelAndView ExamGradeWrite(String no) {
 		ModelAndView mav = new ModelAndView("/jsp/admin/examgrade/examwrite.jsp");
-		
-//		List<MemberVO> member;
+
+		List<MemberVO> member;
 		try {
-//			member = service.getMemeberList(no);
-//			mav.addObject("member", member);
+			System.out.println(no);
+			ExamBoardVO board = service.getBoard(no);
+			System.out.println(board.getTitle());
+			mav.addObject("board", board);
+			member = service.getMemeberList();
+			mav.addObject("member", member);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return mav;
 	}
-	
-	
+
+	@RequestMapping("/examgrade/writescore.do")
+	public ModelAndView WriteScore(HttpServletRequest req) {
+		ModelAndView mav = new ModelAndView("redirect:/EduMIS/examgrade/ExamTurnList.do");
+
+		List<MemberVO> member;
+		try {
+			member = service.getMemeberList();
+			for (MemberVO m : member) {
+				String score = req.getParameter(m.getId());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
+
 }

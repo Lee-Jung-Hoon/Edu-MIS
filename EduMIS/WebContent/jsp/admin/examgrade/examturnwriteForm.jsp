@@ -76,6 +76,11 @@
 											<th>시험제목</th>
 											<td><input type="text" size="50" name="title"></td>
 										</tr>
+										
+										<tr>
+											<th>시험일자</th>
+											<td><input type="text" size="50" name=""></td>
+										</tr>
 										<tr>
 											<th>시험내용</th>
 											<td><input type="text" size="50" name="content"></td>

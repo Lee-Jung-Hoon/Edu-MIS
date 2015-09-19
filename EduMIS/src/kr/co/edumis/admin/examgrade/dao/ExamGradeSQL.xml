@@ -6,8 +6,8 @@
 <mapper namespace="examgrade">
 	<!-- 회차정보를 저장하는 부분 -->
 	<insert id="inserExamBoard" parameterType="ExamBoardVO">
-		insert into t_exam_board(title, content, no)
-		values(#{title}, #{content}, seq_t_exam_board_no.nextVal)
+		insert into t_exam_board(title, content, no, ck)
+		values(#{title}, #{content}, seq_t_exam_board_no.nextVal, 'false')
 	</insert>
 	
     <resultMap id="result" type="ExamBoardVO">
@@ -17,10 +17,20 @@
         <result property="regDate" column="reg_date" />
     </resultMap>
 	
-	<select id="selectExamBoard"  resultMap="result">
+	<select id="selectExamBoardList"  resultMap="result">
 		select title, content, no, reg_date
 		from t_exam_board
 		order by no
 	</select>
 	
+	<select id="selectMember"  resultType="MemberVO">
+		select id, name
+		from t_member
+	</select>
+	
+	<select id="selectExamBoard" parameterType="string" resultMap="result">
+		select title, content, no, reg_date
+		from t_exam_board
+		where no = #{no}
+	</select>	
 </mapper>
