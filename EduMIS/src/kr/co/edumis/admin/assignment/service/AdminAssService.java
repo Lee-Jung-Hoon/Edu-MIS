@@ -8,7 +8,7 @@ import kr.co.edumis.user.member.vo.MemberVO;
 
 
 public interface AdminAssService {
-	public AdminAssVO insert(AdminAssVO adAssvo) throws Exception;
+	public void insert(AdminAssVO adAssvo) throws Exception;
 	public List<AdminAssVO> list() throws Exception;
 	public AdminAssVO detail(String no) throws Exception;
 	public List<MemberVO> memberList() throws Exception; 

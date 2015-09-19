@@ -1,1 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="Assignment">
+	<insert id="registAssignment" parameterType = "AdminAssVO">
+		insert into t_adm_assignment_board(
+		no,
+		start_Date,
+		end_Date,
+		title,
+		content,
+		org_File_Name,
+		real_File_Name,
+		file_Path
+		)
+		values(
+		seq_adm_assignment_board_no,
+		to_date(#{startDate}, 'yyyy-mm-dd'),
+		to_date(#{endDate}, 'yyyy-mm-dd'),
+		#{title},
+		#{content},
+		#{orgFileName},
+		#{realFineName},
+		#{file_Path}
+		)
+	</insert>
+
+	
+</mapper>

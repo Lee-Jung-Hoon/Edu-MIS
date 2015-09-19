@@ -2,16 +2,24 @@ package kr.co.edumis.admin.assignment.service;
 
 import java.util.List;
 
+import kr.co.edumis.admin.assignment.dao.AdminAssDAO;
 import kr.co.edumis.admin.assignment.vo.AdminAssVO;
 import kr.co.edumis.user.assignment.vo.UserAssVO;
 import kr.co.edumis.user.member.vo.MemberVO;
 
 public class AdminAssServiceImpl implements AdminAssService {
 
+	private AdminAssDAO dao;
+
+	public AdminAssServiceImpl() {
+		dao = new AdminAssDAO();
+	}
+
 	@Override
-	public AdminAssVO insert(AdminAssVO adAssvo) throws Exception {
+	public void insert(AdminAssVO adAssvo) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		
+		dao.insertAss(adAssvo);
 	}
 
 	@Override
@@ -43,7 +51,5 @@ public class AdminAssServiceImpl implements AdminAssService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 
 }
