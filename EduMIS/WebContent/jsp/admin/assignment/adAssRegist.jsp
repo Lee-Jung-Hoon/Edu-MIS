@@ -35,7 +35,11 @@
 	text-align: right;
 	}
 	</style>
-	
+	<script>
+		function ckForm() {
+			true;
+		}
+	</script>
 </head>
 <body class="page-join">
 	<div class="wrap">
@@ -81,41 +85,43 @@
 							<!--  작업부분 제목 써주세요 --><h2>과제 등록</h2>
 							<!-- 작업시작부분 div안에 클래스명 넣어서 작업 해 주세요 나머지 url부분은 추후 취합할 예정이니 일단 MENU 부분의 링크태그에 값 넣어서 작업 해주시면 됩니다. 게시판 담당하시는 분들은 추후 공통 클래스 드릴테니 일단 테이블로 작업 부탁드립니다. -->
 
-							<div class="adAssRegist">
-								<table class="tb-test" align="center">
-									<tr>
-										<th>제목</th>
-										<td class=""><input type="text" size="100%" name="as_title" placeholder="제목을 입력해주세요." /></td>
-									</tr>
-									<tr>
-										<th>진행기간</th>
-										<td align="center">시작일&nbsp;&nbsp;<input type="date" size="40%" name="as_startDate" placeholder="예) 20150918"/>
-										    &nbsp;&nbsp; 종료일&nbsp;&nbsp;<input type="date" size="40%" name="as_endDate" /></td>
-									</tr>
-
-									<tr>
-										<th>글 내용</th>
-										<td colspan="3"><textarea cols="110" rows="20"
-												name="as_content"></textarea></td>
-									</tr>
-
-									<tr>
-										<th>첨부 파일</th>
-										<td align="left"><input type="file" name="as_file" /></td>
-									</tr>
-
-								</table>
-							</div>
-							<div>
-									<table class="tb-test2">
-									<tr>
-										<td>
-											<span><input type="button" value="목록" a href=/board/registBoard></span>
-											<span><input type="button" value="과제 등록" onclick=""></span>	
-										</td>
+							<form action="/EduMIS/admin/assRegist.do" name = "regForm" onsubmit="retrun ckForm()" >
+								<div class="adAssRegist">
+									<table class="tb-test" align="center">
+										<tr>
+											<th>제목</th>
+											<td class=""><input type="text" size="100%" name="title" placeholder="제목을 입력해주세요." /></td>
 										</tr>
-										</table>
-							</div>
+										<tr>
+											<th>진행기간</th>
+											<td align="center">시작일&nbsp;&nbsp;<input type="date" size="40%" name="startDate" placeholder="예) 20150918"/>
+											    &nbsp;&nbsp; 종료일&nbsp;&nbsp;<input type="date" size="40%" name="endDate" /></td>
+										</tr>
+	
+										<tr>
+											<th>글 내용</th>
+											<td colspan="3"><textarea cols="110" rows="20"
+													name="content"></textarea></td>
+										</tr>
+	
+										<tr>
+											<th>첨부 파일</th>
+											<td align="left"><input type="file" name="file" /></td>
+										</tr>
+	
+									</table>
+								</div>
+								<div>
+										<table class="tb-test2">
+										<tr>
+											<td>
+												<span><input type="button" value="목록" a href="/board/registBoard"/></span>
+												<span><input type="submit" value="과제 등록"></span>	
+											</td>
+											</tr>
+											</table>
+								</div>
+							</form>
 							<!--  작업완료 부분 -->
 						</section>				
 					</div>
