@@ -24,8 +24,10 @@ public class AdminAssServiceImpl implements AdminAssService {
 
 	@Override
 	public List<AdminAssVO> list() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<AdminAssVO> list = dao.selectList();
+		
+		return list;
 	}
 
 	@Override

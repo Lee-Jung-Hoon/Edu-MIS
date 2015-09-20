@@ -1,5 +1,7 @@
 package kr.co.edumis.admin.assignment.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import kr.co.edumis.admin.assignment.vo.AdminAssVO;
@@ -15,9 +17,15 @@ public class AdminAssDAO {
 
 	public void insertAss(AdminAssVO adAssvo) {
 		
-		sqlMapper.insert("Assignment.registAssignment.", adAssvo);
+		sqlMapper.insert("adminAssignment.registAssignment", adAssvo);
 		sqlMapper.commit();
 		
+	}
+	
+	public List<AdminAssVO> selectList() {
+		List<AdminAssVO> list = sqlMapper.selectList("adminAssignment.selectAssignment");
+		
+		return list;
 	}
 
 }
