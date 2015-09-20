@@ -8,39 +8,9 @@
 			background: gray;
 	}
 </style>
+
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=1cd4d7ef46ee8be854cdc1de37076a25&libraries=services"></script>
 <script>
-	//alert("스케줄을 등록하는 페이지");
-</script>
-</head>
-<body>
-	<div align = "center" style="font-size: 20px;">일정 등록</div>
-<hr/>
-	<form action="/MiniPro/regschedule.do">
-	<table width="50%" border="1px" align="center" style = "border-collapse: collapse;">
-		<tr>
-			<th width="30%">일 시</th>
-			<td><input type= "text" id="start_date" name="start_date"/> ~ <input type="text" id="end_date" name="end_date"/></td>
-		</tr>
-		<tr>
-			<th width="30%">제 목</th>
-			<td><input type= "text" id="title" size="40" name="title"/></td>
-		</tr>
-		<tr>
-			<th width="30%">내 용</th>
-			<td><textarea rows="10" id="content" name="content" cols="70"></textarea> </td>
-		</tr>
-		<tr>
-			<th width="30%">장 소</th>
-			<td>
-			<div id="search">
-	        <input type="button" value="장소 검색" onclick="search()">
-			</div>
-				 <div id="map" style="width:100%;height:350px;"></div>
-		    </td>
-			</tr>
-        <hr>
-			<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=1cd4d7ef46ee8be854cdc1de37076a25&libraries=services"></script>
-			<script>
 			
 			function search () {
 				
@@ -116,23 +86,79 @@ function displayMarker(place) {
 }
 }
 
+</script> 
+
+
+
+
+
+<script>
+	alert("스케줄을 등록하는 페이지");
+	//나가기기능
+		function closewindow(elementId){
+    var arr= new Array();
+    arr=document.getElementsByTagName("input");
+    var value='';
+    for(var i=0; i<arr.length; i++){
+        if(arr[i].checked){
+        value=arr[i].value;
+        break;
+        }
+    }
+    window.close();
+    window.opener.document.getElementById(elementId).value=value;
+}
 </script>
-			</td>
+</head>
+<body>
+	<div align = "center" style="font-size: 20px;">일정 등록</div>
+<hr/>
+	<form action="/EduMIS/regschedule.do">
+	<table width="50%" border="1px" align="center" style = "border-collapse: collapse;">
+		<tr>
+			<th width="30%">일 시</th>
+			<td><input type= "text" id="start_date" name="startDate"/> ~ <input type="text" id="end_date" name="endDate"/></td>
 		</tr>
 		<tr>
+			<th width="30%">제 목</th>
+			<td><input type= "text" id="title" size="40" name="title"/></td>
+		</tr>
+		<tr>
+			<th width="30%">내 용</th>
+			<td><textarea rows="10" id="content" name="content" cols="70"></textarea> </td>
+		<!-- </tr>
+			<tr>
+			<th width="30%">장 소</th>
+			<td>
+			<div id="search">
+	        <input type="button" value="장소 검색" onclick="search()">
+			</div>
+				 <div id="map" style="width:100%;height:350px;"></div>
+		    </td>
+			</tr> 
+		<tr> -->
+			<tr>
+			<th width="30%">장소</th>
+			<td>
+				<input type= "text" id="place" name="latitude"/><br/>
+				<textarea rows="10" cols="70" name ="longitude"></textarea>
+			</td>
+			</tr>
+			
+			
 			<th width="30%">중 요 도</th>
 			<td>
 			<select id="importance" name="importance">
-				<option>1</option>	
-				<option selected="selected">2</option>	
-				<option>3</option>	
+				<option value="1">1</option>	
+				<option value="2" selected="selected">2</option>	
+				<option value="3">3</option>	
 			 </select>
 			</td>
 		</tr>
 	</table>
 	<br/>
 	<div align = "center">
-		<span><input type = "submit" value= "저장"/>&nbsp;&nbsp;<input type = "button" value= "취소"/></span>
+		<span><input type = "submit" value= "저장"/>&nbsp;&nbsp;<input type = "button" value= "취소" onclick="closewindow('answer')"/></span>
 	</div>
 	</form>
 </body>
