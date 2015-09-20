@@ -55,7 +55,7 @@ public class AdminAssVO {
 		return orgFileName;
 	}
 
-	public void setOrgFileNmae(String orgFileName) {
+	public void setOrgFileName(String orgFileName) {
 		this.orgFileName = orgFileName;
 	}
 
