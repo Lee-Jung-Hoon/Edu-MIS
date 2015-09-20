@@ -9,7 +9,15 @@ public class TalkVO {
 	private String sendDate;
 	private String checkYN;
 	private String delYN;
+	private String mName;
 	
+	
+	public String getmName() {
+		return mName;
+	}
+	public void setmName(String mName) {
+		this.mName = mName;
+	}
 	public int getNo() {
 		return no;
 	}
