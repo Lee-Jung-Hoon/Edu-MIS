@@ -30,7 +30,7 @@ public class ScheduleController {
 		ScheduleVO schedule = (ScheduleVO) WebUtil.getFromParamToVO("kr.co.edumis.admin.schedule.vo.ScheduleVO",req);
 		try {
 			service.registSchedule(schedule);
-			return new ModelAndView("redirect:/MiniPro/main.jsp");
+			return new ModelAndView("redirect:/EduMIS/jsp/admin/schedule/schedule.jsp");
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
