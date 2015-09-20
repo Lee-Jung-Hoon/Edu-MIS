@@ -19,18 +19,17 @@ public class ScheduleController {
 	public ScheduleController() {
 		service = new ScheduleServiceImpl(); 
 	}
-
-	//스케줄을 등록하는 메소드
+	
+	//스케줄을 등록하는 mav
 	@RequestMapping("/regschedule.do")
 	public ModelAndView write (HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 		
 		res.setContentType("text/html; charset=UTF-8");
 		
-		
 		ScheduleVO schedule = (ScheduleVO) WebUtil.getFromParamToVO("kr.co.edumis.admin.schedule.vo.ScheduleVO",req);
-
-			System.out.println("등록");
+		try {
+			service.registSchedule(schedule);
 			return new ModelAndView("redirect:/MiniPro/main.jsp");
 		} catch (Exception e) {
 			throw new ServletException(e);
@@ -41,4 +40,5 @@ public class ScheduleController {
 	
 	
 }
+
 
