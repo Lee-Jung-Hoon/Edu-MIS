@@ -62,6 +62,12 @@
 				return false;
 			}
 			
+			if($("#startDate").val() > $("#endDate").val()){
+				alert("종료날짜가 시작날짜보다 빠릅니다.");
+				$("#endDate").focus();
+				return false;
+			}
+			
 			return true;
 		}
 		

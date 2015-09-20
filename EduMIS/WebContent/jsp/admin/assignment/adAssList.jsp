@@ -103,7 +103,7 @@
 										<c:forEach var = "list" items = "${list}">
 											<tr>
 												<td>${list.no}</td>
-												<td><a href = "">${list.title}</a></td>
+												<td><a href = "${pageContext.request.contextPath}/admin/assDetail.do?no=${list.no}"  style="text-decoration: none;">${list.title}</a></td>
 												<td>${list.startDate}~${list.endDate}</td>
 												<td>${ckArr[index]}</td>
 											</tr>
@@ -115,7 +115,7 @@
 										<table class="tb-test2">
 										<tr>
 											<td>
-												<span><input type="button" value="과제 등록" onclick="moveRegist()" style="text-decoration: none;"></span>	
+												<span><input type="button" value="과제 등록" onclick="moveRegist()""></span>	
 											</td>
 											</tr>
 											</table>
