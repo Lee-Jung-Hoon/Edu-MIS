@@ -41,7 +41,7 @@ public class AdminAssController {
 	@RequestMapping("/admin/assRegist.do")
 	public String adAssRegist(AdminAssVO adAssvo, HttpServletRequest req) throws Exception {
 		MultipartRequest mult = new MultipartRequest(req,
-				"C:\\java\\web-workspace\\EduMIS\\WebContent\\assignmentFile",
+				"C:\\java73\\web-workspace\\EduMIS\\WebContent\\assignmentFile",
 				1024 * 1024 * 10,
 				"UTF-8",
 				new DefaultFileRenamePolicy()
