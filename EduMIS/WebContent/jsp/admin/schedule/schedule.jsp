@@ -121,7 +121,18 @@
 							}
 						});
 			});
+	
+	
+			//등록창을 여는 기능
+		function openwindow(url){
+		    window.open(url,'','scrollbars=no,width=1300,height=600');
+		    elementId=id;
+
+			}	
+		
 </script>
+<script type="text/javascript" src="/EduMIS/js/common.js"></script>
+
 <style type="text/css">
 #prev-month {
 	position: absolute;
@@ -315,7 +326,7 @@ table {
 										</tr>
 									</table>
 								</div>
-								<div class="test01"><input type="button" class="btn-txt txt-plan" style="width: 60px"></div>
+								<div class="test01"><input type="button" class="btn-txt txt-plan" style="width: 60px" onclick="openwindow('regschedule.html')" "></div>
 								<div class="test00">
 									<table class="tb-1line">
 										<tr>
@@ -331,7 +342,7 @@ table {
 								</div>
 								<div class="test01">
 									<span></span>
-									<input type="button" class="btn-txt txt-plan" style="width: 60px">
+									<input type="button" class="btn-txt txt-plan" style="width: 60px"  onclick="openwindow('regschedule.html')">
 								</div>
 								<div class="test00">
 									<table class="tb-2line">
@@ -348,7 +359,7 @@ table {
 								</div>
 								<div class="test01">
 									<span></span>
-									<input type="button" class="btn-txt txt-plan" style="width: 60px">
+									<input type="button" class="btn-txt txt-plan" style="width: 60px" onclick="openwindow('regschedule.html')">
 								</div>
 								<div class="test00">
 									<table class="tb-3line">
@@ -365,7 +376,7 @@ table {
 								</div>
 								<div class="test01">
 									<span></span>
-									<input type="button" class="btn-txt txt-plan" style="width: 60px">
+									<input type="button" class="btn-txt txt-plan" style="width: 60px" onclick="openwindow('regschedule.html')" ">
 								</div>
 								<div class="test00">
 									<table class="tb-4line">
@@ -382,7 +393,7 @@ table {
 								</div>
 								<div class="test01">
 									<span></span>
-									<input type="button" class="btn-txt txt-plan" style="width: 60px">
+									<input type="button" class="btn-txt txt-plan" style="width: 60px" onclick="openwindow('regschedule.html')">
 								</div>
 								<div class="test00">
 									<table class="tb-5line">
@@ -400,7 +411,7 @@ table {
 								</div>
 								<div class="test01">
 									<span></span>
-									<input type="button" class="btn-txt txt-plan" style="width: 60px">
+									<input type="button" class="btn-txt txt-plan" style="width: 60px" onclick="openwindow('regschedule.html')">
 								</div>
 							</div>
 							<!--  작업완료 부분 -->
@@ -411,5 +422,5 @@ table {
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="/EduMIS/js/common.js"></script>
+
 </html>
