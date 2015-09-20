@@ -2,8 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
-<mapper namespace="Assignment">
-
+<mapper namespace="adminAssignment">
 		<!-- 과제 등록 쿼리 -->
 	<insert id="registAssignment" parameterType = "AdminAssVO">
 		insert into t_adm_assignment_board(
@@ -24,9 +23,19 @@
 		#{content},
 		#{orgFileName},
 		#{realFileName},
-		#{file_Path}
+		#{filePath}
 		)
 	</insert>
-
-	
+	<select id="selectAssignment" resultType="AdminAssVO">
+		select
+		no,
+		to_char(start_Date, 'yyyy-mm-dd') as startDate,
+		to_char(end_Date, 'yyyy-mm-dd') as endDate,
+		title,
+		content,
+		org_File_Name,
+		real_File_Name,
+		file_Path
+		from t_adm_assignment_board
+	</select>
 </mapper>

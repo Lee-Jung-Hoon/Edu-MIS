@@ -2,7 +2,10 @@ package kr.co.edumis.admin.assignment.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -55,11 +58,16 @@ public class AdminAssController {
 				String systemName = mult.getFilesystemName(fileNmae);
 				String oriName = mult.getOriginalFileName(fileNmae);
 				
+				adAssvo.setStartDate(mult.getParameter("startDate"));
+				adAssvo.setEndDate(mult.getParameter("endDate"));
+				adAssvo.setTitle(mult.getParameter("title"));
+				adAssvo.setContent(mult.getParameter("content"));
 				adAssvo.setRealFileName(systemName);
 				adAssvo.setOrgFileNmae(oriName);
 				adAssvo.setFilePath("/assignmentFile");
 			}
 		}
+
 		service.insert(adAssvo);
 		
 		return "redirect:/EduMIS/admin/assList.do";
@@ -68,7 +76,34 @@ public class AdminAssController {
 	@RequestMapping("/admin/assList.do")
 	public ModelAndView adAssList(AdminAssVO adminassVO) throws Exception {
 		
-		ModelAndView mav = new ModelAndView("/jsp/admin/assignment/addAssList.jsp");
+		List<AdminAssVO> list = service.list();
+		System.out.println(list.size());
+		ModelAndView mav = new ModelAndView("/jsp/admin/assignment/adAssList.jsp");
+		mav.addObject("list", list);
+		
+		
+		
+		List<String>  ckArr = new ArrayList<String>();
+		Calendar c = Calendar.getInstance();
+		c.setTimeInMillis(System.currentTimeMillis());
+		String nowDate = String.valueOf(c.get(c.YEAR)) + 
+				String.valueOf(c.get(c.MONTH) < 10 ? "0"+(c.get(c.MONTH)+1) : (c.get(c.MONTH))+1) + 
+				String.valueOf(c.get(c.DATE) < 10 ? "0" + c.get(c.DATE) : c.get(c.DATE));
+		int nDate = Integer.parseInt(nowDate);
+		for(AdminAssVO vo : list) {
+			int startDate = Integer.parseInt(vo.getStartDate().replace("-", ""));
+			int endDate = Integer.parseInt(vo.getEndDate().replace("-", ""));
+			
+			if(nDate >= startDate && nDate <= endDate) {
+				ckArr.add("O");
+			} else
+				ckArr.add("X");
+		}
+		mav.addObject("ckArr", ckArr);
+		
+		for(AdminAssVO vo : list) {
+			System.out.println(vo.getNo());
+		}
 		return mav;
 	}
 

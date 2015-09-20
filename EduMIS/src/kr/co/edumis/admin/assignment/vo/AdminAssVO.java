@@ -7,7 +7,7 @@ public class AdminAssVO {
 	private String endDate;
 	private String title;
 	private String content;
-	private String orgFileNmae;
+	private String orgFileName;
 	private String realFileName;
 	private String filePath;
 
@@ -52,11 +52,11 @@ public class AdminAssVO {
 	}
 
 	public String getOrgFileNmae() {
-		return orgFileNmae;
+		return orgFileName;
 	}
 
-	public void setOrgFileNmae(String orgFileNmae) {
-		this.orgFileNmae = orgFileNmae;
+	public void setOrgFileNmae(String orgFileName) {
+		this.orgFileName = orgFileName;
 	}
 
 	public String getRealFileName() {

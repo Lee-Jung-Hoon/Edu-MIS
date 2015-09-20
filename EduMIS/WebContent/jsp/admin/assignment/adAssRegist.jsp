@@ -37,7 +37,38 @@
 	</style>
 	<script>
 		function ckForm() {
-			true;
+			
+			if($("#title").val() == ""){
+				alert("제목을 입력하세요")
+				$("#title").focus();
+				return false;
+			}
+			
+			if($("#startDate").val() == "") {
+				alert("시작 날짜를 입력하세요")
+				$("#startDate").focus();
+				return false;
+			}
+			
+			if($("#endDate").val() == "") {
+				alert("종료 날짜를 입력하세요")
+				$("#endDate").focus();
+				return false;
+			}
+			
+			if($("#content").val() == "") {
+				alert("내용을 입력하세요")
+				$("#content").focus();
+				return false;
+			}
+			
+			return true;
+		}
+		
+		function moveList() {
+			if (confirm("목록으로 가시겠습니까?")) {
+				location.href = "${pageContext.request.contextPath}/admin/assList.do";
+			}
 		}
 	</script>
 </head>
@@ -85,23 +116,23 @@
 							<!--  작업부분 제목 써주세요 --><h2>과제 등록</h2>
 							<!-- 작업시작부분 div안에 클래스명 넣어서 작업 해 주세요 나머지 url부분은 추후 취합할 예정이니 일단 MENU 부분의 링크태그에 값 넣어서 작업 해주시면 됩니다. 게시판 담당하시는 분들은 추후 공통 클래스 드릴테니 일단 테이블로 작업 부탁드립니다. -->
 
-							<form action="/EduMIS/admin/assRegist.do" name = "regForm" onsubmit="retrun ckForm()" >
+							<form method="POST" action="/EduMIS/admin/assRegist.do" name = "regForm" enctype="multipart/form-data" onsubmit="return ckForm();" >
 								<div class="adAssRegist">
 									<table class="tb-test" align="center">
 										<tr>
 											<th>제목</th>
-											<td class=""><input type="text" size="100%" name="title" placeholder="제목을 입력해주세요." /></td>
+											<td class=""><input type="text" size="100%" name="title" id = "title" placeholder="제목을 입력해주세요." /></td>
 										</tr>
 										<tr>
 											<th>진행기간</th>
-											<td align="center">시작일&nbsp;&nbsp;<input type="date" size="40%" name="startDate" placeholder="예) 20150918"/>
-											    &nbsp;&nbsp; 종료일&nbsp;&nbsp;<input type="date" size="40%" name="endDate" /></td>
+											<td align="center">시작일&nbsp;&nbsp;<input type="date" size="40%" name="startDate" id = "startDate" placeholder="예) 20150918"/>
+											    &nbsp;&nbsp; 종료일&nbsp;&nbsp;<input type="date" size="40%" name="endDate" id = "endDate"/></td>
 										</tr>
 	
 										<tr>
 											<th>글 내용</th>
 											<td colspan="3"><textarea cols="110" rows="20"
-													name="content"></textarea></td>
+													name="content" id = "content"></textarea></td>
 										</tr>
 	
 										<tr>
@@ -115,7 +146,7 @@
 										<table class="tb-test2">
 										<tr>
 											<td>
-												<span><input type="button" value="목록" a href="/board/registBoard"/></span>
+												<span><input type="button" value="목록"  onclick="moveList();"/></span>
 												<span><input type="submit" value="과제 등록"></span>	
 											</td>
 											</tr>
