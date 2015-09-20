@@ -51,7 +51,7 @@ public class AdminAssVO {
 		this.content = content;
 	}
 
-	public String getOrgFileNmae() {
+	public String getOrgFileName() {
 		return orgFileName;
 	}
 
