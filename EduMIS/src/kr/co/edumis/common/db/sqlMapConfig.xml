@@ -10,6 +10,7 @@
 		<typeAlias alias="userAssVO" type="kr.co.edumis.user.assignment.vo.UserAssVO"/>
 		<typeAlias alias="AdminAssVO" type="kr.co.edumis.admin.assignment.vo.AdminAssVO"/>
 		<typeAlias alias="TalkVO" type="kr.co.edumis.admin.talk.vo.TalkVO"/>
+		<typeAlias  alias ="VoteVO" type="kr.co.edumis.user.vote.vo.VoteVO"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -29,5 +30,6 @@
 		<mapper resource="kr/co/edumis/user/assignment/dao/UserAssSQL.xml"/>
 		<mapper resource="kr/co/edumis/admin/assignment/dao/AdminAssSQL.xml"/>
 		<mapper resource="kr/co/edumis/admin/talk/dao/TalkSQL.xml"/>
+		<mapper resource="kr/co/edumis/user/vote/dao/VoteSQL.xml"/>
 	</mappers>
 </configuration>
