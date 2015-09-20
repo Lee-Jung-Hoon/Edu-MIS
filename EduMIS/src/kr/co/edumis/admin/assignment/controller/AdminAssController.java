@@ -106,5 +106,4 @@ public class AdminAssController {
 		}
 		return mav;
 	}
-
 }
