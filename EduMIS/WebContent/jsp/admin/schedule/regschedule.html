@@ -91,13 +91,31 @@ function displayMarker(place) {
 
     // 마커에 클릭이벤트를 등록합니다
     daum.maps.event.addListener(marker, 'click', function() {
-    	confirm("지정한 장소가 맞습니까?")
+    	confirm(place.title+"이(가) 맞습니까?")
         // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
         infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.title + '</div>');
         infowindow.open(map, marker);
     });
+    var httpRequest;
+    function requestMsg(){
+    	httpRequest = new XMLHttpRequest();
+    	httpRequest.onreadystatechange = responseMsg;
+    	httpRequest.open("GET", "/place/regschedule.do?latitude="+latitude+"&longitude="+longitude, true)
+    	httpRequest.send(null);
+    }
+    function responseMsg(){
+    	if(httpRequest.readyState == 4){
+    		if(httpRequest.status == 200){
+    			var msgView = document.getElementById("msgView");
+    			msgView.innerHTML = httpRequest.responseText;
+    		}
+    	}
+    }
+    <!-- 
+    -->
 }
-			}
+}
+
 </script>
 			</td>
 		</tr>
