@@ -243,6 +243,10 @@ html, body {
 .btn-area input, .btn-area .btn {
 	margin:0 auto;
 }
+.leader .btn-area input, .leader .btn-area .btn {
+	margin-bottom:30px;
+}
+
 /* 버튼 이미지 텍스트 모음*/
 /* 회원가입 */
 .txt-join {
@@ -292,7 +296,14 @@ html, body {
 .txt-edit {
 	background-image:url('../images/txt-edit.png');
 }
-
+/* 투표 */
+.txt-vote {
+	background-image:url('../images/txt-vote.png');
+}
+/* 결과 */
+.txt-result {
+	background-image:url('../images/txt-result.png');
+}
 
 /* 버튼 이미지 텍스트 모음 끝*/
 .btn-txt {
@@ -311,6 +322,11 @@ html, body {
 	display:block;
 	float:left;
 	width:33.333%;
+}
+.width50 {
+	display:block;
+	float:left;
+	width:50%;
 }
 .header input {
 	width:200px;
@@ -975,3 +991,16 @@ section.board {
 	height:100%; 
 	background:url('../images/txt-del-s.png') no-repeat center;
 }
+/* 조장 추천 게시판 */
+.leader-frame {width:780px; overflow:hidden; margin:0 auto;}
+.leader-frame ul {width:110%; overflow:hidden;}
+.leader-frame li {float:left; width:180px; height:240px; margin-right:20px; overflow:hidden;}
+.leader-frame span {display:inline-block;}
+.leader-frame .img {border:1px solid #ddd; height:200px; line-height:200px; overflow:hidden; box-sizing:border-box;}
+.leader-frame .img img {width:100%; vertical-align:middle;}
+.leader-frame li input {vertical-align:middle;}
+.leader-frame li span {color:#000;}
+.leader-frame .id {padding-right:10px; font-size:13px;}
+.leader-frame .name {font-weight:bold; font-size:15px;}
+.leader-frame li label {vertical-align:middle;}
+/* 조장 추천 게시판 끝 */

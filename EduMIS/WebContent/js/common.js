@@ -12,7 +12,7 @@ $('.login a').on('click',function(){
 	$(this).next().css('opacity', 0).slideDown('slow').animate(
 		{ opacity: 1 },
 		{ queue: false, duration: 'slow' }
-	);
+	); 
 	$('body').addClass('login-layer');
 	return false;
 });
