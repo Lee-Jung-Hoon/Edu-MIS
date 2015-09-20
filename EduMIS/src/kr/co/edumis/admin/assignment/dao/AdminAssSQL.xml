@@ -11,8 +11,10 @@
 		end_Date,
 		title,
 		content,
+		<if test="#{orgFileName} != null">
 		org_File_Name,
 		real_File_Name,
+		</if>
 		file_Path
 		)
 		values(
@@ -21,8 +23,10 @@
 		to_date(#{endDate}, 'yyyy-mm-dd'),
 		#{title},
 		#{content},
+		<if test="#{orgFileName} != null">
 		#{orgFileName},
 		#{realFileName},
+		</if>
 		#{filePath}
 		)
 	</insert>
@@ -37,5 +41,6 @@
 		real_File_Name,
 		file_Path
 		from t_adm_assignment_board
+		order by no desc
 	</select>
 </mapper>
