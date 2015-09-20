@@ -53,7 +53,6 @@ public class ScheduleVO {
 	public void setLongitude(String longitude) {
 		this.longitude = longitude;
 	}
-
 	public String getTitle() {
 		return title;
 	}

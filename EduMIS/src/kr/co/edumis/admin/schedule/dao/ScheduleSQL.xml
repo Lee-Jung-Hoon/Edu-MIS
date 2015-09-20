@@ -11,15 +11,25 @@
 	
 	<!-- 스케줄을 저장하는 쿼리 -->
 	<insert id="registSchedule" parameterType="ScheduleVO" >
-		insert into t_schedule(
+			insert into t_schedule(
 		no,
 		title,
-		content
+		content,
+ 		start_date, 
+		end_date, 
+		importance,
+		latitude,
+		longitude
 		)
 	    	values(
 		seq_t_schedule_no.nextVal,
 		#{title},
-		#{content}
+		#{content},
+		#{startDate},
+ 		#{endDate},
+		#{importance},
+		#{latitude},
+		#{longitude}
 		)
 	</insert>
 </mapper>
