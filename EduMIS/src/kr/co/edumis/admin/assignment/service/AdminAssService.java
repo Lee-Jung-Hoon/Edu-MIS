@@ -17,4 +17,5 @@ public interface AdminAssService {
 	public AdminAssVO detailDownload(String no) throws Exception;
 	public AdminAssVO modify(String no) throws Exception;
 	public void update(AdminAssVO adAssvo);
+	public void delete(String no);
 }

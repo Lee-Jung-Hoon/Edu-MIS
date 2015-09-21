@@ -71,4 +71,10 @@ public class AdminAssServiceImpl implements AdminAssService {
 		dao.updateAss(adAssvo);
 	}
 
+	@Override
+	public void delete(String no) {
+		// TODO Auto-generated method stub
+		dao.delete(no);
+	}
+
 }
