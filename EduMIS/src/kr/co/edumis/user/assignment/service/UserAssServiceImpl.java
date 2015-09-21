@@ -24,7 +24,7 @@ public class UserAssServiceImpl implements UserAssService{
 	}
 	
 	public void registAssignment(UserAssVO userass) throws Exception{
-		
+		uasdao.registAssignment(userass); 
 	}
 
 

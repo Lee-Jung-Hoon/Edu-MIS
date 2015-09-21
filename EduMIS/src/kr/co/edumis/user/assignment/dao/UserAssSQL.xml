@@ -4,12 +4,6 @@
 
 <mapper namespace="userAssMapper">
 
-  <resultMap id="resultUserAss" type="UserAssVO">
-        <result property="orgFileName"    column="org_File_Name" />
-        <result property="realFileName"  column="real_File_Name" />
-        <result property="filePath"  column="file_Path" />
- </resultMap>
-
 
 <!-- 과제목록을 불러오는 쿼리 -->
  <select id="assList" resultType="AdminAssVO">
@@ -34,7 +28,27 @@
     where no = #{no}
  </select>
  
-
 <!-- 과제제출하는 쿼리 -->
+<insert  id="assRegist" parameterType="UserAssVO" >
+insert into t_user_assignment_board(
+   id, 
+   name,
+   no,
+   content,
+   org_File_Name,
+   real_File_Name,
+   file_Path
+   )
+   values(
+   #{id},
+   #{name},
+   #{no},
+   #{content},
+   #{orgFileName},
+   #{realFileName},
+   #{filePath}
+   )
+</insert>
+   
 
 </mapper>
