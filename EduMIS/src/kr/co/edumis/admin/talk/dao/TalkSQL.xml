@@ -8,7 +8,7 @@
 		 select tt.content content, to_char(tt.send_date, 'yyyy-mm-dd')as sendDate, 
 		        tt.check_yn checkYN, tt.del_yn delYN, tm.mName mName
 		   from t_talk tt, t_member tm
-		  where tt.send_member_no = #{no}                       
+		  where tt.receive_member_no = #{no}                       
 		  and tm.mNo = tt.receive_member_no and tt.del_yn = 'n' 
 	</select>
 	
