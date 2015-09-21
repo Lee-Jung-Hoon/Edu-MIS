@@ -18,6 +18,11 @@
 			location.href = "${pageContext.request.contextPath}/admin/assDelete.do?no=${detail.no}";
 		}
 	}
+	
+	function listAss() {
+		location.href = "${pageContext.request.contextPath}/admin/assList.do";
+	}
+	
 
 </script>
 <link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
