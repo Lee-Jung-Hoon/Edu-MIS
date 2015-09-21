@@ -42,32 +42,35 @@ public class UserAssController {
 		}
 		return mav;
 	}
+	@RequestMapping("/user/assDetail.do")
+	public ModelAndView userDetail(HttpServletRequest req, HttpServletResponse res)
+			throws ServletException, IOException {
+		int no = Integer.parseInt(req.getParameter("no"));
+
+		ModelAndView mav = new ModelAndView("/jsp/user/assignment/userAssRegist.jsp");
+		//해야할 과제 정보 보여주기
+				try {
+					AdminAssVO admass = service.detail(no);
+					mav.addObject("ass", admass);
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		
+		return mav;
+	}
+	
+	
 	
 	@RequestMapping("/user/assRegist.do")
 	public ModelAndView userAssRegist(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 		
-		int no = Integer.parseInt(req.getParameter("no"));
 
-		ModelAndView mav = new ModelAndView("/jsp/user/assignment/userAssRegist.jsp");
 		
-		//해야할 과제 정보 보여주기
-		try {
-			AdminAssVO admass = service.detail(no);
-			mav.addObject("ass", admass);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
 		
-		//과제 올리기
-//		String content = req.getParameter("usertext");
-//		String orgFileName = req.getParameter("userattachFile");
-//		
-//		UserAssVO userass = new UserAssVO();
-//		userass.setContent(content);
-//		userass.setOrgFileName(orgFileName);	
-		return mav;
+		return null;
 		
 	}
 	
