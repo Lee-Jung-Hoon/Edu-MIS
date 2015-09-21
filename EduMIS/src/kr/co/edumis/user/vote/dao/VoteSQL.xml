@@ -12,11 +12,20 @@
 	</select>
 
 
+<select id="voteResult" resultType="VoteVO">
+
+		select vName, count(vCount) as vcount
+		from t_recommend
+		group by vName
 
 
+</select>
+
+<insert id="voteInsert" parameterType="VoteVO">
+
+		insert into t_recommend 
+		(mId,mName,vCount)values(#{id},#{name},1)
 
 
-
-
-
+</insert>
 </mapper>

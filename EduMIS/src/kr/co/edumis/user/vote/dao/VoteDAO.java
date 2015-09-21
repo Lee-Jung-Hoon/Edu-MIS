@@ -20,4 +20,15 @@ public class VoteDAO {
 		return session.selectList("vote.dao.voteMapper.vote");
 	}
 
+	public List<VoteVO> ResultList() throws Exception {
+		return session.selectList("vote.dao.voteMapper.voteResult");
+	}
+
+	public void voteInsert(VoteVO vote) throws Exception{
+
+			session.insert("vote.dao.voteMapper.voteResult",vote);
+			session.commit();
+		
+	}
+
 }
