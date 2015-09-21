@@ -13,6 +13,13 @@
 	<link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script>
+	   function List() {
+		   if (confirm("목록으로 가시겠습니까?")) {
+				location.href = "${pageContext.request.contextPath}/user/assList.do";
+			}
+	}
+	</script>
 </head>
 <body class="page-join">
 	<div class="wrap">
@@ -73,12 +80,16 @@
 							<!--  작업부분 제목 써주세요 --><h2>과제등록</h2>
 							<!-- 작업시작부분 div안에 클래스명 넣어서 작업 해 주세요 나머지 url부분은 추후 취합할 예정이니 일단 MENU 부분의 링크태그에 값 넣어서 작업 해주시면 됩니다. 게시판 담당하시는 분들은 추후 공통 클래스 드릴테니 일단 테이블로 작업 부탁드립니다. -->
 
-							<form action="" method="POST" enctype="multipart/form-data">
-							<div class="AssignmentAsk">
-							<table border="1" width ='100%'>
-							
-							<h1>과제정보</h1>
-							<hr/>
+			<form action="/EduMIS/user/assRegist.do" method="POST" enctype="multipart/form-data">
+			<div class="AssignmentAsk">
+			     <table border="1" width ='100%'>
+				 <input type="hidden" name="no" value="${ass.no}"/>		
+			           <h1>과제정보</h1>
+					         <hr/>
+					         <tr>
+							        <td>과제명</td>
+							        <td>${ass.no}</td>
+							    </tr>
 							     <tr>
 							        <td>과제명</td>
 							        <td>${ass.title}</td>
@@ -98,7 +109,7 @@
 							   </table>
 							   <hr/>
 							
-							<table border="1" width ='110%'>
+							<table border="1" width ='100%'>
 							<span>과제제출</span>
 							<hr/>
 							    <tr>    
@@ -112,8 +123,9 @@
 							        <td><input type="file" name= "userattachFile"/></td>
 							     </tr>
 							   </table>
-							   <input type="button" value="목록">
-							   <input type="submit" value="제출">
+								<input type="button" value="목록"  onclick="List();"/>
+								<input type="submit" value="과제 제출">	
+											
 							</div>
 							</form>
 							<!--  작업완료 부분 -->
