@@ -43,4 +43,21 @@
 		from t_adm_assignment_board
 		order by no desc
 	</select>
+	
+	<select id="selectDetail" parameterType = "string" resultType="AdminAssVO">
+		select
+		no,
+		to_char(start_Date, 'yyyy-mm-dd') as startDate,
+		to_char(end_Date, 'yyyy-mm-dd') as endDate,
+		title,
+		content,
+		org_File_Name as orgFileName, 
+		real_File_Name as realFileName,
+		file_Path
+		from t_adm_assignment_board
+		where no = #{no}
+	</select>
+	
+	
+	
 </mapper>

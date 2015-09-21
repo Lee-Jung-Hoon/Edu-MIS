@@ -28,4 +28,9 @@ public class AdminAssDAO {
 		return list;
 	}
 
+	public AdminAssVO selectDetail(String no) {
+		 return sqlMapper.selectOne("adminAssignment.selectDetail",no);
+		
+	}
+
 }
