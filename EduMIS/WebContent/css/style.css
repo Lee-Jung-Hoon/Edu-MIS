@@ -1308,15 +1308,51 @@ section.board {
 	background:url('../images/txt-del-s.png') no-repeat center;
 }
 /* 조장 추천 게시판 */
-.leader-frame {width:780px; overflow:hidden; margin:0 auto;}
-.leader-frame ul {width:110%; overflow:hidden;}
-.leader-frame li {float:left; width:180px; height:240px; margin-right:20px; overflow:hidden;}
-.leader-frame span {display:inline-block;}
-.leader-frame .img {border:1px solid #ddd; height:200px; line-height:200px; overflow:hidden; box-sizing:border-box;}
-.leader-frame .img img {width:100%; vertical-align:middle;}
-.leader-frame li input {vertical-align:middle;}
-.leader-frame li span {color:#000;}
-.leader-frame .id {padding-right:10px; font-size:13px;}
-.leader-frame .name {font-weight:bold; font-size:15px;}
-.leader-frame li label {vertical-align:middle;}
+.leader-frame {
+	width:780px; 
+	overflow:hidden; 
+	margin:0 auto;
+}
+.leader-frame ul {
+	width:110%; 
+	overflow:hidden;
+}
+.leader-frame li {
+	float:left; 
+	width:180px; 
+	height:240px; 
+	margin-right:20px; 
+	overflow:hidden;
+}
+.leader-frame span {
+	display:inline-block;
+}
+.leader-frame .img {
+	border:1px solid #ddd; 
+	height:200px; 
+	line-height:200px; 
+	overflow:hidden; 
+	box-sizing:border-box;
+}
+.leader-frame .img img {
+	width:100%; 
+	vertical-align:middle;
+}
+.leader-frame li input {
+	vertical-align:middle;
+}
+.leader-frame li span {
+	color:#000;
+}
+.leader-frame .id {
+	padding-right:10px; 
+	font-size:13px;
+}
+.leader-frame .name {
+	font-weight:bold; 
+	font-size:15px;
+}
+.leader-frame li label {
+	vertical-align:middle;
+}
 /* 조장 추천 게시판 끝 */
