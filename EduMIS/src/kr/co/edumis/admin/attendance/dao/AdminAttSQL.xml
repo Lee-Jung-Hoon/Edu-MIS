@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="attendance"> 
+	<select id="memList" resultMap="mem">
+		select mNo, mName 
+		from t_member 
+	</select>
+	
+	<resultMap type="memberVO" id="mem">
+		<result property="no" column="mNo"></result>
+		<result property="name" column="mName"></result>
+	</resultMap>
+	
+	<resultMap type="AdminAttVO" id="att">
+		<result property="mNo" column="mNo"></result>
+		<result property="attType" column="att_type"></result>
+		<result property="attDate" column="att_date"></result>
+	</resultMap>
+	
+<!-- 	private int mNo; -->
+<!-- 	private String attDate; -->
+<!-- 	private int attType; -->
+<!-- 	create table t_attend( -->
+<!-- 	mNo number ,					 -->
+<!-- 	att_date date default sysdate,	 -->
+<!-- 	att_type number,				 -->
+<!-- 	primary key(mNo, att_date) -->
+<!-- ) -->
+	<select id="attList" parameterType="string" resultMap="att"> 
+		select att_type, to_char(att_date, 'yyyy-mm-dd') as att_date, mNo  
+		from t_attend 
+		where mNo = #{mNo}
+	</select>
+	
+	<insert id="insertAttendance" parameterType="AdminAttVO">
+        insert into t_attend (
+            mNo, att_type
+        ) values (
+            #{mNo}, #{att_type}
+        )
+    </insert>
+    
+    <update id="updateAttendance" parameterType="AdminAttVO">
+        update t_attend
+           set att_type = #{att_type}
+         where mNo  = #{mNo}
+    </update>
+</mapper>
