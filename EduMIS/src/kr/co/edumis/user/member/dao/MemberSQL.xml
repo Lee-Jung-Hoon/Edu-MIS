@@ -14,7 +14,7 @@
 		month,
 		day,
 		post_no,
-		basic_add,
+		basic_addr,
 		detail_addr,
 		phone1,
 		phone2,
