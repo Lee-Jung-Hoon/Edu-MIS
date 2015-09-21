@@ -3,7 +3,7 @@ create table t_member(
    id varchar2(10) not null,
    name varchar2(30) not null,
    pass varchar2(30) not null,
-   code varchar2(7) not null,
+   pass_chk varchar2(30) not null,
    year varchar2(4) not null,
    month varchar2(4) not null,
    day varchar2(4) not null,
