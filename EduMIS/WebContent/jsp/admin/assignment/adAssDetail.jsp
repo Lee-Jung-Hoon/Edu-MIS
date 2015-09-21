@@ -10,7 +10,7 @@
 <title>제목</title>
 <script>
 	function modifyAss() {
-		
+		location.href = "${pageContext.request.contextPath}/admin/assBfModify.do?no=${detail.no}";
 	}
 </script>
 <link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
