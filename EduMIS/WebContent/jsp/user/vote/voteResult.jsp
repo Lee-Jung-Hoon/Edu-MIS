@@ -105,12 +105,12 @@
 						<section class="leader common">
 							<h2>투표 결과</h2>
 							<div id="donutchart" style="width: 900px; height: 500px;"></div>
-							<div>
+							<div align="center">
 							<table class = "tb-test2">
-								<tr align="center">
+								<tr>
 									<td>
 									<span><input type="button" value="되돌아가기" onclick="moveVote()"
-									class="btn txt-result btn-txt btn-blue"/></span>
+									class="btn txt-back btn-txt btn-gray"/></span>
 									</td>
 								</tr>
 							</table>

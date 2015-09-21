@@ -78,7 +78,7 @@
 						<section class="leader common">
 
 							<h2>조장 추천 게시판</h2>
-							<form action="" method="">
+							<form action="/EduMIS/user/voteInsert.do" method="POST">
 								<div class="leader-frame">
 									<ul>
 									<c:forEach var="vote" items="${list}">
@@ -86,7 +86,7 @@
 										<li>
 											<div class="img"><img src="/EduMIS/images/icon-user.png" alt="" /></div>
 											<div class="radio">
-												<input type="radio" name="vote" id="${vote.id}" value="${vote.id}"/>
+												<input type="radio" name="id" id="${vote.id}" value="${vote.id}"/>
 												<label for="${vote.id}"><span class="id">${vote.id}&nbsp;${vote.name}</span><span class="name"></span></label>
 											</div>
 										</li>

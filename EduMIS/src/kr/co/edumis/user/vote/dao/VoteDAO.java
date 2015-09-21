@@ -26,7 +26,7 @@ public class VoteDAO {
 
 	public void voteInsert(VoteVO vote) throws Exception{
 
-			session.insert("vote.dao.voteMapper.voteResult",vote);
+			session.insert("vote.dao.voteMapper.voteInsert",vote);
 			session.commit();
 		
 	}

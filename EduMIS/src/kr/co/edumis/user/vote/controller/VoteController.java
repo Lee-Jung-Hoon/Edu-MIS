@@ -31,6 +31,7 @@ public class VoteController {
 			ModelAndView mav = new ModelAndView("/jsp/user/vote/vote.jsp");
 			List<VoteVO> list = service.getList();
 			mav.addObject("list", list);
+			
 
 			return mav;
 
@@ -48,7 +49,6 @@ public class VoteController {
 			ModelAndView mav = new ModelAndView("/jsp/user/vote/voteResult.jsp");
 			List<VoteVO> list = service.getResult();
 			mav.addObject("list", list);
-
 			return mav;
 		} catch (Exception e) {
 			throw new ServletException(e);
@@ -60,6 +60,8 @@ public class VoteController {
 			throws ServletException, IOException {
 
 		VoteVO vote = (VoteVO) WebUtil.getFromParamToVO("kr.co.edumis.user.vote.vo.VoteVO", req);
+		
+		System.out.println(vote.getId() + vote.getVname());
 		
 		try {
 			service.voteInsert(vote);
