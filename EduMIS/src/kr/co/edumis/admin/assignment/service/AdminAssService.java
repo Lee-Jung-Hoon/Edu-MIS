@@ -18,4 +18,5 @@ public interface AdminAssService {
 	public AdminAssVO modify(String no) throws Exception;
 	public void update(AdminAssVO adAssvo);
 	public void delete(String no);
+	public List<MemberVO> studentAssignmentList() throws Exception ;
 }
