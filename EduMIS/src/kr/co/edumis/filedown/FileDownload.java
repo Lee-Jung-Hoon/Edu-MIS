@@ -50,7 +50,7 @@ public class FileDownload extends HttpServlet
     	uploadPath = "c:/java73/web-workspace/EduMIS/WebContent/assignmentFile";
 
      	File file = new File( uploadPath, realFileName );
-    	FileInputStream fileInput = new FileInputStream( file );
+    	FileInputStream fileInput = new FileInputStream( file);
 
     	if (type == null || !type.equals("imageDraw")) {
     		response.setHeader("Content-Type", "application/octet-stream");

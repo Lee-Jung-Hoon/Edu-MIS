@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -71,9 +74,9 @@
 							<!--  작업부분 제목 써주세요 --><h2>과제목록</h2>
 							<!-- 작업시작부분 div안에 클래스명 넣어서 작업 해 주세요 나머지 url부분은 추후 취합할 예정이니 일단 MENU 부분의 링크태그에 값 넣어서 작업 해주시면 됩니다. 게시판 담당하시는 분들은 추후 공통 클래스 드릴테니 일단 테이블로 작업 부탁드립니다. -->
 
+							<form action="" method="POST">
 							<div class="AssignmentList">
-							<form action="" method="">
-							<table border='1' width ='100%'>
+							<table border="1" width ='110%'>
 							     <tr>
 							        <td>No.   </td>
 							        <td>과제명</td>
@@ -81,17 +84,19 @@
 							        <td>제출여부</td>
 							        <td>진행여부</td>
 							     </tr>
+                                <c:forEach var="list" items="${list}">
 							     <tr>
-							       <td>ex>번호</td>
-							       <td>ex>과제명</td>
-							       <td>ex>제출기간</td>
-							       <td>ex>제출여부</td>
-							       <td>ex>진행여부</td>
+							       <td>${list.no}</td>
+							       <td><a href ="${pageContext.request.contextPath}/user/assRegist.do?no=${list.no}">${list.title}</a></td>
+							       <td>${list.startDate} ~ ${list.endDate}</td>
+							       <td></td>
+							       <td></td>
 							     </tr>
+							     </c:forEach>
 							   </table>
 							
-							</form>
 							</div>
+							</form>
 							<!--  작업완료 부분 -->
 						</section>				
 					</div>
