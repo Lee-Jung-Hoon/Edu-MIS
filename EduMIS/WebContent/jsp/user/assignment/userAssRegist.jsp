@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -71,32 +73,34 @@
 							<!--  작업부분 제목 써주세요 --><h2>과제등록</h2>
 							<!-- 작업시작부분 div안에 클래스명 넣어서 작업 해 주세요 나머지 url부분은 추후 취합할 예정이니 일단 MENU 부분의 링크태그에 값 넣어서 작업 해주시면 됩니다. 게시판 담당하시는 분들은 추후 공통 클래스 드릴테니 일단 테이블로 작업 부탁드립니다. -->
 
+							<form action="" method="POST" enctype="multipart/form-data">
 							<div class="AssignmentAsk">
-							<form action="" method="" enctype="multipart/form-data">
-							<table border="1, solid black" width ='100%'>
-							<span>과제정보</span>
+							<table border="1" width ='100%'>
+							
+							<h1>과제정보</h1>
+							<hr/>
 							     <tr>
 							        <td>과제명</td>
-							        <td></td>
+							        <td>${ass.title}</td>
 							    </tr>
 							    <tr>    
 							        <td>내용</td>
-							        <td></td>
+							        <td>${ass.content}</td>
 							     </tr>
 							    <tr>    
 							        <td>기간</td>
-							        <td></td>
+							        <td>${ass.startDate} ~ ${ass.endDate}</td>
 							     </tr>
 							    <tr>    
 							        <td>첨부파일</td>
-							        <td></td>
+              <td><a href='${pageContext.request.contextPath}/fileDownload?orgFileName=${ass.orgFileName}&realFileName=${ass.realFileName}'>${ass.orgFileName}</a></td>
 							     </tr>
 							   </table>
 							   <hr/>
 							
-							<table border="1" width ='100%'>
+							<table border="1" width ='110%'>
 							<span>과제제출</span>
-							 
+							<hr/>
 							    <tr>    
 							        <td>내용</td>
 							        <td>
@@ -110,8 +114,8 @@
 							   </table>
 							   <input type="button" value="목록">
 							   <input type="submit" value="제출">
-							</form>
 							</div>
+							</form>
 							<!--  작업완료 부분 -->
 						</section>				
 					</div>

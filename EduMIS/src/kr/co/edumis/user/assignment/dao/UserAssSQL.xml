@@ -13,10 +13,26 @@
 
 <!-- 과제목록을 불러오는 쿼리 -->
  <select id="assList" resultType="AdminAssVO">
-    select no,title, start_Date,end_Date
+    select no,
+           title, 
+           to_char(start_Date,'yyyy-mm-dd')as startDate,
+           to_char(end_Date,'yyyy-mm-dd')as endDate
     from t_adm_assignment_board
  </select>
  
+ <!-- 과제 상세 조회 -->
+  <select id="assDetailList" parameterType="integer" resultType="AdminAssVO">
+    select no,
+           title,
+           content,
+           to_char(start_Date,'yyyy-mm-dd')as startDate,
+           to_char(end_Date,'yyyy-mm-dd')as endDate,
+           org_File_Name as orgFileName,
+           real_File_Name as realFileName,
+           file_Path
+    from t_adm_assignment_board
+    where no = #{no}
+ </select>
  
 
 <!-- 과제제출하는 쿼리 -->
