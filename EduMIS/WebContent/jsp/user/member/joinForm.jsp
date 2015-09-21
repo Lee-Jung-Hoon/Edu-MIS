@@ -79,7 +79,7 @@
 										<tbody>
 											<tr>
 												<th><label for="id">ID</label></th>
-												<td><input type="text" id="id" onkeyup="idCheck()" placeholder="아이디 입력" class="size-input01" />
+												<td><input type="text" id="id" name="id" onkeyup="idCheck()" placeholder="아이디 입력" class="size-input01" />
 												    <span id="idResult"></span>
 												</td>
 												<td rowspan="11" class="table-photo">
@@ -96,11 +96,11 @@
 											</tr>
 											<tr>
 												<th><label for="name">이름</label></th>
-												<td><input type="text" id="name" placeholder="이름 입력" class="size-input01" /></td>
+												<td><input type="text" id="name" name="name" placeholder="이름 입력" class="size-input01" /></td>
 											</tr>
 											<tr>
 												<th><label for="passwd">비밀번호</label></th>
-												<td><input type="password" id="passwd" name="pass" placeholder="비밀번호 입력" class="size-input01" /></td>
+												<td><input type="password" id="passwd" name="password" placeholder="비밀번호 입력" class="size-input01" /></td>
 											</tr>
 											<tr>
 												<th><label for="passwd2">비밀번호 재입력</label></th>
@@ -109,19 +109,19 @@
 											<tr>
 												<th><label for="year">생년월일</label></th>
 												<td>
-													<select id="year"  name="birth">
+													<select id="year"  name="year">
 														<option value="">출생년도</option>
 														<% for(int i=1950; i<2016; i++){ %>
 														<option value="<%=i%>"><%=i+"년"%></option>
 														<%} %>
 													</select>
-													<select>
+													<select id="month">
 														<option value="">월</option>
 														<% for(int i=1; i<13; i++){ %>
 														<option value="<%=i%>"><%=i+"월"%></option>
 														<%} %>
 													</select>
-													<select>
+													<select id="day">
 														<option value="">일</option>
 														<% for(int i=1; i<32; i++){ %>
 														<option value="<%=i%>"><%=i+"일"%></option>
@@ -132,7 +132,7 @@
 											<tr>
 												<th><label for="addr">주소</label></th>
 												<td>
-													<div class="post-addr"><label for="">(우)</label><input type="text" name="postNo1" class="size-input03" /> - <input type="text" name="postNo2" class="size-input03" /><button type="button" class="btn-post btn-txt btn-blue">우편번호검색</button></div>
+													<div class="post-addr"><label for="">(우)</label><input type="text" name="postNo" class="size-input03" /><button type="button" class="btn-post btn-txt btn-blue">우편번호검색</button></div>
 													<input type="text" id="addr" name="basicAddr" class="size-input02" placeholder="주소를 동까지 입력해주세요" /><span class="txt-rest">(동까지 입력)</span>
 													</td>
 											</tr>
