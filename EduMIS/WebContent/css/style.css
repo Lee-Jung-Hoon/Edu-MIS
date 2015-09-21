@@ -557,6 +557,10 @@ html, body {
 .txt-student {
 	background-image:url('../images/txt-student.png');
 }
+/* 돌아가기 */
+.txt-back {
+	background-image:url('../images/txt-back.png');
+}
 
 /* 버튼 이미지 텍스트 모음 끝*/
 .btn-txt {
