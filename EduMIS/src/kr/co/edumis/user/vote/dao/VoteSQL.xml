@@ -24,7 +24,8 @@
 <insert id="voteInsert" parameterType="VoteVO">
 
 		insert into t_recommend 
-		(mId,mName,vCount)values(#{id},#{name},1)
+		(mId,vName,vCount) 
+		values(#{id}, (select name from t_member where id = #{id}) ,1)
 
 
 </insert>
