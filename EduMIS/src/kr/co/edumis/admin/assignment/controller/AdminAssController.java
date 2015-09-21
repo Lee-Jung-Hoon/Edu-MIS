@@ -110,6 +110,56 @@ public class AdminAssController {
 		}
 		return mav;
 	}
+	@RequestMapping("/admin/assBfModify.do")
+	public ModelAndView adAssBfmodify(String no) throws Exception {
+	
+		System.out.println(no);
+		ModelAndView mav = new ModelAndView("/jsp/admin/assignment/adAssModify.jsp");
+		
+		AdminAssVO adminassVO = service.detail(no);
+		mav.addObject("modi", adminassVO);
+		
+		System.out.println(adminassVO.getTitle());
+		System.out.println(adminassVO.getOrgFileName());
+		System.out.println(adminassVO.getRealFileName());
+		
+		
+		return mav;
+	}
+	
+	@RequestMapping("/admin/assModify.do")
+	public String adAssModify(AdminAssVO adAssvo, HttpServletRequest req) throws Exception {
+		MultipartRequest mult = new MultipartRequest(req,
+				"C:\\java73\\web-workspace\\EduMIS\\WebContent\\assignmentFile", 1024 * 1024 * 10, "UTF-8",
+				new DefaultFileRenamePolicy());
+
+		Enumeration<String> e = mult.getFileNames();
+
+		while (e.hasMoreElements()) {
+			String fileNmae = e.nextElement();
+
+			File f = mult.getFile(fileNmae);
+
+			if (f != null) {
+				String systemName = mult.getFilesystemName(fileNmae);
+				String oriName = mult.getOriginalFileName(fileNmae);
+
+				adAssvo.setStartDate(mult.getParameter("startDate"));
+				adAssvo.setNo(Integer.parseInt(mult.getParameter("no")));
+				adAssvo.setEndDate(mult.getParameter("endDate"));
+				adAssvo.setTitle(mult.getParameter("title"));
+				adAssvo.setContent(mult.getParameter("content"));
+				adAssvo.setRealFileName(systemName);
+				adAssvo.setOrgFileName(oriName);
+				adAssvo.setFilePath("/assignmentFile");
+			}
+		}
+		System.out.println("뚱 : " + adAssvo.getNo());
+
+		service.update(adAssvo);
+
+		return "redirect:/EduMIS/admin/assList.do";
+	}
 
 	
 }

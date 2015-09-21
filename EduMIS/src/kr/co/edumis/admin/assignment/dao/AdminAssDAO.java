@@ -33,4 +33,11 @@ public class AdminAssDAO {
 		
 	}
 
+	public void updateAss(AdminAssVO adAssvo) {
+		// TODO Auto-generated method stub
+		sqlMapper.update("adminAssignment.modifyAssignment", adAssvo);
+		System.out.println("여기 : " + adAssvo.getTitle());
+		sqlMapper.commit();
+	}
+
 }
