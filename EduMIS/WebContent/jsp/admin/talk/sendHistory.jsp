@@ -50,6 +50,29 @@
 						<li><a href="#">회원가입</a></li>
 					</ul>
 				</header>
+					<script>
+					function selectTalk(value) {
+						
+						var sel = document.querySelector("#sel");
+						var opts = sel.options;
+						var index = sel.selectedIndex;
+						var param = opts[index].value;
+						switch (param) {
+						case "send":
+							//sendRequest("/EduMIS/talk/sendList.do", true);
+							location.href = '/EduMIS/talk/sendList.do';
+							break;
+						case "receive":
+							//sendRequest("/EduMIS/talk/receiveList.do", true);
+							location.href = '/EduMIS/talk/receiveList.do';
+							break;
+						case "basket":
+							location.href = '/EduMIS/talk/sendList.do';
+							//sendRequest("/EduMIS/talk/receiveList.do", true);
+							break;
+						}
+					}
+				</script>
 				<div class="container-inner">
 					<div class="content">
 					<!--  test-class 부분을  s-aaa 형식의 이름으로 클래스 잡아주세요  common 클래스 이름은 지우지 마세요 -->
@@ -58,7 +81,14 @@
 							<!-- 작업시작부분 div안에 클래스명 넣어서 작업 해 주세요 나머지 url부분은 추후 취합할 예정이니 일단 MENU 부분의 링크태그에 값 넣어서 작업 해주시면 됩니다. 게시판 담당하시는 분들은 추후 공통 클래스 드릴테니 일단 테이블로 작업 부탁드립니다. -->
 
 							<div class="">
-								<table style="width: 80%" border="1">
+								<table style="width: 100%" border="1">
+									<tr>
+										<select id="sel" onchange="selectTalk()">
+											<option value="send" selected="selected">보낸쪽지함</option>
+											<option value="receive">받은쪽지함</option>
+											<option value="basket">휴지통</option>
+										</select>
+									</tr>
 									<tr>
 										<td align="center" width=5%>
 											<input type="checkbox" name="allCheck" onclick="allCheck()" />
