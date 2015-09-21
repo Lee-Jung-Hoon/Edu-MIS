@@ -1,5 +1,104 @@
 package kr.co.edumis.admin.attendance.controller;
 
-public class AdminAttController {
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import kr.co.edumis.admin.attendance.service.AdminAttService;
+import kr.co.edumis.admin.attendance.service.AdminAttServiceImpl;
+import kr.co.edumis.admin.attendance.vo.AdminAttVO;
+import kr.co.edumis.framework.Controller;
+import kr.co.edumis.user.member.vo.MemberVO;
+
+@WebServlet("/attendance/memAttList.do")
+public class AdminAttController extends HttpServlet{
+	private AdminAttService service;
+	
+	public AdminAttController(){
+		service = new AdminAttServiceImpl();
+	}
+
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		res.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = res.getWriter();
+		
+		String mNo = req.getParameter("mNo");
+		System.out.println("콘트롤러 mNo : "+mNo);
+		List<MemberVO> memList = service.selectMemList();
+		List<AdminAttVO> attList = service.selectAttList(mNo);
+		
+		System.out.println("attList  !#!" + attList.get(0).getAttDate());
+//		for(int i = 0; i < memList.size(); i++){
+//			System.out.println("no : "+memList.get(i).getNo());
+//			System.out.println("name : "+memList.get(i).getName());
+//		}
+		String json = "";
+		json += "[";
+		for(int i = 0; i < memList.size(); i++){
+			MemberVO mem = memList.get(i);
+			if(i == memList.size() - 1){
+				json += "  {";
+				json += "	'no': "+"'"+mem.getNo()+"'"+",  ";
+				json += "	'mName': "+"'"+mem.getName()+"'";
+				json += "  } ";
+			} else{
+				json += "  {";
+				json += "	'no': "+"'"+mem.getNo()+"'"+",  ";
+				json += "	'mName': "+"'"+mem.getName()+"'";
+				json += "  }, ";
+			}
+		}
+		
+		for(int i = 0; i < attList.size(); i++){
+			AdminAttVO att = attList.get(i);
+			if(i == attList.size() - 1){
+				json += "  {";
+				json += "	'mNo': "+"'"+att.getmNo()+"'"+",  ";
+				json += "	'attDate': "+"'"+att.getAttDate()+"'"+",  ";
+				json += "	'attType': "+"'"+att.getAttType()+"'";
+				json += "  } ";
+			} else{
+				json += "  {";
+				json += "	'mNo': " +"'"+att.getmNo()+"'"+ ",  ";
+				json += "	'name': "+"'"+att.getAttDate()+"'"+",  ";
+				json += "	'attType': "+"'"+att.getAttType()+"'";
+				json += "  }, ";
+			}
+		}
+		json += "]";
+		
+		out.println(json);
+		out.close();
+	}
+	
+	
+//	public ModelAndView memAttList(HttpServletRequest req){
+//		ModelAndView mav = new ModelAndView("/jsp/admin/attendance/attendance.jsp");
+//		String mNo = req.getParameter("mNo");
+//		List<MemberVO> memList = service.selectMemList();
+//		List<AdminAttVO> attList = service.selectAttList(mNo);
+//		
+//		mav.addObject("memList", memList);
+//		mav.addObject("attList", attList);
+//		
+//		return mav;
+//	}
+	
+	
 }
+
+
+
+
+
+
+
+
