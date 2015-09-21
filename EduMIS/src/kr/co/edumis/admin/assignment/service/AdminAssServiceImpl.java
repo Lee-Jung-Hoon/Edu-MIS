@@ -59,4 +59,16 @@ public class AdminAssServiceImpl implements AdminAssService {
 		return dao.selectDetail(no);
 	}
 
+	@Override
+	public AdminAssVO modify(String no) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void update(AdminAssVO adAssvo) {
+		// TODO Auto-generated method stub
+		dao.updateAss(adAssvo);
+	}
+
 }

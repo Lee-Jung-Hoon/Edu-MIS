@@ -58,6 +58,19 @@
 		where no = #{no}
 	</select>
 	
+	<update id="modifyAssignment" parameterType = "AdminAssVO">
+		update t_adm_assignment_board set
+		start_date = to_date(#{startDate}, 'yyyy-mm-dd'),
+		end_date = to_date(#{endDate}, 'yyyy-mm-dd'),
+		title = #{title},
+		content = #{content},		
+		org_file_name = #{orgFileName},
+		real_file_name = #{realFileName},
+		file_path = #{filePath}
+		where no = #{no}
+	</update>
+	
+	
 	
 	
 </mapper>
