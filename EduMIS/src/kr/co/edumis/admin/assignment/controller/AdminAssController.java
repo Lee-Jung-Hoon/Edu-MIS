@@ -160,6 +160,12 @@ public class AdminAssController {
 
 		return "redirect:/EduMIS/admin/assList.do";
 	}
+	@RequestMapping("/admin/assDelete.do")
+	public String adAssDelete(String no) throws Exception {
+		service.delete(no);
+		
+		return "redirect:/EduMIS/admin/assList.do";
+	}
 
 	
 }

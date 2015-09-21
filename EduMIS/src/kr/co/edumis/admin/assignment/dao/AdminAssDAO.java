@@ -40,4 +40,9 @@ public class AdminAssDAO {
 		sqlMapper.commit();
 	}
 
+	public void delete(String no) {
+		// TODO Auto-generated method stub
+		sqlMapper.update("adminAssignment.deleteAssignment", no);
+	}
+
 }

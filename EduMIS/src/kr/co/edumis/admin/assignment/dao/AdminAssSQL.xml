@@ -70,6 +70,10 @@
 		where no = #{no}
 	</update>
 	
+	<delete id="deleteAssignment" parameterType = "string">
+		delete from t_adm_assignment_board where no = #{no}
+	</delete>
+	
 	
 	
 	
