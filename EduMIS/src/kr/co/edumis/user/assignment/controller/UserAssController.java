@@ -5,11 +5,15 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import kr.co.edumis.admin.assignment.vo.AdminAssVO;
 import kr.co.edumis.framework.Controller;
@@ -28,6 +32,7 @@ public class UserAssController {
 		service = new UserAssServiceImpl();
 	}
 	
+	//과제목록
 	@RequestMapping("/user/assList.do")
 	public ModelAndView userAssList(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
@@ -42,6 +47,8 @@ public class UserAssController {
 		}
 		return mav;
 	}
+	
+	//상세조회
 	@RequestMapping("/user/assDetail.do")
 	public ModelAndView userDetail(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
@@ -56,21 +63,50 @@ public class UserAssController {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-		
 		return mav;
 	}
 	
-	
-	
+	//과제등록
 	@RequestMapping("/user/assRegist.do")
-	public ModelAndView userAssRegist(HttpServletRequest req, HttpServletResponse res)
-			throws ServletException, IOException {
-		
+	public String userAssRegist(UserAssVO userass,HttpServletRequest req) throws ServletException, IOException {
+	   
+		MultipartRequest multi = new MultipartRequest(
+	    		req,
+	    		"C:\\java73\\web-workspace\\EduMIS\\WebContent\\assignmentFile",
+				1024*1024*10, 
+				"UTF-8",
+				new DefaultFileRenamePolicy() //파일의 이름이 같을 때 사용할 정책 설정
+				);
+	    
+	    Enumeration<String> e = multi.getFileNames();
+	    
+	    while(e.hasMoreElements()){
+	    	String filename = e.nextElement();
+	    	
+	    	File f = multi.getFile(filename);
+	    	
+	    	if(f != null){
+	    	
+	    	String orgFileName = multi.getOriginalFileName(filename);
+	    	String realFileName = multi.getFilesystemName(filename);
+	    	
+	    	userass.setContent(multi.getParameter("usertext"));
+	    	userass.setOrgFileName(orgFileName);
+	    	userass.setRealFileName(realFileName);
+	    	userass.setNo(Integer.parseInt(multi.getParameter("no")));
+	    	userass.setName("가나다");
+	    	userass.setId("abcde");
+	    	userass.setFilePath("/assignmentFile");
+	    	}
+	    }
+	    
+	    try {
+			service.registAssignment(userass);
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
 
-		
-
-		
-		return null;
+		return  "redirect:/EduMIS/user/assList.do";
 		
 	}
 	

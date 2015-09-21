@@ -6,21 +6,26 @@ import org.apache.ibatis.session.SqlSession;
 
 import kr.co.edumis.admin.assignment.vo.AdminAssVO;
 import kr.co.edumis.common.db.MyAppSqlConfig;
+import kr.co.edumis.user.assignment.vo.UserAssVO;
 
 public class UserAssDAO {
 	
-	private static SqlSession session = null;
+	private static SqlSession sqls = null;
 	
 	public UserAssDAO(){
-		session = MyAppSqlConfig.getSqlSessionInstance();
+		sqls = MyAppSqlConfig.getSqlSessionInstance();
 	}
 	
 	public List<AdminAssVO> selectAssignment() throws Exception{
-		return session.selectList("userAssMapper.assList");
+		return sqls.selectList("userAssMapper.assList");
 	}
 	
 	public AdminAssVO selectDetailAssignment(int no) throws Exception{
-		return session.selectOne("userAssMapper.assDetailList", no);
+		return sqls.selectOne("userAssMapper.assDetailList", no);
+	}
+	public void registAssignment(UserAssVO userass) throws Exception{
+		sqls.insert("userAssMapper.assRegist", userass);
+		sqls.commit();
 	}
 
 }
