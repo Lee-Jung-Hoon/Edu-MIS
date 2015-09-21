@@ -1,16 +1,12 @@
 package kr.co.edumis.admin.assignment.controller;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Enumeration;
 import java.util.List;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -21,6 +17,7 @@ import kr.co.edumis.admin.assignment.vo.AdminAssVO;
 import kr.co.edumis.framework.Controller;
 import kr.co.edumis.framework.ModelAndView;
 import kr.co.edumis.framework.RequestMapping;
+import kr.co.edumis.user.member.vo.MemberVO;
 
 @Controller
 public class AdminAssController {
@@ -43,6 +40,7 @@ public class AdminAssController {
 		System.out.println(adminassVO.getOrgFileName());
 		System.out.println(adminassVO.getRealFileName());
 		
+		List<MemberVO> list = service.studentAssignmentList();
 		
 		return mav;
 	}

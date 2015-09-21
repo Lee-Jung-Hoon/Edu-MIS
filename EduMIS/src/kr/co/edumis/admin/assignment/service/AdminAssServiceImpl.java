@@ -77,4 +77,10 @@ public class AdminAssServiceImpl implements AdminAssService {
 		dao.delete(no);
 	}
 
+	@Override
+	public List<MemberVO> studentAssignmentList() throws Exception {
+		
+		return dao.selectMember();
+	}
+
 }
