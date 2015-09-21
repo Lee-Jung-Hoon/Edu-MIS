@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -11,6 +12,7 @@
 	<link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script src="/EduMIS/template/httprequest.js"></script>
 </head>
 <body class="page-memo btn-page">
 	<div class="wrap">
@@ -77,25 +79,90 @@
 						<!-- <div class="memo">
 							<textarea></textarea>
 							<button type="button" class="btn-m btn-m-save">저장</button>
-						</div>
-						<div class="memo">
-							<textarea></textarea>
-							<button type="button" class="btn-m btn-m-save">저장</button>
-							<button type="button" class="btn-m btn-m-del">삭제</button>
-						</div> -->
+						</div>  -->
+						
+						<c:forEach var="memo" items="${list}">
+							<div class="memo saved" id="${memo.memoNo}" style="left:${memo.posX}px; top:${memo.posY}px;">
+		 							<textarea>${memo.content}</textarea>
+		 							<button type="button" class="btn-m btn-m-save">저장</button>
+		 							<button type="button" class="btn-m btn-m-del">삭제</button>
+		 					</div>
+						</c:forEach>
+						
+						<!-- <div class="memo">
+	 							<textarea></textarea>
+	 							<button type="button" class="btn-m btn-m-save">저장</button>
+	 							<button type="button" class="btn-m btn-m-del">삭제</button>
+	 					</div> -->
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	
+	<a href="/EduMIS/memo/open.do">ㅇㅇ</a>
 </body>
 <script type="text/javascript" src="/EduMIS/js/common.js"></script>
 <script type="text/javascript">
+	
+	
+	$(document).ready(function(){
+		$(".memo").draggable();
+		
+		// 메모 삭제 클릭
+		$(".inner-layer").on('click',".btn-m-del", function() {
+			alert("dd");
+			
+			// db에 저장되있으면 삭제
+			if($(this).parent().hasClass("saved")){
+				var idVal = $(this).parent().attr("id");
+				var params={
+						id : idVal
+				}	
+	 			sendRequest("/EduMIS/memo/deleteMemo.do", params, "");				
+			}
+			
+			$(this).parent().remove();
+		});
+		
+		// 저장클릭 
+		$(".container-inner").on('click',".btn-m-save", function() {
+			var content = $(this).parent().find('textarea').val();    	// 내용
+			var posXVal = parseInt($(this).parent().css('left'));				
+			var posYVal = parseInt($(this).parent().css('top'));				
+			var idVal = $(this).parent().attr("id");
+			
+			var params = {
+						posX: posXVal, 
+						posY: posYVal,
+						content : content,
+						id : idVal
+						};
+						
+			if($(this).parent().hasClass("saved")){
+				// 디비에 있으면 업데이트
+				alert("업데");
+				sendRequest("/EduMIS/memo/updateMemo.do", params, '');
+			}
+			else{
+				// 디비에 없으면 저장
+				alert("저장")
+				sendRequest("/EduMIS/memo/insertMemo.do", params, '');
+				$(this).addClass("saved")
+			}
+				
+		})				
+	})
 
+	// 메모 생성
 	$('.btn-memo').on('click', function(){
-		$('.inner-layer').append('<div class="memo"><textarea></textarea><button type="button" class="btn-m btn-m-save">저장</button></div>');
-		$('.memo').draggable();
-	});	
+		$('<div class="memo"> <textarea></textarea>	<button type="button" class="btn-m btn-m-save">저장</button>	<button type="button" class="btn-m btn-m-del">삭제</button>	</div>').appendTo('.inner-layer')
+		.draggable();
+	});
+
+	
+
+	
 	
 </script>
 </html>
