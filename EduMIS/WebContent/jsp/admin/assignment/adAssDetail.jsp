@@ -12,6 +12,13 @@
 	function modifyAss() {
 		location.href = "${pageContext.request.contextPath}/admin/assBfModify.do?no=${detail.no}";
 	}
+	
+	function deleteAss() {
+		if (confirm("삭제 하시겠습니까?")) {
+			location.href = "${pageContext.request.contextPath}/admin/assDelete.do";
+		}
+	}
+
 </script>
 <link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
 <link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
