@@ -20,6 +20,19 @@ public class VoteServiceImpl implements VoteService {
 			return list;
 			
 	}
+
+	@Override
+	public List<VoteVO> getResult() throws Exception {
+		List<VoteVO> list = dao.ResultList();
+		return list;
+	}
+
+	@Override
+	public void voteInsert(VoteVO vote) throws Exception {
+		
+		dao.voteInsert(vote);
+		
+	}
 	
 	
 }
