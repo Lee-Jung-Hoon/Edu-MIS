@@ -15,7 +15,7 @@
 	
 	function deleteAss() {
 		if (confirm("삭제 하시겠습니까?")) {
-			location.href = "${pageContext.request.contextPath}/admin/assDelete.do";
+			location.href = "${pageContext.request.contextPath}/admin/assDelete.do?no=${detail.no}";
 		}
 	}
 
