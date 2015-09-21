@@ -34,7 +34,7 @@ public class MemberVO {
 	private String id;
 	private String name;
 	private String pass;
-	private String pass_chk;
+	private String passChk;
 	private String year;
 	private String month;
 	private String day;
@@ -78,11 +78,11 @@ public class MemberVO {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
-	public String getPass_chk() {
-		return pass_chk;
+	public String getPassChk() {
+		return passChk;
 	}
-	public void setPass_chk(String pass_chk) {
-		this.pass_chk = pass_chk;
+	public void setPassChk(String passChk) {
+		this.passChk = passChk;
 	}
 	public String getYear() {
 		return year;
