@@ -8,8 +8,27 @@
 			background: gray;
 	}
 </style>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">  <script src="//code.jquery.com/jquery-1.10.2.js"></script>  
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+ <link rel="stylesheet" href="http:/resources/demos/style.css">
+<script type="text/javascript" src="http://apis.daum.net/maps/maps3.js?apikey=1cd4d7ef46ee8be854cdc1de37076a25&libraries=services"></script>
+<script> 
+$(function() {  
+	 $( "#datepicker" )
+	 .datepicker({showOtherMonths: true,
+		selectOtherMonths:true
+		 }); 
+	 });  
+$(function() {  
+	 $( "#datepicker2" )
+	 .datepicker({showOtherMonths: true,
+		selectOtherMonths:true
+		 }); 
+	 });  
+</script>
 
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=1cd4d7ef46ee8be854cdc1de37076a25&libraries=services"></script>
+
+
 <script>
 			
 			function search () {
@@ -117,7 +136,8 @@ function displayMarker(place) {
 	<table width="50%" border="1px" align="center" style = "border-collapse: collapse;">
 		<tr>
 			<th width="30%">일 시</th>
-			<td><input type= "text" id="start_date" name="startDate"/> ~ <input type="text" id="end_date" name="endDate"/></td>
+					<!-- <p>Date: <input type="text" id="datepicker"></p> -->
+			<td><input type= "text" id="datepicker" name="startDate"/> ~ <input type="text" id="datepicker2" name="endDate"/></td>
 		</tr>
 		<tr>
 			<th width="30%">제 목</th>
@@ -126,7 +146,7 @@ function displayMarker(place) {
 		<tr>
 			<th width="30%">내 용</th>
 			<td><textarea rows="10" id="content" name="content" cols="70"></textarea> </td>
-		<!-- </tr>
+	<!-- </tr>	
 			<tr>
 			<th width="30%">장 소</th>
 			<td>
@@ -136,22 +156,24 @@ function displayMarker(place) {
 				 <div id="map" style="width:100%;height:350px;"></div>
 		    </td>
 			</tr> 
-		<tr> -->
+	-->
 			<tr>
 			<th width="30%">장소</th>
 			<td>
 				<input type= "text" id="place" name="latitude"/><br/>
 				<textarea rows="10" cols="70" name ="longitude"></textarea>
 			</td>
-			</tr>
+			</tr>	<tr> 
+			
+	
 			
 			
 			<th width="30%">중 요 도</th>
 			<td>
 			<select id="importance" name="importance">
-				<option value="1">1</option>	
-				<option value="2" selected="selected">2</option>	
-				<option value="3">3</option>	
+				<option value="1">보통</option>	
+				<option value="2" selected="selected">중요함</option>	
+				<option value="3">매우중요함</option>	
 			 </select>
 			</td>
 		</tr>
