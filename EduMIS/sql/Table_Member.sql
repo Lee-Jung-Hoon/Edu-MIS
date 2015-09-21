@@ -7,7 +7,7 @@ create table t_member(
    year varchar2(4) not null,
    month varchar2(4) not null,
    day varchar2(4) not null,
-   post_no char(7) not null, 
+   post_no char(7) not null,  
    basic_addr varchar2(50) not null,
    detail_addr varchar2(50) not null,
    phone1 char(3) not null,
