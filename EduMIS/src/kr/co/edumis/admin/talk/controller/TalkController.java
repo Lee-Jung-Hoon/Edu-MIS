@@ -27,9 +27,9 @@ public class TalkController {
 		ModelAndView mav = new ModelAndView();
 		
 		try {
-			List<TalkVO> list =service.selectReceiveTalkList(1);
+			List<TalkVO> list =service.selectReceiveTalkList(3);
+			System.out.println(list.size());
 			mav.addObject("list", list);
-			System.out.println(list.get(0).getContent());
 			
 			mav.setView("/jsp/admin/talk/receiveHistory.jsp");
 			return mav;
@@ -42,9 +42,9 @@ public class TalkController {
 		ModelAndView mav = new ModelAndView();
 		
 		try {
-			List<TalkVO> list =service.selectSendTalkList(1);
+			List<TalkVO> list = service.selectSendTalkList(3);
+			System.out.println(list.size());
 			mav.addObject("list", list);			
-			System.out.println(list.get(0).getContent());
 			
 			mav.setView("/jsp/admin/talk/sendHistory.jsp");
 			return mav;
