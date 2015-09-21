@@ -21,13 +21,13 @@ public class MemberController {
 
 		System.out.println("2222222222");
 		
-		MemberDAO dao = new MemberDAO();
-		try{
-			 dao.memberJoin(member);
-			 System.out.println("111111111111");
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
+//		MemberDAO dao = new MemberDAO();
+//		try{
+//			 dao.memberJoin(member);
+//			 System.out.println("111111111111");
+//		}catch(Exception e) {
+//			e.printStackTrace();
+//		}
 		return null;
 	}
 	
