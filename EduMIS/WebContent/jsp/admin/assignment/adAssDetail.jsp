@@ -108,6 +108,8 @@
 										<tr>
 											<td>
 												<span><input type="button" value="과제 수정" onclick="modifyAss()"></span>	
+												<span><input type="button" value="과제 삭제" onclick="deleteAss()"></span>	
+												<span><input type="button" value="과제 목록" onclick="listAss()"></span>	
 											</td>
 										</tr>
 										</table>
