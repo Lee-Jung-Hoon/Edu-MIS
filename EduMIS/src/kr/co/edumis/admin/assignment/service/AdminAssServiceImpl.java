@@ -32,8 +32,7 @@ public class AdminAssServiceImpl implements AdminAssService {
 
 	@Override
 	public AdminAssVO detail(String no) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.selectDetail(no);
 	}
 
 	@Override
@@ -52,6 +51,12 @@ public class AdminAssServiceImpl implements AdminAssService {
 	public UserAssVO userDetail(String id, String no) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public AdminAssVO detailDownload(String no) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectDetail(no);
 	}
 
 }
