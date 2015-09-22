@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.edumis.framework.Controller;
 import kr.co.edumis.framework.ModelAndView;
 import kr.co.edumis.framework.RequestMapping;
+import kr.co.edumis.framework.WebUtil;
 import kr.co.edumis.user.mypage.service.MypageService;
 import kr.co.edumis.user.mypage.service.MypageServiceImpl;
 import kr.co.edumis.user.mypage.vo.MypageVO;
@@ -38,5 +39,33 @@ public class MypageController {
 			throw new ServletException(e);
 		}
 	}
+	
+	@RequestMapping("/user/mypage/modifyMyinfoForm.do")
+	public ModelAndView modifyMyinfoForm(HttpServletRequest req, HttpServletResponse res)
+		throws ServletException, IOException{
+		try{
+			ModelAndView mav = new ModelAndView("/jsp/mypage/modify_myinfo.jsp");
+			MypageVO mvo = (MypageVO)WebUtil.getFromParamToVO("kr.co.edumis.user.mypage.vo.MypageVO", req);
+			mav.addObject("mvo", mvo);
+			return mav; 
+		}catch(Exception e){
+			throw new ServletException(e);
+		}
+	}
+	
+	@RequestMapping("/user/mypage/modifyMyinfo.do")
+	public ModelAndView modifyMyinfo(HttpServletRequest req, HttpServletResponse res)
+			throws ServletException, IOException{
+		try{
+			ModelAndView mav = new ModelAndView("redirect:/EduMIS/user/mypage/detailMyinfo.do");
+			MypageVO mvo = (MypageVO)WebUtil.getFromParamToVO("kr.co.edumis.user.mypage.vo.MypageVO", req);
+			mav.addObject("mvo", mvo);
+			return mav; 
+		}catch(Exception e){
+			throw new ServletException(e);
+		}
+	}
+	
+	
 	
 }

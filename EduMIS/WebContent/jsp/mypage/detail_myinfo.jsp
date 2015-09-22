@@ -70,7 +70,7 @@
 						<section class="join common">
 							<h2>회원정보</h2>
 							<div class="table-common">
-								<form name="memberForm" action ="" method="POST">
+								<form name="memberForm" action ="/EduMIS/user/mypage/modifyMyinfoForm.do" method="POST">
 								<c:forEach var="list" items="${list}">
 									<table>
 										<colgroup>
@@ -106,9 +106,9 @@
 											<tr>
 												<th><label for="year">생년월일</label></th>
 												<td>
-												<input type="hidden" id="year" name="name" placeholder="이름 입력" class="size-input01" value = "${list.year }"/>
-												<input type="hidden" id="month" name="name" placeholder="이름 입력" class="size-input01" value = "${list.month }"/>
-												<input type="hidden" id="day" name="name" placeholder="이름 입력" class="size-input01" value = "${list.day }"/>
+												<input type="hidden" id="year" name="year" class="size-input01" value = "${list.year }"/>
+												<input type="hidden" id="month" name="month" class="size-input01" value = "${list.month }"/>
+												<input type="hidden" id="day" name="day" class="size-input01" value = "${list.day }"/>
 												${list.year }년 ${list.month }월 ${list.day }일
 <!-- 													<select id="year"  name="year"> -->
 <!-- 														<option value="">출생년도</option> -->
@@ -166,9 +166,8 @@
 											</tr>
 										</tbody>
 									</table>
-									<div class="btn-area">
-										<span class="width33"><input type="submit" value="수정하기" class="btn txt-modify btn-txt btn-blue" /></span>
-										<span class="width33"><input type="reset" value="재작성" id="reset" class="btn txt-reset btn-txt btn-blue" /></span>
+									<div class="btn-area" style = "margin-left: 17%">
+										<span class="width33"><input type="submit" value="수정하기" class="btn txt-modify btn-txt btn-blue"/></span>
 										<span class="width33"><a href="#" class="btn txt-cancel btn-txt btn-gray">취소</a></span>
 									</div>
 									</c:forEach>
