@@ -30,49 +30,76 @@ public class AdminAttController extends HttpServlet{
 		res.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = res.getWriter();
 		
-		String mNo = req.getParameter("mNo");
-		System.out.println("콘트롤러 mNo : "+mNo);
 		List<MemberVO> memList = service.selectMemList();
-		List<AdminAttVO> attList = service.selectAttList(mNo);
+		System.out.println("콘트롤러 memList사이즈 : "+memList.size());
 		
-		System.out.println("attList  !#!" + attList.get(0).getAttDate());
+		List<AdminAttVO> attList = service.selectAttList();	
+//		System.out.println(attList.get(0).getAttType());
+//		System.out.println("memList  !#! : " + memList.get(0).getName());
 //		for(int i = 0; i < memList.size(); i++){
 //			System.out.println("no : "+memList.get(i).getNo());
 //			System.out.println("name : "+memList.get(i).getName());
 //		}
 		String json = "";
 		json += "[";
+		System.out.println("memList.size() : "+memList.size());
 		for(int i = 0; i < memList.size(); i++){
 			MemberVO mem = memList.get(i);
-			if(i == memList.size() - 1){
+//			if(i == memList.size() - 1){
 				json += "  {";
 				json += "	'no': "+"'"+mem.getNo()+"'"+",  ";
 				json += "	'mName': "+"'"+mem.getName()+"'";
-				json += "  } ";
-			} else{
-				json += "  {";
-				json += "	'no': "+"'"+mem.getNo()+"'"+",  ";
-				json += "	'mName': "+"'"+mem.getName()+"'";
+				List<AdminAttVO> attMemList = service.selectAttMemList(mem.getNo());
+				for(int j = 0; j < attMemList.size(); j++){
+//					if(attMemList.size() > j){
+						AdminAttVO attMem = attMemList.get(j);
+						System.out.println(mem.getName()+"의 date : "+attMem.getAttDate());
+						System.out.println(mem.getName()+"의 type : "+attMem.getAttType());
+//						System.out.println("attMemList의 데이트 : "+attMem.getAttDate());
+//						System.out.println("attMemList의 타입 : "+attMem.getAttType());
+						json += "	'attDate': "+"'"+attMem.getAttDate()+"'"+",  ";
+						json += "	'attType': "+"'"+attMem.getAttType()+"'";
+//					}
+				}
 				json += "  }, ";
-			}
+//			} 
+//		else{
+//				json += "  {";
+//				json += "	'no': "+"'"+mem.getNo()+"'"+",  ";
+//				json += "	'mName': "+"'"+mem.getName()+"'";
+//				for(int j = 0; j < attList.size(); j++){
+//					System.out.println("attList.size() : "+attList.size());
+//					List<AdminAttVO> attMemList = service.selectAttMemList(mem.getNo());
+//					if(attMemList.size() > j){
+//						AdminAttVO attMem = attMemList.get(j);
+//						System.out.println("attMemList의 데이트 : "+attMem.getAttDate());
+//						System.out.println("attMemList의 타입 : "+attMem.getAttType());
+//						json += "	'attDate': "+"'"+attMem.getAttDate()+"'"+",  ";
+//						json += "	'attType': "+"'"+attMem.getAttType()+"'";
+//					}
+//				}
+//				json += "  }, ";
+//			}
 		}
 		
-		for(int i = 0; i < attList.size(); i++){
-			AdminAttVO att = attList.get(i);
-			if(i == attList.size() - 1){
-				json += "  {";
-				json += "	'mNo': "+"'"+att.getmNo()+"'"+",  ";
-				json += "	'attDate': "+"'"+att.getAttDate()+"'"+",  ";
-				json += "	'attType': "+"'"+att.getAttType()+"'";
-				json += "  } ";
-			} else{
-				json += "  {";
-				json += "	'mNo': " +"'"+att.getmNo()+"'"+ ",  ";
-				json += "	'name': "+"'"+att.getAttDate()+"'"+",  ";
-				json += "	'attType': "+"'"+att.getAttType()+"'";
-				json += "  }, ";
-			}
-		}
+//		for(int i = 0; i < attList.size(); i++){
+//			AdminAttVO att = attList.get(i);
+//			if(i == attList.size() - 1){
+//				json += "  {";
+//				json += "	'mNo': "+"'"+att.getmNo()+"'"+",  ";
+//				json += "	'mName': "+"'"+att.getmName()+"'"+",  ";
+//				json += "	'attDate': "+"'"+att.getAttDate()+"'"+",  ";
+//				json += "	'attType': "+"'"+att.getAttType()+"'";
+//				json += "  } ";
+//			} else{
+//				json += "  {";
+//				json += "	'mNo': " +"'"+att.getmNo()+"'"+ ",  ";
+//				json += "	'mName': "+"'"+att.getmName()+"'"+",  ";
+//				json += "	'attDate': "+"'"+att.getAttDate()+"'"+",  ";
+//				json += "	'attType': "+"'"+att.getAttType()+"'";
+//				json += "  }, ";
+//			}
+//		}
 		json += "]";
 		
 		out.println(json);

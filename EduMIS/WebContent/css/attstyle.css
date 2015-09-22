@@ -5,8 +5,12 @@
 #kCalendar #header {height: 50px; line-height: 50px; text-align: center; font-size: 18px; font-weight: bold}
 #kCalendar .button {color: #000; text-decoration: none;}
 
-#kCalendar table {text-align: center; width: 250px; height: 0px; border:1px solid #ddd; border-bottom:0; border-right:0;}
+#kCalendar table {text-align: center; width:100%; height: 0px; border:1px solid #ddd; border-bottom:0; border-right:0;}
 #kCalendar caption {display: none;}
+#kCalendar .tbName {width: 50px;}
+#kCalendar table td {height:50px; vertical-align:middle;}
+#kCalendar table tr:first-child td, #kCalendar table tr:nth-child(2) td {height:auto;}
+ 
 
 
 #kCalendar .sun {color: deeppink;}

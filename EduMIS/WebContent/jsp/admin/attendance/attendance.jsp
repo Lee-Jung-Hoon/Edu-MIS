@@ -11,37 +11,48 @@
 <link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
 <link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="/EduMIS/jsp/admin/attendance/httprequest.js"></script>
 <script>
 	var id = "";
 	var date;
+	var param = "";
 	$(document).ready(function () {
-		var param = {mNo:"1"};
-		id = 'kCalendar';
-		date = 
-// 		kCalendar('kCalendar');
-		sendRequest("/EduMIS/attendance/memAttList.do", param, kCalendar, "GET");
+// 		var param = {mNo:"1"};
+		idDate('kCalendar');
+
+// 		sendRequest("/EduMIS/attendance/memAttList.do", null, kCalendar, "GET");
 	});
 	
+	function idDate(id2, calDate){
+		if( typeof( date ) !== 'undefined' ) {
+			calDate = calDate.split('-');
+			calDate[1] = calDate[1] - 1;
+			calDate = new Date(calDate[0], calDate[1], calDate[2]);
+			date = calDate;
+			id = id2;
+			sendRequest("/EduMIS/attendance/memAttList.do", null, kCalendar, "GET");
+		} else {
+			calDate = new Date();
+			date = calDate;
+			id = id2;
+			sendRequest("/EduMIS/attendance/memAttList.do", null, kCalendar, "GET");
+
+		}
+	}
 	function kCalendar() {
 		if (httpRequest.readyState == 4) {
 			if (httpRequest.status == 200) {
 				var kCalendar = document.getElementById(id);
-				var attMemList = eval(httpRequest.responseText);
+				var attList = eval(httpRequest.responseText);
 				var calendar = '';
 				
-				calendar += "테스트 리스트갯수 : "+attMemList.length+"명";
-				
-				
-				
-				if( typeof( date ) !== 'undefined' ) {
-					date = date.split('-');
-					date[1] = date[1] - 1;
-					date = new Date(date[0], date[1], date[2]);
-				} else {
-					var date = new Date();
-				}
+// 				if( typeof( date ) !== 'undefined' ) {
+// 					date = date.split('-');
+// 					date[1] = date[1] - 1;
+// 					date = new Date(date[0], date[1], date[2]);
+// 				} else {
+// 					var date = new Date();
+// 				}
 				var currentYear = date.getFullYear();
 				//년도를 구함
 				
@@ -68,12 +79,13 @@
 				
 				
 				//이전달 버튼 누를때
-				if(currentMonth != 1)
+				if(currentMonth != 1){
 					var prevDate = currentYear + '-' + ( currentMonth - 1 ) + '-' + currentDate;
-				else
+				}
+					//만약 이번달이 1월이라면 1년 전 12월로 출력.
+				else{
 					var prevDate = ( currentYear - 1 ) + '-' + 12 + '-' + currentDate;
-				//만약 이번달이 1월이라면 1년 전 12월로 출력.
-				
+				}
 				
 				if(currentMonth != 12) {
 					//다음달 버튼 누를떄
@@ -85,16 +97,14 @@
 					
 				}
 		
-				
 				if( currentMonth < 10 )
 					var currentMonth = '0' + currentMonth;
 				//10월 이하라면 앞에 0을 붙여준다.
 				
-				
 				calendar += '<div id="header">';
-				calendar += '			<span><a href="#" class="button left" onclick="kCalendar(\'' +  id + '\', \'' + prevDate + '\')"><</a></span>';
+				calendar += '			<span><a href="#" class="button left" onclick="idDate(\'' +  id + '\', \'' + prevDate + '\')"><</a></span>';
 				calendar += '			<span id="date">' + currentYear + '년 ' + currentMonth + '월</span>';
-				calendar += '			<span><a href="#" class="button right" onclick="kCalendar(\'' + id + '\', \'' + nextDate + '\')">></a></span>';
+				calendar += '			<span><a href="#" class="button right" onclick="idDate(\'' + id + '\', \'' + nextDate + '\')">></a></span>';
 				calendar += '		</div>';
 		//		calendar += '			<thead>';
 		//		calendar += '				<tr>';
@@ -107,14 +117,14 @@
 		//		calendar += '				  <th class="sat" scope="row">토</th>';
 		//		calendar += '				</tr>';
 		//		calendar += '			</thead>';
-				calendar += '		<table class="attend" border="1" width="1050" cellspacing="0" cellpadding="0" style="margin: 5px 0 0 10px">';
+				calendar += '		<table class="attend" border="1" cellspacing="0" cellpadding="0">';
 				calendar += '			<caption>' + currentYear + '년 ' + currentMonth + '월 달력</caption>';
 				calendar += '			<tbody>';
 				
 				var dateNum = 1 - currentDay;
 				
 				calendar += '			<tr>';
-				calendar += '			<td rowspan="2">이름</td>';
+				calendar += '			<td rowspan="2" class="tbName">이름</td>';
 				// 여기에 이름 뿌려줌....
 				for(var i = 0; i < week; i++) {
 					for(var j = 0; j < 7; j++, dateNum++) {
@@ -122,6 +132,7 @@
 							calendar += '				<td class="' + dateString[j] + ' test"> </td>';
 							continue;
 						}
+						// 월에 해당하는 일자를 뿌려줌...
 						calendar += '				<td class="' + dateString[j] + '">' + dateNum + '</td>';
 					}
 				}
@@ -141,6 +152,67 @@
 					}
 				}
 				calendar += '			</tr>';
+				
+				// 이름 뿌려주는 곳
+				for(var i = 0; i < attList.length; i++){
+					calendar += '			<tr>';
+					calendar += '<td>'+attList[i].mName+'</td>';
+					/* att_type의 1: 출석  2: 지각   3: 조퇴   4: 결석   */
+					// 출석 사항 뿌려주는 곳
+					// 여기에 월, 일, 마지막 일수까지 얻어온다음 for문 돌면서 attType
+					for(var j = 0; j < currentLastDate; j++){
+	// 					alert(attList[j].attType);
+						var attDate = attList[i].attDate[j];
+						attDate = attDate.split('-');
+	
+						if(Number(attDate[0]) == currentYear && Number(attDate[1]) == currentMonth 
+							&& Number(attDate[2]) == j+1){
+							switch(attList[i].attType[j]){
+							case '1': calendar += '<td>O</td>';
+									break;
+								
+							case '2': calendar += '<td>◎</td>';
+									break;
+								
+							case '3': calendar += '<td>▲</td>';
+									break;
+								
+							case '4': calendar += '<td>X</td>';
+									break;
+							}
+						} else{
+							 calendar += '<td>-</td>'; 
+						   }
+						}
+					}
+				
+// 						alert("년 : "+attDate[0]+ "월 : "+attDate[1]+" 일 : "+attDate[2]);
+// 						if(Number(attDate[0]) == currentYear && Number(attDate[1]) == currentMonth){
+// 							if(attList.length > j){
+// 								switch(attList[j].attType){
+// 								case '1': calendar += '<td>O</td>';
+// 										break;
+								
+// 								case '2': calendar += '<td>◎</td>';
+// 										break;
+								
+// 								case '3': calendar += '<td>▲</td>';
+// 										break;
+								
+// 								case '4': calendar += '<td>X</td>';
+// 										break;
+// 								}
+// 						} else{
+// 						 	calendar += '<td>-</td>'; 
+// 						  }
+// 						}
+// 					}
+						
+				
+					
+	
+				calendar += '			</tr>';
+				
 				calendar += '			</tbody>';
 				calendar += '		</table>';
 				

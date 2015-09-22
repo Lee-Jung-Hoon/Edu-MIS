@@ -15,6 +15,14 @@
 	
 	<resultMap type="AdminAttVO" id="att">
 		<result property="mNo" column="mNo"></result>
+		<result property="mName" column="mName"></result>
+		<result property="attType" column="att_type"></result>
+		<result property="attDate" column="att_date"></result>
+	</resultMap>
+	
+	<resultMap type="AdminAttVO" id="attMem">
+		<result property="mNo" column="mNo"></result>
+		<result property="mName" column="mName"></result>
 		<result property="attType" column="att_type"></result>
 		<result property="attDate" column="att_date"></result>
 	</resultMap>
@@ -28,8 +36,13 @@
 <!-- 	att_type number,				 -->
 <!-- 	primary key(mNo, att_date) -->
 <!-- ) -->
-	<select id="attList" parameterType="string" resultMap="att"> 
-		select att_type, to_char(att_date, 'yyyy-mm-dd') as att_date, mNo  
+	<select id="attList" resultMap="att"> 
+		select att_type, to_char(att_date, 'yyyy-mm-dd') as att_date, mName, mNo
+		from t_attend 
+	</select>
+	
+	<select id="attMemList" parameterType="string" resultMap="attMem"> 
+		select att_type, to_char(att_date, 'yyyy-mm-dd') as att_date
 		from t_attend 
 		where mNo = #{mNo}
 	</select>
