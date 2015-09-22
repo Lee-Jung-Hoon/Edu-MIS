@@ -5,8 +5,7 @@
 
 <select id="login" parameterType="LoginVO" resultType="LoginVO">
 			select id, name, pass	
-			from t_member         	
-			where id = #{id}            
- 			and pass = #{pass}      	
+			from t_member      	
+			where id = #{id} and pass = #{pass}   	
 </select>
 </mapper>
