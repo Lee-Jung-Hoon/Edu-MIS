@@ -9,12 +9,11 @@
 </head>
 <body>
 	<div align="center">
-		<form method="post" action="/EduMIS/user/login/login.do">
+		<form method="post" action="/EduMIS/login/login.do">
 			<table border="1">
 				<tr>
 					<th>아이디</th>
-					<td><input type="text" name="id"
-						value="${cookie.loginId.value}" /></td>
+					<td><input type="text" name="id" value="${cookie.loginId.value}" /></td>
 				</tr>
 				<tr>
 					<th>패스워드</th>
