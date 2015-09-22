@@ -23,8 +23,7 @@ public class LoginFormController{
 	@RequestMapping("/login/loginForm.do")
 	public ModelAndView loginForm(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
-//		res.sendRedirect("/MVCMyBatis/jsp/login/loginForm.jsp");
-		ModelAndView mav = new ModelAndView("redirect:/MVCMyBatis/jsp/login/loginForm.jsp");
+		ModelAndView mav = new ModelAndView("redirect:/EduMIS/jsp/login/loginForm.jsp");
 		return mav;
 	}
 }
