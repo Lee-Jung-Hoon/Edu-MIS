@@ -8,8 +8,8 @@
 </head>
 <body>
 
-	<a href="/MyEduMIS/bookboard/writeForm.do">글작성</a>
-	<a href="/MyEduMIS/bookboard/list.do">글목록</a>
+	<a href="/EduMIS/bookboard/writeForm.do">글작성</a>
+	<a href="/EduMIS/bookboard/list.do">글목록</a>
 
 </body>
 </html>
