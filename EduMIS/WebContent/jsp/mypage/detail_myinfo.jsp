@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="ko">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width">
-	<title>회원가입</title>
+	<title>회원정보</title>
 	<link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
 	<link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
@@ -49,7 +49,7 @@
 					</div>
 					<!-- 메시지 들어가는 부분 끝 -->
 					<ul>
-						<li><a href="#"><img src="/EduMIS/images/icon-user.png" alt="" />마이페이지</a></li>
+						<li><a href="/EduMIS/user/mypage/detailMyinfo.do"><img src="/EduMIS/images/icon-user.png" alt="" />마이페이지</a></li>
 						<li class="login">
 							<a href="#">로그인</a>
 							<div class="login-form">
@@ -62,15 +62,16 @@
 								<button type="button" class="btn-close">닫기</button>
 							</div>
 						</li>
-						<li><a href="#">회원가입</a></li>
+						<li><a href="/user/member/joinForm.do">회원가입</a></li>
 					</ul>
 				</header>
 				<div class="container-inner">
 					<div class="content">
 						<section class="join common">
-							<h2>회원가입</h2>
+							<h2>회원정보</h2>
 							<div class="table-common">
-								<form action="" method="">
+								<form name="memberForm" action ="" method="POST">
+								<c:forEach var="list" items="${list}">
 									<table>
 										<colgroup>
 											<col style="width:20%;" />
@@ -80,7 +81,10 @@
 										<tbody>
 											<tr>
 												<th><label for="id">ID</label></th>
-												<td><input type="text" id="id" placeholder="아이디 입력" class="size-input01" /></td>
+												<td><input type="hidden" id="id" name="id" onkeyup="idCheck()" placeholder="아이디 입력" class="size-input01" value = "${list.id}"/>
+													${list.id}
+<!-- 												    <span id="idResult"></span> -->
+												</td>
 												<td rowspan="11" class="table-photo">
 													<div>
 														<span id="imgFrame" class="img"></span>
@@ -95,87 +99,79 @@
 											</tr>
 											<tr>
 												<th><label for="name">이름</label></th>
-												<td><input type="text" id="name" placeholder="이름 입력" class="size-input01" /></td>
-											</tr>
-											<tr>
-												<th><label for="passwd">비밀번호</label></th>
-												<td><input type="password" id="passwd" placeholder="비밀번호 입력" class="size-input01" /></td>
-											</tr>
-											<tr>
-												<th><label for="passwd2">비밀번호 재입력</label></th>
-												<td><input type="password" id="passwd2" placeholder="비밀번호 재입력" class="size-input01" /></td>
+												<td><input type="hidden" id="name" name="name" placeholder="이름 입력" class="size-input01" value = "${list.name}"/>
+													${list.name}
+												</td>
 											</tr>
 											<tr>
 												<th><label for="year">생년월일</label></th>
 												<td>
-													<select id="year">
-														<option value="">출생년도</option>
-														<option value=""></option>
-														<option value=""></option>
-													</select>
-													<select>
-														<option value="">월</option>
-														<option value=""></option>
-														<option value=""></option>
-													</select>
-													<select>
-														<option value="">일</option>
-														<option value=""></option>
-														<option value=""></option>
-													</select>
+												<input type="hidden" id="year" name="name" placeholder="이름 입력" class="size-input01" value = "${list.year }"/>
+												<input type="hidden" id="month" name="name" placeholder="이름 입력" class="size-input01" value = "${list.month }"/>
+												<input type="hidden" id="day" name="name" placeholder="이름 입력" class="size-input01" value = "${list.day }"/>
+												${list.year }년 ${list.month }월 ${list.day }일
+<!-- 													<select id="year"  name="year"> -->
+<!-- 														<option value="">출생년도</option> -->
+<%-- 														<% for(int i=1950; i<2016; i++){ %> --%>
+<%-- 														<option value="<%=i%>"><%=i+"년"%></option> --%>
+<%-- 														<%} %> --%>
+<!-- 													</select> -->
+<!-- 													<select id="month"> -->
+<!-- 														<option value="">월</option> -->
+<%-- 														<% for(int i=1; i<13; i++){ %> --%>
+<%-- 														<option value="<%=i%>"><%=i+"월"%></option> --%>
+<%-- 														<%} %> --%>
+<!-- 													</select> -->
+<!-- 													<select id="day"> -->
+<!-- 														<option value="">일</option> -->
+<%-- 														<% for(int i=1; i<32; i++){ %> --%>
+<%-- 														<option value="<%=i%>"><%=i+"일"%></option> --%>
+<%-- 														<%} %> --%>
+<!-- 													</select> -->
 												</td>
 											</tr>
 											<tr>
 												<th><label for="addr">주소</label></th>
 												<td>
-													<div class="post-addr"><label for="">(우)</label><input type="text" class="size-input03" /> - <input type="text" class="size-input03" /><button type="button" class="btn-post btn-txt btn-blue">우편번호검색</button></div>
-													<input type="text" id="addr" class="size-input02" placeholder="주소를 동까지 입력해주세요" /><span class="txt-rest">(동까지 입력)</span>
+													<div class="post-addr"><label for="">(우)</label><input type="hidden" name="postNo" class="size-input03" value="${list.postNo }"/>${list.postNo }</div>
+													<input type="hidden" id="addr" name="basicAddr" class="size-input02" placeholder="주소를 동까지 입력해주세요" value="${list.basicAddr }"/>
+													<input type="hidden" id="addr2" name="detailAddr" class="size-input02" placeholder="나머지 주소를 입력해주세요" value="${list.detailAddr }"/>
+													${list.basicAddr}<br/>
+													${list.detailAddr }
 													</td>
-											</tr>
-											<tr>
-												<th><label for="addr2">주소 상세</label></th>
-												<td><input type="text" id="addr2" class="size-input02" placeholder="나머지 주소를 입력해주세요" /><span class="txt-rest">(나머지 입력)</span></td>
 											</tr>
 											<tr>
 												<th><label for="hp1">휴대폰</label></th>
 												<td>
-													<select id="hp1">
-														<option value="">선택</option>
-														<option value="">010</option>
-														<option value="">011</option>
-														<option value="">016</option>
-														<option value="">019</option>
-													</select>
-													<input type="text" placeholder="번호 가운데 자리" />
-													<input type="text"  placeholder="번호 끝자리" />
+													<input type="hidden" name="phone1" placeholder="번호 첫 자리" value="${list.phone1 }"/>
+													<input type="hidden" name="phone2" placeholder="번호 가운데 자리" value="${list.phone2 }"/>
+													<input type="hidden" name="phone3"  placeholder="번호 끝자리" value="${list.phone3 }"/>
+													${list.phone1 } - ${list.phone2 } - ${list.phone3 }
 												</td>
 											</tr>
 											<tr>
 												<th><label for="email1">이메일</label></th>
 												<td>
-													<input type="text" id="email1" class="size-input01" placeholder="이메일 도메인 입력" />
-													<label for="">@</label>
-													<select name="" id="">
-														<option value="">naver.com</option>
-														<option value="">daum.net</option>
-														<option value="">gmail.com</option>
-													</select>
+													<input type="hidden" id="email1" name="email" class="size-input01" placeholder="이메일 도메인 입력" value = "${list.email}"/>
+													<input type="hidden" id="emailDomain" name="emailDomain" class="size-input01" placeholder="이메일 도메인 입력" value = "${list.emailDomain}"/>
+													${list.email}@${list.emailDomain}
 												</td>
 											</tr>
 											<tr>
 												<th><label for="major">전공여부</label></th>
 												<td>
-													<input type="radio" name="major" id="major1" checked /><label for="major1">전공</label>&nbsp;&nbsp;
-													<input type="radio" name="major" id="major2" /><label for="major2">비전공</label>
+													<input type="hidden" id="major" name="major" class="size-input01" value = "${list.major}"/>
+													${list.major}
 												</td>
 											</tr>
 										</tbody>
 									</table>
 									<div class="btn-area">
-										<span class="width33"><input type="submit" value="회원가입" class="btn txt-join btn-txt btn-blue" /></span>
+										<span class="width33"><input type="submit" value="수정하기" class="btn txt-modify btn-txt btn-blue" /></span>
 										<span class="width33"><input type="reset" value="재작성" id="reset" class="btn txt-reset btn-txt btn-blue" /></span>
 										<span class="width33"><a href="#" class="btn txt-cancel btn-txt btn-gray">취소</a></span>
 									</div>
+									</c:forEach>
 								</form>
 							</div>
 						</section>				

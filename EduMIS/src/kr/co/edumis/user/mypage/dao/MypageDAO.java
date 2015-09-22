@@ -1,5 +1,7 @@
 package kr.co.edumis.user.mypage.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import kr.co.edumis.common.db.MyAppSqlConfig;
@@ -13,10 +15,10 @@ public class MypageDAO {
 		session = MyAppSqlConfig.getSqlSessionInstance();
 	}
 
-	public MypageVO selectMyinfo(String id) throws Exception{
-		
-		
-		return null;
+	public List<MypageVO> selectMyinfo(String id) throws Exception{
+		List<MypageVO> list = session.selectList("mypage.dao.MypageMapper.selectMyinfo", id);
+		System.out.println(2);
+		return list;
 	}
 
 }

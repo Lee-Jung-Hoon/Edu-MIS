@@ -561,6 +561,10 @@ html, body {
 .txt-back {
 	background-image:url('../images/txt-back.png');
 }
+/* 수정하기 */
+.txt-modify {
+	background-image:url('../images/txt-modify.png');
+}
 
 /* 버튼 이미지 텍스트 모음 끝*/
 .btn-txt {

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mypage.dao.MypageMapper">
+	<resultMap id = "myinfo" type = "MypageVO">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="year" column="year"/>
+        <result property="month" column="month"/>
+        <result property="day" column="day"/>
+        <result property="postNo" column="post_no"/>
+        <result property="basicAddr" column="basic_addr"/>
+        <result property="detailAddr" column="detail_addr"/>
+        <result property="phone1" column="phone1"/>
+        <result property="phone2" column="phone2"/>
+        <result property="phone3" column="phone3"/>
+        <result property="email" column="email"/>
+        <result property="emailDomain" column="email_domain"/>
+        <result property="major" column="major"/>
+        <result property="joinDate" column="join_date"/>
+    </resultMap>
+    <select id = "selectMyinfo" parameterType="String" resultMap="myinfo">
+        select id,
+        name,
+        year,
+        month,
+        day,
+        post_no,
+        basic_addr,
+        detail_addr,
+        phone1,
+        phone2,
+        phone3,
+        email,
+        email_domain,
+        major,
+        join_date
+        from t_member
+        where id = #{id}    
+    </select>
+
+</mapper>
