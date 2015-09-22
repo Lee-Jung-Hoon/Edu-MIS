@@ -16,4 +16,8 @@ public class PostNoServiceImpl implements PostNoService{
 		List<PostNoVO> list = dao.getPostNoList(dong);
 		return list;
 	}
+	
+	public String getAddr(String zipcode) throws Exception{
+		return dao.selectAddr(zipcode);
+	}
 }
