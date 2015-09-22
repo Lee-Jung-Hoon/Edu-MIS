@@ -1,11 +1,16 @@
 package kr.co.edumis.user.bookboard.controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import kr.co.edumis.framework.Controller;
 import kr.co.edumis.framework.ModelAndView;
@@ -25,12 +30,42 @@ public class BookBoardController {
 	@RequestMapping("/bookboard/write.do")
 	public ModelAndView write(BookBoardVO board ,HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
-		try {
+		
+			MultipartRequest multi = new MultipartRequest(
+		    		req,
+		    		"C:\\java73\\web-workspace\\EduMIS\\WebContent\\jsp\\user\\bookboard\\bookFile",
+					1024*1024*10, 
+					"UTF-8",
+					new DefaultFileRenamePolicy() //파일의 이름이 같을 때 사용할 정책 설정
+					);
+		    
+		    Enumeration<String> e = multi.getFileNames();
+		    
+		    while(e.hasMoreElements()){
+		    	String filename = e.nextElement();
+		    	
+		    	File f = multi.getFile(filename);
+		    	
+		    	if(f != null){
+		    	
+		    	String orgFileName = multi.getOriginalFileName(filename);
+		    	String realFileName = multi.getFilesystemName(filename);
+		    	
+		    	board.setId(multi.getParameter("id"));
+		    	board.setTitle(multi.getParameter("title"));
+		    	board.setContent(multi.getParameter("content"));
+		    	board.setOrgFileName(orgFileName);
+		    	board.setRealFileName(realFileName);
+		    	board.setFilePath("/jsp/user/bookboard/bookFile");
+		    	}
+		    }
+			
+		    try {
 			service.registBoard(board);
 			ModelAndView mav = new ModelAndView("redirect:/EduMIS/bookboard/list.do?call=W");
 			return mav;
-		}catch(Exception e) {
-			throw new ServletException(e);
+		}catch(Exception e1) {
+			throw new ServletException(e1);
 		}
 	}
 	

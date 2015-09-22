@@ -5,7 +5,29 @@ public class BookBoardVO {
 	private String title;
 	private String content;
 	private String id;
+	private String realFileName;
+	private String orgFileName;
+	private String filePath; 
 	private String regDate;
+
+	public String getRealFileName() {
+		return realFileName;
+	}
+	public void setRealFileName(String realFileName) {
+		this.realFileName = realFileName;
+	}
+	public String getOrgFileName() {
+		return orgFileName;
+	}
+	public void setOrgFileName(String orgFileName) {
+		this.orgFileName = orgFileName;
+	}
+	public String getFilePath() {
+		return filePath;
+	}
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
 	public int getNo() {
 		return no;
 	}

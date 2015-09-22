@@ -8,12 +8,18 @@
 			no,
 			id,
 			title,
-			content
+			content,
+			real_File_Name, 
+			org_File_Name, 
+			file_path
 			) values (
 			seq_t_book_board_no.nextval,
 			#{id},
 			#{title},
-			#{content}
+			#{content},
+			#{orgFileName},
+  			#{realFileName},
+   			#{filePath}
 			)
 	</insert>
 	

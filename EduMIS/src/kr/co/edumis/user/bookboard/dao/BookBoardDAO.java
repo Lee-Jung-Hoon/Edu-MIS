@@ -16,7 +16,7 @@ public class BookBoardDAO {
 	}
 
 	public void insertBoard(BookBoardVO board) {
-		session.insert("bookboard.dao.BoardMapper.insertBoard", board);
+		session.insert("bookboard.dao.BoardMapper.insertBoard", board); 
 		session.commit();
 	}
 	
