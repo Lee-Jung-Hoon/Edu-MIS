@@ -6,14 +6,11 @@
 		select zipcode, sido, gugun, dong, ri, bunji
 		  from zipcode
 		 where dong like '%' || #{dong} || '%'
-<!-- 		<where> -->
-<!--           	 <choose> -->
-<!--           	 	<when test="searchType == 'id'">id like '%' || #{searchWord} || '%'</when> -->
-<!--           	 	<when test="searchType == 'addr'">addr like #{searchWord}</when> -->
-<!--           	 	<otherwise> -->
-<!--           	 		email like #{email} -->
-<!--           	 	</otherwise> -->
-<!--           	 </choose> -->
-<!--           </where> -->
-	</select>	
+	</select>
+	
+	<select id="selectAddr" parameterType="string" resultType="PostNoVo">
+		select sido, gugun, dong, ri, bunji
+		  from zipcode
+		 where zipcode = #{value}
+	</select>		
 </mapper>
