@@ -6,7 +6,7 @@
 
 
 <!-- 과제목록을 불러오는 쿼리 -->
- <select id="assList" resultType="AdminAssVO">
+ <select id="adminAssList" resultType="AdminAssVO">
     select no,
            title, 
            to_char(start_Date,'yyyy-mm-dd')as startDate,
@@ -14,8 +14,8 @@
     from t_adm_assignment_board
  </select>
  
- <!-- 과제 상세 조회 -->
-  <select id="assDetailList" parameterType="integer" resultType="AdminAssVO">
+ <!-- 해야할 과제 상세 조회 -->
+  <select id="adminAssDetail" parameterType="integer" resultType="AdminAssVO">
     select no,
            title,
            content,
@@ -49,6 +49,20 @@ insert into t_user_assignment_board(
    #{filePath}
    )
 </insert>
+
+<!-- 내가 제출한 과제 조회 -->
+<select id="userAssDetail" parameterType="integer" resultType="UserAssVO">
+  select id,
+         name,
+         no,
+         content,
+         org_File_Name as orgFileName,
+         real_File_Name as realFileName,
+         file_Path as filePath
+    from t_user_assignment_board
+    where no =#{no}
+</select>
+
    
 
 </mapper>

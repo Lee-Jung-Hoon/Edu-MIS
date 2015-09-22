@@ -18,13 +18,17 @@ public class UserAssServiceImpl implements UserAssService{
 		return uasdao.selectAssignment();
 	}
 	
-	public AdminAssVO detail(int no) throws Exception{
+	public AdminAssVO addetail(int no) throws Exception{
 		
 		return uasdao.selectDetailAssignment(no);
 	}
 	
 	public void registAssignment(UserAssVO userass) throws Exception{
 		uasdao.registAssignment(userass); 
+	}
+	
+	public UserAssVO userdetail(int no)throws Exception{
+		return uasdao.userdetail(no);
 	}
 
 

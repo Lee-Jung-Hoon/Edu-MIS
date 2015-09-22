@@ -17,15 +17,19 @@ public class UserAssDAO {
 	}
 	
 	public List<AdminAssVO> selectAssignment() throws Exception{
-		return sqls.selectList("userAssMapper.assList");
+		return sqls.selectList("userAssMapper.adminAssList");
 	}
 	
 	public AdminAssVO selectDetailAssignment(int no) throws Exception{
-		return sqls.selectOne("userAssMapper.assDetailList", no);
+		return sqls.selectOne("userAssMapper.adminAssDetail", no);
 	}
 	public void registAssignment(UserAssVO userass) throws Exception{
 		sqls.insert("userAssMapper.assRegist", userass);
 		sqls.commit();
 	}
+	public UserAssVO userdetail(int no)throws Exception{
+		return sqls.selectOne("userAssMapper.userAssDetail",no);
+	}
+	
 
 }
