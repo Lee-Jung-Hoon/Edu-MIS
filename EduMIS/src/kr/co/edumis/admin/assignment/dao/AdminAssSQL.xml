@@ -11,7 +11,7 @@
 		end_Date,
 		title,
 		content,
-		<if test="#{orgFileName} != null">
+		<if test="orgFileName != null">
 		org_File_Name,
 		real_File_Name,
 		</if>
@@ -23,7 +23,7 @@
 		to_date(#{endDate}, 'yyyy-mm-dd'),
 		#{title},
 		#{content},
-		<if test="#{orgFileName} != null">
+		<if test="orgFileName != null">
 		#{orgFileName},
 		#{realFileName},
 		</if>

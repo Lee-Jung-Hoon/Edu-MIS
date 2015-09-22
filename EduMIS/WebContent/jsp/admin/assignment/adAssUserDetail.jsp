@@ -3,12 +3,21 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+	<link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
+	<link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>제출 과제 상세</title>
 </head>
-<body>
-	
-	<table>
+<body class = "page-popup">
+	<br/>
+	<br/>
+	<h2 align="center" style = "font-weight: bold;">과제 제출 상세</h2>
+	<br/>
+	<table class = "table-common">
+		<colgroup>
+			<col style = "width:25%"/>
+			<col style = "width:75%"/>
+		</colgroup>
 		<tr>
 			<th>과제 번호</th>
 			<td>${vo.no}</td>
