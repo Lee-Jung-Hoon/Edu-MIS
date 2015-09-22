@@ -13,7 +13,8 @@
 		<typeAlias  alias ="VoteVO" type="kr.co.edumis.user.vote.vo.VoteVO"/>
 		<typeAlias alias="ScheduleVO" type="kr.co.edumis.admin.schedule.vo.ScheduleVO"/>
 		<typeAlias alias="MemoVO" type="kr.co.edumis.user.memo.vo.MemoVO"/>
-		<typeAlias alias="PostNoVO" type="kr.co.edumis.user.postno.vo.PostNoVO"/>
+		<typeAlias alias="PostNoVO" type="kr.co.edumis.user.member.vo.PostNoVO"/>
+		<typeAlias alias="CommentVO" type="kr.co.edumis.admin.comment.vo.CommentVO"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -36,6 +37,7 @@
 		<mapper resource="kr/co/edumis/user/vote/dao/VoteSQL.xml"/>
 		<mapper resource="kr/co/edumis/admin/schedule/dao/ScheduleSQL.xml"/>
 		<mapper resource="kr/co/edumis/user/memo/dao/MemoSQL.xml"/>
-		<mapper resource="kr/co/edumis/user/postno/dao/PostNoSQL.xml"/>
+		<mapper resource="kr/co/edumis/user/member/dao/PostNoSQL.xml"/>
+		<mapper resource="kr/co/edumis/admin/comment/dao/CommentSQL.xml"/>
 	</mappers>
 </configuration>
