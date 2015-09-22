@@ -93,7 +93,7 @@
 										</c:forEach>
 									</ul>
 									<div class="btn-area">
-										<span class="width50"><input type="submit" class="btn txt-vote btn-txt btn-blue" value="투표하기" /></span>
+										<span class="width50"><input type="submit" class="btn txt-vote btn-txt btn-blue" value="투표하기" onclick="voteChk()" /></span>
 										<span class="width50"><a href="${pageContext.request.contextPath}/user/voteResult.do" class="btn txt-result btn-txt btn-blue">결과보기</a></span>
 									</div>
 								</div>
