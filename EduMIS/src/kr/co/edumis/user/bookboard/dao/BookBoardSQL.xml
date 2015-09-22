@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bookboard.dao.BoardMapper">
+
+	<insert id="insertBoard" parameterType="bookBoardVO" >
+		insert into t_book_board(
+			no,
+			id,
+			title,
+			content
+			) values (
+			seq_t_book_board_no.nextval,
+			#{id},
+			#{title},
+			#{content}
+			)
+	</insert>
+	
+	<select id="selectBoard" resultType="bookBoardVO">
+		select 
+		no,
+		id,
+		title,
+		to_char(reg_date, 'yyyy-mm-dd') as regDate 
+		from t_book_board
+		order by no desc
+	</select>
+
+	<select id="detailBoard" parameterType="Integer" resultType="bookBoardVO">
+		select
+		title,
+		content
+		from  t_book_board
+		where no = #{no}
+	</select>
+	
+	
+</mapper>
