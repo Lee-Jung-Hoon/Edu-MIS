@@ -25,7 +25,7 @@
 		<tr>
 		<td>${board.no}</td>
 		<td>${board.id}</td>
-		<td><a href="/MyEduMIS/bookboard/detail.do?no=${board.no}">${board.title}</a></td>
+		<td><a href="/EduMIS/bookboard/detail.do?no=${board.no}">${board.title}</a></td>
 		<td>${board.regDate}</td>
 		</tr>
 	</c:forEach>
@@ -36,6 +36,6 @@
 	</tr>
 	</c:if>
 	</table>
-	<a href="/MyEduMIS/bookboard/writeForm.do">글쓰기</a>
+	<a href="/EduMIS/bookboard/writeForm.do">글쓰기</a>
 </body>
 </html>
