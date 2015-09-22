@@ -1,6 +1,9 @@
-
+ $(function() {    $( "#datepicker" ).datepicker({      showOtherMonths: true,      selectOtherMonths: true    });  });
+ $(function() {    $( "#datepicker2" ).datepicker({      showOtherMonths: true,      selectOtherMonths: true    });  });
 
 $(document).ready(function() {
+	
+	
 	$("#close-writeForm").click(function(){
 		$(".writeForm").css({
 			display : "none"
@@ -16,6 +19,7 @@ $(document).ready(function() {
 	});
 
 	
+
 	
 	
 	
