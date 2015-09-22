@@ -23,14 +23,15 @@
 <link href="/EduMIS/css/scheduleReg.css" rel="stylesheet"
 	type="text/css" />
 
-<style type="text/css">
-.wrap{
-overflow: visible;
-}
-</style>
 
 
 
+<script type="text/javascript">
+
+
+
+
+</script>
 
 
 
@@ -145,26 +146,7 @@ overflow: visible;
 											src="//apis.daum.net/maps/maps3.js?apikey=1cd4d7ef46ee8be854cdc1de37076a25&libraries=services"></script>
 										</td>
 										</tr>
-													
-													
-							<!-- 			<tr>
-											<th>장 소</th>
-											<td colspan="3">
-												<div id="search">
-													<input type="button" value="장소 검색" onclick="search()">
-												</div>
-												<div id="map" style="width: 100%; height: 200px;"></div>
-											</td>
-										</tr> -->
-
-										<!-- 			<tr> -->
-										<!-- 			<th width="30%">장소</th> -->
-										<!-- 			<td> -->
-										<!-- 				<input type= "text" id="place" name="latitude"/><br/> -->
-										<!-- 				<textarea rows="10" cols="70" name ="longitude"></textarea> -->
-										<!-- 			</td> -->
-										<!-- 			</tr>	-->
-										
+					
 									</table>
 									<br />
 									<div align="center">
