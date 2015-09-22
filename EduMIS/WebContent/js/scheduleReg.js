@@ -15,10 +15,12 @@ $(document).ready(function() {
 		$(".writeForm").css({
 			display : "block"
 		});
-
+		
+		
 	});
 
-	
+		
+		
 
 	
 	
