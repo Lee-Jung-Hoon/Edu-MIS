@@ -1,19 +1,4 @@
-.writeForm {
-	width: 500px;
-	height: 500px;
-	position: absolute;
-	background: #dddddd;
-	position: absolute;
-	left: 50%;
-	top: 100px;
-	margin: 0 auto;
-	margin-left: -250px;
-	display: none;
-	background-color: white;
-	border: 1px solid #f6f6f6;
-	z-index: 99;
-	box-sizing: border-box;
-}
+
 
 #reg-Form {
 	border-bottom: solid 1px black;
@@ -25,5 +10,5 @@
 	font-size: 15px;
 }
 #reg-Form th{
-width: 18%;
+width: 15%;
 }
