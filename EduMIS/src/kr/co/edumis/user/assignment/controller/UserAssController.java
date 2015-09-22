@@ -5,6 +5,8 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Enumeration;
 import java.util.List;
 
@@ -38,10 +40,29 @@ public class UserAssController {
 			throws ServletException, IOException {
 		
 		ModelAndView mav = new ModelAndView("/jsp/user/assignment/userAssList.jsp");
-		
+
 		try {
 			List<AdminAssVO> list = service.getList();
 			mav.addObject("list", list);
+			
+			List<String> ckArr = new ArrayList<String>();
+			Calendar c = Calendar.getInstance();
+			c.setTimeInMillis(System.currentTimeMillis());
+			String nowDate = String.valueOf(c.get(c.YEAR))
+					+ String.valueOf(c.get(c.MONTH) < 10 ? "0" + (c.get(c.MONTH) + 1) : (c.get(c.MONTH)) + 1)
+					+ String.valueOf(c.get(c.DATE) < 10 ? "0" + c.get(c.DATE) : c.get(c.DATE));
+			int nDate = Integer.parseInt(nowDate);
+			for (AdminAssVO vo : list) {
+				int startDate = Integer.parseInt(vo.getStartDate().replace("-", ""));
+				int endDate = Integer.parseInt(vo.getEndDate().replace("-", ""));
+
+				if (nDate >= startDate && nDate <= endDate) {
+					ckArr.add("O");
+				} else
+					ckArr.add("X");
+			}
+			mav.addObject("ckArr", ckArr);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -58,22 +79,12 @@ public class UserAssController {
 				
 		try {
 					
-					AdminAssVO admass = service.addetail(no);
+					AdminAssVO admass = service.admdetail(no);
 					mav.addObject("ass", admass);
 
 					UserAssVO userass = service.userdetail(no);
 					mav.addObject("userass", userass);
-					
-					
-					System.out.println(userass.getContent());
-//					널System.out.println(userass.getFilePath());
-					System.out.println(userass.getId());
-					System.out.println(userass.getName());
-//					널System.out.println(userass.getOrgFileName());
-//					널System.out.println(userass.getRealFileName());
-					
-					
-					
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -125,15 +136,70 @@ public class UserAssController {
 	}
 	
 	@RequestMapping("/user/assBfModify.do")
-	public ModelAndView userAssBfModify(HttpServletRequest req, HttpServletResponse res)
+	public ModelAndView userAssBfModify(int no)
 			throws ServletException, IOException {
-		return null;
+		
+		System.out.println(no);
+
+		ModelAndView mav = new ModelAndView("/jsp/user/assignment/userAssModify.jsp");
+
+		try {
+			AdminAssVO admass = service.admdetail(no);
+			mav.addObject("ass", admass);
+			
+			UserAssVO userass = service.userdetail(no);
+			mav.addObject("userass", userass);
+			
+			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return mav;
 		
 	}
 	@RequestMapping("/user/assModify.do")
-	public ModelAndView userAssModify(HttpServletRequest req, HttpServletResponse res)
+	public String userAssModify(UserAssVO userass,HttpServletRequest req)
 			throws ServletException, IOException {
-				return null;
+		MultipartRequest multi = new MultipartRequest(
+	    		req,
+	    		"C:\\java73\\web-workspace\\EduMIS\\WebContent\\assignmentFile",
+				1024*1024*10, 
+				"UTF-8",
+				new DefaultFileRenamePolicy() //파일의 이름이 같을 때 사용할 정책 설정
+				);
+	    
+	    Enumeration<String> e = multi.getFileNames();
+	    
+	    while(e.hasMoreElements()){
+	    	String filename = e.nextElement();
+	    	
+	    	File f = multi.getFile(filename);
+	    	
+	    	if(f != null){
+	    	
+	    	String orgFileName = multi.getOriginalFileName(filename);
+	    	String realFileName = multi.getFilesystemName(filename);
+	    	
+	    	userass.setContent(multi.getParameter("usertext"));
+	    	userass.setOrgFileName(orgFileName);
+	    	userass.setRealFileName(realFileName);
+	    	userass.setNo(Integer.parseInt(multi.getParameter("no")));
+	    	userass.setName("가나다");
+	    	userass.setId("abcde");
+	    	userass.setFilePath("/assignmentFile");
+	    	}
+	    }
+	    
+	    try {
+			service.updateUserAss(userass);
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+
+		return "redirect:/EduMIS/user/assList.do";
 		
 	}
 	

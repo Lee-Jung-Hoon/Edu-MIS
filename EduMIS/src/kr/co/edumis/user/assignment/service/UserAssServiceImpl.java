@@ -18,7 +18,7 @@ public class UserAssServiceImpl implements UserAssService{
 		return uasdao.selectAssignment();
 	}
 	
-	public AdminAssVO addetail(int no) throws Exception{
+	public AdminAssVO admdetail(int no) throws Exception{
 		
 		return uasdao.selectDetailAssignment(no);
 	}
@@ -29,6 +29,11 @@ public class UserAssServiceImpl implements UserAssService{
 	
 	public UserAssVO userdetail(int no)throws Exception{
 		return uasdao.userdetail(no);
+	}
+	
+	public void updateUserAss(UserAssVO userass)throws Exception{
+		uasdao.updateUserAss(userass);
+		
 	}
 
 
