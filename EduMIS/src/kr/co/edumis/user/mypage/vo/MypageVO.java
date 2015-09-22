@@ -16,6 +16,7 @@ public class MypageVO {
 	private String phone2;
 	private String phone3;
 	private String email;
+	private String emailDomain;
 	private String major;
 	private String joinDate;
 	private String dropCheck;
@@ -25,6 +26,12 @@ public class MypageVO {
 	private String techLeader;
 	private String grade;
 	
+	public String getEmailDomain() {
+		return emailDomain;
+	}
+	public void setEmailDomain(String emailDomain) {
+		this.emailDomain = emailDomain;
+	}
 	public String getNo() {
 		return no;
 	}

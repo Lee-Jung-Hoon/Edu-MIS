@@ -1,6 +1,7 @@
 package kr.co.edumis.user.mypage.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -26,11 +27,16 @@ public class MypageController {
 			throws ServletException, IOException{
 		String id = "scot1234";
 		try {
-			MypageVO mvo = service.getMyinfo(id);
+			ModelAndView mav = new ModelAndView("/jsp/mypage/detail_myinfo.jsp");
+			System.out.println(1);
+			List<MypageVO> list = service.getMyinfo(id);
+			System.out.println(list.size());
+			System.out.println(list.get(0).getId());
+			mav.addObject("list", list);
+			return mav;
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
-		return null;
 	}
 	
 }
