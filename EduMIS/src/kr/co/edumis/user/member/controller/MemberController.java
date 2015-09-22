@@ -23,7 +23,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/user/member/join.do")
-	public ModelAndView write(MemberVO member, HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	public ModelAndView join(MemberVO member, HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		ModelAndView mav = new ModelAndView("/jsp/user/member/main.jsp");
 		
