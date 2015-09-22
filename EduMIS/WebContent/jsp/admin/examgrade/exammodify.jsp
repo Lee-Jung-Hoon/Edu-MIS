@@ -66,47 +66,30 @@
 						<!--  test-class 부분을  s-aaa 형식의 이름으로 클래스 잡아주세요  common 클래스 이름은 지우지 마세요 -->
 						<section class="test-class common">
 							<!--  작업부분 제목 써주세요 -->
-							<h2>성적 입력</h2>
+							<h2>성적 수정</h2>
 							<!-- 작업시작부분 div안에 클래스명 넣어서 작업 해 주세요 나머지 url부분은 추후 취합할 예정이니 일단 MENU 부분의 링크태그에 값 넣어서 작업 해주시면 됩니다. 게시판 담당하시는 분들은 추후 공통 클래스 드릴테니 일단 테이블로 작업 부탁드립니다. -->
-
 							<div class="">
-								<form name="examForm"
-									action="${pageContext.request.contextPath}/examgrade/writescore.do">
-									<table border="1" class="table-board">
-										<c:if test="${empty member}">
+									<form name="examForm" action="${pageContext.request.contextPath}/examgrade/ModifyScoreUpdate.do">
+							<input type="hidden" id="no" name="no" value="${no}">
+										<table class="table-board">
 											<tr>
-												<td>입력할 회원이 없습니다.</td>
+												<th width="150px">이름</th>
+												<th width="200px">아이디</th>
+												<th width="100px">점수</th>
+												<th width="200px">시험일</th>
 											</tr>
-										</c:if>
-
-										<c:if test="${!empty member}">
+											<c:forEach var="list" items="${list}">
 											<tr>
-												<th>시험제목</th>
-												<td>${board.title}</td>
-												<td><input type="hidden" value="${board.title}" name="title"/></td>
-												<td><input type="hidden" value="${board.content}" name="content"/></td>
-												<td><input type="hidden" value="${board.no}" name="no"/></td>
+												<td width="150px">${list.name}</td>
+												<td width="200px">${list.id}</td>
+												<td width="100px"><input id="${list.id}" name="${list.id}" type="text" value="${list.score}"></td>
+												<td width="200px">${list.regDate}</td>
 											</tr>
-											<tr>
-												<th>시험내용</th>
-												<td>${board.content}</td>
-											</tr>	
-											<tr>
-												<th>시험일자</th>
-												<td>${board.regDate}</td>
-											</tr>
-											<c:forEach var="member" items="${member}">
-												<tr>
-													<td width="80px"><c:out value="${member.name}" /></td>
-													<td> <input type="text"	id="${member.id}" name="${member.id}"></td>
-												</tr>
 											</c:forEach>
-										</c:if>
-									</table>
+										</table>
 									<input type="submit" value="입력">
 								</form>
 							</div>
-							<!--  작업완료 부분 -->
 						</section>
 					</div>
 				</div>

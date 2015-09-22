@@ -52,4 +52,16 @@ public class ExamGradeServiceImpl implements ExamGradeService {
 		List<ExamGradeVO> list = dao.getGradeList(no);
 		return list;
 	}
+
+	@Override
+	public List<ExamGradeVO> getGrade(String id) throws Exception {
+		List<ExamGradeVO> list = dao.getGrade(id);
+		return list;
+	}
+
+	@Override
+	public void UpdateScore(ExamGradeVO g) throws Exception {
+		dao.UpdateScore(g);
+	}
+
 }

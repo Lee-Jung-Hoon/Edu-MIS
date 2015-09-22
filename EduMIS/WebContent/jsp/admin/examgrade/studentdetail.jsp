@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -12,6 +12,37 @@
 <link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script>
+google.load('visualization', '1', {packages: ['corechart', 'line']});
+google.setOnLoadCallback(drawBasic);
+var num=1;
+
+function drawBasic() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', '회차');
+      data.addColumn('number', '점수');
+      
+      <c:forEach var="list" items="${list}">
+		data.addRows([ [Number(num++), Number("${list.score}")]]);
+		</c:forEach>
+
+      var options = {
+        hAxis: {
+          title: '회차'
+        },
+        vAxis: {
+          title: '점수'
+        }
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+      chart.draw(data, options);
+    }
+    
+</script>
 </head>
 <body class="page-join">
 	<div class="wrap">
@@ -66,45 +97,12 @@
 						<!--  test-class 부분을  s-aaa 형식의 이름으로 클래스 잡아주세요  common 클래스 이름은 지우지 마세요 -->
 						<section class="test-class common">
 							<!--  작업부분 제목 써주세요 -->
-							<h2>성적 입력</h2>
+							<h2>성적 상세보기</h2>
 							<!-- 작업시작부분 div안에 클래스명 넣어서 작업 해 주세요 나머지 url부분은 추후 취합할 예정이니 일단 MENU 부분의 링크태그에 값 넣어서 작업 해주시면 됩니다. 게시판 담당하시는 분들은 추후 공통 클래스 드릴테니 일단 테이블로 작업 부탁드립니다. -->
 
 							<div class="">
-								<form name="examForm"
-									action="${pageContext.request.contextPath}/examgrade/writescore.do">
-									<table border="1" class="table-board">
-										<c:if test="${empty member}">
-											<tr>
-												<td>입력할 회원이 없습니다.</td>
-											</tr>
-										</c:if>
-
-										<c:if test="${!empty member}">
-											<tr>
-												<th>시험제목</th>
-												<td>${board.title}</td>
-												<td><input type="hidden" value="${board.title}" name="title"/></td>
-												<td><input type="hidden" value="${board.content}" name="content"/></td>
-												<td><input type="hidden" value="${board.no}" name="no"/></td>
-											</tr>
-											<tr>
-												<th>시험내용</th>
-												<td>${board.content}</td>
-											</tr>	
-											<tr>
-												<th>시험일자</th>
-												<td>${board.regDate}</td>
-											</tr>
-											<c:forEach var="member" items="${member}">
-												<tr>
-													<td width="80px"><c:out value="${member.name}" /></td>
-													<td> <input type="text"	id="${member.id}" name="${member.id}"></td>
-												</tr>
-											</c:forEach>
-										</c:if>
-									</table>
-									<input type="submit" value="입력">
-								</form>
+							<input type="button" value="목록" onclick="location.href='/EduMIS/jsp/admin/examgrade/exammain.jsp'">
+								<div id="chart_div"></div>
 							</div>
 							<!--  작업완료 부분 -->
 						</section>

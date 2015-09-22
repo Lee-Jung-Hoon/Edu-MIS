@@ -29,11 +29,12 @@ public class ExamGradeController {
 
 	@RequestMapping("/examgrade/ExamTurnWrite.do")
 	public ModelAndView ExamTurnWrite(HttpServletRequest req) {
-		ModelAndView mav = new ModelAndView("redirect:/EduMIS/examgrade/ExamTurnList.do");
+		ModelAndView mav = new ModelAndView("redirect:/EduMIS/jsp/admin/examgrade/exammain.jsp");
 
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
-		String date = req.getParameter("date");
+//		String date = req.getParameter("datepicker");
+		String date = "19910915";
 
 		ExamBoardVO board = new ExamBoardVO();
 		board.setTitle(title);
@@ -80,7 +81,7 @@ public class ExamGradeController {
 
 	@RequestMapping("/examgrade/writescore.do")
 	public ModelAndView WriteScore(HttpServletRequest req) {
-		ModelAndView mav = new ModelAndView("redirect:/EduMIS/examgrade/ExamTurnList.do");
+		ModelAndView mav = new ModelAndView("redirect:/EduMIS/jsp/admin/examgrade/exammain.jsp");
 
 		List<MemberVO> member;
 		try {
@@ -121,4 +122,75 @@ public class ExamGradeController {
 		}
 		return mav;
 	}
+	
+	@RequestMapping("/examgrade/StudentGradeDetail.do")
+	public ModelAndView StudentGradeDetail(String id) {
+		ModelAndView mav = new ModelAndView("/jsp/admin/examgrade/studentdetail.jsp");
+		
+		try {
+			List<ExamGradeVO> list = service.getGrade(id);
+			mav.addObject("list", list);
+			System.out.println(list.size());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
+	
+	@RequestMapping("/examgrade/ExamStudentList.do")
+	public ModelAndView ExamStudentList(HttpServletRequest req) {
+		ModelAndView mav = new ModelAndView("/jsp/admin/examgrade/studentlist.jsp");
+
+		List<MemberVO> member;
+		try {
+			member = service.getMemeberList();
+			mav.addObject("member", member);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
+	
+	
+	@RequestMapping("/examgrade/ExamGradeModifyForm.do")
+	public ModelAndView ExamGradeModifyForm(String no) {
+		ModelAndView mav = new ModelAndView("/jsp/admin/examgrade/exammodify.jsp");
+
+		try {
+			List<ExamGradeVO> grade = service.getGradeList(no);
+			mav.addObject("list", grade);
+			mav.addObject("no", no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
+	
+	@RequestMapping("/examgrade/ModifyScoreUpdate.do")
+	public ModelAndView ExamGradeModifyForm(HttpServletRequest req) {
+		ModelAndView mav = new ModelAndView("/jsp/admin/examgrade/exammain.jsp");
+
+		String no = req.getParameter("no");
+		System.out.println(no);
+		try {
+			List<ExamGradeVO> grade = service.getGradeList(no);
+			for(ExamGradeVO g : grade) {
+				g.setScore(Integer.parseInt(req.getParameter(g.getId())));
+				g.setNo(no);
+				service.UpdateScore(g);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
+
+//	<th width="100px">번호</th>
+//	<th width="200px">이름</th>
+//	<th width="300px">아이디</th>
+//	<th width="100px">가입일</th>
+	
+	
+//	ExamTurnModify.do
 }
