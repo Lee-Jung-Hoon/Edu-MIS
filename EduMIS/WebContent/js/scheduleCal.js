@@ -10,13 +10,6 @@
 	// 전달
 	var nMonth = m + 1;
 	
-	function a(){
-		alert("a");
-	}
-					function requestMsg() {
-						alert("aa");
-// 						sendRequest( "/writeSchedule.do",  null , responseMsg );
-					}
 
 					function responseMsg() {
 						if(httpRequest.readyState == 4){
@@ -43,16 +36,22 @@
 				$(".test00 td").click(function(){
 					
 					var tdId = $(this).attr("id");
-					var dateVal = $("#"+tdId).html();
+					var dateVal =document.getElementById(tdId).textContent;
 					if(nMonth < 10 ){
-						nMonth = "0"+nMonth;
+						var nMonth1 = "0"+nMonth;
+					}else{
+						var nMonth1 = nMonth;
+						
 					}
 					if(dateVal < 10){
-						dateVal = "0"+dateVal;
+						var dateVal1 = "0"+dateVal;
+					}else{
+						var dateVal1 = dateVal;
+						
 					}
-					var datepickerMsg = nMonth +"/"+ dateVal +"/"+y;
+					var datepickerMsg = nMonth1 +"/"+ dateVal1 +"/"+y;
 					$("#datepicker").val(datepickerMsg);
-					var datepickerMsg = nMonth +"/"+ dateVal +"/"+y;
+					var datepickerMsg = nMonth1 +"/"+ dateVal1 +"/"+y;
 					$("#datepicker2").val(datepickerMsg);
 				})
 				
