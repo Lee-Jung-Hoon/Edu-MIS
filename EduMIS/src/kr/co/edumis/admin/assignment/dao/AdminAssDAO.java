@@ -59,7 +59,7 @@ public class AdminAssDAO {
 	}
 
 	public UserAssVO selectSubject(Map<String, String> param) {
-		return null;
+		return (UserAssVO)sqlMapper.selectOne("adminAssignment.getSubject", param);
 	}
 
 }
