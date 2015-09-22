@@ -46,7 +46,8 @@ public class LoginController {
 			ModelAndView mav = new ModelAndView();
 			if (member != null) { 
 				session.setAttribute("userInfo", member);
-				mav.setView("redirect:" + req.getContextPath());
+				mav.setView("redirect:/EduMIS/jsp/user/login/loginMain.jsp" );
+				System.out.println(id);
 			} else {
 				mav.setView("redirect:/EduMIS/jsp/user/login/loginForm.jsp");
 			}
@@ -55,4 +56,27 @@ public class LoginController {
 			throw new ServletException(e);
 		}
 	}
+	
+	@RequestMapping("/login/loginForm.do")
+	public ModelAndView loginForm(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		ModelAndView mav = new ModelAndView("redirect:/EduMIS/jsp/user/login/loginForm.jsp");
+		return mav;
+	}
+	
+//	@RequestMapping("/login/logout.do")
+//	public ModelAndView logout(HttpServletRequest req, HttpServletResponse res)
+//			throws ServletException, IOException {
+//		try {
+//			HttpSession session = req.getSession();
+//			// 세션 삭제
+//			session.invalidate();
+//			
+//			// 프로젝트 / index.jsp 페이지 호출
+////			res.sendRedirect(req.getContextPath());
+//			ModelAndView mav = new ModelAndView("redirect:" + req.getContextPath());
+//			return mav;
+//		} catch (Exception e) {
+//			throw new ServletException(e);
+//		}
+//	}
 }
