@@ -52,4 +52,15 @@ public class ExamGradeDAO {
 		return list;
 	}
 
+	public List<ExamGradeVO> getGrade(String id) {
+		List<ExamGradeVO> list = session.selectList("examgrade.getGrade", id);
+		return list;
+	}
+
+	public void UpdateScore(ExamGradeVO g) {
+		session.update("examgrade.setScore", g);
+		session.commit();
+	}
+
+
 }

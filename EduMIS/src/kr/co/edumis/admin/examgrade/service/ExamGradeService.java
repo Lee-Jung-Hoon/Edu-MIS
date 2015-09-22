@@ -22,5 +22,9 @@ public interface ExamGradeService {
 
 	public List<ExamGradeVO> getGradeList(String no) throws Exception;
 
+	public List<ExamGradeVO> getGrade(String id) throws Exception;
+
+	public void UpdateScore(ExamGradeVO g) throws Exception;
+
 
 }
