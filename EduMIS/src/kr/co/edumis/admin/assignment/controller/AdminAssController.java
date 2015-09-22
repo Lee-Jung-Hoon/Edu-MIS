@@ -108,6 +108,7 @@ public class AdminAssController {
 		ModelAndView mav = new ModelAndView("/jsp/admin/assignment/adAssList.jsp");
 		mav.addObject("list", list);
 
+		
 		List<String> ckArr = new ArrayList<String>();
 		Calendar c = Calendar.getInstance();
 		c.setTimeInMillis(System.currentTimeMillis());
