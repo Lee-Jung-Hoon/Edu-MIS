@@ -40,8 +40,21 @@
 			
 				
 				
-				
-			
+				$(".test00 td").click(function(){
+					
+					var tdId = $(this).attr("id");
+					var dateVal = $("#"+tdId).html();
+					if(nMonth < 10 ){
+						nMonth = "0"+nMonth;
+					}
+					if(dateVal < 10){
+						dateVal = "0"+dateVal;
+					}
+					var datepickerMsg = nMonth +"/"+ dateVal +"/"+y;
+					$("#datepicker").val(datepickerMsg);
+					var datepickerMsg = nMonth +"/"+ dateVal +"/"+y;
+					$("#datepicker2").val(datepickerMsg);
+				})
 				
 				
 				
@@ -125,6 +138,9 @@
 				$(".test00 td").on(
 						"click",
 						function() {
+						
+							
+							 
 							var index = $(this).index();
 							if ($(this).hasClass('open')) {
 								$('.test00 td').removeClass('open');
