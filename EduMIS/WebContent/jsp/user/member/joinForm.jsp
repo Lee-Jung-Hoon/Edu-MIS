@@ -7,6 +7,111 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width">
 	<title>회원가입</title>
+	<script>
+function chkForm() {
+	var member = document.memberForm;
+
+	var id = member.id.value;
+	if (id == "") {
+		alert("ID를 입력하세요");
+		member.id.focus();
+		return false;
+	}
+	
+	var name = member.name.value;
+	if (name == "") {
+		alert("이름을 입력하세요");
+		member.name.focus();
+		return false;
+	}
+	
+	var pass = member.pass.value;
+	if (pass == "") {
+		alert("비밀번호를 입력하세요");
+		member.pass.focus();
+		return false;
+	}
+	
+	var passChk= member.passChk.value;
+	if (passChk == "") {
+		alert("비밀번호 확인을 입력하세요");
+		member.passChk.focus();
+		return false;
+	}
+	if(pass!=passChk) {
+		alert("비밀번호를 확인하세요");
+		f.pass.focus();
+		f.pass.select();
+		return false;
+		}
+	
+	var basicAddr= member.basicAddr.value;
+	if (basicAddr == "") {
+		alert("주소를 입력하세요");
+		member.basicAddr.focus();
+		return false;
+	}
+	var detailAddr= member.detailAddr.value;
+	if (detailAddr == "") {
+		alert("상세 주소를 입력하세요");
+		member.detailAddr.focus();
+		return false;
+	}
+	
+	var phone1 = member.phone1.value;
+	if (phone1 == "") {
+		if(value == "1") {
+		alert("휴대폰 번호를 입력하세요");
+		member.phone1.focus();
+		return false;
+		}
+	}
+	var phone2 = member.phone2.value;
+	if (phone2 == "") {
+		alert("휴대폰 번호를 입력하세요");
+		member.phone2.focus();
+		return false;
+	}
+	var phone3 = member.phone3.value;
+	if (phone3 == "") {
+		alert("휴대폰 번호를 입력하세요");
+		member.phone3.focus();
+		return false;
+	}
+	
+	var email= member.email.value;
+	if (email == "") {
+		alert("이메일을 입력하세요");
+		member.email.focus();
+		return false;
+	}
+	
+	var major= member.major.value;
+	if (major == "") {
+		alert("전공여부를 선택하세요");
+		member.major.focus();
+		return false;
+	}
+}
+
+// var httpRequest;
+// function idCheck() {
+// 	var idVal = document.getElementById("id").value;
+// 	httpRequest = new XMLHttpRequest();
+// 	httpRequest.onreadystatechange = callBack;
+// 	httpRequest.open("GET", "idCheck/idCheck.do?id=" + idVal, true);
+// 	httpRequest.send(null);
+// }
+// function callBack() {
+// 	if (httpRequest.readyState == 4) {
+// 		if (httpRequest.status == 200) {
+// 		var idResult = document.getElementById("idResult");
+// 		idResult.innerHTML = httpRequest.responseText;
+// 		}
+// 	}
+// }
+</script>
+
 	<link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
 	<link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
@@ -69,7 +174,7 @@
 						<section class="join common">
 							<h2>회원가입</h2>
 							<div class="table-common">
-								<form name="memberForm" action ="/EduMIS/user/member/join.do" method="POST">
+								<form name="memberForm" onsubmit="return chkForm()" action ="/EduMIS/user/member/join.do" method="POST">
 									<table>
 										<colgroup>
 											<col style="width:20%;" />
@@ -100,7 +205,7 @@
 											</tr>
 											<tr>
 												<th><label for="passwd">비밀번호</label></th>
-												<td><input type="password" id="passwd" name="password" placeholder="비밀번호 입력" class="size-input01" /></td>
+												<td><input type="password" id="passwd" name="pass" placeholder="비밀번호 입력" class="size-input01" /></td>
 											</tr>
 											<tr>
 												<th><label for="passwd2">비밀번호 재입력</label></th>
@@ -115,13 +220,13 @@
 														<option value="<%=i%>"><%=i+"년"%></option>
 														<%} %>
 													</select>
-													<select id="month">
+													<select id="month" name="month">
 														<option value="">월</option>
 														<% for(int i=1; i<13; i++){ %>
 														<option value="<%=i%>"><%=i+"월"%></option>
 														<%} %>
 													</select>
-													<select id="day">
+													<select id="day" name="day">
 														<option value="">일</option>
 														<% for(int i=1; i<32; i++){ %>
 														<option value="<%=i%>"><%=i+"일"%></option>
@@ -132,7 +237,7 @@
 											<tr>
 												<th><label for="addr">주소</label></th>
 												<td>
-													<div class="post-addr"><label for="">(우)</label><input type="text" name="postNo" class="size-input03" /><button type="button" class="btn-post btn-txt btn-blue">우편번호검색</button></div>
+													<div class="post-addr"><label for="">(우)</label><input type="text" name="postNo" class="size-input03" style="width:100px" /><button type="button" class="btn-post btn-txt btn-blue">우편번호검색</button></div>
 													<input type="text" id="addr" name="basicAddr" class="size-input02" placeholder="주소를 동까지 입력해주세요" /><span class="txt-rest">(동까지 입력)</span>
 													</td>
 											</tr>
