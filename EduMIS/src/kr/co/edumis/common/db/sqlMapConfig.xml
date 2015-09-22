@@ -16,6 +16,7 @@
 		<typeAlias alias="PostNoVO" type="kr.co.edumis.user.member.vo.PostNoVO"/>
 		<typeAlias alias="CommentVO" type="kr.co.edumis.admin.comment.vo.CommentVO"/>
 		<typeAlias alias="bookBoardVO" type="kr.co.edumis.user.bookboard.vo.BookBoardVO"/>
+		<typeAlias alias="MypageVO" type = "kr.co.edumis.user.mypage.vo.MypageVO"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -41,5 +42,6 @@
 		<mapper resource="kr/co/edumis/user/member/dao/PostNoSQL.xml"/>
 		<mapper resource="kr/co/edumis/admin/comment/dao/CommentSQL.xml"/>
 		<mapper resource="kr/co/edumis/user/bookboard/dao/BookBoardSQL.xml"/>
+		<mapper resource="kr/co/edumis/user/mypage/dao/MypageSQL.xml"/>
 	</mappers>
 </configuration>
