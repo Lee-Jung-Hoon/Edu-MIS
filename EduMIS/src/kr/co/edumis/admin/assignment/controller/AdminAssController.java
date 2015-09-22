@@ -17,6 +17,7 @@ import kr.co.edumis.admin.assignment.vo.AdminAssVO;
 import kr.co.edumis.framework.Controller;
 import kr.co.edumis.framework.ModelAndView;
 import kr.co.edumis.framework.RequestMapping;
+import kr.co.edumis.user.assignment.vo.UserAssVO;
 import kr.co.edumis.user.member.vo.MemberVO;
 
 @Controller
@@ -41,6 +42,26 @@ public class AdminAssController {
 		System.out.println(adminassVO.getRealFileName());
 		
 		List<MemberVO> list = service.studentAssignmentList();
+		mav.addObject("list", list);
+		
+		List<UserAssVO> subList = service.getsubList();
+		
+		for(MemberVO vo : list){
+			boolean bool = false;
+			
+			for(UserAssVO uVO : subList) {
+				if(vo.getName().equals(uVO.getName())){
+					bool = true;
+					break;
+				}
+			}
+			
+			if(bool) {
+				vo.setPass("O");
+			} else {
+				vo.setPass("X");
+			}
+		}
 		
 		return mav;
 	}
@@ -163,6 +184,13 @@ public class AdminAssController {
 		service.delete(no);
 		
 		return "redirect:/EduMIS/admin/assList.do";
+	}
+	
+	@RequestMapping("/admin/assUserDetail.do")
+	public ModelAndView AssUserDetail(String id) throws Exception{
+		
+		
+		return null;
 	}
 
 	

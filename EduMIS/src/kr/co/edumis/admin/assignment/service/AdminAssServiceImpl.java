@@ -83,4 +83,10 @@ public class AdminAssServiceImpl implements AdminAssService {
 		return dao.selectMember();
 	}
 
+	@Override
+	public List<UserAssVO> getsubList() throws Exception {
+
+		return dao.selectSubmit();
+	}
+
 }

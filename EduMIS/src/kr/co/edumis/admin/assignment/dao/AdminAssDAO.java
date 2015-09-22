@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 
 import kr.co.edumis.admin.assignment.vo.AdminAssVO;
 import kr.co.edumis.common.db.MyAppSqlConfig;
+import kr.co.edumis.user.assignment.vo.UserAssVO;
+import kr.co.edumis.user.member.vo.MemberVO;
 
 public class AdminAssDAO {
 	
@@ -43,6 +45,16 @@ public class AdminAssDAO {
 	public void delete(String no) {
 		// TODO Auto-generated method stub
 		sqlMapper.update("adminAssignment.deleteAssignment", no);
+	}
+
+	public List<MemberVO> selectMember() {
+		// TODO Auto-generated method stub
+		return sqlMapper.selectList("adminAssignment.studentList");
+	}
+
+	public List<UserAssVO> selectSubmit() {
+
+		return sqlMapper.selectList("adminAssignment.submitList");
 	}
 
 }

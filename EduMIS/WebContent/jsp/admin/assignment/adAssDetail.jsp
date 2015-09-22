@@ -23,6 +23,18 @@
 		location.href = "${pageContext.request.contextPath}/admin/assList.do";
 	}
 	
+	function popUp(type){
+		switch (type) {
+		case "X":
+			window.open("http://www.naver.com", // 팝업창에 띄울 페이지 주소
+			"제출 상세", // 팝업창에 이름 설정
+			"width=600, height=500, resizable=no");
+			break;
+		}
+		
+	}
+	
+	
 
 </script>
 <link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
@@ -128,10 +140,18 @@
 								</div>
 								<div>
 								<h2>제출 목록</h2>
-									<table class="tb-test3">
+									<table class="tb-test">
 										<tr>
-											<th></th>
+											<th>이름</th>
+											<th>제출 여부</th>
 										</tr>
+											<c:forEach var = "list" items ="${list}">
+												<tr>
+													<td><a href="javascript:popUp('${list.pass}');"
+														style = "text-decoration: none;">${list.name}</a></td>
+													<td>${list.pass}</td>
+												</tr>
+											</c:forEach>
 									</table>
 								</div>
 							<!--  작업완료 부분 -->
