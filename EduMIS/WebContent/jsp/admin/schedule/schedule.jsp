@@ -11,11 +11,14 @@
 <link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script type="text/javascript"
 	src="http://apis.daum.net/maps/maps3.js?apikey=1cd4d7ef46ee8be854cdc1de37076a25&libraries=services"></script>
-
+<link rel="stylesheet" href="/resources/demos/style.css">
+<link href="css/layout.css" rel="stylesheet" type="text/css" />
+<link href="css/common1.css" rel="stylesheet" type="text/css" />
 <script src="/EduMIS/js/scheduleCal.js"></script>
 <script src="/EduMIS/js/scheduleReg.js"></script>
 <link href="/EduMIS/css/scheduleCal.css" rel="stylesheet"
@@ -23,17 +26,40 @@
 <link href="/EduMIS/css/scheduleReg.css" rel="stylesheet"
 	type="text/css" />
 
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="js/jquery.leanModal.min.js"></script>
 
 
 
 <script type="text/javascript">
-
-
-
-
+$(function() {
+	$("#datepicker").datepicker({
+		showOtherMonths : true,
+		selectOtherMonths : true
+	});
+});
+$(function() {
+	$("#datepicker2").datepicker({
+		showOtherMonths : true,
+		selectOtherMonths : true
+	});
+});
 </script>
 
+<script type="text/javascript">
+	$(function() {
+		$('#writeForm').submit(function(e) {
+			return false;
+		});
 
+		$('#modaltrigger').leanModal({
+			top : 110,
+			overlay : 0.8,
+			closeButton : ".hidemodal"
+		});
+	});
+</script>
 
 
 </head>
@@ -99,8 +125,11 @@
 
 
 
-							<div class="writeForm">
-								<div  style="font-size: 20px;">일정 등록</div>
+
+<!------------------------------------( 등록 폼)----------------------------------------------------------------------- -->
+
+							<div id="loginmodal" style="display: none;">
+								<div style="font-size: 20px;">일정 등록</div>
 								<hr />
 								<form action="/EduMIS/regschedule.do">
 									<table id="reg-Form" style="border-collapse: collapse;">
@@ -109,10 +138,10 @@
 											<td><input type="text" id="datepicker" name="startDate"
 												size="10px" /> ~ <input type="text" id="datepicker2"
 												name="endDate" size="10px" /></td>
-										<th >중 요 도</th>
+											<th>중 요 도</th>
 											<td><select id="importance" name="importance">
 													<option value="1" selected="selected">보통</option>
-													<option value="2" >중요함</option>
+													<option value="2">중요함</option>
 													<option value="3">매우중요함</option>
 											</select></td>
 										</tr>
@@ -123,42 +152,40 @@
 										</tr>
 										<tr>
 											<th>내 용</th>
-											<td colspan="3"><textarea rows="5" id="content" name="content"
-													cols="45" maxlength="100px"></textarea></td>
-													</tr>
-													
-													
-											<tr>
+											<td colspan="3"><textarea rows="5" id="content"
+													name="content" cols="45" maxlength="100px"></textarea></td>
+										</tr>
+
+
+										<tr>
 											<th width="30%">장 소</th>
 											<td colspan="3">
 												<div id="search">
-												    <input type="text" id="place" name="place">
-													<input type="button" value="장소 검색" onclick="search()"> 
-													<input type="hidden" id="latitude" name="latitude"> 
-													<input type="hidden" id="longitude" name="longitude">
+													<input type="text" id="place" name="place"> <input
+														type="button" value="장소 검색" onclick="search()"> <input
+														type="hidden" id="latitude" name="latitude"> <input
+														type="hidden" id="longitude" name="longitude">
 												</div>
 												<div id="map" style="width: 100%; height: 200px;"></div>
 											</td>
 										</tr>
 										<tr>
-										<hr/>
-										<script type="text/javascript"
-											src="//apis.daum.net/maps/maps3.js?apikey=1cd4d7ef46ee8be854cdc1de37076a25&libraries=services"></script>
-										</td>
+											<hr />
+											<script type="text/javascript"
+												src="//apis.daum.net/maps/maps3.js?apikey=1cd4d7ef46ee8be854cdc1de37076a25&libraries=services"></script>
+											</td>
 										</tr>
-					
+
 									</table>
 									<br />
 									<div align="center">
-										<span><input type="submit" value="저장" size="10px" />&nbsp;&nbsp;<input
-											type="button" value="취소" id="close-writeForm"
-											size="10px" /></span>
+										<span><input type="submit" value="저장" size="10px" /></span>
 									</div>
 								</form>
 							</div>
 
 
-
+<!------------------------------------------------------------------------------------------------------------------------------------ -->
 
 
 
@@ -213,10 +240,6 @@
 										</tr>
 									</table>
 								</div>
-								<div class="test01">
-									<input type="button" class="btn-txt1 txt-plan" id="writeBt"
-										onclick="a()" style="width: 60px;">
-								</div>
 								<div class="test00">
 									<table class="tb-1line">
 										<tr>
@@ -231,8 +254,9 @@
 									</table>
 								</div>
 								<div class="test01">
-									<span></span> <input type="button" class="btn-txt1 txt-plan"
-										id="writeBt" style="width: 60px">
+								<a	href="#loginmodal" class="flatbtn" id="modaltrigger"><input
+													type="button" class="btn-txt1 txt-plan" id="writeBt"
+													style="width: 60px"></a>
 								</div>
 								<div class="test00">
 									<table class="tb-2line">
@@ -248,8 +272,10 @@
 									</table>
 								</div>
 								<div class="test01">
-									<span></span> <input type="button" class="btn-txt1 txt-plan"
-										id="writeBt" style="width: 60px">
+<a	href="#loginmodal" class="flatbtn" id="modaltrigger"><input
+													type="button" class="btn-txt1 txt-plan" id="writeBt"
+													style="width: 60px"></a>
+
 								</div>
 								<div class="test00">
 									<table class="tb-3line">
@@ -265,8 +291,10 @@
 									</table>
 								</div>
 								<div class="test01">
-									<span></span> <input type="button" class="btn-txt1 txt-plan"
-										id="writeBt" style="width: 60px">
+<a	href="#loginmodal" class="flatbtn" id="modaltrigger"><input
+													type="button" class="btn-txt1 txt-plan" id="writeBt"
+													style="width: 60px"></a>
+
 								</div>
 								<div class="test00">
 									<table class="tb-4line">
@@ -282,8 +310,11 @@
 									</table>
 								</div>
 								<div class="test01">
-									<span></span> <input type="button" class="btn-txt1 txt-plan"
-										id="writeBt" style="width: 60px">
+
+<a	href="#loginmodal" class="flatbtn" id="modaltrigger"><input
+													type="button" class="btn-txt1 txt-plan" id="writeBt"
+													style="width: 60px"></a>
+
 								</div>
 								<div class="test00">
 									<table class="tb-5line">
@@ -300,8 +331,11 @@
 									</table>
 								</div>
 								<div class="test01">
-									<span></span> <input type="button" class="btn-txt txt-plan"
-										id="writeBt" style="width: 60px">
+
+<a	href="#loginmodal" class="flatbtn" id="modaltrigger"><input
+													type="button" class="btn-txt1 txt-plan" id="writeBt"
+													style="width: 60px"></a>
+
 								</div>
 							</div>
 							<!--  작업완료 부분 -->
