@@ -74,22 +74,22 @@ function chkForm() {
 	}
 }
 
-// 	var httpRequest;
-// 	function idCheck() {
-// 		var idVal = document.getElementById("id").value;
-// 		httpRequest = new XMLHttpRequest();
-// 		httpRequest.onreadystatechange = callBack;
-// 		httpRequest.open("GET", "idCheck/idCheck.do?id=" + idVal, true);
-// 		httpRequest.send(null);
-// 	}
-// 	function callBack() {
-// 		if (httpRequest.readyState == 4) {
-// 			if (httpRequest.status == 200) {
-// 			var idResult = document.getElementById("idResult");
-// 			idResult.innerHTML = httpRequest.responseText;
-// 			}
-// 		}
-// 	}
+	var httpRequest;
+	function idCheck() {
+		var idVal = document.getElementById("id").value;
+		httpRequest = new XMLHttpRequest();
+		httpRequest.onreadystatechange = callBack;
+		httpRequest.open("GET", "idCheck/idCheck.do?id=" + idVal, true);
+		httpRequest.send(null);
+	}
+	function callBack() {
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+			var idResult = document.getElementById("idResult");
+			idResult.innerHTML = httpRequest.responseText;
+			}
+		}
+	}
 </script>
 </head>
 <body>
