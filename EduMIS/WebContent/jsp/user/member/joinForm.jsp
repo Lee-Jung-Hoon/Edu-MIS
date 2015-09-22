@@ -116,6 +116,7 @@ function chkForm() {
 	<link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script src="httprequest.js"></script>
 </head>
 <body class="page-join btn-page">
 	<div class="wrap">
@@ -311,5 +312,9 @@ function chkForm() {
 		var popOption = "width=500, height=400, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
 		window.open(popUrl,"",popOption);
 	});
+	function childCall(val, val2) {
+		   $(".size-input03").attr("value",val);
+		   $("#addr").attr("value",val2);
+	   }
 </script>
 </html>
