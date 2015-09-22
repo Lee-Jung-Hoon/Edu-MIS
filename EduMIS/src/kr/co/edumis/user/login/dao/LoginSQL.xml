@@ -5,7 +5,7 @@
 
 <select id="login" parameterType="LoginVO" resultType="LoginVO">
 			select id, name, pass	
-			from t_Member         	
+			from t_member         	
 			where id = #{id}            
  			and password = #{pass}      	
 </select>
