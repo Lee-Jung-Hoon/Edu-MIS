@@ -4,6 +4,7 @@ public class ScheduleVO {
 
 	private String title;
 	private String content;
+	private String place;
 	private int   no;
 	private int   importance;
 	private String    regDate;
@@ -11,6 +12,12 @@ public class ScheduleVO {
 	private String    endDate;
 	private String    latitude;
 	private String    longitude;
+	public String getPlace() {
+		return place;
+	}
+	public void setPlace(String place) {
+		this.place = place;
+	}
 	public int getNo() {
 		return no;
 	}
