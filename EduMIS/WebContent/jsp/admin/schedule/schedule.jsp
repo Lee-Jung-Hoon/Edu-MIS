@@ -23,6 +23,11 @@
 <link href="/EduMIS/css/scheduleReg.css" rel="stylesheet"
 	type="text/css" />
 
+<style type="text/css">
+.wrap{
+overflow: visible;
+}
+</style>
 
 
 
@@ -119,7 +124,30 @@
 											<th>내 용</th>
 											<td colspan="3"><textarea rows="5" id="content" name="content"
 													cols="45" maxlength="100px"></textarea></td>
+													</tr>
+													
+													
+											<tr>
+											<th width="30%">장 소</th>
+											<td colspan="3">
+												<div id="search">
+												    <input type="text" id="place" name="place">
+													<input type="button" value="장소 검색" onclick="search()"> 
+													<input type="hidden" id="latitude" name="latitude"> 
+													<input type="hidden" id="longitude" name="longitude">
+												</div>
+												<div id="map" style="width: 100%; height: 200px;"></div>
+											</td>
+										</tr>
 										<tr>
+										<hr/>
+										<script type="text/javascript"
+											src="//apis.daum.net/maps/maps3.js?apikey=1cd4d7ef46ee8be854cdc1de37076a25&libraries=services"></script>
+										</td>
+										</tr>
+													
+													
+							<!-- 			<tr>
 											<th>장 소</th>
 											<td colspan="3">
 												<div id="search">
@@ -127,7 +155,7 @@
 												</div>
 												<div id="map" style="width: 100%; height: 200px;"></div>
 											</td>
-										</tr>
+										</tr> -->
 
 										<!-- 			<tr> -->
 										<!-- 			<th width="30%">장소</th> -->
@@ -136,13 +164,7 @@
 										<!-- 				<textarea rows="10" cols="70" name ="longitude"></textarea> -->
 										<!-- 			</td> -->
 										<!-- 			</tr>	-->
-										<tr>
-
-
-
-
-											
-										</tr>
+										
 									</table>
 									<br />
 									<div align="center">
