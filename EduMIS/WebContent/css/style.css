@@ -264,28 +264,44 @@ html, body {
 	background-size:20px 20px;
 	background-image:url('../images/icon-return.png');
 }
-.message-frame .message-list {
+.message-frame .message-list li {
+	position:relative;
 }
 .message-frame .message-list li:last-child .text-content {
 	border-bottom:0;
 }
 .message-frame .message-list li a {
 	display:block;
-	padding:0 10px;
+	padding:0 10px 0 40px;
 	line-height:30px;
 	font-size:14px;
 	text-decoration:none;
 	color:#000;
 	overflow:hidden;
 }
+.message-frame .message-list .btn-message-remove {
+	width:40px;
+	height:30px;
+	padding:0;
+	position:absolute;
+	top:0;
+	left:0;
+	box-sizing:border-box;
+	background:url('../images/btn-close.png') no-repeat center 7px;
+	background-size:20px 20px;
+	text-indent:-5000px;
+}
 .message-frame .message-list .on {
 	color:#fff;
-	padding:0 9px;
+	padding:0 9px 0 39px;
 	background-color:#105a8b;
 	-webkit-transition:background-color 0.25s;
 	transition:background-color 0.25s;
 	border:1px solid #092b68;
 	line-height:28px;
+}
+.message-frame .message-list .on .btn-message-remove {
+
 }
 .message-frame .message-list li span {
 	display:block;
@@ -564,6 +580,10 @@ html, body {
 /* 수정하기 */
 .txt-modify {
 	background-image:url('../images/txt-modify.png');
+}
+/* 삭제하기 (소) */
+.txt-del-s {
+	background-image:url('../images/txt-del-s.png');
 }
 
 /* 버튼 이미지 텍스트 모음 끝*/
