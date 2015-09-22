@@ -16,9 +16,9 @@ public class MemberDAO {
 		session = MyAppSqlConfig.getSqlSessionInstance();
 	}
 	
-	public int memberJoin(MemberVO member) throws Exception {
+	public void insertMember(MemberVO member) {
 		session.insert("member.dao.MemberMapper.memberJoin", member);
 		session.commit();
-		return 1;
 	}
+
 }

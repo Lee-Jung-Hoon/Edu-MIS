@@ -5,7 +5,7 @@
 
 	<insert id="memberJoin" parameterType="MemberVO">
 		insert into t_member(
-		no number primary key,
+		no,
 		id,
 		name,
 		pass,
@@ -20,38 +20,26 @@
 		phone2,
 		phone3,
 		email,
-		major,
-		join_date,
-		drop_check,
-		drop_date,
-		drop_reason,
-		team,
-		tech_leader,
-		grade
+		email_domain,
+		major
 		) values (
 		seq_member_no.nextVal,
 		#{id},
 		#{name},
 		#{pass},
-		#{pass_chk},
+		#{passChk},
 		#{year},
 		#{month},
 		#{day},
-		#{post_no},
-		#{basic_addr},
-		#{detail_addr},
+		#{postNo},
+		#{basicAddr},
+		#{detailAddr},
 		#{phone1},
 		#{phone2},
 		#{phone3},
 		#{email},
-		#{major},
-		#{join_date},
-		#{drop_check},
-		#{drop_date},
-		#{drop_reason},
-		#{team},
-		#{tech_leader},
-		#{grade}
+		#{emailDomain},
+		#{major}
 		)
 	</insert>
 
