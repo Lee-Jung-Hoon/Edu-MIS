@@ -76,17 +76,26 @@
 	
 	<select id = "studentList" resultType="memberVO">
 		select 
-		name
+		name,
+		id
 		from t_member
 	</select>
 	
 	<select id="submitList" resultType="userAssVO">
 		select
-		name,
-		id
+		name
 		from t_user_assignment_board
 	</select>
 	
-	
+	<select id="getSubject" parameterType="map" resultType="userAssVO">
+		select
+		id,
+		name,
+		no,
+		content,
+		org_file_name as orgFileName,
+		real_file_name as realFileName
+		from t_user_assignment_board
+	</select>
 	
 </mapper>

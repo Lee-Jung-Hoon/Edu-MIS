@@ -1,6 +1,7 @@
 package kr.co.edumis.admin.assignment.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -55,6 +56,10 @@ public class AdminAssDAO {
 	public List<UserAssVO> selectSubmit() {
 
 		return sqlMapper.selectList("adminAssignment.submitList");
+	}
+
+	public UserAssVO selectSubject(Map<String, String> param) {
+		return (UserAssVO)sqlMapper.selectOne("adminAssignment.getSubject", param);
 	}
 
 }
