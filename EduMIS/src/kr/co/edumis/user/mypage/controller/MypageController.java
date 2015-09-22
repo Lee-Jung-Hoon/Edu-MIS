@@ -59,7 +59,6 @@ public class MypageController {
 		try{
 			ModelAndView mav = new ModelAndView("redirect:/EduMIS/user/mypage/detailMyinfo.do");
 			MypageVO mvo = (MypageVO)WebUtil.getFromParamToVO("kr.co.edumis.user.mypage.vo.MypageVO", req);
-			mav.addObject("mvo", mvo);
 			return mav; 
 		}catch(Exception e){
 			throw new ServletException(e);
