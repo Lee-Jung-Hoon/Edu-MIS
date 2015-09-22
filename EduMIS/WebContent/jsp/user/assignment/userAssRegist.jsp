@@ -81,7 +81,7 @@
 							<!--  작업부분 제목 써주세요 --><h2>과제등록</h2>
 							<!-- 작업시작부분 div안에 클래스명 넣어서 작업 해 주세요 나머지 url부분은 추후 취합할 예정이니 일단 MENU 부분의 링크태그에 값 넣어서 작업 해주시면 됩니다. 게시판 담당하시는 분들은 추후 공통 클래스 드릴테니 일단 테이블로 작업 부탁드립니다. -->
 
-				<div class="AssignmentAsk">
+			<div class="AssignmentAsk">
 			<form method="POST" enctype="multipart/form-data">
 				<table border="1" width ='100%'>
 			           <h1>과제정보</h1>
@@ -134,7 +134,7 @@
 					    </c:when>
 						
 						<c:otherwise >
-						    <form action="/EduMIS/user/assBfModify.do"method="POST" enctype="multipart/form-data">
+						    <form action="/EduMIS/user/assBfModify.do?no=${ass.no}" method="POST" enctype="multipart/form-data">
 						    <input type ="hidden" name ="no" value="${ass.no}"/>
 							<span>과제제출</span>
 							<table border="1" width ='100%'>
@@ -145,7 +145,8 @@
 							     </tr>
 							    <tr>    
 							        <td>첨부파일</td>
-<td><a href='${pageContext.request.contextPath}/fileDownload?orgFileName=${userass.orgFileName}'><c:out value='${userass.orgFileName}'/></a></td>
+<td><a href='${pageContext.request.contextPath}/fileDownload?orgFileName=${userass.orgFileName}&realFileName=${ass.realFileName}'>
+    <c:out value='${userass.orgFileName}'/></a></td>
 							     </tr>
 							 </table>
 							  <input type="submit" value="과제 수정" />	

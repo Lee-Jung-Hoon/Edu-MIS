@@ -31,5 +31,10 @@ public class UserAssDAO {
 		return sqls.selectOne("userAssMapper.userAssDetail",no);
 	}
 	
+	public void updateUserAss(UserAssVO userass)throws Exception{
+		sqls.update("userAssMapper.userAssUpdate",userass);
+		sqls.commit();
+	}
+	
 
 }

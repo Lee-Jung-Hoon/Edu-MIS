@@ -63,6 +63,16 @@ insert into t_user_assignment_board(
     where no =#{no}
 </select>
 
+<!-- 내가 제출한 과제 수정 -->
+<update id="userAssUpdate" parameterType="UserAssVO">
+  update t_user_assignment_board set
+         content = #{content},
+         org_File_Name = #{orgFileName},
+         real_File_Name = #{realFileName},
+         file_Path = #{filePath}
+   where no =#{no}
+</update>
+
    
 
 </mapper>
