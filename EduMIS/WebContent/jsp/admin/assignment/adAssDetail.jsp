@@ -23,15 +23,14 @@
 		location.href = "${pageContext.request.contextPath}/admin/assList.do";
 	}
 	
-	function popUp(type){
+	function popUp(type, no, id){
 		switch (type) {
-		case "X":
-			window.open("http://www.naver.com", // 팝업창에 띄울 페이지 주소
+		case "O":
+			window.open("http://localhost:8000/EduMIS/admin/assUserDetail.do?no=" + no + "&id=" + id, // 팝업창에 띄울 페이지 주소
 			"제출 상세", // 팝업창에 이름 설정
 			"width=600, height=500, resizable=no");
 			break;
 		}
-		
 	}
 	
 	
@@ -147,7 +146,7 @@
 										</tr>
 											<c:forEach var = "list" items ="${list}">
 												<tr>
-													<td><a href="javascript:popUp('${list.pass}');"
+													<td><a href="javascript:popUp('${list.pass}', '${detail.no}', '${list.id}');"
 														style = "text-decoration: none;">${list.name}</a></td>
 													<td>${list.pass}</td>
 												</tr>

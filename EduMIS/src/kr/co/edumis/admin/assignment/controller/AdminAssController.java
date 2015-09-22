@@ -4,7 +4,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -187,10 +189,19 @@ public class AdminAssController {
 	}
 	
 	@RequestMapping("/admin/assUserDetail.do")
-	public ModelAndView AssUserDetail(String id) throws Exception{
+	public ModelAndView AssUserDetail(HttpServletRequest req) throws Exception{
+		ModelAndView mav = new ModelAndView("/jsp/admin/assignment/adAssUserDetail.jsp");
 		
+		Map<String, String> param = new HashMap<>();
 		
-		return null;
+		param.put("no", req.getParameter("no"));
+		param.put("id", req.getParameter("id"));
+		
+		UserAssVO vo = service.getDetail(param);
+		
+		mav.addObject("vo", vo);
+		
+		return mav;
 	}
 
 	
