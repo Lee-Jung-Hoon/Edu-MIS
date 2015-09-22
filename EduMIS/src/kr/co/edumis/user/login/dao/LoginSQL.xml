@@ -7,6 +7,6 @@
 			select id, name, pass	
 			from t_member         	
 			where id = #{id}            
- 			and password = #{pass}      	
+ 			and pass = #{pass}      	
 </select>
 </mapper>
