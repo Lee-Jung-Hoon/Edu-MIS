@@ -1134,7 +1134,8 @@ section.board {
 }
 /* 팝업 페이지 시작 */
 .page-popup .wrap {
-	width:100%; 
+	width:100%;
+	height:auto;
 	margin:0 auto;
 }
 .page-popup .wrap-inner {
