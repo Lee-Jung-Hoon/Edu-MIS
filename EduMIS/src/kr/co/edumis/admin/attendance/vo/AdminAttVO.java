@@ -6,9 +6,16 @@ public class AdminAttVO {
 //	att_type number,	
 	
 	private int mNo;
+	private String mName;
 	private String attDate;
 	private int attType;
 	
+	public String getmName() {
+		return mName;
+	}
+	public void setmName(String mName) {
+		this.mName = mName;
+	}
 	public int getmNo() {
 		return mNo;
 	}

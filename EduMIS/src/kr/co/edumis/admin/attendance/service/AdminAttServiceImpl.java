@@ -17,22 +17,13 @@ public class AdminAttServiceImpl implements AdminAttService{
 	public List<MemberVO> selectMemList() {
 		
 		List<MemberVO> memList = dao.selectMemList();
-		System.out.println("size : " + memList.size());
-//		for(int i = 0; i < memList.size(); i++){
-//			MemberVO member = memList.get(i);
-//			System.out.println("name : "+memList.get(i).getName());
-//		}
-//		MemberVO member = memList.get(0);
-//		System.out.println("size2 : " + memList.size());
-		
-		System.out.println("servieImpl member : "+ memList.get(0).getName());
 		return memList;
 	}
 	@Override
-	public List<AdminAttVO> selectAttList(String mNo) {
+	public List<AdminAttVO> selectAttList() {
 		
-		List<AdminAttVO> attList = dao.selectAttList(mNo);
-		
+		List<AdminAttVO> attList = dao.selectAttList();
+		System.out.println(attList.size());
 		return attList;
 	}
 	@Override
@@ -42,6 +33,11 @@ public class AdminAttServiceImpl implements AdminAttService{
 	@Override
 	public void updateAtt(AdminAttVO att) {
 		
+	}
+	@Override
+	public List<AdminAttVO> selectAttMemList(String mNo) {
+		List<AdminAttVO> attMemList = dao.selectAttMemList(mNo);
+		return attMemList;
 	}
 
 }

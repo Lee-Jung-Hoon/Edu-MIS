@@ -9,7 +9,9 @@ public interface AdminAttService {
 
 	public List<MemberVO> selectMemList() ;
 	
-	public List<AdminAttVO> selectAttList(String mNo);
+	public List<AdminAttVO> selectAttList();
+	
+	public List<AdminAttVO> selectAttMemList(String mNo);
 	
 	public void insertAtt(AdminAttVO att);
 	
