@@ -1,6 +1,7 @@
 package kr.co.edumis.admin.assignment.service;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.co.edumis.admin.assignment.vo.AdminAssVO;
 import kr.co.edumis.user.assignment.vo.UserAssVO;
@@ -20,4 +21,5 @@ public interface AdminAssService {
 	public void delete(String no);
 	public List<MemberVO> studentAssignmentList() throws Exception ;
 	public List<UserAssVO> getsubList() throws Exception;
+	public UserAssVO getDetail(Map<String, String> param) throws Exception;
 }

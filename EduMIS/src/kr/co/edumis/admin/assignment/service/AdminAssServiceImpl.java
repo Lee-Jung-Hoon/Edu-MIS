@@ -1,6 +1,7 @@
 package kr.co.edumis.admin.assignment.service;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.co.edumis.admin.assignment.dao.AdminAssDAO;
 import kr.co.edumis.admin.assignment.vo.AdminAssVO;
@@ -87,6 +88,12 @@ public class AdminAssServiceImpl implements AdminAssService {
 	public List<UserAssVO> getsubList() throws Exception {
 
 		return dao.selectSubmit();
+	}
+
+	@Override
+	public UserAssVO getDetail(Map<String, String> param) {
+		// TODO Auto-generated method stub
+		return dao.selectSubject(param);
 	}
 
 }
