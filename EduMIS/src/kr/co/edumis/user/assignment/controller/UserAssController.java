@@ -53,12 +53,26 @@ public class UserAssController {
 	public ModelAndView userDetail(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 		int no = Integer.parseInt(req.getParameter("no"));
-
+		
 		ModelAndView mav = new ModelAndView("/jsp/user/assignment/userAssRegist.jsp");
-		//해야할 과제 정보 보여주기
-				try {
-					AdminAssVO admass = service.detail(no);
+				
+		try {
+					
+					AdminAssVO admass = service.addetail(no);
 					mav.addObject("ass", admass);
+
+					UserAssVO userass = service.userdetail(no);
+					mav.addObject("userass", userass);
+					
+					
+					System.out.println(userass.getContent());
+//					널System.out.println(userass.getFilePath());
+					System.out.println(userass.getId());
+					System.out.println(userass.getName());
+//					널System.out.println(userass.getOrgFileName());
+//					널System.out.println(userass.getRealFileName());
+					
+					
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -110,13 +124,6 @@ public class UserAssController {
 		
 	}
 	
-	
-	@RequestMapping("/user/assDetailComplete.do")
-	public ModelAndView userAssDetailComplete(HttpServletRequest req, HttpServletResponse res)
-			throws ServletException, IOException {
-				return null;
-		
-	}
 	@RequestMapping("/user/assBfModify.do")
 	public ModelAndView userAssBfModify(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
