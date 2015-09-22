@@ -83,7 +83,8 @@
 	
 	<select id="submitList" resultType="userAssVO">
 		select
-		name
+		name,
+		no
 		from t_user_assignment_board
 	</select>
 	
@@ -96,6 +97,7 @@
 		org_file_name as orgFileName,
 		real_file_name as realFileName
 		from t_user_assignment_board
+		where id = #{id} and no = #{no}
 	</select>
 	
 </mapper>
