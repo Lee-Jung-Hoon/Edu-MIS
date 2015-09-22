@@ -30,6 +30,10 @@
 			"제출 상세", // 팝업창에 이름 설정
 			"width=600, height=500, resizable=no");
 			break;
+		case "X":
+			window.open("http://localhost:8000/EduMIS/jsp/admin/assignment/noSubmit.jsp","제출 상세", // 팝업창에 이름 설정
+					"width=600, height=500, resizable=no")
+			break;
 		}
 	}
 	
