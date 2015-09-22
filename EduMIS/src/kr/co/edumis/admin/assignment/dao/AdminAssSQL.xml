@@ -74,6 +74,18 @@
 		delete from t_adm_assignment_board where no = #{no}
 	</delete>
 	
+	<select id = "studentList" resultType="memberVO">
+		select 
+		name
+		from t_member
+	</select>
+	
+	<select id="submitList" resultType="userAssVO">
+		select
+		name,
+		id
+		from t_user_assignment_board
+	</select>
 	
 	
 	
