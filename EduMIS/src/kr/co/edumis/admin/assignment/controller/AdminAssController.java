@@ -52,7 +52,8 @@ public class AdminAssController {
 			boolean bool = false;
 			
 			for(UserAssVO uVO : subList) {
-				if(vo.getName().equals(uVO.getName())){
+				if(vo.getName().equals(uVO.getName()) && no.equals(String.valueOf(uVO.getNo()))){
+					System.out.println("ddd : " + uVO.getNo());
 					bool = true;
 					break;
 				}
@@ -73,7 +74,7 @@ public class AdminAssController {
 		MultipartRequest mult = new MultipartRequest(req,
 				"C:\\java73\\web-workspace\\EduMIS\\WebContent\\assignmentFile", 1024 * 1024 * 10, "UTF-8",
 				new DefaultFileRenamePolicy());
-
+		
 		Enumeration<String> e = mult.getFileNames();
 
 		while (e.hasMoreElements()) {
