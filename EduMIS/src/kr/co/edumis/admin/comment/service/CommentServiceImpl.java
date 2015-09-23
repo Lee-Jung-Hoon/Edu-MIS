@@ -5,6 +5,7 @@ import java.util.Map;
 
 import kr.co.edumis.admin.comment.dao.CommentDAO;
 import kr.co.edumis.admin.comment.vo.CommentVO;
+import kr.co.edumis.user.member.vo.MemberVO;
 
 public class CommentServiceImpl implements CommentService {
 
@@ -15,15 +16,15 @@ public class CommentServiceImpl implements CommentService {
 	}
 	
 	@Override
-	public List<CommentVO> getList() throws Exception {
+	public List<MemberVO> getList() throws Exception {
 		
-		List<CommentVO> list = dao.selectList();
+		List<MemberVO> list = dao.selectList();
 		return list;
 	}
 
 	@Override
-	public CommentVO getSelect(String no) throws Exception {
-		CommentVO list = dao.commentSelect(no);
+	public MemberVO getSelect(String no) throws Exception {
+		MemberVO list = dao.commentSelect(no);
 		return list;
 	}
 	@Override
