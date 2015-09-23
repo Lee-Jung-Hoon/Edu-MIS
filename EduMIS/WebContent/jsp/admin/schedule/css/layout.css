@@ -8,12 +8,12 @@
 #wrap .flatbtn{color:#8c6239;text-decoration:underline;}
 
 
-#loginmodal{border:3px solid #705c3b;background:#fff;}
+#loginmodal{position:fixed !important; top:10% !important; margin-left:-27%; border:3px solid #705c3b;background:#fff;}
 #loginmodal h2{color:#636363;font-size:24px;line-height:40px;}
 #loginmodal .p_c_text{font-size:12px;line-height:24px;}
 #loginmodal .login_line{margin:10px 0 0;height:80px;}
 #loginmodal .box_in{float:left;margin:0 10px 0; }
-#loginmodal input{width:120px;height:24px;display:block;margin:3px 0 0;}
+#loginmodal input{width:120px;height:24px;display:inline-block;margin:3px 0 0;}
 #loginmodal .btn_login{width:72px;height:60px;background:#363636;color:#e1e1e1;float:left;line-height:60px;text-align:center;}
 #loginmodal .find_join{clear:both;margin:20px 0 0 10px;}
 
@@ -44,10 +44,12 @@
 	height: 600px;
 	position: absolute;
 	background: #dddddd;
+	/*
 	left: 50%;
 	top: 10px;
-	margin: 0 auto;
-	margin-left: -250px;
+	*/
+	
+	margin-left: 250px;
 	display: none;
 	background-color: white;
 	border: 1px solid #f6f6f6;
