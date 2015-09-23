@@ -22,9 +22,7 @@ public interface UserAssService {
 	//과제 수정
 	public void updateUserAss(UserAssVO userass)throws Exception;
 	
-	//제출여부 조회
-	public int userSubmitCheck(Map<String, String> param)throws Exception;
-	
+
 	
 	
 

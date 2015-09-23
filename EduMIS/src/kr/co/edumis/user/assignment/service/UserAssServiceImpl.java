@@ -35,9 +35,7 @@ public class UserAssServiceImpl implements UserAssService{
 	public void updateUserAss(UserAssVO userass)throws Exception{
 		uasdao.updateUserAss(userass);
 	}
-	public int userSubmitCheck(Map<String, String> param)throws Exception{
-		return uasdao.userSubmitCheck(param);
-	}
+
 
 
 }
