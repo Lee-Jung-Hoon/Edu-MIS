@@ -22,5 +22,8 @@ create table t_member(
    drop_reason varchar2(100),
    team varchar2(5),
    tech_leader char(1),
-   grade varchar2(1)   
+   grade varchar2(1),
+   org_File_Name varchar2(1000),
+   real_File_Name varchar2(1000),
+   file_Path varchar2(1000)
 );
