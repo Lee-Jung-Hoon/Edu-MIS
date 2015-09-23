@@ -36,9 +36,6 @@ public class UserAssDAO {
 		sqls.update("userAssMapper.userAssUpdate",userass);
 		sqls.commit();
 	}
-	public int userSubmitCheck(Map<String, String> param)throws Exception{
-		return (int)sqls.selectOne("userAssMapper.userSubmitCheck",param);
-	}
-	
+
 
 }

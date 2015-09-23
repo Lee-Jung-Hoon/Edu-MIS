@@ -44,6 +44,8 @@ public class UserAssController {
 		try {
 			List<AdminAssVO> list = service.getList();
 			mav.addObject("list", list);
+			System.out.println(req.getParameter("no"));
+			System.out.println(req.getParameter("id"));
 			
 			// 진행여부
 			List<String> ckArr = new ArrayList<String>();
@@ -66,21 +68,7 @@ public class UserAssController {
 			mav.addObject("ckArr", ckArr);
 			
 			//제출여부
-			List<String> check = new ArrayList<String>();
-			Map<String, String> param = new HashMap<>();
-			
-			param.put("no", req.getParameter("no"));
-			param.put("id", req.getParameter("id"));
-			
-			int checkNum = service.userSubmitCheck(param);
-			if(checkNum==0){
-				check.add("O");
-			}else{
-				check.add("X");
-			}
-			mav.addObject("check", check);
-			
-			
+		
 			
 			
 		} catch (Exception e) {
@@ -212,7 +200,6 @@ public class UserAssController {
 	    	userass.setFilePath("/assignmentFile");
 	    	}
 	    }
-	    System.out.println(multi.getParameter("no"));
 	    try {
 			service.updateUserAss(userass);
 		} catch (Exception e1) {
