@@ -602,6 +602,18 @@ html, body {
 .txt-add-member {
 	background-image:url('../images/txt-add-member.png');
 }
+/* 과제수정 */
+.txt-modi-assign {
+	background-image:url('../images/txt-modi-assign.png');
+}
+/* 목록 */
+.txt-list {
+	background-image:url('../images/txt-list.png');
+}
+/* 과제제출 */
+.txt-send-assign {
+	background-image:url('../images/txt-send-assign.png');
+}
 
 
 /* 버튼 이미지 텍스트 모음 끝*/
@@ -1541,4 +1553,147 @@ section.board {
 	margin:0;
     top:0;
     right:0;
+}
+/* 강의실 */
+.room {
+	width:100%;
+	overflow:hidden;
+	padding-bottom:30px;
+	border-bottom:2px solid #ddd;
+}
+.room ul {
+	width:100%;
+	overflow:hidden;
+}
+.room li {
+	float:left;
+	width:45%;
+	height:50px;
+	margin-top:30px;
+	border:1px solid #ddd;
+	border-radius:10px;
+	background:url('../images/wood-pattern.jpg') repeat;
+}
+.room li:nth-child(even) {
+	float:right;
+}
+.room div {
+	display:block;
+	float:left;
+	position:relative;
+	width:25%;
+	height:120%;
+	margin-top:-30px;
+}
+.room div::before {
+	content:"";
+	display:block;
+	position:relative;
+	margin:0 auto;
+	width:80px;
+	height:78px;
+	background:url('../images/icon-computer.png') no-repeat center;
+	background-size:100%;
+	z-index:10;
+}
+.room div::after {
+	content:"";
+	display:block;
+	position:absolute;
+    top:9px;
+    left:22px;
+	width:63px;
+	height:46px;
+	background:#000;
+}
+.room a {
+	display:block;
+	position:absolute;
+	top:12px;
+    left:22px;
+    width:60px;
+	height:41px;
+	z-index:99;
+}
+.room .desk {
+	display:block;
+	float:left;
+	width:200px;
+	height:50px;
+	margin-left:100px;
+	line-height:50px;
+	border:1px solid #ddd;
+	border-radius:10px;
+	background:url('../images/wood-pattern.jpg') repeat;
+	text-align:center;
+	color:#000;
+	font-family:'Arial';
+	font-size:25px;
+	font-weight:bold;
+}
+.room .screen {
+	display:block;
+	float:right;
+	width:600px;
+	height:20px;
+	line-height:20px;
+	text-align:center;
+	font-family:'Arial';
+	background:url('../images/bg-line.png') repeat;
+	font-weight:bold;
+}
+.room .yes::after {
+	background:#08b260;
+}
+.room .no::after {
+	background:#fbf31a;
+}
+.room .no em {
+	color:#000;
+}
+.room .sos::after {
+	background:#f31026;
+}
+.room div em {
+	display:block;
+	position:absolute;
+	top:9px;
+	left:1px;
+	z-index:99;
+	width:100%;
+	text-align:center;
+	font-size:22px;
+	color:#fff;
+	font-weight:bold;
+	letter-spacing:-1px;
+	font-family:'Arial';
+}
+.room .name {
+	top:7px;
+	font-size:18px;
+	font-family:'MalgunGothic';
+}
+.class-info {
+	width:100%;
+	padding-top:20px;
+}
+.vod .vod-frame {
+	overflow:hidden;
+}
+.vod .vod-frame iframe {
+	display:block; 
+	float:left;
+}
+.vod .vod-frame .vod-intro {
+	float:right; 
+	width:230px; 
+	height:281px; 
+	box-sizing:border-box; 
+	overflow-y:auto;
+}
+/* 메인 페이지 */
+.main-content-nav {
+	position:fixed;
+	top:200px;
+	left:50%;
 }
