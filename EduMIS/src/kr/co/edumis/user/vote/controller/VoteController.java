@@ -61,8 +61,7 @@ public class VoteController {
 
 		VoteVO vote = (VoteVO) WebUtil.getFromParamToVO("kr.co.edumis.user.vote.vo.VoteVO", req);
 		
-		System.out.println(vote.getId() + vote.getVname());
-		
+	
 		try {
 			service.voteInsert(vote);
 			return "redirect:/EduMIS/user/voteResult.do";
