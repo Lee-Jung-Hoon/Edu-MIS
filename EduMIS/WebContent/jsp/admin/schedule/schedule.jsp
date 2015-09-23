@@ -33,6 +33,7 @@
 
 
 <script type="text/javascript">
+/*
 $(function() {
 	$("#datepicker").datepicker({
 		showOtherMonths : true,
@@ -45,6 +46,7 @@ $(function() {
 		selectOtherMonths : true
 	});
 });
+*/
 </script>
 
 <script type="text/javascript">
@@ -53,7 +55,7 @@ $(function() {
 			return false;
 		});
 
-		$('#modaltrigger').leanModal({
+		$('.modaltrigger').leanModal({
 			top : 110,
 			overlay : 0.8,
 			closeButton : ".hidemodal"
@@ -254,7 +256,7 @@ $(function() {
 									</table>
 								</div>
 								<div class="test01">
-								<a	href="#loginmodal" class="flatbtn" id="modaltrigger"><input
+								<a	href="#loginmodal" class="flatbtn modaltrigger" id="modaltrigger"><input
 													type="button" class="btn-txt1 txt-plan" id="writeBt"
 													style="width: 60px"></a>
 								</div>
@@ -272,7 +274,7 @@ $(function() {
 									</table>
 								</div>
 								<div class="test01">
-<a	href="#loginmodal" class="flatbtn" id="modaltrigger"><input
+<a	href="#loginmodal" class="flatbtn modaltrigger" id="modaltrigger"><input
 													type="button" class="btn-txt1 txt-plan" id="writeBt"
 													style="width: 60px"></a>
 
@@ -291,7 +293,7 @@ $(function() {
 									</table>
 								</div>
 								<div class="test01">
-<a	href="#loginmodal" class="flatbtn" id="modaltrigger"><input
+<a	href="#loginmodal" class="flatbtn modaltrigger" id="modaltrigger"><input
 													type="button" class="btn-txt1 txt-plan" id="writeBt"
 													style="width: 60px"></a>
 
@@ -311,7 +313,7 @@ $(function() {
 								</div>
 								<div class="test01">
 
-<a	href="#loginmodal" class="flatbtn" id="modaltrigger"><input
+<a	href="#loginmodal" class="flatbtn modaltrigger" id="modaltrigger"><input
 													type="button" class="btn-txt1 txt-plan" id="writeBt"
 													style="width: 60px"></a>
 
@@ -332,7 +334,7 @@ $(function() {
 								</div>
 								<div class="test01">
 
-<a	href="#loginmodal" class="flatbtn" id="modaltrigger"><input
+<a	href="#loginmodal" class="flatbtn modaltrigger" id="modaltrigger"><input
 													type="button" class="btn-txt1 txt-plan" id="writeBt"
 													style="width: 60px"></a>
 
