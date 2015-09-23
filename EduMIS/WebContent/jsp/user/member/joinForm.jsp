@@ -94,22 +94,22 @@ function chkForm() {
 	}
 }
 
-// var httpRequest;
-// function idCheck() {
-// 	var idVal = document.getElementById("id").value;
-// 	httpRequest = new XMLHttpRequest();
-// 	httpRequest.onreadystatechange = callBack;
-// 	httpRequest.open("GET", "idCheck/idCheck.do?id=" + idVal, true);
-// 	httpRequest.send(null);
-// }
-// function callBack() {
-// 	if (httpRequest.readyState == 4) {
-// 		if (httpRequest.status == 200) {
-// 		var idResult = document.getElementById("idResult");
-// 		idResult.innerHTML = httpRequest.responseText;
-// 		}
-// 	}
-// }
+var httpRequest;
+function idCheck() {
+	var idVal = document.getElementById("id").value;
+	httpRequest = new XMLHttpRequest();
+	httpRequest.onreadystatechange = callBack;
+	httpRequest.open("GET", "/EduMIS/member/idCheck.do?id=" + idVal, true);
+	httpRequest.send(null);
+}
+function callBack() {
+	if (httpRequest.readyState == 4) {
+		if (httpRequest.status == 200) {
+		var idResult = document.getElementById("idResult");
+		idResult.innerHTML = httpRequest.responseText;
+		}
+	}
+}
 </script>
 
 	<link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
@@ -274,8 +274,8 @@ function chkForm() {
 											<tr>
 												<th><label for="major">전공여부</label></th>
 												<td>
-													<input type="radio" name="major" id="major1" checked /><label for="major1">전공</label>&nbsp;&nbsp;
-													<input type="radio" name="major" id="major2" /><label for="major2">비전공</label>
+													<input type="radio" name="major" value="1" id="major1" checked /><label for="major1">전공</label>&nbsp;&nbsp;
+													<input type="radio" name="major" value="2" id="major2" /><label for="major2">비전공</label>
 												</td>
 											</tr>
 										</tbody>
