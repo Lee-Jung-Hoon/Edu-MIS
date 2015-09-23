@@ -73,6 +73,13 @@ insert into t_user_assignment_board(
    where no =#{no}
 </update>
 
+<!-- 제출여부 조회 -->
+<select id="userSubmitCheck" parameterType="map" resultType="int">
+  select id, 
+         no
+   where no=#{no} and id=#{id}
+</select>
+
    
 
 </mapper>
