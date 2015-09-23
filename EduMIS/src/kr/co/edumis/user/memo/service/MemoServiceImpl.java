@@ -13,8 +13,8 @@ public class MemoServiceImpl implements MemoService{
 	}
 
 	@Override
-	public ArrayList<MemoVO> getMemoList() throws Exception {
-		return (ArrayList<MemoVO>) dao.selectMemo();
+	public ArrayList<MemoVO> getMemoList(String no) throws Exception {
+		return (ArrayList<MemoVO>) dao.selectMemo(no);
 		
 	}
 

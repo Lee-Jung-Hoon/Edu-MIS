@@ -22,7 +22,7 @@
 	</insert>
 
 	<!-- 게시판 목록을 처리하는 쿼리 -->
-	<select id="selectMemo" resultType="MemoVO">
+	<select id="selectMemo" parameterType="string" resultType="MemoVO">
 		select
 		memo_no as memoNo,
 		user_no as userNo,
@@ -30,6 +30,7 @@
 		pos_x as posX,
 		pos_y as posY
 		from t_memo
+		where user_no = #{value}
 	</select>
 
 	<delete id="deleteMemo" parameterType="MemoVO">

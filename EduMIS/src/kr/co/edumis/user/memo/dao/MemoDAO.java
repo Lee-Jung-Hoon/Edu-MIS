@@ -15,8 +15,8 @@ public class MemoDAO {
 		sqlMapper = MyAppSqlConfig.getSqlSessionInstance();
 	}
 	
-	public List<MemoVO> selectMemo() throws Exception{
-		return sqlMapper.selectList("Memo.dao.selectMemo");
+	public List<MemoVO> selectMemo(String no) throws Exception{
+		return sqlMapper.selectList("Memo.dao.selectMemo",no);
 	}
 	
 	public void insertMemo(MemoVO memo) throws Exception{

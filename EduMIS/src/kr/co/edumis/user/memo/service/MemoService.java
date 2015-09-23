@@ -6,7 +6,7 @@ import kr.co.edumis.user.memo.vo.MemoVO;
 
 public interface MemoService {
 
-	ArrayList<MemoVO> getMemoList() throws Exception;
+	ArrayList<MemoVO> getMemoList(String no) throws Exception;
 
 	void insertMemo(MemoVO memo) throws Exception;
 
