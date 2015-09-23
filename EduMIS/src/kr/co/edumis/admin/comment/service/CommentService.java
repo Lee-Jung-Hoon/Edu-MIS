@@ -4,13 +4,14 @@ import java.util.List;
 import java.util.Map;
 
 import kr.co.edumis.admin.comment.vo.CommentVO;
+import kr.co.edumis.user.member.vo.MemberVO;
 
 public interface CommentService {
 
 
-	public List<CommentVO> getList() throws Exception;
+	public List<MemberVO> getList() throws Exception;
 
-	public CommentVO getSelect(String no) throws Exception;
+	public MemberVO getSelect(String id) throws Exception;
 
 	public void commentInsert(CommentVO comment) throws Exception;
 

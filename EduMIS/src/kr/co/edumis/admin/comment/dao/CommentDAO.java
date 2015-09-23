@@ -5,9 +5,9 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-
 import kr.co.edumis.admin.comment.vo.CommentVO;
 import kr.co.edumis.common.db.MyAppSqlConfig;
+import kr.co.edumis.user.member.vo.MemberVO;
 
 public class CommentDAO {
 	
@@ -18,13 +18,13 @@ public class CommentDAO {
 	}
 	
 
-	public List<CommentVO> selectList() throws Exception {
+	public List<MemberVO> selectList() throws Exception {
 		return session.selectList("comment.dao.commentMapper.commentList");
 	}
 
-	public CommentVO commentSelect(String no)throws Exception {
-		System.out.println(no);
-		return (CommentVO) session.selectOne("comment.dao.commentMapper.commentSelect", no);
+	public MemberVO commentSelect(String id)throws Exception {
+
+		return (MemberVO) session.selectOne("comment.dao.commentMapper.commentSelect", id);
 	}
 
 	public void commentInsert(CommentVO comment) throws Exception{

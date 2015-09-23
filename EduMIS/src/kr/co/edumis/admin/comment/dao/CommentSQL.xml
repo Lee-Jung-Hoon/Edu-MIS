@@ -5,13 +5,13 @@
 
 <mapper namespace="comment.dao.commentMapper">
 
-<select id="commentList" resultType="CommentVO">
+<select id="commentList" resultType="MemberVO">
 
    select no,id,name
    from t_member 
 </select>
 
-<select id="commentSelect" resultType="CommentVO" parameterType="string">
+<select id="commentSelect" resultType="MemberVO" parameterType="string">
 
    select no,id,name,year,month,day,
    post_no,basic_addr,detail_addr,
