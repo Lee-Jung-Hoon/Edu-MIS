@@ -86,7 +86,7 @@ table {
 }
 
 #topTd1, #topTd3, #topTd2 {
-	width: 5%;
+	font-size:30px;
 	text-align: center;
 }
 
