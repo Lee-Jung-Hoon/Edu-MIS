@@ -76,7 +76,8 @@
                             <c:set var = "index" value = "0"/>
 							<form  method="POST">
 							<div class="AssignmentList">
-							<table border="1" width ='110%'>
+							  <input type ="hidden" name ="id" value="${userInfo.id}"/>
+  							<table border="1" width ='110%'>
 							     <tr>
 							        <td>No.   </td>
 							        <td>과제명</td>
@@ -89,7 +90,7 @@
 							       <td>${list.no}</td>
 							       <td><a href ="${pageContext.request.contextPath}/user/assDetail.do?no=${list.no}">${list.title}</a></td>
 							       <td>${list.startDate} ~ ${list.endDate}</td>
-							       <td></td>
+							       <td>${check[index]}</td>
 							       <td>${ckArr[index]}</td>
 							     </tr>
                                    <c:set var = "index" value = "${index + 1}"/>
