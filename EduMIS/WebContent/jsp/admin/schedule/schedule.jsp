@@ -206,23 +206,19 @@ $(function() {
 							<div class="" id="cal-main">
 								<div>
 									<table class="top">
+										<colgroup>
+											<col style="width:33.333%" />
+											<col style="width:33.333%" />
+											<col style="width:33.333%" />
+										</colgroup>
 										<tr>
-											<td id="topTd1"><input type="button"
-												class="btn-txt txt-daily" value="일간" style="width: 40px"></td>
-											<td id="topTd2"><input type="button"
-												class="btn-txt txt-weekly" value="주간" style="width: 40px"></td>
-											<td id="topTd3"><input type="button"
-												class="btn-txt txt-monthly" value="월간" style="width: 40px"></td>
-											<td id="topTd4"><input type="button" id="prev-month"
-												value="이전" class="btn-txt txt-search" style="width: 40px;">
+											<td class="topTd_first"><input type="button" id="prev-month"
+												value="이전" class="btn-txt txt-search" style="width: 40px;"></td>
+											<td id="topTd1" class="topTd_middle">
 												&nbsp;&nbsp;&nbsp;<span id="month-name"></span>월
-												&nbsp;&nbsp;&nbsp;<input type="button" id="next-month"
+												&nbsp;&nbsp;&nbsp;</td>
+											<td class="topTd_last"><input type="button" id="next-month"
 												value="다음" class="btn-txt txt-search" style="width: 40px;"></td>
-											<td id="topTd5"><input type="button" value="검색"
-												class="btn-txt txt-search"
-												style="width: 40px; float: right;"> <input
-												type="text" placeholder="검색어를 입력하세요" size="20px"
-												style="float: right;"></td>
 										</tr>
 
 									</table>
@@ -257,7 +253,7 @@ $(function() {
 								</div>
 								<div class="test01">
 								<a	href="#loginmodal" class="flatbtn modaltrigger" id="modaltrigger"><input
-													type="button" class="btn-txt1 txt-plan" id="writeBt"
+													type="button" class="btn-txt txt-plan" id="writeBt"
 													style="width: 60px"></a>
 								</div>
 								<div class="test00">
@@ -275,7 +271,7 @@ $(function() {
 								</div>
 								<div class="test01">
 <a	href="#loginmodal" class="flatbtn modaltrigger" id="modaltrigger"><input
-													type="button" class="btn-txt1 txt-plan" id="writeBt"
+													type="button" class="btn-txt txt-plan" id="writeBt"
 													style="width: 60px"></a>
 
 								</div>
@@ -294,7 +290,7 @@ $(function() {
 								</div>
 								<div class="test01">
 <a	href="#loginmodal" class="flatbtn modaltrigger" id="modaltrigger"><input
-													type="button" class="btn-txt1 txt-plan" id="writeBt"
+													type="button" class="btn-txt txt-plan" id="writeBt"
 													style="width: 60px"></a>
 
 								</div>
@@ -314,7 +310,7 @@ $(function() {
 								<div class="test01">
 
 <a	href="#loginmodal" class="flatbtn modaltrigger" id="modaltrigger"><input
-													type="button" class="btn-txt1 txt-plan" id="writeBt"
+													type="button" class="btn-txt txt-plan" id="writeBt"
 													style="width: 60px"></a>
 
 								</div>
@@ -335,7 +331,7 @@ $(function() {
 								<div class="test01">
 
 <a	href="#loginmodal" class="flatbtn modaltrigger" id="modaltrigger"><input
-													type="button" class="btn-txt1 txt-plan" id="writeBt"
+													type="button" class="btn-txt txt-plan" id="writeBt"
 													style="width: 60px"></a>
 
 								</div>
