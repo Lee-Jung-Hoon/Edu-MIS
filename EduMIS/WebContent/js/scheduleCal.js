@@ -68,7 +68,7 @@
 					startnum++;
 				}
 
-				$("#month-name").html(y + "년 " + nMonth);
+				$("#month-name").html(y + "년 &nbsp;&nbsp;" + nMonth);
 
 				// 다음을 선택할 경우 다음 달로 넘어간다.
 
@@ -100,7 +100,7 @@
 						nMonth = 1;
 					}
 
-					$("#month-name").html(y + "년" + nMonth);
+					$("#month-name").html(y + "년 &nbsp;&nbsp;" + nMonth);
 
 				});
 
@@ -126,8 +126,9 @@
 						nMonth = 12;
 					}
 
-					$("#month-name").html(y + "년" + nMonth);
+					$("#month-name").html(y + "년 &nbsp;&nbsp;" + nMonth);
 					// 					$("#month-name").html(y);
+					
 				});
 
 				// 월 정보를 불러낸다.
