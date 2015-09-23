@@ -94,11 +94,12 @@
 							     </tr>
 							   </table>
 						 <span>과제제출</span>
-							<table border="1" width ='100%'>
-						 <input type ="hidden" name ="no" value="${ass.no}"/>
-							
 							<hr/>
-							    <tr>    
+							<table border="1" width ='100%'>
+						   <input type ="hidden" name ="no" value="${ass.no}" />
+						   <input type ="hidden" name ="id" value="${userInfo.id}"/>
+					     <input type ="hidden" name ="name" value="${userInfo.name}"/>
+	                 <tr>    
 							        <td>내용</td>
 							        <td>
 							        <textarea cols="70" rows="10" name ="usertext" >${userass.content}</textarea>
@@ -112,7 +113,7 @@
 							  <input type="submit" value="수정완료" />	
 							<input type="button" value="목록"  onclick="List();"/>
 							<hr/>
-				            </form>
+				      </form>
 							
 							</div>
 							<!--  작업완료 부분 -->
