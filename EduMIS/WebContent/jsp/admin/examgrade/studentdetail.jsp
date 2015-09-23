@@ -102,6 +102,29 @@ function drawBasic() {
 
 							<div class="">
 							<input type="button" value="목록" onclick="location.href='/EduMIS/jsp/admin/examgrade/exammain.jsp'">
+								<div>
+									<table class="table-board">
+										<tr>
+											<th>이름</th>
+											<td>${member.name}</td>
+										</tr>
+										
+										<tr>
+											<th>아이디</th>
+											<td>${member.id}</td>
+										</tr>
+										
+										<tr>
+											<th>생년월일</th>
+											<td>${member.year}/${member.month}/${member.day}</td>
+										</tr>
+										
+										<tr>
+											<th>가입일</th>
+											<td>${member.joinDate}</td>
+										</tr>
+									</table>
+								</div>
 								<div id="chart_div"></div>
 							</div>
 							<!--  작업완료 부분 -->

@@ -64,4 +64,10 @@ public class ExamGradeServiceImpl implements ExamGradeService {
 		dao.UpdateScore(g);
 	}
 
+	@Override
+	public MemberVO getMember(String id) throws Exception {
+		MemberVO member = dao.getMember(id);
+		return member;
+	}
+
 }

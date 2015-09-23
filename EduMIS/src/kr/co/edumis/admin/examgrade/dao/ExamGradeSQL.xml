@@ -6,98 +6,122 @@
 <mapper namespace="examgrade">
 	<!-- 회차정보를 저장하는 부분 -->
 	<insert id="inserExamBoard" parameterType="ExamBoardVO">
-		insert into t_exam_board(title, content, no, ck, reg_date)
-		values(#{title}, #{content}, seq_t_exam_board_no.nextVal, 'false', #{regDate})
+		insert into
+		t_exam_board(title, content, no, ck, reg_date)
+		values(#{title},
+		#{content}, seq_t_exam_board_no.nextVal, 'false', #{regDate})
 	</insert>
-	
-    <resultMap id="result" type="ExamBoardVO">
-        <result property="title"    column="title" />
-        <result property="content"  column="content" />
-        <result property="no"  column="no" />
-        <result property="regDate" column="reg_date" />
-        <result property="ck" column="ck" />
-    </resultMap>
-    
-    <resultMap id="memberResult" type="memberVO">
-        <result property="no" column="no" />
-        <result property="id" column="id" />
-        <result property="name" column="name" />
-        <result property="joinDate" column="join_date" />
-    </resultMap>
-    
-    <resultMap id="gradeResult" type="ExamGradeVO">
-        <result property="no" column="no" />
-        <result property="id" column="id" />
-        <result property="name" column="name" />
-        <result property="score" column="score" />
-        <result property="title" column="title" />
-        <result property="content" column="content" />
-        <result property="regDate" column="reg_date" />
-    </resultMap>
-    
-    
-    
-<!-- 	no number primary key, -->
-<!-- 	id varchar2(10) not null, -->
-<!-- 	pass varchar2(30) not null, -->
-<!-- 	name varchar2(30) not null, -->
-<!-- 	zcode varchar2(7) not null, -->
-<!-- 	zaddr varchar2(100) not null, -->
-<!-- 	email varchar2(30) not null, -->
-<!-- 	birth varchar2(6) not null, -->
-<!-- 	phone varchar2(11) not null, -->
-<!-- 	major varchar2(10) not null, -->
-<!-- 	join_date date not null, -->
-<!-- 	drop_check varchar2(3), -->
-<!-- 	drop_date date, -->
-<!-- 	drop_reason varchar2(100), -->
-<!-- 	team varchar2(5) -->
-	
-	<select id="selectExamBoardList"  resultMap="result">
-		select title, content, no, to_char(reg_date, 'yyyy-mm-dd') as reg_date, ck
-		from t_exam_board	
+
+	<resultMap id="result" type="ExamBoardVO">
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="no" column="no" />
+		<result property="regDate" column="reg_date" />
+		<result property="ck" column="ck" />
+	</resultMap>
+
+	<resultMap id="memberResult" type="memberVO">
+		<result property="no" column="no" />
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="joinDate" column="join_date" />
+		<result property="year" column="year" />
+		<result property="month" column="month" />
+		<result property="day" column="day" />
+		<result property="postNo" column="post_no" />
+		<result property="basicAddr" column="BASIC_ADDR" />
+		<result property="detailAddr" column="DETAIL_ADDR" />
+		<result property="email" column="email" />
+		<result property="emailDomain" column="EMAIL_DOMAIN" />
+	</resultMap>
+
+	<resultMap id="gradeResult" type="ExamGradeVO">
+		<result property="no" column="no" />
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="score" column="score" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="regDate" column="reg_date" />
+	</resultMap>
+
+
+
+	<!-- no number primary key, -->
+	<!-- id varchar2(10) not null, -->
+	<!-- pass varchar2(30) not null, -->
+	<!-- name varchar2(30) not null, -->
+	<!-- zcode varchar2(7) not null, -->
+	<!-- zaddr varchar2(100) not null, -->
+	<!-- email varchar2(30) not null, -->
+	<!-- birth varchar2(6) not null, -->
+	<!-- phone varchar2(11) not null, -->
+	<!-- major varchar2(10) not null, -->
+	<!-- join_date date not null, -->
+	<!-- drop_check varchar2(3), -->
+	<!-- drop_date date, -->
+	<!-- drop_reason varchar2(100), -->
+	<!-- team varchar2(5) -->
+
+	<select id="selectExamBoardList" resultMap="result">
+		select title,
+		content, no, to_char(reg_date, 'yyyy-mm-dd') as reg_date, ck
+		from
+		t_exam_board
 		order by no desc
 	</select>
-	
+
 	<select id="selectMember" resultMap="memberResult">
-		select no, id, name, to_char(join_date, 'yyyy-mm-dd') as join_date
+		select no, id, name,
+		to_char(join_date, 'yyyy-mm-dd') as join_date
 		from t_member
 	</select>
-	
+
 	<select id="selectExamBoard" parameterType="string" resultMap="result">
 		select title, content, no, to_char(reg_date, 'yyyy-mm-dd') as reg_date
 		from t_exam_board
 		where no = #{no}
-	</select>	
-	
+	</select>
+
 	<insert id="insertExamGrade" parameterType="ExamGradeVO">
-		insert into t_exam_grade(name, id, title, content, no, score)
-		values(#{name}, #{id}, #{title}, #{content}, #{no}, #{score})
+		insert into
+		t_exam_grade(name, id, title, content, no, score)
+		values(#{name},
+		#{id}, #{title}, #{content}, #{no}, #{score})
 	</insert>
-		
+
 	<update id="updateBoardCheck" parameterType="string">
 		update t_exam_board
 		set ck = 'true'
 		where no = #{no}
 	</update>
-	
+
 	<update id="setScore" parameterType="ExamGradeVO">
 		update t_exam_grade
-		  set score = #{score}
+		set score = #{score}
 		where no = #{no}
-		  and id = #{id}
+		and id = #{id}
 	</update>
-	
-	<select id="getGradeList"  resultMap="gradeResult" parameterType="string">
-		select name, id, title, content, no, score, to_char(reg_date, 'yyyy-mm-dd') as reg_date
+
+	<select id="getGradeList" resultMap="gradeResult" parameterType="string">
+		select name, id, title, content, no, score, to_char(reg_date,
+		'yyyy-mm-dd') as reg_date
 		from t_exam_grade
 		where no = #{no}
 	</select>
-	
+
 	<select id="getGrade" parameterType="string" resultMap="gradeResult">
-		select id, title, name, content, score, reg_date, no
+		select
+		id, title, name, content, score, reg_date, no
 		from t_exam_grade
+		where id
+		= #{id}
+	</select>
+
+	<select id="getmember" parameterType="string" resultMap="memberResult">
+		select no, id, name, to_char(join_date, 'yyyy-mm-dd') as join_date,
+		year, month, day, post_no, BASIC_ADDR, DETAIL_ADDR, email, EMAIL_DOMAIN
+		from t_member
 		where id = #{id}
 	</select>
-	
 </mapper>

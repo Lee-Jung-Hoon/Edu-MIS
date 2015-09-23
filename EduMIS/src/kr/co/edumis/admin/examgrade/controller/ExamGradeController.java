@@ -128,8 +128,10 @@ public class ExamGradeController {
 		ModelAndView mav = new ModelAndView("/jsp/admin/examgrade/studentdetail.jsp");
 		
 		try {
+			MemberVO member = service.getMember(id);
 			List<ExamGradeVO> list = service.getGrade(id);
 			mav.addObject("list", list);
+			mav.addObject("member", member);
 			System.out.println(list.size());
 		} catch (Exception e) {
 			e.printStackTrace();
