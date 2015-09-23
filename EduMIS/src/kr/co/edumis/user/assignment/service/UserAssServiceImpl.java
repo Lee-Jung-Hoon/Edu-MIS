@@ -1,6 +1,7 @@
 package kr.co.edumis.user.assignment.service;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.co.edumis.admin.assignment.vo.AdminAssVO;
 import kr.co.edumis.user.assignment.dao.UserAssDAO;
@@ -33,7 +34,9 @@ public class UserAssServiceImpl implements UserAssService{
 	
 	public void updateUserAss(UserAssVO userass)throws Exception{
 		uasdao.updateUserAss(userass);
-		
+	}
+	public int userSubmitCheck(Map<String, String> param)throws Exception{
+		return uasdao.userSubmitCheck(param);
 	}
 
 

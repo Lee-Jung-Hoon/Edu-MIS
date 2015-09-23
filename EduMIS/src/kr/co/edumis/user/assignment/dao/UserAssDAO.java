@@ -1,6 +1,7 @@
 package kr.co.edumis.user.assignment.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -34,6 +35,9 @@ public class UserAssDAO {
 	public void updateUserAss(UserAssVO userass)throws Exception{
 		sqls.update("userAssMapper.userAssUpdate",userass);
 		sqls.commit();
+	}
+	public int userSubmitCheck(Map<String, String> param)throws Exception{
+		return (int)sqls.selectOne("userAssMapper.userSubmitCheck",param);
 	}
 	
 

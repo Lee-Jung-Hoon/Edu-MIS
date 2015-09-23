@@ -1,18 +1,18 @@
 package kr.co.edumis.user.assignment.controller;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -45,6 +45,7 @@ public class UserAssController {
 			List<AdminAssVO> list = service.getList();
 			mav.addObject("list", list);
 			
+			// 진행여부
 			List<String> ckArr = new ArrayList<String>();
 			Calendar c = Calendar.getInstance();
 			c.setTimeInMillis(System.currentTimeMillis());
@@ -52,6 +53,7 @@ public class UserAssController {
 					+ String.valueOf(c.get(c.MONTH) < 10 ? "0" + (c.get(c.MONTH) + 1) : (c.get(c.MONTH)) + 1)
 					+ String.valueOf(c.get(c.DATE) < 10 ? "0" + c.get(c.DATE) : c.get(c.DATE));
 			int nDate = Integer.parseInt(nowDate);
+			
 			for (AdminAssVO vo : list) {
 				int startDate = Integer.parseInt(vo.getStartDate().replace("-", ""));
 				int endDate = Integer.parseInt(vo.getEndDate().replace("-", ""));
@@ -62,6 +64,24 @@ public class UserAssController {
 					ckArr.add("X");
 			}
 			mav.addObject("ckArr", ckArr);
+			
+			//제출여부
+			List<String> check = new ArrayList<String>();
+			Map<String, String> param = new HashMap<>();
+			
+			param.put("no", req.getParameter("no"));
+			param.put("id", req.getParameter("id"));
+			
+			int checkNum = service.userSubmitCheck(param);
+			if(checkNum==0){
+				check.add("O");
+			}else{
+				check.add("X");
+			}
+			mav.addObject("check", check);
+			
+			
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -119,11 +139,12 @@ public class UserAssController {
 	    	userass.setOrgFileName(orgFileName);
 	    	userass.setRealFileName(realFileName);
 	    	userass.setNo(Integer.parseInt(multi.getParameter("no")));
-	    	userass.setName("가나다");
-	    	userass.setId("abcde");
+	    	userass.setName(multi.getParameter("name"));
+	    	userass.setId(multi.getParameter("id"));
 	    	userass.setFilePath("/assignmentFile");
 	    	}
 	    }
+	    
 	    
 	    try {
 			service.registAssignment(userass);
@@ -139,7 +160,6 @@ public class UserAssController {
 	public ModelAndView userAssBfModify(int no)
 			throws ServletException, IOException {
 		
-		System.out.println(no);
 
 		ModelAndView mav = new ModelAndView("/jsp/user/assignment/userAssModify.jsp");
 
@@ -187,12 +207,12 @@ public class UserAssController {
 	    	userass.setOrgFileName(orgFileName);
 	    	userass.setRealFileName(realFileName);
 	    	userass.setNo(Integer.parseInt(multi.getParameter("no")));
-	    	userass.setName("가나다");
-	    	userass.setId("abcde");
+	    	userass.setName(multi.getParameter("name"));
+	    	userass.setId(multi.getParameter("id"));
 	    	userass.setFilePath("/assignmentFile");
 	    	}
 	    }
-	    
+	    System.out.println(multi.getParameter("no"));
 	    try {
 			service.updateUserAss(userass);
 		} catch (Exception e1) {

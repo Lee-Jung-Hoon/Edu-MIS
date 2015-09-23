@@ -1,6 +1,7 @@
 package kr.co.edumis.user.assignment.service;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.co.edumis.admin.assignment.vo.AdminAssVO;
 import kr.co.edumis.user.assignment.vo.UserAssVO;
@@ -18,7 +19,12 @@ public interface UserAssService {
 	//제출한 과제 상세조회
 	public UserAssVO userdetail(int no)throws Exception;
 	
+	//과제 수정
 	public void updateUserAss(UserAssVO userass)throws Exception;
+	
+	//제출여부 조회
+	public int userSubmitCheck(Map<String, String> param)throws Exception;
+	
 	
 	
 
