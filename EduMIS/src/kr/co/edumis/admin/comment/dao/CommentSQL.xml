@@ -1,34 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
 <mapper namespace="comment.dao.commentMapper">
 
 <select id="commentList" resultType="CommentVO">
 
-	select id,name
-	from t_member 
+   select no,id,name
+   from t_member 
 </select>
 
 <select id="commentSelect" resultType="CommentVO" parameterType="string">
 
-	select no,id,name,year,month,day,
-	post_no,basic_addr,detail_addr,
-	phone1,phone2,phone3,email,email_domain,
-	major,join_date,drop_date,drop_reason,tech_leader,grade
-	from t_member
-	where name = #{no}
+   select no,id,name,year,month,day,
+   post_no,basic_addr,detail_addr,
+   phone1,phone2,phone3,email,email_domain,
+   major,join_date,drop_date,drop_reason,tech_leader,grade
+   from t_member
+   where no = #{no}
 </select>
 <insert id="commentInsert" parameterType="CommentVO">
-		
-		insert into t_comment
-		(content)values(#{content})
+      
+      insert into t_comment(content, id)
+      values(#{content}, #{id})
 </insert>
 <update id="commentModify" parameterType="CommentVO">
 
-	update t_comment set
-	content=#{content}
+   update t_comment set
+   content=#{content}
+   where id = #{id}
 
+</update>
+
+<update id="memberDrop" parameterType="map">
+   update t_member set
+   drop_check = 'y',
+   drop_date = sysdate,
+   drop_reason = #{drop_reason}
+   where id = #{id}
 </update>
 </mapper>
