@@ -97,8 +97,8 @@
 							<hr/>
 							<table border="1" width ='100%'>
 						   <input type ="hidden" name ="no" value="${ass.no}" />
-						   <input type ="hidden" name ="id" value="${userInfo.id}"/>
-					     <input type ="hidden" name ="name" value="${userInfo.name}"/>
+						   <input type ="hidden" name ="id" value="${user.id}"/>
+					     <input type ="hidden" name ="name" value="${user.name}"/>
 	                 <tr>    
 							        <td>내용</td>
 							        <td>

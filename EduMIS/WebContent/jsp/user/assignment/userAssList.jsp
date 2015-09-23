@@ -76,7 +76,6 @@
                             <c:set var = "index" value = "0"/>
 							<form  method="POST">
 							<div class="AssignmentList">
-							  <input type ="hidden" name ="id" value="${userInfo.id}"/>
   							<table border="1" width ='110%'>
 							     <tr>
 							        <td>No.   </td>
