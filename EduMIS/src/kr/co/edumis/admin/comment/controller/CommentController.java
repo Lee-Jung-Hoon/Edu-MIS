@@ -9,7 +9,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import kr.co.edumis.admin.comment.service.CommentService;
 import kr.co.edumis.admin.comment.service.CommentServiceImpl;
 import kr.co.edumis.admin.comment.vo.CommentVO;
@@ -17,6 +16,7 @@ import kr.co.edumis.framework.Controller;
 import kr.co.edumis.framework.ModelAndView;
 import kr.co.edumis.framework.RequestMapping;
 import kr.co.edumis.framework.WebUtil;
+import kr.co.edumis.user.member.vo.MemberVO;
 
 @Controller
 public class CommentController {
@@ -33,7 +33,7 @@ public class CommentController {
 
 		try {
 			ModelAndView mav = new ModelAndView("/jsp/admin/comment/commentList.jsp");
-			List<CommentVO> list = service.getList();
+			List<MemberVO> list = service.getList();
 			mav.addObject("list", list);
 			return mav;
 		} catch (Exception e) {
@@ -41,12 +41,12 @@ public class CommentController {
 		}
 	}
 	@RequestMapping("/admin/commentSelect.do")
-	public ModelAndView commentSelect(String no)
+	public ModelAndView commentSelect(String id)
 			throws ServletException, IOException {
 		try{
 			
 			ModelAndView mav = new ModelAndView("/jsp/admin/comment/commentDetail.jsp");
-			CommentVO vo =service.getSelect(no);
+			MemberVO vo =service.getSelect(id);
 			mav.addObject("vo", vo);
 			return mav;
 		}catch(Exception e){
