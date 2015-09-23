@@ -39,6 +39,5 @@
 			<td><a href = '${pageContext.request.contextPath}/fileDownload?orgFileName=${vo.orgFileName}&realFileName=${vo.realFileName}'>${vo.orgFileName}</a></td>
 		</tr>
 	</table>
-	
 </body>
 </html>
