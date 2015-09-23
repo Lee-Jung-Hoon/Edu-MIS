@@ -62,5 +62,10 @@ public class ExamGradeDAO {
 		session.commit();
 	}
 
+	public MemberVO getMember(String id) {
+		MemberVO member = session.selectOne("examgrade.getmember", id);
+		return member;
+	}
+
 
 }

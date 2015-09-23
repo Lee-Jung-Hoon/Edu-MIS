@@ -8,13 +8,22 @@
 #wrap .flatbtn{color:#8c6239;text-decoration:underline;}
 
 
-#loginmodal{border:3px solid #705c3b;background:#fff;}
-#loginmodal h2{color:#636363;font-size:24px;line-height:40px;}
-#loginmodal .p_c_text{font-size:12px;line-height:24px;}
-#loginmodal .login_line{margin:10px 0 0;height:80px;}
-#loginmodal .box_in{float:left;margin:0 10px 0; }
-#loginmodal .btn_login{width:72px;height:60px;background:#363636;color:#e1e1e1;float:left;line-height:60px;text-align:center;}
-#loginmodal .find_join{clear:both;margin:20px 0 0 10px;}
+#registmodal{border:3px solid #705c3b;background:#fff;}
+#registmodal h2{color:#636363;font-size:24px;line-height:40px;}
+#registmodal .p_c_text{font-size:12px;line-height:24px;}
+#registmodal .login_line{margin:10px 0 0;height:80px;}
+#registmodal .box_in{float:left;margin:0 10px 0; }
+#registmodal .btn_login{width:72px;height:60px;background:#363636;color:#e1e1e1;float:left;line-height:60px;text-align:center;}
+#registmodal .find_join{clear:both;margin:20px 0 0 10px;}
+
+#registmodal2{border:3px solid #705c3b;background:#fff;}
+#registmodal2 h2{color:#636363;font-size:24px;line-height:40px;}
+#registmodal2 .p_c_text{font-size:12px;line-height:24px;}
+#registmodal2 .login_line{margin:10px 0 0;height:80px;}
+#registmodal2 .box_in{float:left;margin:0 10px 0; }
+#registmodal2 .btn_login{width:72px;height:60px;background:#363636;color:#e1e1e1;float:left;line-height:60px;text-align:center;}
+#registmodal2 .find_join{clear:both;margin:20px 0 0 10px;}
+
 
 /** modal window styles **/
 #lean_overlay {
@@ -29,7 +38,7 @@
 }
 
 
-#loginmodal {
+#registmodal {
   width: 250px;height:250px;  /*팝업창의 크기조절*/
   margin-top:100px;           /*팝업창 위아래 간격조절*/
   padding: 18px;
@@ -41,5 +50,20 @@
   -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
 }
+
+#registmodal2 {
+	z-index : 9999;
+  width: 250px;height:250px;  /*팝업창의 크기조절*/
+  margin-top:100px;           /*팝업창 위아래 간격조절*/
+  padding: 18px;
+  background: #f3f6fa;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+
 
 

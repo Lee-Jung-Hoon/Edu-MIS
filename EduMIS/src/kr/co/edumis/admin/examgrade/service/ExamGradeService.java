@@ -26,5 +26,7 @@ public interface ExamGradeService {
 
 	public void UpdateScore(ExamGradeVO g) throws Exception;
 
+	public MemberVO getMember(String id) throws Exception;
+
 
 }
