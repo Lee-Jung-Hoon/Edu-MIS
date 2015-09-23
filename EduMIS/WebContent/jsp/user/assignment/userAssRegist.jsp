@@ -114,8 +114,8 @@
 					    <c:when test='${empty userass}'>
 					    <form action="/EduMIS/user/assRegist.do"method="POST" enctype="multipart/form-data">
 					    <input type ="hidden" name ="no" value="${ass.no}"/>
-					    <input type ="hidden" name ="id" value="${userInfo.id}"/>
-					    <input type ="hidden" name ="name" value="${userInfo.name}"/>
+					    <input type ="hidden" name ="id" value="${user.id}"/>
+					    <input type ="hidden" name ="name" value="${user.name}"/>
 							<span>과제제출</span>
 							<table border="1" width ='100%'>
 							<hr/>
@@ -138,8 +138,8 @@
 						<c:otherwise >
 						  <form action="/EduMIS/user/assBfModify.do?no=${ass.no}" method="POST" enctype="multipart/form-data">
 						    <input type ="hidden" name ="no" value="${ass.no}"/>
-						    <input type ="hidden" name ="id" value="${userInfo.id}"/>
-					      <input type ="hidden" name ="name" value="${userInfo.name}"/>
+						    <input type ="hidden" name ="id" value="${user.id}"/>
+					      <input type ="hidden" name ="name" value="${user.name}"/>
 							  <span>과제제출</span>
 							  <table border="1" width ='100%'>
 							  <hr/>
