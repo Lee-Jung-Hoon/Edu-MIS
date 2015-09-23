@@ -31,5 +31,11 @@ public class CommentDAO {
 	}
 
 
+	public void memberDrop(String id) throws Exception{
+		session.update("comment.dao.commentMapper.memberDrop",id);
+		session.commit();	
+	}
+
+
 
 }

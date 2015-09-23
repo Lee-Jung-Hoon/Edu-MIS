@@ -31,5 +31,11 @@ public class CommentServiceImpl implements CommentService {
 		
 	}
 
+	@Override
+	public void memberDrop(String id) throws Exception {
+		dao.memberDrop(id);
+		
+	}
+
 
 }

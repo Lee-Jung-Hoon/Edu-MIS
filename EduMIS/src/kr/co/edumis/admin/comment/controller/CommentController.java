@@ -60,7 +60,21 @@ public class CommentController {
 
 		try {
 			service.commentInsert(comment);
-			return "redirect:/EduMIS/user/commentDetail.do";
+			return "redirect:/EduMIS/user/commentList.do";
+		} catch (Exception e) {
+			throw new ServletException(e);
+		}
+	}
+
+	@RequestMapping("/admin/memberDrop.do")
+	public String memberDrop(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		
+		CommentVO comment = (CommentVO) WebUtil.getFromParamToVO("kr.co.edumis.admin.comment.vo.CommentVO", req);
+		
+		try {
+			 String id = req.getParameter("id");
+			service.memberDrop(id);
+			return "redirect:/EduMIS/user/commentList.do";
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
