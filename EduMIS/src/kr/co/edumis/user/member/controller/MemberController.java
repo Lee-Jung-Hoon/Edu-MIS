@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.edumis.framework.Controller;
 import kr.co.edumis.framework.ModelAndView;
 import kr.co.edumis.framework.RequestMapping;
+import kr.co.edumis.user.member.dao.MemberDAO;
 import kr.co.edumis.user.member.service.MemberService;
 import kr.co.edumis.user.member.service.MemberServiceImpl;
 import kr.co.edumis.user.member.vo.MemberVO;
