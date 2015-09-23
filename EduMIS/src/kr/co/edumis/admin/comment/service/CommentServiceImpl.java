@@ -1,6 +1,7 @@
 package kr.co.edumis.admin.comment.service;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.co.edumis.admin.comment.dao.CommentDAO;
 import kr.co.edumis.admin.comment.vo.CommentVO;
@@ -32,8 +33,8 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	@Override
-	public void memberDrop(String id) throws Exception {
-		dao.memberDrop(id);
+	public void memberDrop(Map<String, String> drop) throws Exception {
+		dao.memberDrop(drop);
 		
 	}
 

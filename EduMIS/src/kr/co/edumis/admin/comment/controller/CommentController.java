@@ -1,11 +1,14 @@
 package kr.co.edumis.admin.comment.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 
 import kr.co.edumis.admin.comment.service.CommentService;
 import kr.co.edumis.admin.comment.service.CommentServiceImpl;
@@ -69,11 +72,15 @@ public class CommentController {
 	@RequestMapping("/admin/memberDrop.do")
 	public String memberDrop(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
-		CommentVO comment = (CommentVO) WebUtil.getFromParamToVO("kr.co.edumis.admin.comment.vo.CommentVO", req);
 		
 		try {
+			 Map<String, String> drop = new HashMap<>();
 			 String id = req.getParameter("id");
-			service.memberDrop(id);
+			 String drop_reason = req.getParameter("drop_reason");
+			 drop.put("id", id);
+			 drop.put("drop_reason", drop_reason);
+			service.memberDrop(drop);
+			
 			return "redirect:/EduMIS/user/commentList.do";
 		} catch (Exception e) {
 			throw new ServletException(e);
