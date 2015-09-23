@@ -23,8 +23,8 @@ public class CommentDAO {
 	}
 
 	public MemberVO commentSelect(String id)throws Exception {
-
-		return (MemberVO) session.selectOne("comment.dao.commentMapper.commentSelect", id);
+		System.out.println(id);
+		return (MemberVO)session.selectOne("comment.dao.commentMapper.commentSelect", id);
 	}
 
 	public void commentInsert(CommentVO comment) throws Exception{

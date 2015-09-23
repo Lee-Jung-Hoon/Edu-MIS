@@ -5,12 +5,15 @@
 
 <mapper namespace="comment.dao.commentMapper">
 
+
+<!-- 수강생 목록 -->
 <select id="commentList" resultType="MemberVO">
 
-   select no,id,name
+   select id,name
    from t_member 
 </select>
 
+<!-- 수강생 정보 -->
 <select id="commentSelect" resultType="MemberVO" parameterType="string">
 
    select no,id,name,year,month,day,
@@ -20,11 +23,15 @@
    from t_member
    where id = #{id}
 </select>
+
+<!-- 코멘트 등록 -->
 <insert id="commentInsert" parameterType="CommentVO">
       
       insert into t_comment(content, id)
       values(#{content}, #{id})
 </insert>
+
+<!-- 수정 -->
 <update id="commentModify" parameterType="CommentVO">
 
    update t_comment set

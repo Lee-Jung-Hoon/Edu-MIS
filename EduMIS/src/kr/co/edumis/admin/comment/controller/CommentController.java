@@ -26,7 +26,7 @@ public class CommentController {
 	public CommentController() {
 		service = new CommentServiceImpl();
 	}
-
+	//수강생 목록
 	@RequestMapping("/admin/commentList.do")
 	public ModelAndView CommentList(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
@@ -40,13 +40,14 @@ public class CommentController {
 			throw new ServletException(e);
 		}
 	}
+	//수강생 정보
 	@RequestMapping("/admin/commentSelect.do")
-	public ModelAndView commentSelect(String id)
+	public ModelAndView commentSelect(String id, HttpServletRequest req)
 			throws ServletException, IOException {
 		try{
 			
 			ModelAndView mav = new ModelAndView("/jsp/admin/comment/commentDetail.jsp");
-			MemberVO vo =service.getSelect(id);
+			MemberVO vo =service.getSelect(req.getParameter("id"));
 			mav.addObject("vo", vo);
 			return mav;
 		}catch(Exception e){
