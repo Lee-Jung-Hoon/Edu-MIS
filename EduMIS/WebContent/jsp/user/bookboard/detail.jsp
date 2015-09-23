@@ -14,7 +14,9 @@
 		<td style="width:600px">${board.title}</td>
 	</tr>
 	<tr>
-		<td style="height:500px">${board.content}</td>
+		<td style="height:500px">
+		<img src="${board.filePath}"/"${board.orgFileName}" width="200px" alt="이미지" />
+		${board.content}</td>
 	</tr>
 </table>
 
