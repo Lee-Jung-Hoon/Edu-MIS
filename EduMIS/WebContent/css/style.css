@@ -1384,3 +1384,61 @@ section.board {
 	vertical-align:middle;
 }
 /* 조장 추천 게시판 끝 */
+
+/* 사이드 공통 메모 알림 */
+.opacity-action {
+  animation-duration: 3s;
+  animation-name: slidein;
+  animation-iteration-count: 2;
+}
+
+@keyframes slidein {
+  0% {
+    opacity:1;
+  }
+  25% {
+	opacity:.1;
+  }
+  50% {
+	opacity:1;
+  }
+  75% {
+	opacity:.1;
+  }
+  100% {
+	opacity:1;
+  }
+}
+.side-memo-ring {
+	width:200px; 
+	float:right; 
+	margin:-100% -250px 0 0; 
+	padding-bottom:50px;
+}
+.side-memo-ring li {
+	position:relative; 
+	height:70px; 
+	margin-bottom:30px; 
+	padding:10px 0 0 20px; 
+	background:url('../images/bubble.png') no-repeat center; 
+	background-size:200px 70px; 
+	font-size:13px; 
+	box-sizing:border-box; 
+	text-align:center; 
+	line-height:20px;
+}
+.side-memo-ring li strong {
+	font-size:14px; 
+	font-weight:bold;
+}
+.side-memo-ring .btn-ring-del {
+	position:absolute; 
+	top:5px; 
+	right:5px; 
+	display:block; 
+	width:20px; 
+	height:20px; 
+	background:url('../images/btn-close.png') no-repeat center; 
+	background-size:20px 20px; 
+	text-indent:-5000px;
+}
