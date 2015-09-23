@@ -34,15 +34,6 @@ public class LoginController {
 			LoginVO member = service.login(login);
 			HttpSession session = req.getSession();
 			
-			Cookie cookie = new Cookie("loginId", id);
-			cookie.setPath("/");
-
-			if(req.getParameter("saveId") != null) {
-				cookie.setMaxAge(60 * 60); 
-			} else {
-				cookie.setMaxAge(0);  
-			}
-			res.addCookie(cookie);
 			ModelAndView mav = new ModelAndView();
 			if (member != null) { 
 				session.setAttribute("userInfo", member);
