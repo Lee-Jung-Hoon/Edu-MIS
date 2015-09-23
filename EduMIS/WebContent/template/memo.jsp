@@ -84,7 +84,7 @@
 						<c:forEach var="memo" items="${list}">
 							<div class="memo saved" id="${memo.memoNo}" style="left:${memo.posX}px; top:${memo.posY}px;">
 		 							<textarea>${memo.content}</textarea>
-		 							<button type="button" class="btn-m btn-m-save">저장</button>
+<!-- 		 							<button type="button" class="btn-m btn-m-save">저장</button> -->
 		 							<button type="button" class="btn-m btn-m-del">삭제</button>
 		 					</div>
 						</c:forEach>
@@ -104,59 +104,63 @@
 </body>
 <script type="text/javascript" src="/EduMIS/js/common.js"></script>
 <script type="text/javascript">
+
+
+var saveMemo = function(memoDiv) {
+	var content = memoDiv.find('textarea').val(); 
+	var posXVal = parseInt(memoDiv.css('left'));				
+	var posYVal = parseInt(memoDiv.css('top'));				
+	var idVal = memoDiv.attr("id");
 	
+	var params = {
+				posX: posXVal, 
+				posY: posYVal,
+				content : content,
+				id : idVal
+				};
+				
+	if(memoDiv.hasClass("saved")){		 // 업데이트
+		sendRequest("/EduMIS/memo/updateMemo.do", params, '');
+	}
+	else{														 // 저장
+		sendRequest("/EduMIS/memo/insertMemo.do", params, function(data){
+			memoDiv.attr("id",data);
+		});
+		memoDiv.addClass("saved");
+	}	
+}
 	
 	$(document).ready(function(){
 		$(".memo").draggable();
 		
 		// 메모 삭제 클릭
 		$(".inner-layer").on('click',".btn-m-del", function() {
-			alert("dd");
-			
-			// db에 저장되있으면 삭제
-			if($(this).parent().hasClass("saved")){
+			if($(this).parent().hasClass("saved")){ 	
 				var idVal = $(this).parent().attr("id");
 				var params={
 						id : idVal
 				}	
 	 			sendRequest("/EduMIS/memo/deleteMemo.do", params, "");				
-			}
-			
+			}			
 			$(this).parent().remove();
 		});
 		
-		// 저장클릭 
-		$(".container-inner").on('click',".btn-m-save", function() {
-			var content = $(this).parent().find('textarea').val();    	// 내용
-			var posXVal = parseInt($(this).parent().css('left'));				
-			var posYVal = parseInt($(this).parent().css('top'));				
-			var idVal = $(this).parent().attr("id");
-			
-			var params = {
-						posX: posXVal, 
-						posY: posYVal,
-						content : content,
-						id : idVal
-						};
-						
-			if($(this).parent().hasClass("saved")){
-				// 디비에 있으면 업데이트
-				alert("업데");
-				sendRequest("/EduMIS/memo/updateMemo.do", params, '');
-			}
-			else{
-				// 디비에 없으면 저장
-				alert("저장")
-				sendRequest("/EduMIS/memo/insertMemo.do", params, '');
-				$(this).addClass("saved")
-			}
-				
-		})				
-	})
+		// 움직일때 저장
+		$('.inner-layer').on("mouseup",".memo", function(){
+			saveMemo($(this));
+		})
+		
+		// 키보드 떼면 저장
+		$(".container-inner").on('keyup',".memo",function(){
+			mDiv = $(this);
+			saveMemo(mDiv);
+		})
+	})//ready종료
 
 	// 메모 생성
 	$('.btn-memo').on('click', function(){
-		$('<div class="memo"> <textarea></textarea>	<button type="button" class="btn-m btn-m-save">저장</button>	<button type="button" class="btn-m btn-m-del">삭제</button>	</div>').appendTo('.inner-layer')
+		$('<div class="memo"> <textarea></textarea> <button type="button" class="btn-m btn-m-del">삭제</button>	</div>')
+		.appendTo('.inner-layer')
 		.draggable();
 	});
 
