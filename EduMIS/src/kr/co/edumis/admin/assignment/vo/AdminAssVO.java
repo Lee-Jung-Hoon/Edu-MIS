@@ -10,6 +10,15 @@ public class AdminAssVO {
 	private String orgFileName;
 	private String realFileName;
 	private String filePath;
+	private String isSubmit;
+
+	public String getIsSubmit() {
+		return isSubmit;
+	}
+
+	public void setIsSubmit(String isSubmit) {
+		this.isSubmit = isSubmit;
+	}
 
 	public int getNo() {
 		return no;
