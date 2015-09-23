@@ -90,7 +90,7 @@
 							       <td>${list.no}</td>
 							       <td><a href ="${pageContext.request.contextPath}/user/assDetail.do?no=${list.no}">${list.title}</a></td>
 							       <td>${list.startDate} ~ ${list.endDate}</td>
-							       <td></td>
+							       <td>${list.isSubmit}</td>
 							       <td>${ckArr[index]}</td>
 							     </tr>
                                    <c:set var = "index" value = "${index + 1}"/>
