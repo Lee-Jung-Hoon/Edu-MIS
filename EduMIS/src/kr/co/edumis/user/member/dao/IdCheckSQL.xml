@@ -3,8 +3,8 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="idCheck.dao.IdCheckMapper">
 
-<select id="idCheck" parameterType="LoginVO" resultType="LoginVO">
-			select count(*)	
+<select id="idCheck" parameterType="string" resultType="int">
+			select count(*)
 			from t_member	
 			where id = #{id}            
 </select>
