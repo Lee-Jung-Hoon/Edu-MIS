@@ -22,7 +22,6 @@ public class AdminAssDAO {
 		
 		sqlMapper.insert("adminAssignment.registAssignment", adAssvo);
 		sqlMapper.commit();
-		
 	}
 	
 	public List<AdminAssVO> selectList() {
@@ -32,8 +31,8 @@ public class AdminAssDAO {
 	}
 
 	public AdminAssVO selectDetail(String no) {
-		 return sqlMapper.selectOne("adminAssignment.selectDetail",no);
 		
+		 return sqlMapper.selectOne("adminAssignment.selectDetail",no);
 	}
 
 	public void updateAss(AdminAssVO adAssvo) {
