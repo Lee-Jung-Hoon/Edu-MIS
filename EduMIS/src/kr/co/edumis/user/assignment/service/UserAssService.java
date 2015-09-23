@@ -8,7 +8,7 @@ import kr.co.edumis.user.assignment.vo.UserAssVO;
 public interface UserAssService {
 	
 	//과제해야 할 전체목록
-	public List<AdminAssVO> getList() throws Exception;
+	public List<AdminAssVO> getList(String id) throws Exception;
 	
 	//등록
 	public void registAssignment(UserAssVO userass) throws Exception;
@@ -22,6 +22,8 @@ public interface UserAssService {
 	//과제 수정
 	public void updateUserAss(UserAssVO userass)throws Exception;
 	
+//	//제출한 과제 번호 목록
+//	public List<String> userSubmitCheck(String id)throws Exception; 
 
 	
 	

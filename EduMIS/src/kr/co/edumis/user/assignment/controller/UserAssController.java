@@ -5,9 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +22,7 @@ import kr.co.edumis.framework.RequestMapping;
 import kr.co.edumis.user.assignment.service.UserAssService;
 import kr.co.edumis.user.assignment.service.UserAssServiceImpl;
 import kr.co.edumis.user.assignment.vo.UserAssVO;
+import kr.co.edumis.user.login.vo.LoginVO;
 
 @Controller
 public class UserAssController {
@@ -42,11 +41,17 @@ public class UserAssController {
 		ModelAndView mav = new ModelAndView("/jsp/user/assignment/userAssList.jsp");
 
 		try {
-			List<AdminAssVO> list = service.getList();
-			mav.addObject("list", list);
-			System.out.println(req.getParameter("no"));
-			System.out.println(req.getParameter("id"));
+			//제출여부
+			HttpSession hts = req.getSession();
+			LoginVO session = (LoginVO)hts.getAttribute("userInfo");
+			String id = session.getId();
+				
+			List<AdminAssVO> list = service.getList(id);
+			System.out.println(list.get(0).getIsSubmit());
+			System.out.println(list.get(1).getIsSubmit());
 			
+			mav.addObject("list", list);
+
 			// 진행여부
 			List<String> ckArr = new ArrayList<String>();
 			Calendar c = Calendar.getInstance();
@@ -67,7 +72,8 @@ public class UserAssController {
 			}
 			mav.addObject("ckArr", ckArr);
 			
-			//제출여부
+			
+			System.out.println(id);
 		
 			
 			
