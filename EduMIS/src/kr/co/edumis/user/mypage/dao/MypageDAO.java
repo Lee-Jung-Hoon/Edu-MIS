@@ -17,8 +17,23 @@ public class MypageDAO {
 
 	public List<MypageVO> selectMyinfo(String id) throws Exception{
 		List<MypageVO> list = session.selectList("mypage.dao.MypageMapper.selectMyinfo", id);
-		System.out.println(2);
 		return list;
 	}
 
+
+	public void updateMyinfo(MypageVO vo) throws Exception{
+//		System.out.println("Mypage : " + vo.getId());
+//		System.out.println("Mypage : " + vo.getName());
+//		System.out.println("Mypage : " + vo.getPass());
+//		System.out.println("Mypage : " + vo.getPassChk());
+//		System.out.println("Mypage : " + vo.getYear());
+//		System.out.println("Mypage : " + vo.getMonth());
+//		System.out.println("Mypage : " + vo.getDay());
+//		System.out.println("Mypage : " + vo.getPostNo());
+//		System.out.println("Mypage : " + vo.getBasicAddr());
+//		System.out.println("Mypage : " + vo.getDetailAddr());
+//		System.out.println("Mypage : " + vo.getPhone1());
+		session.update("mypage.dao.MypageMapper.updateMyinfo", vo);
+		session.commit();
+	}
 }

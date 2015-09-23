@@ -38,5 +38,23 @@
         from t_member
         where id = #{id}    
     </select>
+    <update id="updateMyinfo" parameterType="MypageVO">
+        update t_member
+        	 set pass = #{pass},
+        	     pass_chk = #{passChk},
+        	     year = #{year},
+        	     month = #{month},
+        	     day = #{day},
+        	     post_no = #{postNo},
+        	     basic_addr = #{basicAddr},
+        	     detail_addr = #{detailAddr},
+        	     phone1 = #{phone1},
+        	     phone2 = #{phone2},
+        	     phone3 = #{phone3},
+        	     email = #{email},
+        	     email_domain = #{emailDomain},
+        	     major = #{major}
+        	 where id = #{id}
+    </update>
 
 </mapper>
