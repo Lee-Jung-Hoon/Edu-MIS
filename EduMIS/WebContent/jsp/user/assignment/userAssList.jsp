@@ -85,12 +85,12 @@
 							        <td>제출여부</td>
 							        <td>진행여부</td>
 							     </tr>
-                                <c:forEach var="list" items="${list}">
+                  <c:forEach var="list" items="${list}">
 							     <tr>
 							       <td>${list.no}</td>
 							       <td><a href ="${pageContext.request.contextPath}/user/assDetail.do?no=${list.no}">${list.title}</a></td>
 							       <td>${list.startDate} ~ ${list.endDate}</td>
-							       <td>${check[index]}</td>
+							       <td></td>
 							       <td>${ckArr[index]}</td>
 							     </tr>
                                    <c:set var = "index" value = "${index + 1}"/>
