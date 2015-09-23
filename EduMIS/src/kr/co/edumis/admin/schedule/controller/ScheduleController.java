@@ -25,8 +25,6 @@ public class ScheduleController {
 	public ModelAndView write (HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 		
-		res.setContentType("text/html; charset=UTF-8");
-		
 		ScheduleVO schedule = (ScheduleVO) WebUtil.getFromParamToVO("kr.co.edumis.admin.schedule.vo.ScheduleVO",req);
 		try {
 			service.registSchedule(schedule);
@@ -36,7 +34,6 @@ public class ScheduleController {
 		}
 	}
 	
-		
 	
 	
 }
