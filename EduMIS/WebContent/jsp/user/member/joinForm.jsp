@@ -1,15 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="ko">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width">
-	<title>회원가입</title>
-	<script>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width">
+<title>회원가입</title>
+<script>
+	
 function chkForm() {
 	var member = document.memberForm;
+	var ch;
 
 	var id = member.id.value;
 	if (id == "") {
@@ -18,12 +21,41 @@ function chkForm() {
 		return false;
 	}
 	
+	if(member.id.value.length < 3 || member.id.value.length > 12) {
+	  alert("아이디를 3~12자리로 입력하세요");
+	  member.id.value="";
+	  member.id.focus();
+	  return false;
+	
+	}
+	
+	 for(var i = 0 ; i < member.id.value.length; i++) {
+	         ch = member.id.value.charAt(i);
+	         if(((ch >= "ㅏ") && (ch <= "히")) || ((ch >="ㄱ") && (ch <="ㅎ")))  {
+	   alert("한글은 안됩니다.");
+	   member.id.value="";
+	   member.id.focus();
+		return false;
+	  }
+	 }
+	
 	var name = member.name.value;
 	if (name == "") {
 		alert("이름을 입력하세요");
 		member.name.focus();
-		return false;
+	  return false;
 	}
+	
+	 for(var i = 0 ; i < member.name.value.length; i++) {
+        var name = member.name.value.charAt(i);
+
+        if(((name < "ㅏ") || (name > "히")) && ((name < "ㄱ") || (name  > "ㅎ"))) {
+	     alert("한글이 아닙니다.");
+	     member.name.value="";
+	     member.name.focus();
+	     return false;
+	    } 
+	 }
 	
 	var pass = member.pass.value;
 	if (pass == "") {
@@ -32,19 +64,33 @@ function chkForm() {
 		return false;
 	}
 	
+	if(member.pass.value.length < 4 || member.pass.value.length > 12) {
+	  alert("비밀번호를 4~12자리로 입력하세요");
+	  member.id.value="";
+	  member.id.focus();
+	  return false;
+	}
+	
 	var passChk= member.passChk.value;
 	if (passChk == "") {
 		alert("비밀번호 확인을 입력하세요");
 		member.passChk.focus();
 		return false;
 	}
+	if(member.pass.value.length < 4 || member.pass.value.length > 12) {
+	  alert("비밀번호를 4~12자리로 입력하세요");
+	  member.id.value="";
+	  member.id.focus();
+	  return false;
+	}
+	
 	if(pass!=passChk) {
 		alert("비밀번호를 확인하세요");
 		f.pass.focus();
 		f.pass.select();
 		return false;
 		}
-	
+
 	var basicAddr= member.basicAddr.value;
 	if (basicAddr == "") {
 		alert("주소를 입력하세요");
@@ -112,11 +158,11 @@ function callBack() {
 }
 </script>
 
-	<link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
-	<link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
-	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-	<script src="httprequest.js"></script>
+<link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="httprequest.js"></script>
 </head>
 <body class="page-join btn-page">
 	<div class="wrap">
@@ -133,40 +179,36 @@ function callBack() {
 			<div class="container">
 				<header class="header">
 					<button type="button" class="btn-menu">
-						  <span></span>
-						  <span></span>
-						  <span></span>
-						  <span></span>
+						<span></span> <span></span> <span></span> <span></span>
 					</button>
 					<!-- 메시지 들어가는 부분 -->
 					<div class="top-message">
 						<button type="button" class="btn-message">
-							<img src="/EduMIS/images/message.png" alt="" />
-							<span class="count">1<!-- 메시지 개수 --></span>
+							<img src="/EduMIS/images/message.png" alt="" /> <span
+								class="count">1<!-- 메시지 개수 --></span>
 						</button>
 						<div class="message-layer">
 							<button type="button" class="btn-message-close">닫기</button>
 							<div class="message-frame">
-							<!-- 메시지 작업 시작영역 -->
-							<!--  메시지 작업 시작영역 끝 -->	
+								<!-- 메시지 작업 시작영역 -->
+								<!--  메시지 작업 시작영역 끝 -->
 							</div>
 						</div>
 					</div>
 					<!-- 메시지 들어가는 부분 끝 -->
 					<ul>
-						<li><a href="/EduMIS/user/mypage/detailMyinfo.do"><img src="/EduMIS/images/icon-user.png" alt="" />마이페이지</a></li>
-						<li class="login">
-							<a href="#">로그인</a>
+						<li><a href="/EduMIS/user/mypage/detailMyinfo.do"><img
+								src="/EduMIS/images/icon-user.png" alt="" />마이페이지</a></li>
+						<li class="login"><a href="#">로그인</a>
 							<div class="login-form">
-								<form action="" method="">
-									<input type="text"  placeholder="아이디" />
-									<input type="password"  placeholder="비밀번호" />
-									<span><input type="checkbox" id="save" /><label for="save">아이디 저장하기</label></span>
-									<input type="submit" class="btn-submit" />
+								<form action="/EduMIS/login/login.do" method="POST">
+									<input type="text" name="id" value="${cookie.loginId.value}" placeholder="아이디" /> <input type="password"
+										placeholder="비밀번호" /> <span><input type="checkbox"
+										id="save" /><label for="save">아이디 저장하기</label></span> <input
+										type="submit" class="btn-submit" />
 								</form>
 								<button type="button" class="btn-close">닫기</button>
-							</div>
-						</li>
+							</div></li>
 						<li><a href="/user/member/joinForm.do">회원가입</a></li>
 					</ul>
 				</header>
@@ -175,26 +217,29 @@ function callBack() {
 						<section class="join common">
 							<h2>회원가입</h2>
 							<div class="table-common">
-								<form name="memberForm" onsubmit="return chkForm()" action ="/EduMIS/user/member/join.do" method="POST">
+								<form name="memberForm" onsubmit="return chkForm()"
+									action="/EduMIS/user/member/join.do" method="POST">
 									<table>
 										<colgroup>
-											<col style="width:20%;" />
-											<col style="width:70%;" />
-											<col style="width:10%;" />
+											<col style="width: 20%;" />
+											<col style="width: 70%;" />
+											<col style="width: 10%;" />
 										</colgroup>
 										<tbody>
 											<tr>
 												<th><label for="id">ID</label></th>
-												<td><input type="text" id="id" name="id" onkeyup="idCheck()" placeholder="아이디 입력" class="size-input01" />
-												    <span id="idResult"></span>
-												</td>
+												<td><input type="text" id="id" name="id"
+													onkeyup="idCheck()" placeholder="아이디 입력"
+													class="size-input01" /> <span id="idResult"></span></td>
 												<td rowspan="11" class="table-photo">
 													<div>
-														<span id="imgFrame" class="img"></span>
-														<span class="file btn-txt txt-photo btn-blue"><input type="file" onchange="loadFile(event)"></span>
+														<span id="imgFrame" class="img"></span> <span
+															class="file btn-txt txt-photo btn-blue"><input
+															type="file" onchange="loadFile(event)"></span>
 														<ul>
 															<li>- gif 혹은 jpg 형식</li>
-															<li>- 100kbyte 이내<br />&nbsp;&nbsp;사진만 업로드 가능</li>
+															<li>- 100kbyte 이내<br />&nbsp;&nbsp;사진만 업로드 가능
+															</li>
 															<li>- 권장사이즈 100*150</li>
 														</ul>
 													</div>
@@ -202,92 +247,109 @@ function callBack() {
 											</tr>
 											<tr>
 												<th><label for="name">이름</label></th>
-												<td><input type="text" id="name" name="name" placeholder="이름 입력" class="size-input01" /></td>
+												<td><input type="text" id="name" name="name"
+													placeholder="이름 입력" class="size-input01" /></td>
 											</tr>
 											<tr>
 												<th><label for="passwd">비밀번호</label></th>
-												<td><input type="password" id="passwd" name="pass" placeholder="비밀번호 입력" class="size-input01" /></td>
+												<td><input type="password" id="passwd" name="pass"
+													placeholder="비밀번호 입력" class="size-input01" /></td>
 											</tr>
 											<tr>
 												<th><label for="passwd2">비밀번호 재입력</label></th>
-												<td><input type="password" id="passwd2" name="passChk" placeholder="비밀번호 재입력" class="size-input01" /></td>
+												<td><input type="password" id="passwd2" name="passChk"
+													placeholder="비밀번호 재입력" class="size-input01" /></td>
 											</tr>
 											<tr>
 												<th><label for="year">생년월일</label></th>
-												<td>
-													<select id="year"  name="year">
+												<td><select id="year" name="year">
 														<option value="">출생년도</option>
-														<% for(int i=1950; i<2016; i++){ %>
-														<option value="<%=i%>"><%=i+"년"%></option>
-														<%} %>
-													</select>
-													<select id="month" name="month">
+														<%
+															for (int i = 1950; i < 2016; i++) {
+														%>
+														<option value="<%=i%>"><%=i + "년"%></option>
+														<%
+															}
+														%>
+												</select> <select id="month" name="month">
 														<option value="">월</option>
-														<% for(int i=1; i<13; i++){ %>
-														<option value="<%=i%>"><%=i+"월"%></option>
-														<%} %>
-													</select>
-													<select id="day" name="day">
+														<%
+															for (int i = 1; i < 13; i++) {
+														%>
+														<option value="<%=i%>"><%=i + "월"%></option>
+														<%
+															}
+														%>
+												</select> <select id="day" name="day">
 														<option value="">일</option>
-														<% for(int i=1; i<32; i++){ %>
-														<option value="<%=i%>"><%=i+"일"%></option>
-														<%} %>
-													</select>
-												</td>
+														<%
+															for (int i = 1; i < 32; i++) {
+														%>
+														<option value="<%=i%>"><%=i + "일"%></option>
+														<%
+															}
+														%>
+												</select></td>
 											</tr>
 											<tr>
 												<th><label for="addr">주소</label></th>
 												<td>
-													<div class="post-addr"><label for="">(우)</label><input type="text" name="postNo" class="size-input03" style="width:100px" /><button type="button" class="btn-post btn-txt btn-blue">우편번호검색</button></div>
-													<input type="text" id="addr" name="basicAddr" class="size-input02" placeholder="주소를 동까지 입력해주세요" /><span class="txt-rest">(동까지 입력)</span>
-													</td>
+													<div class="post-addr">
+														<label for="">(우)</label><input type="text" name="postNo"
+															class="size-input03" style="width: 100px" />
+														<button type="button" class="btn-post btn-txt btn-blue">우편번호검색</button>
+													</div> <input type="text" id="addr" name="basicAddr"
+													class="size-input02" placeholder="주소를 동까지 입력해주세요" /><span
+													class="txt-rest">(동까지 입력)</span>
+												</td>
 											</tr>
 											<tr>
 												<th><label for="addr2">주소 상세</label></th>
-												<td><input type="text" id="addr2" name="detailAddr" class="size-input02" placeholder="나머지 주소를 입력해주세요" /><span class="txt-rest">(나머지 입력)</span></td>
+												<td><input type="text" id="addr2" name="detailAddr"
+													class="size-input02" placeholder="나머지 주소를 입력해주세요" /><span
+													class="txt-rest">(나머지 입력)</span></td>
 											</tr>
 											<tr>
 												<th><label for="hp1">휴대폰</label></th>
-												<td>
-													<select id="hp1" name="phone1">
+												<td><select id="hp1" name="phone1">
 														<option value="010">010</option>
 														<option value="011">011</option>
 														<option value="016">016</option>
 														<option value="019">019</option>
-													</select>
-													<input type="text" name="phone2" placeholder="번호 가운데 자리" />
-													<input type="text" name="phone3"  placeholder="번호 끝자리" />
-												</td>
+												</select> <input type="text" name="phone2" placeholder="번호 가운데 자리" />
+													<input type="text" name="phone3" placeholder="번호 끝자리" /></td>
 											</tr>
 											<tr>
 												<th><label for="email1">이메일</label></th>
-												<td>
-													<input type="text" id="email1" name="email" class="size-input01" placeholder="이메일 도메인 입력" />
-													<label for="">@</label>
-													<select name="emailDomain" id="emailDomain">
+												<td><input type="text" id="email1" name="email"
+													class="size-input01" placeholder="이메일 도메인 입력" /> <label
+													for="">@</label> <select name="emailDomain"
+													id="emailDomain">
 														<option value="1">naver.com</option>
 														<option value="2">daum.net</option>
 														<option value="3">gmail.com</option>
-													</select>
-												</td>
+												</select></td>
 											</tr>
 											<tr>
 												<th><label for="major">전공여부</label></th>
-												<td>
-													<input type="radio" name="major" value="1" id="major1" checked /><label for="major1">전공</label>&nbsp;&nbsp;
-													<input type="radio" name="major" value="2" id="major2" /><label for="major2">비전공</label>
-												</td>
+												<td><input type="radio" name="major" value="1"
+													id="major1" checked /><label for="major1">전공</label>&nbsp;&nbsp;
+													<input type="radio" name="major" value="2" id="major2" /><label
+													for="major2">비전공</label></td>
 											</tr>
 										</tbody>
 									</table>
 									<div class="btn-area">
-										<span class="width33"><input type="submit" value="회원가입" class="btn txt-join btn-txt btn-blue" /></span>
-										<span class="width33"><input type="reset" value="재작성" id="reset" class="btn txt-reset btn-txt btn-blue" /></span>
-										<span class="width33"><a href="#" class="btn txt-cancel btn-txt btn-gray">취소</a></span>
+										<span class="width33"><input type="submit" value="회원가입"
+											class="btn txt-join btn-txt btn-blue" /></span> <span
+											class="width33"><input type="reset" value="재작성"
+											id="reset" class="btn txt-reset btn-txt btn-blue" /></span> <span
+											class="width33"><a href="#"
+											class="btn txt-cancel btn-txt btn-gray">취소</a></span>
 									</div>
 								</form>
 							</div>
-						</section>				
+						</section>
 					</div>
 				</div>
 			</div>
