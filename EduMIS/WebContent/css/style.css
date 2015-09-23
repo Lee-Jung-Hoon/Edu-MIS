@@ -505,6 +505,7 @@ html, body {
 }
 
 /* 버튼 이미지 텍스트 모음*/
+
 /* 회원가입 */
 .txt-join {
 	background-image:url('../images/txt-join.png');
@@ -585,6 +586,23 @@ html, body {
 .txt-del-s {
 	background-image:url('../images/txt-del-s.png');
 }
+/* 등록하기 */
+.txt-regist {
+	background-image:url('../images/txt-regist.png');
+}
+/* 등록하기(소) */
+.txt-regist-s {
+	background-image:url('../images/txt-regist-s.png');
+}
+/* 중도포기 */
+.txt-drop {
+	background-image:url('../images/txt-drop.png');
+}
+/* 멤버추가 */
+.txt-add-member {
+	background-image:url('../images/txt-add-member.png');
+}
+
 
 /* 버튼 이미지 텍스트 모음 끝*/
 .btn-txt {
@@ -1441,4 +1459,86 @@ section.board {
 	background:url('../images/btn-close.png') no-repeat center; 
 	background-size:20px 20px; 
 	text-indent:-5000px;
+}
+.student-info {
+	width:100%;
+	position:relative;
+	padding-top:60px;
+}
+.student-info li {
+	border:1px solid #ddd;
+	margin-bottom:20px;
+	padding:30px 0 20px;
+}
+.student-info textarea {
+	width:500px;
+}
+.student-info a {
+	display:block;
+	width:100%;
+	text-decoration:none;
+	color:#000;
+	text-align:center;
+	font-weight:bold;
+	line-height:30px;
+	margin-top:10px;
+}
+.student-info .all-frame {
+	position:relative;
+	width:830px;
+	margin:0 auto;
+	padding-bottom:15px;
+	overflow:hidden;
+}
+.student-info .img-frame {
+	display:block;
+	width:150px;
+	float:left;
+}
+.student-info .img {
+	display:block; 
+	border:1px solid #ddd;
+	width:100%;
+	height:180px;
+	line-height:180px;
+	box-sizing:border-box;
+}
+.student-info .img img {
+	width:100%;
+	vertical-align:middle;
+}
+.student-info .txt-frame {
+	position:relative;
+	width:660px;
+	height:210px;
+	float:left;
+	box-sizing:border-box;
+	padding-left:20px;
+}
+.student-info .txt-frame textarea {
+	resize:none;
+	height:168px;
+}
+.student-info .txt-frame input[type="submit"] {
+	position:absolute;
+	bottom:30px;
+	right:0px;
+	width:80px;
+	height:40px;
+}
+.student-info .btn-drop {
+	width:100px;
+	height:40px;
+	position: absolute;
+	margin:0;
+    bottom:5px;
+    right:150px;
+}
+.student-info .btn-add-member {
+	width:100px;
+	height:40px;
+	position:absolute;
+	margin:0;
+    top:0;
+    right:0;
 }
