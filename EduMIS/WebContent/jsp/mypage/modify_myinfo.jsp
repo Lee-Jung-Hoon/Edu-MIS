@@ -14,7 +14,7 @@
 	  $("#month").val("${mvo.month}");
 	  $("#day").val("${mvo.day}");
 	  $("#hp1").val("${mvo.phone1}");
-// 	  $("#emailDomain").val("${mvo.emailDomain}");
+	  $("#emailDomain").val("${mvo.emailDomain}");
 	});
 	</script>
 	<script>

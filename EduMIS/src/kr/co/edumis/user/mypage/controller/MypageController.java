@@ -29,7 +29,8 @@ public class MypageController {
 	public ModelAndView detailMyinfo(HttpServletRequest req, HttpServletResponse res) 
 			throws ServletException, IOException{
 		HttpSession session = req.getSession();
-		LoginVO lvo = (LoginVO)session.getAttribute("userInfo");
+		LoginVO lvo = (LoginVO)session.getAttribute("user");
+		System.out.println(lvo.getId());
 		String id = lvo.getId();
 		try {
 			ModelAndView mav = new ModelAndView("/jsp/mypage/detail_myinfo.jsp");
@@ -52,6 +53,17 @@ public class MypageController {
 		try{
 			ModelAndView mav = new ModelAndView("/jsp/mypage/modify_myinfo.jsp");
 			MypageVO mvo = (MypageVO)WebUtil.getFromParamToVO("kr.co.edumis.user.mypage.vo.MypageVO", req);
+			switch(mvo.getEmailDomain()){
+			case "naver.com":
+				mvo.setEmailDomain("1");
+				break;
+			case "daum.net":
+				mvo.setEmailDomain("2");
+				break;
+			case "google.com":
+				mvo.setEmailDomain("3");
+				break;
+			}
 			mav.addObject("mvo", mvo);
 			return mav; 
 		}catch(Exception e){
@@ -65,6 +77,18 @@ public class MypageController {
 		try{
 			ModelAndView mav = new ModelAndView("redirect:/EduMIS/user/mypage/detailMyinfo.do");
 			MypageVO mvo = (MypageVO)WebUtil.getFromParamToVO("kr.co.edumis.user.mypage.vo.MypageVO", req);
+			switch(mvo.getEmailDomain()){
+			case "1":
+				mvo.setEmailDomain("naver.com");
+				break;
+			case "2":
+				mvo.setEmailDomain("daum.net");
+				break;
+			case "3":
+				mvo.setEmailDomain("google.com");
+				break;
+			}
+			System.out.println(mvo.getEmailDomain());
 			service.updateMyinfo(mvo);
 			System.out.println("이제 가요");
 			return mav; 
