@@ -17,5 +17,10 @@ public class MypageServiceImpl implements MypageService{
 		// TODO Auto-generated method stub
 		return dao.selectMyinfo(id);
 	}
+
+	@Override
+	public void updateMyinfo(MypageVO vo) throws Exception {
+		dao.updateMyinfo(vo);
+	}
 	
 }

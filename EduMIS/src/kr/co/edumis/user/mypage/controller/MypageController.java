@@ -6,11 +6,13 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kr.co.edumis.framework.Controller;
 import kr.co.edumis.framework.ModelAndView;
 import kr.co.edumis.framework.RequestMapping;
 import kr.co.edumis.framework.WebUtil;
+import kr.co.edumis.user.login.vo.LoginVO;
 import kr.co.edumis.user.mypage.service.MypageService;
 import kr.co.edumis.user.mypage.service.MypageServiceImpl;
 import kr.co.edumis.user.mypage.vo.MypageVO;
@@ -26,13 +28,17 @@ public class MypageController {
 	@RequestMapping("/user/mypage/detailMyinfo.do")
 	public ModelAndView detailMyinfo(HttpServletRequest req, HttpServletResponse res) 
 			throws ServletException, IOException{
-		String id = "scot1234";
+//		String id = "scot1234";
+		HttpSession session = req.getSession();
+		LoginVO lvo = (LoginVO)session.getAttribute("userInfo");
+		System.out.println(lvo.getId());
+		String id = lvo.getId();
 		try {
 			ModelAndView mav = new ModelAndView("/jsp/mypage/detail_myinfo.jsp");
-			System.out.println(1);
+//			System.out.println(id);
 			List<MypageVO> list = service.getMyinfo(id);
-			System.out.println(list.size());
-			System.out.println(list.get(0).getId());
+//			System.out.println(list.size());
+//			System.out.println(list.get(0).getId());
 			mav.addObject("list", list);
 			return mav;
 		} catch (Exception e) {
@@ -59,6 +65,8 @@ public class MypageController {
 		try{
 			ModelAndView mav = new ModelAndView("redirect:/EduMIS/user/mypage/detailMyinfo.do");
 			MypageVO mvo = (MypageVO)WebUtil.getFromParamToVO("kr.co.edumis.user.mypage.vo.MypageVO", req);
+			service.updateMyinfo(mvo);
+			System.out.println("이제 가요");
 			return mav; 
 		}catch(Exception e){
 			throw new ServletException(e);

@@ -6,4 +6,5 @@ import kr.co.edumis.user.mypage.vo.MypageVO;
 
 public interface MypageService {
 	public List<MypageVO> getMyinfo(String id) throws Exception;
+	public void updateMyinfo(MypageVO vo) throws Exception;
 }
