@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.edumis.user.member.dao.IdCheckDAO;
 
-@WebServlet("/idCheck.do")
+@WebServlet("/member/idCheck.do")
 public class idCheck extends HttpServlet {
 
 	@Override
@@ -23,7 +23,6 @@ public class idCheck extends HttpServlet {
 		IdCheckDAO dao = new IdCheckDAO();
 
 		try {
-
 			int cnt = dao.selectId(id);
 			if (cnt == 1) {
 				out.println("이미 사용중인 아이디 입니다.");
