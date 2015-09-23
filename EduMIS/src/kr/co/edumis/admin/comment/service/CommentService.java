@@ -13,5 +13,7 @@ public interface CommentService {
 
 	public void commentInsert(CommentVO comment) throws Exception;
 
+	public void memberDrop(String id) throws Exception;
+
 
 }
