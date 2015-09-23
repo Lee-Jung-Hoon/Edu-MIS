@@ -2,12 +2,14 @@ package kr.co.edumis.main.service;
 
 import kr.co.edumis.admin.attendance.vo.AdminAttVO;
 import kr.co.edumis.admin.schedule.vo.ScheduleVO;
+import kr.co.edumis.main.vo.MainAdminAttVO;
 
 public interface MainService {
 
-	public AdminAttVO selectDailyAttend();
 
-	public ScheduleVO selectDailySchedule();
+	public ScheduleVO selectDailySchedule() throws Exception;
+
+	public MainAdminAttVO selectDailyAttend() throws Exception;
 
 
 
