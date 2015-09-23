@@ -22,20 +22,30 @@ public class MainController extends HttpServlet{
 		service = new MainServiceImpl();
 	}
 	
-	public void doGet (HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	protected void doGet (HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
-		
-		
+		try{
 		// main페이지 일일 출석 결과 불러오기
-//		AdminAttVO attend = service.selectDailyAttend();
+		AdminAttVO attend = service.selectDailyAttend();
+			
+		
+		
 		// main페이지 일일 관리자 일정 결과 불러오기
-//		ScheduleVO schedule = service.selectDailySchedule();
+		ScheduleVO schedule = service.selectDailySchedule();
+		
+		
+		
+		
 		// main페이지 일일 자리 배치도 불러오기
-		
-		
-		
-		
-		
-		
+			
+			
+			
+			
+			
+			
+		}catch(Exception e) { 
+			throw new ServletException(e);
+		}
 	}
 }
+
