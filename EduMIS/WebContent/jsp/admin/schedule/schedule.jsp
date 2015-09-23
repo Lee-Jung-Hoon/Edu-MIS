@@ -1,53 +1,47 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!doctype html>
-<html lang="ko">
+<html lang="ko" >
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width">
 <title>제목</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <link rel="stylesheet" href="http://resources/demos/style.css">
+  
 <link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
 <link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
-<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-
-<link rel="stylesheet"
-	href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script type="text/javascript"
-	src="http://apis.daum.net/maps/maps3.js?apikey=1cd4d7ef46ee8be854cdc1de37076a25&libraries=services"></script>
-<link rel="stylesheet" href="/resources/demos/style.css">
+<script type="text/javascript" src="http://apis.daum.net/maps/maps3.js?apikey=1cd4d7ef46ee8be854cdc1de37076a25&libraries=services"></script>
 <link href="css/layout.css" rel="stylesheet" type="text/css" />
 <link href="css/common1.css" rel="stylesheet" type="text/css" />
+<link href="/EduMIS/css/scheduleCal.css" rel="stylesheet"	type="text/css" />
+<link href="/EduMIS/css/scheduleReg.css" rel="stylesheet"	type="text/css" />
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="/EduMIS/js/scheduleCal.js"></script>
 <script src="/EduMIS/js/scheduleReg.js"></script>
-<link href="/EduMIS/css/scheduleCal.css" rel="stylesheet"
-	type="text/css" />
-<link href="/EduMIS/css/scheduleReg.css" rel="stylesheet"
-	type="text/css" />
-
-<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" charset="utf-8"
-	src="js/jquery.leanModal.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.leanModal.min.js"></script>
 
 
 
-<script type="text/javascript">
-/*
-$(function() {
-	$("#datepicker").datepicker({
-		showOtherMonths : true,
-		selectOtherMonths : true
-	});
-});
-$(function() {
-	$("#datepicker2").datepicker({
-		showOtherMonths : true,
-		selectOtherMonths : true
-	});
-});
-*/
-</script>
+  <script  type="text/javascript">
+  $(function() {
+    $( "#datepicker" ).datepicker({
+      showOtherMonths: true,
+      selectOtherMonths: true
+    });
+  });
+  $(function() {
+	    $( "#datepicker2" ).datepicker({
+	      showOtherMonths: true,
+	      selectOtherMonths: true
+	    });
+	  });
+
+  </script>
+  
+	 	 
 
 <script type="text/javascript">
 	$(function() {
