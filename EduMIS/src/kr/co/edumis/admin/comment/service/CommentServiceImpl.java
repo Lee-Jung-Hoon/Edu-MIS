@@ -20,4 +20,16 @@ public class CommentServiceImpl implements CommentService {
 		return list;
 	}
 
+	@Override
+	public CommentVO getSelect(String no) throws Exception {
+		CommentVO list = dao.commentSelect(no);
+		return list;
+	}
+	@Override
+	public void commentInsert(CommentVO comment) throws Exception {
+		dao.commentInsert(comment);
+		
+	}
+
+
 }

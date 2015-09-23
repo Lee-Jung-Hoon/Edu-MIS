@@ -10,4 +10,25 @@
 	select no,id,name
 	from t_member 
 </select>
+
+<select id="commentSelect" resultType="CommentVO" parameterType="string">
+
+	select no,id,name,year,month,day,
+	post_no,basic_addr,detail_addr,
+	phone1,phone2,phone3,email,email_domain,
+	major,join_date,drop_date,drop_reason,tech_leader,grade
+	from t_member
+	where no = #{no}
+</select>
+<insert id="commentInsert" parameterType="CommentVO">
+		
+		insert into t_comment
+		(content)values(#{content})
+</insert>
+<update id="commentModify" parameterType="CommentVO">
+
+	update t_comment set
+	content=#{content}
+
+</update>
 </mapper>
