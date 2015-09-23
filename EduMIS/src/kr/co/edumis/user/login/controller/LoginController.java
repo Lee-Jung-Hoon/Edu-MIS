@@ -38,16 +38,16 @@ public class LoginController {
 			ModelAndView mav = new ModelAndView();
 			if (member != null && grade == null) { 
 				session.setAttribute("user", member);
-				mav.setView("redirect:/EduMIS/jsp/user/login/loginMain.jsp" );
+				mav.setView("redirect:/EduMIS/jsp/user/login/loginMain.jsp");
 				System.out.println(id);
 			} else if (grade =="s"){
 				session.setAttribute("admin", member);
-				mav.setView("redirect:/EduMIS/jsp/user/login/loginMain.jsp" );			
+				mav.setView("redirect:/EduMIS/jsp/user/login/loginMain.jsp");			
 				
 			} else {
 				mav.setView("redirect:/EduMIS/jsp/user/login/loginForm.jsp");
-			}
 			
+			}
 			return mav;
 		} catch (Exception e) {
 			throw new ServletException(e);
