@@ -3,6 +3,8 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
+<!-- 외쳐 갓경원 -->
+
 	<typeAliases>
  	<typeAlias alias="memberVO" type="kr.co.edumis.user.member.vo.MemberVO"/>
 		<typeAlias alias="ExamBoardVO" type="kr.co.edumis.admin.examgrade.vo.ExamBoardVO"/>
