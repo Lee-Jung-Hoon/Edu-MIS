@@ -17,8 +17,8 @@ public class UserAssDAO {
 		sqls = MyAppSqlConfig.getSqlSessionInstance();
 	}
 	
-	public List<AdminAssVO> selectAssignment() throws Exception{
-		return sqls.selectList("userAssMapper.adminAssList");
+	public List<AdminAssVO> selectAssignment(String id) throws Exception{
+		return sqls.selectList("userAssMapper.adminAssList", id);
 	}
 	
 	public AdminAssVO selectDetailAssignment(int no) throws Exception{
@@ -36,6 +36,10 @@ public class UserAssDAO {
 		sqls.update("userAssMapper.userAssUpdate",userass);
 		sqls.commit();
 	}
+	public List<String> userSubmitCheck(String id)throws Exception{
+		return sqls.selectList("userAssMapper.adminAssList",id);
+	}
+	
 
 
 }

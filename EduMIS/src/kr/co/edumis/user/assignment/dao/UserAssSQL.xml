@@ -6,12 +6,15 @@
 
 
 <!-- 과제목록을 불러오는 쿼리 -->
- <select id="adminAssList" resultType="AdminAssVO">
-    select no,
-           title, 
-           to_char(start_Date,'yyyy-mm-dd')as startDate,
-           to_char(end_Date,'yyyy-mm-dd')as endDate
-    from t_adm_assignment_board
+ <select id="adminAssList" parameterType="String" resultType="AdminAssVO">
+    select a.no,
+           a.title, 
+           to_char(a.start_Date,'yyyy-mm-dd')as startDate,
+           to_char(a.end_Date,'yyyy-mm-dd')as endDate,
+           case when (select count(*) from t_user_assignment_board where no = a.no and id = #{id}) = 0 then 'X'
+                else 'O'
+            end isSubmit
+    from t_adm_assignment_board a
  </select>
  
  <!-- 해야할 과제 상세 조회 -->
@@ -74,6 +77,9 @@ insert into t_user_assignment_board(
 </update>
 
 <!-- 제출여부 조회 -->
+<select id="userSubmitCheck" parameterType="String" >
+
+</select>
 
 
 </mapper>

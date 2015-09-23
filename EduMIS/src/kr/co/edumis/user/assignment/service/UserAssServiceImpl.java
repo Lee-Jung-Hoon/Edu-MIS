@@ -15,8 +15,8 @@ public class UserAssServiceImpl implements UserAssService{
 		uasdao = new UserAssDAO();
 	}
 	
-	public List<AdminAssVO> getList() throws Exception{
-		return uasdao.selectAssignment();
+	public List<AdminAssVO> getList(String id) throws Exception{
+		return uasdao.selectAssignment(id);
 	}
 	
 	public AdminAssVO admdetail(int no) throws Exception{
@@ -35,6 +35,9 @@ public class UserAssServiceImpl implements UserAssService{
 	public void updateUserAss(UserAssVO userass)throws Exception{
 		uasdao.updateUserAss(userass);
 	}
+//	public List<String> userSubmitCheck(String id)throws Exception{
+//		return uasdao
+//	}
 
 
 
