@@ -28,17 +28,17 @@ public class MypageController {
 	@RequestMapping("/user/mypage/detailMyinfo.do")
 	public ModelAndView detailMyinfo(HttpServletRequest req, HttpServletResponse res) 
 			throws ServletException, IOException{
-//		String id = "scot1234";
 		HttpSession session = req.getSession();
 		LoginVO lvo = (LoginVO)session.getAttribute("userInfo");
-		System.out.println(lvo.getId());
 		String id = lvo.getId();
 		try {
 			ModelAndView mav = new ModelAndView("/jsp/mypage/detail_myinfo.jsp");
-//			System.out.println(id);
 			List<MypageVO> list = service.getMyinfo(id);
-//			System.out.println(list.size());
-//			System.out.println(list.get(0).getId());
+			if(list.get(0).getMajor().equals("1")){
+				list.get(0).setMajor("전공");
+			}else{
+				list.get(0).setMajor("비전공");
+			}
 			mav.addObject("list", list);
 			return mav;
 		} catch (Exception e) {

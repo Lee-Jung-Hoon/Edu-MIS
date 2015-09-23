@@ -7,6 +7,16 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width">
 	<title>수정하기</title>
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script>
+	$(document).ready(function(){
+	  $("#year").val("${mvo.year}");
+	  $("#month").val("${mvo.month}");
+	  $("#day").val("${mvo.day}");
+	  $("#hp1").val("${mvo.phone1}");
+// 	  $("#emailDomain").val("${mvo.emailDomain}");
+	});
+	</script>
 	<script>
 function chkForm() {
 	var member = document.memberForm;
@@ -274,8 +284,8 @@ function chkForm() {
 											<tr>
 												<th><label for="major">전공여부</label></th>
 												<td>
-													<input type="radio" name="major" id="major1" checked /><label for="major1">전공</label>&nbsp;&nbsp;
-													<input type="radio" name="major" id="major2" /><label for="major2">비전공</label>
+													<input type="radio" name="major" value = "1" id="major1" checked /><label for="major1">전공</label>&nbsp;&nbsp;
+													<input type="radio" name="major" value = "2" id="major2" /><label for="major2">비전공</label>
 												</td>
 											</tr>
 										</tbody>
