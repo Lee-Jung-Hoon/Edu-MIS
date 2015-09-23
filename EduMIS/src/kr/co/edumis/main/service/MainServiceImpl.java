@@ -1,8 +1,8 @@
 package kr.co.edumis.main.service;
 
-import kr.co.edumis.admin.attendance.vo.AdminAttVO;
 import kr.co.edumis.admin.schedule.vo.ScheduleVO;
 import kr.co.edumis.main.dao.MainDAO;
+import kr.co.edumis.main.vo.MainAdminAttVO;
 
 public class MainServiceImpl implements MainService{
 	
@@ -13,12 +13,12 @@ public class MainServiceImpl implements MainService{
 	}
 
 	@Override
-	public AdminAttVO selectDailyAttend() {
+	public MainAdminAttVO selectDailyAttend() throws Exception{
 		return null;
 	}
 
 	@Override
-	public ScheduleVO selectDailySchedule() {
+	public ScheduleVO selectDailySchedule() throws Exception{
 		return null;
 	}
 	
