@@ -38,7 +38,6 @@ public class BookBoardController {
 					"UTF-8",
 					new DefaultFileRenamePolicy() //파일의 이름이 같을 때 사용할 정책 설정
 					);
-		    
 		    Enumeration<String> e = multi.getFileNames();
 		    
 		    while(e.hasMoreElements()){
@@ -104,6 +103,9 @@ public class BookBoardController {
 			ModelAndView mav = new ModelAndView("/jsp/user/bookboard/detail.jsp");
 			
 			BookBoardVO detail = service.getDetail(Integer.parseInt(no));
+			System.out.println(detail.getTitle());
+			System.out.println(detail.getFilePath());
+			System.out.println(detail.getOrgFileName());
 			
 			mav.addObject("board", detail);
 			return mav;

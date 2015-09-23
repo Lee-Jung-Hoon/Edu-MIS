@@ -18,8 +18,8 @@
 			#{title},
 			#{content},
 			#{orgFileName},
-  			#{realFileName},
-   			#{filePath}
+ 			#{realFileName},
+ 			#{filePath}
 			)
 	</insert>
 	
@@ -32,12 +32,14 @@
 		from t_book_board
 		order by no desc
 	</select>
-
+	
 	<select id="detailBoard" parameterType="Integer" resultType="bookBoardVO">
 		select
 		title,
-		content
-		from  t_book_board
+		content,
+		FILE_PATH,
+		org_file_name
+		from t_book_board
 		where no = #{no}
 	</select>
 	
