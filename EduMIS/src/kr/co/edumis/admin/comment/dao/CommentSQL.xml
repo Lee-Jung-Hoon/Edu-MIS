@@ -7,7 +7,7 @@
 
 <select id="commentList" resultType="CommentVO">
 
-	select no,id,name
+	select id,name
 	from t_member 
 </select>
 
@@ -18,7 +18,7 @@
 	phone1,phone2,phone3,email,email_domain,
 	major,join_date,drop_date,drop_reason,tech_leader,grade
 	from t_member
-	where no = #{no}
+	where name = #{no}
 </select>
 <insert id="commentInsert" parameterType="CommentVO">
 		
