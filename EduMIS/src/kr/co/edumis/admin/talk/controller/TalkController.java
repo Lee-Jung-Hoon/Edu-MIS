@@ -69,6 +69,7 @@ public class TalkController {
 	@RequestMapping("/talk/recvList.do")
 	public ModelAndView ReceiveTalkList(HttpServletRequest req, HttpServletResponse res){
 		ModelAndView mav = new ModelAndView();
+		System.out.println("1");
 
 		// 임시
 		HttpSession hs = req.getSession();
@@ -81,6 +82,7 @@ public class TalkController {
 
 		try {
 			List<TalkVO> list = service.selectReceiveTalkList(no);
+			System.out.println("2");
 			mav.addObject("list", list);
 			for (TalkVO talk : list) {
 				System.out.println(talk.getNo());
@@ -110,7 +112,7 @@ public class TalkController {
 					System.out.println(talk.getName());
 					service.deleteCheckTalk(talk);
 				}
-				return new ModelAndView("redirect:/EduMIS/talk/receiveList.do");
+				return new ModelAndView("redirect:/EduMIS/talk/recvList.do");
 			} else {
 				for (int i = 0; i < delList.length; i++) {
 					int tNo = Integer.parseInt(delList[i]);
@@ -184,7 +186,7 @@ public class TalkController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ModelAndView("redirect:/EduMIS/talk/receiveList.do");
+		return new ModelAndView("redirect:/EduMIS/talk/recvList.do");
 	}
 
 	@RequestMapping("/talk/sendList.do")
@@ -256,7 +258,7 @@ public class TalkController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ModelAndView("redirect:/EduMIS/talk/receiveList.do");
+		return new ModelAndView("redirect:/EduMIS/talk/recvList.do");
 	}
 
 	@RequestMapping("/talk/deleteTalk.do")
@@ -268,7 +270,7 @@ public class TalkController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ModelAndView("redirect:/EduMIS/talk/receiveList.do");
+		return new ModelAndView("redirect:/EduMIS/talk/recvList.do");
 	}
 
 	@RequestMapping("/talk/searchTalk.do")
