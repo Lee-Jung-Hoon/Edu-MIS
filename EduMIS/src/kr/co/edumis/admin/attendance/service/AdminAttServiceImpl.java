@@ -32,7 +32,7 @@ public class AdminAttServiceImpl implements AdminAttService{
 	}
 	@Override
 	public void updateAtt(AdminAttVO att) {
-		
+		dao.updateAtt(att);
 	}
 	@Override
 	public List<AdminAttVO> selectAttMemList(String mNo) {

@@ -36,6 +36,10 @@ public class AdminAttDAO {
 		session.insert("attendance.insertAttendance",att);
 		session.commit();
 	}
+	public void updateAtt(AdminAttVO att) {
+		session.update("attendance.upd", att);
+		session.commit();
+	}
 
 }
 

@@ -78,7 +78,7 @@
         )
   </insert>
     
-    <update id="updateAttendance" parameterType="AdminAttVO">
+    <update id="updateAttendance" parameterType="AdminAttVO" >
         update t_attend
            set att_type = #{attType}
          where mNo  = #{mNo}
