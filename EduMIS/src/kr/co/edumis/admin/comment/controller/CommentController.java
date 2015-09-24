@@ -34,13 +34,19 @@ public class CommentController {
 		try {
 			ModelAndView mav = new ModelAndView("/jsp/admin/comment/commentList.jsp");
 			List<MemberVO> list = service.getList();
+			List<CommentVO> clist=service.getcList();
+			
+			System.out.println("clist : " + clist.size());
+			
+			
 			mav.addObject("list", list);
+			mav.addObject("clist", clist);
 			return mav;
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
 	}
-	//수강생 정보
+	//수강생 정보(팝업!)
 	@RequestMapping("/admin/commentSelect.do")
 	public ModelAndView commentSelect(String id, HttpServletRequest req)
 			throws ServletException, IOException {
@@ -56,7 +62,11 @@ public class CommentController {
 		
 	}
 	
-
+	
+	
+	
+	
+	//코멘트 등록
 	@RequestMapping("/admin/commentInsert.do")
 	public String commentInsert(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
@@ -64,7 +74,7 @@ public class CommentController {
 
 		try {
 			service.commentInsert(comment);
-			return "redirect:/EduMIS/user/commentList.do";
+			return "redirect:/EduMIS/admin/commentList.do";
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}

@@ -17,9 +17,13 @@ public class CommentDAO {
 		session = MyAppSqlConfig.getSqlSessionInstance();
 	}
 	
-
+	//학생...
 	public List<MemberVO> selectList() throws Exception {
 		return session.selectList("comment.dao.commentMapper.commentList");
+	}
+	//코멘트목록...
+	public List<CommentVO> selectcList() throws Exception {
+		return session.selectList("comment.dao.commentMapper.evaluationList");
 	}
 
 	public MemberVO commentSelect(String id)throws Exception {
@@ -42,6 +46,8 @@ public class CommentDAO {
 		session.update("comment.dao.commentMapper.commentModify",comment);
 		session.commit();	
 	}
+
+
 	
 
 
