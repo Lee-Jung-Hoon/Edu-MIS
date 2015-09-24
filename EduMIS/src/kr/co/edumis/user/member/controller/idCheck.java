@@ -32,5 +32,6 @@ public class idCheck extends HttpServlet {
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
+		return;
 	}
 }
