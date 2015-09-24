@@ -72,9 +72,9 @@
 	
 	<insert id="insertAttendance" parameterType="AdminAttVO">
         insert into t_attend (
-            mNo, att_type
+            mNo, mName, att_type
         ) values (
-            #{mNo}, #{attType}
+            #{mNo}, #{mName}, #{attType}
         )
   </insert>
     

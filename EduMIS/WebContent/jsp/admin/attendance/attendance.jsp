@@ -22,12 +22,34 @@
 	var id = "";
 	var date;
 	var param = "";
+	var today = new Date();
+	var gAttList = null;
 	$(document).ready(function () {
 // 		var param = {mNo:"1"};
 		idDate('kCalendar');
 
 // 		sendRequest("/EduMIS/attendance/memAttList.do", null, kCalendar, "GET");
 	});
+	
+//Change the selector if needed
+// 	var $table = $('table.scroll'),
+// 	    $bodyCells = $table.find('tbody tr:first').children(),
+// 	    colWidth;
+
+// 	// Adjust the width of thead cells when window resizes
+// 	$(window).resize(function() {
+// 	    // Get the tbody columns width array
+// 	    colWidth = $bodyCells.map(function() {
+// 	        return $(this).width();
+// 	    }).get();
+	    
+// 	    // Set the width of thead columns
+// 	    $table.find('thead tr').children().each(function(i, v) {
+// 	        $(v).width(colWidth[i]);
+// 	    });    
+// 	}).resize(); // Trigger resize handler
+	
+	
 	
 	$(function() {
 		$('#modaltrigger').leanModal({
@@ -40,27 +62,62 @@
   function regAttend() {
 		sendRequest("/EduMIS/attendance/memListController.do", null, memberList, "GET");
   }
-  
-	// 오늘 날짜 및 출석 등록 여부 물어봄
-	function doInsert() {
-		 var today = new Date();
-		if (confirm("출석을 등록하시겠습니까?")) {
-				location.href = "#";
-				var iso = today.toISOString();
-				alert(iso);
-		}
-	}
 	
+  var today = new Date();
 	function memberList() {
+	  var tr = "";
+    var tableList = document.createElement("table");
+    $("table").attr("class","scroll");
+		
 	  if (httpRequest.readyState == 4) {
 		  if (httpRequest.status == 200) {
 		    if(confirm("출석을 등록하시겠습니까?")){
+		      var cnt = 0;
+		      
+		      for(var i = 0; i < gAttList.length; i++){
+		  			var type = null;
+		  			var attArr = gAttList[i].attInfo;
+
+		  			for (var key in attArr) {
+		  				var attDate = attArr[key].split(":")[1].split("-");
+		  					
+		  				if((Number(attDate[0]) == today.getFullYear()) && 
+		  				    (Number(attDate[1]) == today.getMonth() + 1) && 
+		  				    (Number(attDate[2]) == today.getDate())){
+		  						cnt++;
+		  				}
+		  			}
+		  			
+		  		}
+					var chk = document.getElementById("chk");
 			    var listDIV = document.getElementById("memberList");
+			    var todayDIV = document.getElementById("today");
+			    todayDIV.innerHTML = today.getFullYear() + "년 " + (today.getMonth() + 1) + "월 " + today.getDate() + "일";
 			    var memList = eval(httpRequest.responseText);
+		      
+			    var tableList = document.getElementById("list");
+			    chk.innerHTML = "";
+// 			    tableList.innerHTML = "";
+				
+			    if(cnt == gAttList.length){
+			      
+			      chk.innerHTML = "<form class='test' action='/EduMIS/attendance/AttUpdate.do'></form>";
+			    }
+			    else{		      
+				    chk.innerHTML = "<form class='test' action='/EduMIS/attendance/AttRegist.do'></form>";
+			    }
 			    for(var i=0; i < memList.length; i++) {
 			      var mem = memList[i];
-			      listDIV.value += "id : " + mem.no;
+			      
+			      tr = document.createElement("tr");
+			      tr.innerHTML = "<td align = 'center'><span><input type = 'text' id = '" + mem.no  +  "' name = '" + mem.mName + "' value = '" + mem.mName + "' readonly = 'readonly' style = 'display: inline-block;'/>" + 
+			       "<select id = '" + mem.no + "' name = '" + mem.no + "'><option>출석</option><option>지각</option><option>조퇴</option><option>결석</option></select><input type = 'hidden' id = '" + mem.no  +  "' name = 'no_" + mem.no + "' value = '" + mem.no + "' readonly = 'readonly' /></td>";
+			      
+			      tableList.appendChild(tr);
+// 						tr.innerHTML = "";
 			    }
+			    $('.test').append(tableList);
+			    $('.test').append("<input type='submit' value='등록' />");	
 		    }
 		  }
 		  }
@@ -87,18 +144,10 @@
 		if (httpRequest.readyState == 4) {
 			if (httpRequest.status == 200) {
 				var kCalendar = document.getElementById(id);
-				
-// 				console.log(httpRequest.responseText);
  				var attList = eval(httpRequest.responseText);
+ 				gAttList = eval(httpRequest.responseText);
 				var calendar = '';
 				
-// 				if( typeof( date ) !== 'undefined' ) {
-// 					date = date.split('-');
-// 					date[1] = date[1] - 1;
-// 					date = new Date(date[0], date[1], date[2]);
-// 				} else {
-// 					var date = new Date();
-// 				}
 				var currentYear = date.getFullYear();
 				//년도를 구함
 				
@@ -216,18 +265,13 @@
 					 
 					  var attArr = attList[i].attInfo;
 					  for (var key in attArr) {
-// 					    	console.log(key+" , ");
-// 							console.log("attDate : " + attArr[key].split(":")[1]);
-// 							console.log("attDate : " + attArr[key].split(":")[1]);
-// 							console.log("attDate : " + attArr[key].split(":")[1].split("-"));
 							var attDate = attArr[key].split(":")[1].split("-");
-// 							console.log("attDate : " + attDate);
+							
 							if((Number(attDate[0]) == currentYear) && (Number(attDate[1]) == currentMonth) && (Number(attDate[2]) == j+1)){
 								type = attArr[key].split(":")[0]; 
 								break;
 							}
 					  }
-// 						console.log(type + "-" + attDate + "-" + attList[i].mName);
 						
 						switch(type){
 						case '1': calendar += '<td>O</td>';
@@ -314,8 +358,7 @@
 							<!--  작업부분 제목 써주세요 -->
 							<h2>출석부</h2>
 							<!-- 작업시작부분 div안에 클래스명 넣어서 작업 해 주세요 나머지 url부분은 추후 취합할 예정이니 일단 MENU 부분의 링크태그에 값 넣어서 작업 해주시면 됩니다. 게시판 담당하시는 분들은 추후 공통 클래스 드릴테니 일단 테이블로 작업 부탁드립니다. -->
-							<input type="button" value="등록" onclick="doInsert();"> <a
-									href="#loginmodal" onclick="regAttend()" id="modaltrigger">출석등록</a>
+							 <a href="#loginmodal" onclick="regAttend()" id="modaltrigger">출석등록</a>
 							<div id="kCalendar"></div>
 							<!--  작업완료 부분 -->
 						</section>
@@ -326,15 +369,24 @@
 	</div>
 	
 		<!-- 출석 등록을 위한 div -->
-	<div id="loginmodal" style="display: none;">
-		<h2 align="center">일정등록</h2>
+	<div id="loginmodal" style="display: none;" >
+	
+		<h2 align="center">출석등록</h2>
 		<!-- 등록 주소 재설정 -->
-		<form action="#">
+		<div id="chk">
+
 			<br />
 			<div align="center" ></div>
 			<div id="memberList"></div>
-			<input type="submit" value="등록">
-		</form>
+			
+			<div id = "today" align="center" ></div>
+			<br/>
+			<table id = "list">
+			</table>
+			<br/>
+			
+		
+		</div>
 	</div>
 </body>
 <script type="text/javascript" src="/EduMIS/js/common.js"></script>
