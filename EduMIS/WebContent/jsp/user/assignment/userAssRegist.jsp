@@ -12,7 +12,6 @@
 	<link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
 	<link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script>
 	   function List() {
 		   if (confirm("목록으로 가시겠습니까?")) {
@@ -22,7 +21,7 @@
 
 	</script>
 </head>
-<body class="page-join">
+<body class="page-join btn-page">
 	<div class="wrap">
 		<div class="wrap-inner">
 			<aside>
@@ -81,35 +80,34 @@
 							<!--  작업부분 제목 써주세요 --><h2>과제등록</h2>
 							<!-- 작업시작부분 div안에 클래스명 넣어서 작업 해 주세요 나머지 url부분은 추후 취합할 예정이니 일단 MENU 부분의 링크태그에 값 넣어서 작업 해주시면 됩니다. 게시판 담당하시는 분들은 추후 공통 클래스 드릴테니 일단 테이블로 작업 부탁드립니다. -->
 
-			<div class="AssignmentAsk">
+			<div class="AssignmentAsk table-common">
 			<form method="POST" enctype="multipart/form-data">
-				<table border="1" width ='100%'>
+				<table border="1">
 			           <h1>과제정보</h1>
-					   <hr/>
 					         <tr>
-							        <td>과제번호</td>
+							        <th>과제번호</th>
 							        <td>${ass.no}</td>
 							    </tr>
 							     <tr>
-							        <td>과제명</td>
+							        <th>과제명</th>
 							        <td>${ass.title}</td>
 							    </tr>
 							    <tr>    
-							        <td>내용</td>
+							        <th>내용</th>
 							        <td>${ass.content}</td>
 							     </tr>
 							    <tr>    
-							        <td>기간</td>
+							        <th>기간</th>
 							        <td>${ass.startDate} ~ ${ass.endDate}</td>
 							     </tr>
 							    <tr>    
-							        <td>첨부파일</td>
+							        <th>첨부파일</th>
                                     <td><a href='${pageContext.request.contextPath}/fileDownload?orgFileName=${ass.orgFileName}&realFileName=${ass.realFileName}'>
                                         ${ass.orgFileName}</a></td>
 							     </tr>
 							   </table>
-							   <hr/>
 				</form>
+				<hr/>
 		           <c:choose>
 					    <c:when test='${empty userass}'>
 					    <form action="/EduMIS/user/assRegist.do"method="POST" enctype="multipart/form-data">
@@ -117,21 +115,22 @@
 					    <input type ="hidden" name ="id" value="${user.id}"/>
 					    <input type ="hidden" name ="name" value="${user.name}"/>
 							<span>과제제출</span>
-							<table border="1" width ='100%'>
-							<hr/>
+							<table >
 							    <tr>    
-							        <td>내용</td>
+							        <th>내용</th>
 							        <td>
 							        <textarea cols="70" rows="10" name ="usertext"></textarea>
 							        </td>
 							     </tr>
 							    <tr>    
-							        <td>첨부파일</td>
+							        <th>첨부파일</th>
 							        <td><input type="file" name= "userattachFile"/></td>
 							     </tr>
 							 </table>
-							  <input type="submit" value="과제 제출" />	
-							<input type="button" value="목록"  onclick="List();"/>
+							 <div class="btn-area">
+									<span class="width50"><input type="submit" class="btn txt-send-assign btn-txt btn-blue" value="과제 제출" /></span>
+									<span class="width50"><input type="button" class="btn txt-list btn-txt btn-blue" value="목록" onclick="List();"/></span>
+								</div>
 							</form>
 					    </c:when>
 						
@@ -141,20 +140,21 @@
 						    <input type ="hidden" name ="id" value="${user.id}"/>
 					      <input type ="hidden" name ="name" value="${user.name}"/>
 							  <span>과제제출</span>
-							  <table border="1" width ='100%'>
-							  <hr/>
+							  <table >
 							    <tr>    
-							        <td>내용</td>
+							        <th>내용</th>
 							        <td><c:out value='${userass.content}'/></td>
 							     </tr>
 							    <tr>    
-							        <td>첨부파일</td>
+							        <th>첨부파일</th>
 <td><a href='${pageContext.request.contextPath}/fileDownload?orgFileName=${userass.orgFileName}&realFileName=${ass.realFileName}'>
     <c:out value='${userass.orgFileName}'/></a></td>
 							     </tr>
 							 </table>
-							  <input type="submit" value="과제 수정" />	
-							<input type="button" value="목록"  onclick="List();"/>
+							 <div class="btn-area">
+									<span class="width50"><input type="submit" class="btn txt-modi-assign btn-txt btn-blue" value="과제 수정" /></span>
+									<span class="width50"><input type="button" class="btn txt-list btn-txt btn-blue" value="목록" onclick="List();"/></span>
+								</div>
 							</form>
 						</c:otherwise>
 					</c:choose>
