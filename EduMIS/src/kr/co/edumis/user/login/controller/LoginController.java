@@ -25,6 +25,7 @@ public class LoginController {
 	public ModelAndView login(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		String id = req.getParameter("id");
 		
+		System.out.println("111111111111");
 		LoginVO login = new LoginVO();
 		login.setId(req.getParameter("id"));
 		login.setPass(req.getParameter("pass"));
@@ -59,14 +60,14 @@ public class LoginController {
 		return mav;
 	}
 	
-	@RequestMapping("/login/logout.do")
+	@RequestMapping("/login/logOut.do")
 	public ModelAndView logout(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		System.out.println("11111");
 		try {
 			HttpSession session = req.getSession();
 			session.invalidate();
 			
-			ModelAndView mav = new ModelAndView("redirect:/EduMIS/jsp/user/login/loginMain.jsp");
+			ModelAndView mav = new ModelAndView("redirect:/EduMIS/jsp/user/login/loginForm.jsp");
 			return mav;
 		} catch (Exception e) {
 			throw new ServletException(e);
