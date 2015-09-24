@@ -101,7 +101,7 @@
 											<th>진행여부</th>
 										</tr>
 										<c:forEach var = "list" items = "${list}">
-											<tr>
+											<tr height="30px;" style="text-align: center;">
 												<td>${list.no}</td>
 												<td><a href = "${pageContext.request.contextPath}/admin/assDetail.do?no=${list.no}"  style="text-decoration: none;">${list.title}</a></td>
 												<td>${list.startDate}~${list.endDate}</td>
@@ -119,6 +119,11 @@
 											</td>
 											</tr>
 											</table>
+										<div align="center">
+											<c:forEach var="i" begin = "1" end = "${pageIndex}">
+												<a href="" style="text-decoration: none;">[${i}]</a>
+											</c:forEach>
+										</div>
 								</div>
 							<!--  작업완료 부분 -->
 						</section>				

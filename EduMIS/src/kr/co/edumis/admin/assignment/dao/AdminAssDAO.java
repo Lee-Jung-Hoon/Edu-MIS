@@ -24,8 +24,8 @@ public class AdminAssDAO {
 		sqlMapper.commit();
 	}
 	
-	public List<AdminAssVO> selectList() {
-		List<AdminAssVO> list = sqlMapper.selectList("adminAssignment.selectAssignment");
+	public List<AdminAssVO> selectList(Map<String, Integer> param) {
+		List<AdminAssVO> list = sqlMapper.selectList("adminAssignment.selectAssignment", param);
 		
 		return list;
 	}
@@ -60,5 +60,9 @@ public class AdminAssDAO {
 	public UserAssVO selectSubject(Map<String, String> param) {
 		return (UserAssVO)sqlMapper.selectOne("adminAssignment.getSubject", param);
 	}
-
+	
+	public int selectCount() {
+		
+		return sqlMapper.selectOne("adminAssignment.selectCount");
+	}
 }

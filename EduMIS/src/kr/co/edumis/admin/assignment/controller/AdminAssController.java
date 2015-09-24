@@ -72,7 +72,7 @@ public class AdminAssController {
 	@RequestMapping("/admin/assRegist.do")
 	public String adAssRegist(AdminAssVO adAssvo, HttpServletRequest req) throws Exception {
 		MultipartRequest mult = new MultipartRequest(req,
-				"C:\\java73\\web-workspace\\EduMIS\\WebContent\\assignmentFile", 1024 * 1024 * 10, "UTF-8",
+				"C:\\java\\web-workspace\\EduMIS\\WebContent\\assignmentFile", 1024 * 1024 * 10, "UTF-8",
 				new DefaultFileRenamePolicy());
 		
 		Enumeration<String> e = mult.getFileNames();
@@ -103,13 +103,23 @@ public class AdminAssController {
 
 	@RequestMapping("/admin/assList.do")
 	public ModelAndView adAssList(AdminAssVO adminassVO) throws Exception {
-
-		List<AdminAssVO> list = service.list();
-		System.out.println(list.size());
 		ModelAndView mav = new ModelAndView("/jsp/admin/assignment/adAssList.jsp");
+
+		// 표시할 페이지 수
+		int pageIndex = (int) Math.ceil(service.selectCount() / 10d);
+		mav.addObject("pageIndex", pageIndex);
+		
+		// 한 페이지에 표시할 게시물
+		int startIndex;
+		int endIndex;
+		Map<String, Integer> param = new HashMap<>();
+		param.put("startIndex", 1);
+		param.put("endIndex", 10);
+		
+		List<AdminAssVO> list = service.list(param);
 		mav.addObject("list", list);
 
-		
+		// 진행여부 체크
 		List<String> ckArr = new ArrayList<String>();
 		Calendar c = Calendar.getInstance();
 		c.setTimeInMillis(System.currentTimeMillis());
@@ -128,9 +138,6 @@ public class AdminAssController {
 		}
 		mav.addObject("ckArr", ckArr);
 
-		for (AdminAssVO vo : list) {
-			System.out.println(vo.getNo());
-		}
 		return mav;
 	}
 	@RequestMapping("/admin/assBfModify.do")

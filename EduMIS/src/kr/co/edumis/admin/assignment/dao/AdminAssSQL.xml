@@ -30,19 +30,6 @@
 		#{filePath}
 		)
 	</insert>
-	<select id="selectAssignment" resultType="AdminAssVO">
-		select
-		no,
-		to_char(start_Date, 'yyyy-mm-dd') as startDate,
-		to_char(end_Date, 'yyyy-mm-dd') as endDate,
-		title,
-		content,
-		org_File_Name,
-		real_File_Name,
-		file_Path
-		from t_adm_assignment_board
-		order by no desc
-	</select>
 	
 	<select id="selectDetail" parameterType = "string" resultType="AdminAssVO">
 		select
@@ -98,6 +85,41 @@
 		real_file_name as realFileName
 		from t_user_assignment_board
 		where id = #{id} and no = #{no}
+	</select>
+	
+	<select id="selectCount" parameterType="map" resultType="int">
+		select count(*) as count
+		from t_adm_assignment_board
+	</select>
+
+
+	<select id="selectAssignment" parameterType="map" resultType="AdminAssVO">
+		select 
+			no, 
+			startDate,
+			endDate,
+			title,
+			content
+			from 
+			(
+				select no, 
+					startDate,
+					endDate,
+					title,
+					content,
+					rownum rnum
+				from 
+				(
+					select 
+						no, 
+						to_char(start_date, 'yyyy-mm-dd') as startDate,
+						to_char(end_date, 'yyyy-mm-dd') as endDate,
+						title,
+						content 
+					from t_adm_assignment_board 
+					order by no desc
+				))
+			where rnum between #{startIndex} and #{endIndex}
 	</select>
 	
 </mapper>
