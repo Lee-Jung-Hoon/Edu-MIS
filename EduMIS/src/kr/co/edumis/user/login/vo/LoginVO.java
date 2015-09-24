@@ -5,6 +5,7 @@ public class LoginVO {
 	private String pass;
 	private String name;
 	private String grade;
+	
 	public String getId() {
 		return id;
 	}
