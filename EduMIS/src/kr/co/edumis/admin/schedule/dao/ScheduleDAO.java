@@ -37,8 +37,6 @@ public class ScheduleDAO {
 		return 1;
 	}
 	public List<ScheduleVO> listSchedule(ScheduleVO schedule) throws Exception {
-		System.out.println(schedule.getEndDate());
-		System.out.println(schedule.getStartDate());
 		return session.selectList("schedule.dao.SchduleMapper.listSchedule",schedule);
 	}
 	
