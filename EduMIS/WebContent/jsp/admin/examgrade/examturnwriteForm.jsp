@@ -15,15 +15,33 @@
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" href="/EduMIS/css/examgrade/colorbox.css" />
+<script src="/EduMIS/js/examgrade/jquery.colorbox.js"></script>
 <script>
 	$(function() {
 		$("#datepicker").datepicker();
+	});
+	function jsClose() {
+		parent.$.fn.colorbox.close();
+		parent.location.reload();
+	}
+	// ajaxSubmit
+	$("#wForm").ajaxSubmit({
+		url: "${pageContext.request.contextPath}/examgrade/ExamTurnWrite.do",
+		success: function (data) {
+			alert("시험 정보가 등록되었습니다.");
+			jsClose();
+		},
+		error: function (err) {
+			alert("등록시 오류가 발생했습니다.");
+		}
 	});
 </script>
 </head>
 
 <h2>회차 등록</h2>
-<form
+<a href="#" onclick="jsClose()">닫기</a>
+<form id="wForm"
 	action="${pageContext.request.contextPath}/examgrade/ExamTurnWrite.do">
 	<input type="submit" value="등록">
 	<table>

@@ -1,41 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!doctype html>
-<html lang="ko">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-
-<script type="text/javascript">
-
-	$(document).ready(function() {
-		$('#content').get('/EduMIS/examgrade/ExamTurnList.do');
-		
-		$('#exam').click(function() {
-			$('#content').load('/EduMIS/examgrade/ExamTurnList.do');
-				return false;
-		});
-	});
-
-	function doInsert(val) {
-		if (confirm("성적을 등록하시겠습니까?")) {
-			location.href = "${pageContext.request.contextPath}/examgrade/ExamGradeWriteForm.do?no="+val;
-		}
-	}
-	
-	function doModify(val) {
-		if (confirm("성적을 수정하시겠습니까?")) {
-			location.href = "${pageContext.request.contextPath}/examgrade/ExamGradeModifyForm.do?no="+val;
-		}		
-	}
-</script>
-</head>
-<body>
 	<table border="1" class="table-board">
 		<tr>
 			<th width="100px">회차번호</th>
@@ -67,11 +32,10 @@
 		</c:forEach>
 	</table>
 	<div id="registmodal2" style="display: none;">
-<h2>시험별 상세</h2>
+	<h2>시험별 상세</h2>
 	<form action="${pageContext.request.contextPath}/examgrade/ExamTurnWrite.do">
-	
-	<input type="submit" value="등록">
-</form>
+		<input type="submit" value="등록">
+	</form>
 </div>
 </body>
 </html>
