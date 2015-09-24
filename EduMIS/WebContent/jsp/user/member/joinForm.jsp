@@ -31,7 +31,7 @@ function chkForm() {
 	
 	 for(var i = 0 ; i < member.id.value.length; i++) {
 	         ch = member.id.value.charAt(i);
-	         if(((ch >= "ㅏ") && (ch <= "히")) || ((ch >="ㄱ") && (ch <="ㅎ")))  {
+	         if(((ch >= "ㅏ") && (ch <= "ㅣ")) || ((ch >="ㄱ") && (ch <="ㅎ")))  {
 	   alert("한글은 안됩니다.");
 	   member.id.value="";
 	   member.id.focus();
@@ -49,7 +49,7 @@ function chkForm() {
 	 for(var i = 0 ; i < member.name.value.length; i++) {
         var name = member.name.value.charAt(i);
 
-        if(((name < "ㅏ") || (name > "히")) && ((name < "ㄱ") || (name  > "ㅎ"))) {
+        if(((name < "ㅏ") || (name > "ㅣ")) && ((name < "ㄱ") || (name  > "ㅎ"))) {
 	     alert("한글이 아닙니다.");
 	     member.name.value="";
 	     member.name.focus();
@@ -202,14 +202,14 @@ function callBack() {
 						<li class="login"><a href="#">로그인</a>
 							<div class="login-form">
 								<form action="/EduMIS/login/login.do" method="POST">
-									<input type="text" name="id" value="${cookie.loginId.value}" placeholder="아이디" /> <input type="password"
-										placeholder="비밀번호" /> <span><input type="checkbox"
+									<input type="text" placeholder="아이디" name="id" /> <input type="password"
+										placeholder="비밀번호" name="pass"/> <span><input type="checkbox"
 										id="save" /><label for="save">아이디 저장하기</label></span> <input
 										type="submit" class="btn-submit" />
 								</form>
 								<button type="button" class="btn-close">닫기</button>
 							</div></li>
-						<li><a href="/user/member/joinForm.do">회원가입</a></li>
+						<li><a href="/EduMIS/user/member/joinForm.do">회원가입</a></li>
 					</ul>
 				</header>
 				<div class="container-inner">
