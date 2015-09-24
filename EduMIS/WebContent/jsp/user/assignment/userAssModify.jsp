@@ -20,7 +20,7 @@
   }
 </script>
 </head>
-<body class="page-join">
+<body class="page-join btn-page">
 	<div class="wrap">
 		<div class="wrap-inner">
 			<aside>
@@ -61,28 +61,28 @@
 							<h2>과제수정</h2>
 							<!-- 작업시작부분 div안에 클래스명 넣어서 작업 해 주세요 나머지 url부분은 추후 취합할 예정이니 일단 MENU 부분의 링크태그에 값 넣어서 작업 해주시면 됩니다. 게시판 담당하시는 분들은 추후 공통 클래스 드릴테니 일단 테이블로 작업 부탁드립니다. -->
 
-							<div class="AssignmentAsk table-common">
+							<div class="AssignmentModify table-common">
 								<form enctype="multipart/form-data">
-									<table class ="table-common table">
+									<table border="1">
 										<h1>과제정보</h1>
 										<tr>
-											<td>과제번호</td>
+											<th>과제번호</th>
 											<td>${ass.no}</td>
 										</tr>
 										<tr>
-											<td>과제명</td>
+											<th>과제명</th>
 											<td>${ass.title}</td>
 										</tr>
 										<tr>
-											<td>내용</td>
+											<th>내용</th>
 											<td>${ass.content}</td>
 										</tr>
 										<tr>
-											<td>기간</td>
+											<th>기간</th>
 											<td>${ass.startDate}~${ass.endDate}</td>
 										</tr>
 										<tr>
-											<td>첨부파일</td>
+											<th>첨부파일</th>
 											<td><a
 												href='${pageContext.request.contextPath}/fileDownload?orgFileName=${ass.orgFileName}&realFileName=${ass.realFileName}'>
 													${ass.orgFileName}</a></td>
@@ -93,28 +93,25 @@
 								
 								<form action="/EduMIS/user/assModify.do" method="POST"
 									enctype="multipart/form-data">
-								<table>
-								<h1>과제제출</h1>
 										<input type="hidden" name="no" value="${ass.no}" />
 										<input type="hidden" name="id" value="${user.id}" />
 										<input type="hidden" name="name" value="${user.name}" />
+								<table border="1">
+								<h1>과제제출</h1>
 										<tr>
-											<td>내용</td>
+											<th>내용</th>
 											<td><textarea cols="70" rows="10" name="usertext">${userass.content}</textarea>
 											</td>
 										</tr>
 										<tr>
-											<td>첨부파일</td>
+											<th>첨부파일</th>
 											<td><input type="file" name="userattachFile" /></td>
 										</tr>
 									</table>
-								<div class="btn-area">
-									<span class="width50"><input type="submit"
-										class="btn txt-modi-assign btn-txt btn-blue" value="과제 수정" /></span>
-									<span class="width50"><input type="button"
-										class="btn txt-list btn-txt btn-blue" value="목록"
-										onclick="List();" /></span>
-								</div>
+							<div class="btn-area">
+								<span class="width50"><input type="submit" class="btn txt-modi-assign btn-txt btn-blue" value="과제 수정" /></span>
+								<span class="width50"><input type="button" class="btn txt-list btn-txt btn-blue" value="목록" onclick="List();" /></span>
+							</div>
 								</form>
 
 							</div>
