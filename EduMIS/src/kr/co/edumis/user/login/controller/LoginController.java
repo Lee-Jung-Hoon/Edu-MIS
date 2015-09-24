@@ -24,29 +24,44 @@ public class LoginController {
 	@RequestMapping("/login/login.do")
 	public ModelAndView login(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		String id = req.getParameter("id");
-		
-		System.out.println("111111111111");
+		System.out.println(id);
+
 		LoginVO login = new LoginVO();
+
 		login.setId(req.getParameter("id"));
-		login.setPass(req.getParameter("pass"));
+		login.setPass(req.getParameter("pass"));		
 		
 		try {
 			LoginVO member = service.login(login);
-			String grade = member.getGrade();
-			HttpSession session = req.getSession();
-			
 			ModelAndView mav = new ModelAndView();
-			if (member != null && grade == null) { 
+			
+			String grade = "";
+			HttpSession session = req.getSession();
+		
+			if(member != null){
+
+				login.setName(member.getName());
+				login.setGrade(member.getGrade());
+				
+				grade = member.getGrade();				
+			}
+			else{
+				grade = "3";
+			}
+
+			switch(grade) { 
+			case "1":
+				session.setAttribute("admin", member);
+				mav.setView("redirect:/EduMIS/jsp/user/login/admin.jsp");	
+				break;
+			case "2":
 				session.setAttribute("user", member);
 				mav.setView("redirect:/EduMIS/jsp/user/login/loginMain.jsp");
-				System.out.println(id);
-			} else if (grade =="s"){
-				session.setAttribute("admin", member);
-				mav.setView("redirect:/EduMIS/jsp/user/login/loginMain.jsp");			
-				
-			} else {
+				break;
+			default:
 				mav.setView("redirect:/EduMIS/jsp/user/login/loginForm.jsp");
-			
+				break;
+				
 			}
 			return mav;
 		} catch (Exception e) {
@@ -62,7 +77,7 @@ public class LoginController {
 	
 	@RequestMapping("/login/logOut.do")
 	public ModelAndView logout(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		System.out.println("11111");
+
 		try {
 			HttpSession session = req.getSession();
 			session.invalidate();
