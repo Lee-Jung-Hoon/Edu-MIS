@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import kr.co.edumis.common.db.MyAppSqlConfig;
-import kr.co.edumis.main.vo.MainAdminAttVO;
 
 public class MainDAO {
 	
