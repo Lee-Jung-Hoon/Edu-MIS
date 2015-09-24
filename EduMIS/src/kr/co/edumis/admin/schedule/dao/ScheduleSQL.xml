@@ -8,6 +8,24 @@
 	
 <mapper namespace="schedule.dao.SchduleMapper">
 	
+	    <resultMap id="result" type="ScheduleVO">
+    
+        <result property="no"    column="no" />
+        <result property="title"    column="title" />
+        <result property="content"  column="content" />
+        <result property="startDate"  column="start_date" />
+        <result property="endDate" column="end_date" />
+        <result property="importance" column="importance" />
+        <result property="place" column="place" />
+    </resultMap>
+	<!-- 스케줄 전체를 가져오는 쿼리 -->
+	
+		<select id="listSchedule" resultMap="result" parameterType="ScheduleVO">
+		select no, title, content, start_date, end_date, importance, place       
+ 	  from t_schedule 
+ 	    where start_date &lt;= #{startDate} 
+ 	      and end_date &gt;= #{endDate}
+		</select>
 	
 	<!-- 스케줄을 저장하는 쿼리 -->
 	<insert id="registSchedule" parameterType="ScheduleVO" >
