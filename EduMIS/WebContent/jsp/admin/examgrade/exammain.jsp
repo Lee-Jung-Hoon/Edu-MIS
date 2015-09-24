@@ -27,21 +27,9 @@
 			$('#content').load('/EduMIS/examgrade/ExamStudentList.do');
 			return false;
 		});
-		$(".iframe").colorbox({iframe:true, title: "시험등록", overlayClose: false, width:"80%", height:"80%"});
+		$(".iframe").colorbox({iframe:true, title: "시험등록", overlayClose: false, width:"30%", height:"20%"});
 		$("#datepicker").datepicker();
 	});
-	
-	function doInsert(val) {
-		if (confirm("성적을 등록하시겠습니까?")) {
-			location.href = "${pageContext.request.contextPath}/examgrade/ExamGradeWriteForm.do?no="+val;
-		}
-	}
-	
-	function doModify(val) {
-		if (confirm("성적을 수정하시겠습니까?")) {
-			location.href = "${pageContext.request.contextPath}/examgrade/ExamGradeModifyForm.do?no="+val;
-		}		
-	}
 	
 </script>
 </head>
@@ -104,7 +92,6 @@
 								<h2>성적관리</h2>
 								<!-- 작업시작부분 div안에 클래스명 넣어서 작업 해 주세요 나머지 url부분은 추후 취합할 예정이니 일단 MENU 부분의 링크태그에 값 넣어서 작업 해주시면 됩니다. 게시판 담당하시는 분들은 추후 공통 클래스 드릴테니 일단 테이블로 작업 부탁드립니다. -->
 								<p><a class='iframe' href="/EduMIS/jsp/admin/examgrade/examturnwriteForm.jsp">시험등록</a></p>
-								<p><a href="#" onclick="regPop()">시험등록</a></p>
 								<a href="javascript:void(0);" id="exam">시험별</a> 
 								<a href="javascript:void(0);" id="student">학생별</a>
 
