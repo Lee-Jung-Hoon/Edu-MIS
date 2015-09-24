@@ -61,7 +61,7 @@
 				
 				
 
-				
+				// 현재의 달을 출력한다.
 
 				for (var i = 1; i <= lastday; i++) {
 					$("#date" + startnum).html(i);
@@ -69,6 +69,11 @@
 				}
 
 				$("#month-name").html(y + "년 &nbsp;&nbsp;" + nMonth);
+				
+				  $('.test00 td').click(function() {
+					            oneday=$(this).html();
+					                        });
+				
 
 				// 다음을 선택할 경우 다음 달로 넘어간다.
 
@@ -76,7 +81,13 @@
 						"9월", "10월", "11월", "12월" ];
 
 				$("#next-month").on("click", function() {
-
+					 
+					 // 페이지가 넘어갈 때 미리보기 페이지 정보를  없앤다.
+					 $(".schedule-list").html( "");
+					 // 페이지가 넘어 갈때 미리보기 페이지를 없앤다.
+					 $('.test01').slideUp();
+					 
+					 
 					firstdate = new Date(y, nMonth, 1);
 					firstday = firstdate.getDay();
 					startnum = eval(firstday + 1);
@@ -104,7 +115,16 @@
 
 				});
 
+				
+				// 이전 달 정보로 넘어가는 버튼
 				$("#prev-month").on("click", function() {
+					 
+					 // 페이지가 넘어갈 때 미리보기 페이지 정보를  없앤다.
+					 $(".schedule-list").html( "");
+					 // 페이지가 넘어 갈때 미리보기 페이지를 없앤다.
+					 $('.test01').slideUp();
+					 
+					 
 					nMonth--;
 					firstdate = new Date(y, nMonth, 1);
 					firstday = firstdate.getDay();
@@ -130,32 +150,163 @@
 					// 					$("#month-name").html(y);
 					
 				});
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+
+				$(document).ready(
+						function() {
+							
+					var sizeArray = [ '60px', '180px', '300px', '420px', '540px',
+										'660px', '780px' ]
+					
+					
+								  $(".test00 td").on("click",function() {
+									   
+									   
+									   
+									   
+											   $.get("/EduMIS/admin/listschedule", {year: y, month: nMonth, oneday: oneday}, function(data) {
+													
+												    	var dataArr = eval("(" + data + ")");	
+												    	$(".schedule-list").html( "");
+												     for(var i = 0; i < dataArr.length; i++){
+												    		 $(".schedule-list").html( $(".schedule-list").html()+"<tr><td>" + dataArr[i].importance + "</td><td>"+ dataArr[i].title +"</td><td>"+  dataArr[i].content +"</td></tr>");
+												    		 
+												    		 
+												    		 
+												    	}
+												    
+													
+												}).fail( function (){
+													alert("에러발생")
+												})
+											   
+											   
+								    
+
+								    
+								    
+											var index = $(this).index();
+											
+											
+											if ($(this).hasClass('open')) {
+												$('.test00 td').removeClass('open');
+												$('.test01').slideUp();
+												
+												
+//								        $('.test00 td').click(function() {
+//				                  oneday=$(this).html();
+//				                              });
+								        
+								        
+								        
+
+								        
+								        
+								        
+												
+											} 
+											
+											else if ($(this).siblings().hasClass('open')) {
+												$('.test00 td').removeClass('open');
+												$(this).addClass('open').parents(".test00")
+														.next().slideDown().find('span').css(
+																'left', sizeArray[index]);
+												
+												
+												
+//										    $('.test00 td').click(function() {
+//				                  oneday=$(this).html();
+//				                              });
+										    
+										    
+										    
+										    
+										
+												
+												
+										    
+											} 
+											
+											
+											else {
+												$('.test00 td').removeClass('open');
+												$('.test01').slideUp();
+												$(this).addClass('open').parents(".test00")
+														.next().slideDown().find('span').css(
+																'left', sizeArray[index]);
+												
+//						            $('.test00 td').click(function() {
+//				                  oneday=$(this).html();
+//				                              });
+												
+											}
+											
+
+											
+					
+										});
+						});
+				
+				
+				
+				
+				
+				
+
+				
+
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 
 				// 월 정보를 불러낸다.
 
-				var sizeArray = [ '60px', '180px', '300px', '420px', '540px',
-						'660px', '780px' ]
-				$(".test00 td").on(
-						"click",
-						function() {
-						
-							
-							 
-							var index = $(this).index();
-							if ($(this).hasClass('open')) {
-								$('.test00 td').removeClass('open');
-								$('.test01').slideUp();
-							} else if ($(this).siblings().hasClass('open')) {
-								$('.test00 td').removeClass('open');
-								$(this).addClass('open').parents(".test00")
-										.next().slideDown().find('span').css(
-												'left', sizeArray[index]);
-							} else {
-								$('.test00 td').removeClass('open');
-								$('.test01').slideUp();
-								$(this).addClass('open').parents(".test00")
-										.next().slideDown().find('span').css(
-												'left', sizeArray[index]);
-							}
-						});
+//				var sizeArray = [ '60px', '180px', '300px', '420px', '540px',
+//						'660px', '780px' ]
+//				$(".test00 td").on(
+//						"click",
+//						function() {
+//						
+//							
+//							 
+//							var index = $(this).index();
+//							if ($(this).hasClass('open')) {
+//								$('.test00 td').removeClass('open');
+//								$('.test01').slideUp();
+//							} else if ($(this).siblings().hasClass('open')) {
+//								$('.test00 td').removeClass('open');
+//								$(this).addClass('open').parents(".test00")
+//										.next().slideDown().find('span').css(
+//												'left', sizeArray[index]);
+//							} else {
+//								$('.test00 td').removeClass('open');
+//								$('.test01').slideUp();
+//								$(this).addClass('open').parents(".test00")
+//										.next().slideDown().find('span').css(
+//												'left', sizeArray[index]);
+//							}
+//						});
 			});
