@@ -3,11 +3,24 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="main.dao.mainMapper">
-	<select id="attendance" resultType="MainAdminAttVO">
-		select count(*)
-			from 
-			<where>
-					
-			</where>
+	<select id="attendance" resultType="String">
+		select mName 
+			from t_attend
+			where to_char(att_date) = to_char(sysdate)
+				 and att_type =1
+	</select>
+	
+		<select id="late" resultType="String">
+		select mName 
+			from t_attend
+			where to_char(att_date) = to_char(sysdate)
+				 and att_type =2
+	</select>
+	
+		<select id="absent" resultType="String">
+		select mName 
+			from t_attend
+			where to_char(att_date) = to_char(sysdate)
+				 and att_type =4
 	</select>
 </mapper>
