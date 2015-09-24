@@ -102,7 +102,7 @@ public class AdminAssController {
 	}
 
 	@RequestMapping("/admin/assList.do")
-	public ModelAndView adAssList(AdminAssVO adminassVO) throws Exception {
+	public ModelAndView adAssList(AdminAssVO adminassVO, HttpServletRequest req) throws Exception {
 		ModelAndView mav = new ModelAndView("/jsp/admin/assignment/adAssList.jsp");
 
 		// 표시할 페이지 수
@@ -110,12 +110,25 @@ public class AdminAssController {
 		mav.addObject("pageIndex", pageIndex);
 		
 		// 한 페이지에 표시할 게시물
-		int startIndex;
-		int endIndex;
-		Map<String, Integer> param = new HashMap<>();
-		param.put("startIndex", 1);
-		param.put("endIndex", 10);
+		int reqIndex = 1; 	// 요청받은 페이지 번호
 		
+		if (req.getParameter("reqIndex") != null) {
+			reqIndex = Integer.parseInt(req.getParameter("reqIndex"));
+		}
+		
+		if(reqIndex > pageIndex) {
+			reqIndex = pageIndex;
+		} else if(reqIndex < 1){
+			reqIndex = 1;
+		}
+		
+		int startIndex = 1 + (reqIndex - 1) * 10;
+		int endIndex = 10 + (reqIndex - 1) * 10;
+		Map<String, Integer> param = new HashMap<>();
+		param.put("startIndex", startIndex);
+		param.put("endIndex", endIndex);
+		mav.addObject("thisPage", reqIndex);
+	
 		List<AdminAssVO> list = service.list(param);
 		mav.addObject("list", list);
 
