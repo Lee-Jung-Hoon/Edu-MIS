@@ -4,13 +4,13 @@
 	
 <mapper namespace="attendance"> 
 	<select id="memList" resultMap="mem">
-		select mNo, mName 
+		select no, name 
 		from t_member 
 	</select>
 	
 	<resultMap type="memberVO" id="mem">
-		<result property="no" column="mNo"></result>
-		<result property="name" column="mName"></result>
+		<result property="no" column="no"></result>
+		<result property="name" column="name"></result>
 	</resultMap>
 	
 	<resultMap type="AdminAttVO" id="att">
@@ -26,6 +26,29 @@
 		<result property="attType" column="att_type"></result>
 		<result property="attDate" column="att_date"></result>
 	</resultMap>
+	
+	
+<!-- create table t_member( -->
+<!--    no number primary key, -->
+<!--    id varchar2(10) not null, -->
+<!--    name varchar2(30) not null, -->
+<!--    pass varchar2(30) not null, -->
+<!--    pass_chk varchar2(30) not null, -->
+<!--    year varchar2(4) not null, -->
+<!--    month varchar2(4) not null, -->
+<!--    day varchar2(4) not null, -->
+<!--    post_no char(7) not null,   -->
+<!--    basic_addr varchar2(100) not null, -->
+<!--    detail_addr varchar2(100) not null, -->
+<!--    phone1 char(3) not null, -->
+<!--    phone2 char(4) not null, -->
+<!--    phone3 char(4) not null, -->
+<!--    email varchar2(30) not null, -->
+<!--    email_domain varchar2(20) not null, -->
+<!--    major varchar2(10) not null, -->
+<!--    join_date date default sysdate,	 -->
+	
+
 	
 <!-- 	private int mNo; -->
 <!-- 	private String attDate; -->
