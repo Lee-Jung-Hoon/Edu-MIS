@@ -12,8 +12,8 @@ public class IdCheckDAO {
 	}
 
 	public int selectId(String id) {
-		 int no = session.selectOne("idCheck.dao.IdCheckMapper.idCheck",id);
-		 System.out.println(no);
+//		 int no = session.selectOne("idCheck.dao.IdCheckMapper.idCheck",id);
+//		 System.out.println(no);
 		return session.selectOne("idCheck.dao.IdCheckMapper.idCheck",id);
 		
 	}
