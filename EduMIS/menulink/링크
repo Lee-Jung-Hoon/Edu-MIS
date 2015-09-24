@@ -1,6 +1,7 @@
 사용자 
 좌측메뉴
 - 과제제출 게시판 - /EduMIS/user/assList.do
+- 조장추천 게시판 = /EduMIS/user/user/votelist.do
 
 상단메뉴
 
@@ -8,3 +9,4 @@
 관리자
 좌측메뉴
   - 과제제출 게시판 - /EduMIS/admin/assList.do
+  - 수강생 관리 게시판 = /EduMIS/admin/commentList.do
