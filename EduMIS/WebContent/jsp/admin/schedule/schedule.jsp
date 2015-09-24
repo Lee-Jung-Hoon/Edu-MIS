@@ -1,61 +1,79 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!doctype html>
-<html lang="ko" >
+<html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width">
 <title>제목</title>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <link rel="stylesheet" href="http://resources/demos/style.css">
-  
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="http://resources/demos/style.css">
+
 <link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
 <link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="http://apis.daum.net/maps/maps3.js?apikey=1cd4d7ef46ee8be854cdc1de37076a25&libraries=services"></script>
 <link href="css/layout.css" rel="stylesheet" type="text/css" />
 <link href="css/common1.css" rel="stylesheet" type="text/css" />
-<link href="/EduMIS/css/scheduleCal.css" rel="stylesheet"	type="text/css" />
-<link href="/EduMIS/css/scheduleReg.css" rel="stylesheet"	type="text/css" />
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link href="/EduMIS/css/scheduleCal.css" rel="stylesheet"
+	type="text/css" />
+<link href="/EduMIS/css/scheduleReg.css" rel="stylesheet"
+	type="text/css" />
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="/EduMIS/js/scheduleCal.js"></script>
 <script src="/EduMIS/js/scheduleReg.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/jquery.leanModal.min.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="js/jquery.leanModal.min.js"></script>
+<script src="/EduMIS/js/httprequest.js"></script>
+<script>
+			$(document).ready(function(){
+				
+				
+				 $('.txt-plan').on('click', function(){
+// 					  $('.plan_form').animate({'left':'20%'},1000);
+ 					  $('.plan_form').animate({'left':'38%'},1000);
+// 					  $('.plan_form').animate(1000);
+					  
+				 });
+				 
+				 $('.cal_close').on('click', function(){
+// 					  $('.plan_form').animate({'left':'20%'},1000);
+ 					  $('.plan_form').animate({'left':'200%'},1000);
+// 					  $('.plan_form').animate(1000);
+					  
+				 });
+				 
+				
+			});
+		</script>
 
 
 
-  <script  type="text/javascript">
-  $(function() {
-    $( "#datepicker" ).datepicker({
-      showOtherMonths: true,
-      selectOtherMonths: true
-    });
-  });
-  $(function() {
-	    $( "#datepicker2" ).datepicker({
-	      showOtherMonths: true,
-	      selectOtherMonths: true
-	    });
-	  });
 
-  </script>
-  
-	 	 
+
+
 
 <script type="text/javascript">
-	$(function() {
-		$('#writeForm').submit(function(e) {
-			return false;
-		});
+	 $(document).ready(function() {
+		  $(".schedule-list tr").click(function() {
+			   $.get("/EduMIS/detailshedule.do", {no:"42"}, function(data) {
+					$(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
+					$("#resultDiv").html(data);
+				}).fail( function (){
+					alert("에러발생")
+				})
+			   
+			   
+		  });
+	 });
 
-		$('.modaltrigger').leanModal({
-			top : 110,
-			overlay : 0.8,
-			closeButton : ".hidemodal"
-		});
-	});
 </script>
+
+
+
+
 
 
 </head>
@@ -122,18 +140,18 @@
 
 
 
-<!------------------------------------( 등록 폼)----------------------------------------------------------------------- -->
+							<!------------------------------------( 등록 폼)----------------------------------------------------------------------- -->
 
-							<div id="loginmodal" style="display: none;">
+					<div  class="plan_form" style="position:fixed; top:100px; left:30%; width:500px; padding:30px; z-index:99; background:#fff;">		
 								<div style="font-size: 20px;">일정 등록</div>
 								<hr />
 								<form action="/EduMIS/regschedule.do">
 									<table id="reg-Form" style="border-collapse: collapse;">
 										<tr>
 											<th>일 시</th>
-											<td><input type="text" id="datepicker" name="startDate"
-												size="10px" /> ~ <input type="text" id="datepicker2"
-												name="endDate" size="10px" /></td>
+											<td style="width:200px"><input type="text" id="datepicker" name="startDate"
+												size="10px" style="width:80px" /> ~ <input type="text" id="datepicker2"
+												name="endDate" size="10px" style="width:80px" /></td>
 											<th>중 요 도</th>
 											<td><select id="importance" name="importance">
 													<option value="1" selected="selected">보통</option>
@@ -158,7 +176,7 @@
 											<td colspan="3">
 												<div id="search">
 													<input type="text" id="place" name="place"> <input
-														type="button" value="장소 검색" onclick="search()"> <input
+														type="button" value="장소 검색" onclick="search()" style="display:inline-block; width:100px; height:30px;"> <input
 														type="hidden" id="latitude" name="latitude"> <input
 														type="hidden" id="longitude" name="longitude">
 												</div>
@@ -178,10 +196,11 @@
 										<span><input type="submit" value="저장" size="10px" /></span>
 									</div>
 								</form>
-							</div>
+								<button type="button" class="cal_close" size="30px">닫기</button>
+				</div> 							
 
 
-<!------------------------------------------------------------------------------------------------------------------------------------ -->
+							<!------------------------------------------------------------------------------------------------------------------------------------ -->
 
 
 
@@ -194,25 +213,28 @@
 							<!--  작업부분 제목 써주세요 -->
 							<h2>일정표</h2>
 							<!-- 작업시작부분 div안에 클래스명 넣어서 작업 해 주세요 나머지 url부분은 추후 취합할 예정이니 일단 MENU 부분의 링크태그에 값 넣어서 작업 해주시면 됩니다. 게시판 담당하시는 분들은 추후 공통 클래스 드릴테니 일단 테이블로 작업 부탁드립니다. -->
-  
 
+<div id="resultDiv">
+</div>
 
 							<div class="" id="cal-main">
 								<div>
 									<table class="top">
 										<colgroup>
-											<col style="width:33.333%" />
-											<col style="width:33.333%" />
-											<col style="width:33.333%" />
+											<col style="width: 33.333%" />
+											<col style="width: 33.333%" />
+											<col style="width: 33.333%" />
 										</colgroup>
 										<tr>
-											<td class="topTd_first"><input type="button" id="prev-month"
-												value="이전" class="btn-txt txt-search" style="width: 40px;"></td>
-											<td id="topTd1" class="topTd_middle">
-												&nbsp;&nbsp;&nbsp;<span id="month-name"></span>월
-												&nbsp;&nbsp;&nbsp;</td>
-											<td class="topTd_last"><input type="button" id="next-month"
-												value="다음" class="btn-txt txt-search" style="width: 40px;"></td>
+											<td class="topTd_first"><input type="button"
+												id="prev-month" value="이전" class="btn-txt txt-search"
+												style="width: 40px;"></td>
+											<td id="topTd1" class="topTd_middle">&nbsp;&nbsp;&nbsp;<span
+												id="month-name"></span>월 &nbsp;&nbsp;&nbsp;
+											</td>
+											<td class="topTd_last"><input type="button"
+												id="next-month" value="다음" class="btn-txt txt-search"
+												style="width: 40px;"></td>
 										</tr>
 
 									</table>
@@ -246,9 +268,27 @@
 									</table>
 								</div>
 								<div class="test01">
-								<a	href="#loginmodal" class="flatbtn modaltrigger" id="modaltrigger"><input
-													type="button" class="btn-txt txt-plan" id="writeBt"
-													style="width: 60px"></a>
+									<div style="width: 60px; float: left;">
+										<table>
+											<tr>
+												<td><input type="button"
+														class="btn-txt txt-plan" id="writeBt" style="width: 60px">
+												</td>
+											</tr>
+										</table>
+									</div>
+
+
+
+
+
+
+
+
+
+									<div style="float: left; width: 85%; text-align: center;">
+										
+									</div>
 								</div>
 								<div class="test00">
 									<table class="tb-2line">
@@ -264,9 +304,9 @@
 									</table>
 								</div>
 								<div class="test01">
-<a	href="#loginmodal" class="flatbtn modaltrigger" id="modaltrigger"><input
-													type="button" class="btn-txt txt-plan" id="writeBt"
-													style="width: 60px"></a>
+									<a href="#loginmodal" class="flatbtn modaltrigger"
+										id="modaltrigger"><input type="button"
+										class="btn-txt txt-plan" id="writeBt" style="width: 60px"></a>
 
 								</div>
 								<div class="test00">
@@ -283,9 +323,9 @@
 									</table>
 								</div>
 								<div class="test01">
-<a	href="#loginmodal" class="flatbtn modaltrigger" id="modaltrigger"><input
-													type="button" class="btn-txt txt-plan" id="writeBt"
-													style="width: 60px"></a>
+									<a href="#loginmodal" class="flatbtn modaltrigger"
+										id="modaltrigger"><input type="button"
+										class="btn-txt txt-plan" id="writeBt" style="width: 60px"></a>
 
 								</div>
 								<div class="test00">
@@ -303,9 +343,9 @@
 								</div>
 								<div class="test01">
 
-<a	href="#loginmodal" class="flatbtn modaltrigger" id="modaltrigger"><input
-													type="button" class="btn-txt txt-plan" id="writeBt"
-													style="width: 60px"></a>
+									<a href="#loginmodal" class="flatbtn modaltrigger"
+										id="modaltrigger"><input type="button"
+										class="btn-txt txt-plan" id="writeBt" style="width: 60px"></a>
 
 								</div>
 								<div class="test00">
@@ -324,9 +364,9 @@
 								</div>
 								<div class="test01">
 
-<a	href="#loginmodal" class="flatbtn modaltrigger" id="modaltrigger"><input
-													type="button" class="btn-txt txt-plan" id="writeBt"
-													style="width: 60px"></a>
+									<a href="#loginmodal" class="flatbtn modaltrigger"
+										id="modaltrigger"><input type="button"
+										class="btn-txt txt-plan" id="writeBt" style="width: 60px"></a>
 
 								</div>
 							</div>
