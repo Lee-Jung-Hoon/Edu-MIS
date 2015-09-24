@@ -1801,9 +1801,14 @@ section.board {
     margin-left:20px;
 }
 /* 메인 페이지 */
-.main-content-nav {
-	position:fixed;
-	z-index:99;
-	top:200px;
-	left:50%;
+.page-main .intro {
+	position:relative;
+}
+.page-main .intro h2 {
+	position:absolute; 
+	top:40px; 
+	left:30px; 
+	color:#000; 
+	font-size:40px; 
+	font-weight:bold;
 }
