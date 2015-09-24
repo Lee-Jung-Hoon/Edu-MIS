@@ -1,12 +1,26 @@
-사용자 
-좌측메뉴
-- 과제제출 게시판 - /EduMIS/user/assList.do
-- 조장추천 게시판 = /EduMIS/user/user/votelist.do
+<좌측메뉴>
+@사용자 & 관리자
+과제제출 게시판 - /EduMIS/user/assList.do
+메모 - /EduMIS/memo/open.do
 
-상단메뉴
+@관리자
+출석부 - /EduMIS/jsp/admin/attendance/attendance.jsp
+출석통계 - /EduMIS/jsp/admin/attend/attend.jsp
+스케줄 - /EduMIS/jsp/admin/schedule/schedule.jsp
+성적관리 - /EduMIS/jsp/admin/examgrade/exammain.jsp
+수강생 관리 게시판 = /EduMIS/admin/commentList.do
+조짜기 - 
 
+@사용자
+도서게시판 - /EduMIS/bookboard/list.do
+학습영상게시판 - /EduMIS/user/lectureList.do
+조장추천 게시판 - /EduMIS/user/user/votelist.do
 
-관리자
-좌측메뉴
-  - 과제제출 게시판 - /EduMIS/admin/assList.do
-  - 수강생 관리 게시판 = /EduMIS/admin/commentList.do
+<상단메뉴>
+
+@사용자 & 관리자
+마이페이지 - /EduMIS/user/mypage/detailMyinfo.do
+로그인 - /EduMIS/login/login.do
+회원가입 -  /EduMIS/user/member/join.do
+로그아웃 - /EduMIS/login/logout.do
+메세지 -
