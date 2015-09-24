@@ -60,9 +60,9 @@
 				toolTipContent: "{y}명", 					
 
 				dataPoints: [
-				{  y: 24, indexLabel: "출석 24명" },
-				{  y: 3, indexLabel: "결석 - 임지원 안지원 김지원 3명" },
-				{  y: 1, indexLabel: "지각 - 홍길동" }
+				{  y: "${attend}", indexLabel: "출석 ${attend}명" },
+				{  y: "${absent}", indexLabel: "결석 ${absentName} ${absent}명" },
+				{  y: "${late}", indexLabel: "지각 ${lateName} ${late}명" }
 
 				]
 			}
