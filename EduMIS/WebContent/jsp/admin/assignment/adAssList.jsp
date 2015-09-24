@@ -46,6 +46,17 @@
 	function moveRegist() {
 		location.href = "${pageContext.request.contextPath}/jsp/admin/assignment/adAssRegist.jsp";
 	}
+	$(document).ready(function () {
+	  $("#a${thisPage}").addClass("on");
+	});
+	
+	function prePage() {
+	  location.href = "/EduMIS/admin/assList.do?reqIndex=${thisPage-1}";
+	}
+	
+	function nextPage() {
+	  location.href = "/EduMIS/admin/assList.do?reqIndex=${thisPage+1}";
+	}
 	</script>
 </head>
 <body class="page-join">
@@ -119,10 +130,12 @@
 											</td>
 											</tr>
 											</table>
-										<div align="center">
+										<div align="center" class="board-paging">
+											<button type="button" class="btn-paging btn-paging-prev" onclick="prePage()">이전</button>
 											<c:forEach var="i" begin = "1" end = "${pageIndex}">
-												<a href="" style="text-decoration: none;">[${i}]</a>
+												<a href="/EduMIS/admin/assList.do?reqIndex=${i}" id = "a${i}" style="text-decoration: none;">${i}</a>
 											</c:forEach>
+											<button type="button" class="btn-paging btn-paging-next" onclick="nextPage()">다음</button>
 										</div>
 								</div>
 							<!--  작업완료 부분 -->
