@@ -18,5 +18,8 @@ public interface CommentService {
 
 	public void memberDrop(Map<String, String> drop) throws Exception;
 
+	//코멘트
+	public List<CommentVO> getcList()throws Exception;
+
 
 }

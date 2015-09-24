@@ -39,5 +39,11 @@ public class CommentServiceImpl implements CommentService {
 		
 	}
 
+	@Override
+	public List<CommentVO> getcList() throws Exception {
+		List<CommentVO> clist = dao.selectcList();
+		return clist;
+	}
+
 
 }
