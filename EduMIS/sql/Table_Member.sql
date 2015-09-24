@@ -27,3 +27,5 @@ create table t_member(
    real_File_Name varchar2(1000),
    file_Path varchar2(1000)
 );
+
+create sequence seq_member_no
