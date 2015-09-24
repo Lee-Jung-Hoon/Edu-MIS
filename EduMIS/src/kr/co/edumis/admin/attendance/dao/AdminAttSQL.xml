@@ -51,13 +51,13 @@
         insert into t_attend (
             mNo, att_type
         ) values (
-            #{mNo}, #{att_type}
+            #{mNo}, #{attType}
         )
-    </insert>
+  </insert>
     
     <update id="updateAttendance" parameterType="AdminAttVO">
         update t_attend
-           set att_type = #{att_type}
+           set att_type = #{attType}
          where mNo  = #{mNo}
     </update>
 </mapper>

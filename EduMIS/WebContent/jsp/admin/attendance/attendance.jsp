@@ -7,11 +7,17 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width">
 <title>출석</title>
+
+<link href="/EduMIS/css/layout.css" rel="stylesheet">
+<link href="/EduMIS/css/common.css" rel="stylesheet">
 <link href="/EduMIS/css/attstyle.css" rel="stylesheet">
 <link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
 <link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="/EduMIS/jsp/admin/attendance/httprequest.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="/EduMIS/js/jquery.leanModal.min.js"></script>
+	
 <script>
 	var id = "";
 	var date;
@@ -22,6 +28,44 @@
 
 // 		sendRequest("/EduMIS/attendance/memAttList.do", null, kCalendar, "GET");
 	});
+	
+	$(function() {
+		$('#modaltrigger').leanModal({
+			top : 110,
+			overlay : 0.8,
+			closeButton : ".hidemodal"
+		});
+	});
+  
+  function regAttend() {
+		sendRequest("/EduMIS/attendance/memListController.do", null, memberList, "GET");
+  }
+  
+	// 오늘 날짜 및 출석 등록 여부 물어봄
+	function doInsert() {
+		 var today = new Date();
+		if (confirm("출석을 등록하시겠습니까?")) {
+				location.href = "#";
+				var iso = today.toISOString();
+				alert(iso);
+		}
+	}
+	
+	function memberList() {
+	  if (httpRequest.readyState == 4) {
+		  if (httpRequest.status == 200) {
+		    if(confirm("출석을 등록하시겠습니까?")){
+			    var listDIV = document.getElementById("memberList");
+			    var memList = eval(httpRequest.responseText);
+			    for(var i=0; i < memList.length; i++) {
+			      var mem = memList[i];
+			      listDIV.value += "id : " + mem.no;
+			    }
+		    }
+		  }
+		  }
+	  }
+	
 	
 	function idDate(id2, calDate){
 		if( typeof( date ) !== 'undefined' ) {
@@ -43,7 +87,9 @@
 		if (httpRequest.readyState == 4) {
 			if (httpRequest.status == 200) {
 				var kCalendar = document.getElementById(id);
-				var attList = eval(httpRequest.responseText);
+				
+// 				console.log(httpRequest.responseText);
+ 				var attList = eval(httpRequest.responseText);
 				var calendar = '';
 				
 // 				if( typeof( date ) !== 'undefined' ) {
@@ -161,61 +207,51 @@
 					// 출석 사항 뿌려주는 곳
 					// 여기에 월, 일, 마지막 일수까지 얻어온다음 for문 돌면서 attType
 					for(var j = 0; j < currentLastDate; j++){
+// 					  alert(j + "--" + attList[i].attDate.length)
 	// 					alert(attList[j].attType);
-						var attDate = attList[i].attDate[j];
-						attDate = attDate.split('-');
-	
-						if(Number(attDate[0]) == currentYear && Number(attDate[1]) == currentMonth 
-							&& Number(attDate[2]) == j+1){
-							switch(attList[i].attType[j]){
-							case '1': calendar += '<td>O</td>';
-									break;
-								
-							case '2': calendar += '<td>◎</td>';
-									break;
-								
-							case '3': calendar += '<td>▲</td>';
-									break;
-								
-							case '4': calendar += '<td>X</td>';
-									break;
+
+// 					  console.log("--" + attList[i].attInfo)
+					  
+					  var type = null;
+					 
+					  var attArr = attList[i].attInfo;
+					  for (var key in attArr) {
+// 					    	console.log(key+" , ");
+// 							console.log("attDate : " + attArr[key].split(":")[1]);
+// 							console.log("attDate : " + attArr[key].split(":")[1]);
+// 							console.log("attDate : " + attArr[key].split(":")[1].split("-"));
+							var attDate = attArr[key].split(":")[1].split("-");
+// 							console.log("attDate : " + attDate);
+							if((Number(attDate[0]) == currentYear) && (Number(attDate[1]) == currentMonth) && (Number(attDate[2]) == j+1)){
+								type = attArr[key].split(":")[0]; 
+								break;
 							}
-						} else{
-							 calendar += '<td>-</td>'; 
-						   }
+					  }
+// 						console.log(type + "-" + attDate + "-" + attList[i].mName);
+						
+						switch(type){
+						case '1': calendar += '<td>O</td>';
+								break;
+							
+						case '2': calendar += '<td>◎</td>';
+								break;
+							
+						case '3': calendar += '<td>▲</td>';
+								break;
+							
+						case '4': calendar += '<td>X</td>';
+								break;
+						default :
+							  calendar += '<td>-</td>'; 
+								break;						  
 						}
 					}
-				
-// 						alert("년 : "+attDate[0]+ "월 : "+attDate[1]+" 일 : "+attDate[2]);
-// 						if(Number(attDate[0]) == currentYear && Number(attDate[1]) == currentMonth){
-// 							if(attList.length > j){
-// 								switch(attList[j].attType){
-// 								case '1': calendar += '<td>O</td>';
-// 										break;
-								
-// 								case '2': calendar += '<td>◎</td>';
-// 										break;
-								
-// 								case '3': calendar += '<td>▲</td>';
-// 										break;
-								
-// 								case '4': calendar += '<td>X</td>';
-// 										break;
-// 								}
-// 						} else{
-// 						 	calendar += '<td>-</td>'; 
-// 						  }
-// 						}
-// 					}
-						
-				
-					
-	
+				}
 				calendar += '			</tr>';
 				
 				calendar += '			</tbody>';
 				calendar += '		</table>';
-				
+				calendar += '		* 화면상태 표시 설명 => 출석:[○] 지각:[◎] 조퇴:[▲] 결석:[×] ';
 				kCalendar.innerHTML = calendar;
 			}
 		}
@@ -278,6 +314,8 @@
 							<!--  작업부분 제목 써주세요 -->
 							<h2>출석부</h2>
 							<!-- 작업시작부분 div안에 클래스명 넣어서 작업 해 주세요 나머지 url부분은 추후 취합할 예정이니 일단 MENU 부분의 링크태그에 값 넣어서 작업 해주시면 됩니다. 게시판 담당하시는 분들은 추후 공통 클래스 드릴테니 일단 테이블로 작업 부탁드립니다. -->
+							<input type="button" value="등록" onclick="doInsert();"> <a
+									href="#loginmodal" onclick="regAttend()" id="modaltrigger">출석등록</a>
 							<div id="kCalendar"></div>
 							<!--  작업완료 부분 -->
 						</section>
@@ -285,6 +323,18 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	
+		<!-- 출석 등록을 위한 div -->
+	<div id="loginmodal" style="display: none;">
+		<h2 align="center">일정등록</h2>
+		<!-- 등록 주소 재설정 -->
+		<form action="#">
+			<br />
+			<div align="center" ></div>
+			<div id="memberList"></div>
+			<input type="submit" value="등록">
+		</form>
 	</div>
 </body>
 <script type="text/javascript" src="/EduMIS/js/common.js"></script>

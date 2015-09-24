@@ -42,82 +42,45 @@ public class AdminAttController extends HttpServlet{
 //		}
 		String json = "";
 		json += "[";
-		System.out.println("memList.size() : "+memList.size());
 		for(int i = 0; i < memList.size(); i++){
 			MemberVO mem = memList.get(i);
-//			if(i == memList.size() - 1){
-				json += "  {";
-				json += "	'no': "+"'"+mem.getNo()+"'"+",  ";
-				json += "	'mName': "+"'"+mem.getName()+"'";
-				List<AdminAttVO> attMemList = service.selectAttMemList(mem.getNo());
-				for(int j = 0; j < attMemList.size(); j++){
-//					if(attMemList.size() > j){
-						AdminAttVO attMem = attMemList.get(j);
-						System.out.println(mem.getName()+"의 date : "+attMem.getAttDate());
-						System.out.println(mem.getName()+"의 type : "+attMem.getAttType());
-//						System.out.println("attMemList의 데이트 : "+attMem.getAttDate());
-//						System.out.println("attMemList의 타입 : "+attMem.getAttType());
-						json += "	'attDate': "+"'"+attMem.getAttDate()+"'"+",  ";
-						json += "	'attType': "+"'"+attMem.getAttType()+"'";
-//					}
+
+			json += "  {";
+			json += "	'no': '" + mem.getNo() + "', ";
+			json += "	'mName': "+"'"+mem.getName() + "' ";
+
+			List<AdminAttVO> attMemList = service.selectAttMemList(mem.getNo());
+			for(int j = 0; j < attMemList.size(); j++) {
+				if (j == 0) {
+					json += ", ";
+					json += "'attInfo': [";
 				}
-				json += "  }, ";
-//			} 
-//		else{
-//				json += "  {";
-//				json += "	'no': "+"'"+mem.getNo()+"'"+",  ";
-//				json += "	'mName': "+"'"+mem.getName()+"'";
-//				for(int j = 0; j < attList.size(); j++){
-//					System.out.println("attList.size() : "+attList.size());
-//					List<AdminAttVO> attMemList = service.selectAttMemList(mem.getNo());
-//					if(attMemList.size() > j){
-//						AdminAttVO attMem = attMemList.get(j);
-//						System.out.println("attMemList의 데이트 : "+attMem.getAttDate());
-//						System.out.println("attMemList의 타입 : "+attMem.getAttType());
-//						json += "	'attDate': "+"'"+attMem.getAttDate()+"'"+",  ";
-//						json += "	'attType': "+"'"+attMem.getAttType()+"'";
-//					}
-//				}
-//				json += "  }, ";
-//			}
+				AdminAttVO attMem = attMemList.get(j);
+				json += "'" + attMem.getAttType()+ ":" + attMem.getAttDate()+"' ";
+				
+				if(j != attMemList.size() -1){
+					json += ", ";
+				}
+			}
+			if (attMemList.size() != 0) {
+				json += "]";
+			}
+			
+			json += "  } ";
+			
+			if(i != memList.size() - 1){
+				json += ", ";
+			} 
 		}
 		
-//		for(int i = 0; i < attList.size(); i++){
-//			AdminAttVO att = attList.get(i);
-//			if(i == attList.size() - 1){
-//				json += "  {";
-//				json += "	'mNo': "+"'"+att.getmNo()+"'"+",  ";
-//				json += "	'mName': "+"'"+att.getmName()+"'"+",  ";
-//				json += "	'attDate': "+"'"+att.getAttDate()+"'"+",  ";
-//				json += "	'attType': "+"'"+att.getAttType()+"'";
-//				json += "  } ";
-//			} else{
-//				json += "  {";
-//				json += "	'mNo': " +"'"+att.getmNo()+"'"+ ",  ";
-//				json += "	'mName': "+"'"+att.getmName()+"'"+",  ";
-//				json += "	'attDate': "+"'"+att.getAttDate()+"'"+",  ";
-//				json += "	'attType': "+"'"+att.getAttType()+"'";
-//				json += "  }, ";
-//			}
-//		}
+		System.out.println(json);
+		
 		json += "]";
 		
 		out.println(json);
 		out.close();
 	}
 	
-	
-//	public ModelAndView memAttList(HttpServletRequest req){
-//		ModelAndView mav = new ModelAndView("/jsp/admin/attendance/attendance.jsp");
-//		String mNo = req.getParameter("mNo");
-//		List<MemberVO> memList = service.selectMemList();
-//		List<AdminAttVO> attList = service.selectAttList(mNo);
-//		
-//		mav.addObject("memList", memList);
-//		mav.addObject("attList", attList);
-//		
-//		return mav;
-//	}
 	
 	
 }
