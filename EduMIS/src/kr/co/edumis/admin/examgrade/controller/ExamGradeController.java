@@ -201,6 +201,9 @@ public class ExamGradeController {
 		}
 		return mav;
 	}
+	
+	
+	
 //	<th width="100px">번호</th>
 //	<th width="200px">이름</th>
 //	<th width="300px">아이디</th>
