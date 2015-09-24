@@ -13,6 +13,53 @@
 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script src="/EduMIS/template/httprequest.js"></script>
+	<style>
+	.btn-memo {
+	-moz-box-shadow:inset 0px 0px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 0px 0px 0px #ffffff;
+	box-shadow:inset 0px 0px 0px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #e9e9e9) );
+	background:-moz-linear-gradient( center top, #ffffff 5%, #e9e9e9 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e9e9e9');
+	background-color:#ffffff;
+	-webkit-border-top-left-radius:20px;
+	-moz-border-radius-topleft:20px;
+	border-top-left-radius:20px;
+	-webkit-border-top-right-radius:20px;
+	-moz-border-radius-topright:20px;
+	border-top-right-radius:20px;
+	-webkit-border-bottom-right-radius:20px;
+	-moz-border-radius-bottomright:20px;
+	border-bottom-right-radius:20px;
+	-webkit-border-bottom-left-radius:20px;
+	-moz-border-radius-bottomleft:20px;
+	border-bottom-left-radius:20px;
+	text-indent:0px;
+	border:3px solid #756075;
+	display:inline-block;
+	color:#666666;
+	font-family:Comic Sans MS;
+	font-size:19px;
+	font-weight:bold;
+	font-style:normal;
+	height:65px;
+	line-height:65px;
+	width:131px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #ffffff;
+}
+.btn-memo:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #e9e9e9), color-stop(1, #ffffff) );
+	background:-moz-linear-gradient( center top, #e9e9e9 5%, #ffffff 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e9e9e9', endColorstr='#ffffff');
+	background-color:#e9e9e9;
+}.btn-memo:active {
+	position:relative;
+	top:1px;
+}
+/* This button was generated using CSSButtonGenerator.com */
+</style>
 </head>
 <body class="page-memo btn-page">
 	<div class="wrap">
@@ -99,19 +146,17 @@
 			</div>
 		</div>
 	</div>
-	
-	<a href="/EduMIS/memo/open.do">ㅇㅇ</a>
 </body>
 <script type="text/javascript" src="/EduMIS/js/common.js"></script>
 <script type="text/javascript">
 
 
 var saveMemo = function(memoDiv) {
-	var content = memoDiv.find('textarea').val(); 
-	var posXVal = parseInt(memoDiv.css('left'));				
-	var posYVal = parseInt(memoDiv.css('top'));				
-	var idVal = memoDiv.attr("id");
-	
+var content = memoDiv.find('textarea').val(); 
+var posXVal = parseInt(memoDiv.css('left'));				
+var posYVal = parseInt(memoDiv.css('top'));				
+var idVal = memoDiv.attr("id");
+
 	var params = {
 				posX: posXVal, 
 				posY: posYVal,
@@ -120,12 +165,14 @@ var saveMemo = function(memoDiv) {
 				};
 				
 	if(memoDiv.hasClass("saved")){		 // 업데이트
-		sendRequest("/EduMIS/memo/updateMemo.do", params, '');
+			$.get("/EduMIS/memo/updateMemo.do",params,function(){
+			})
 	}
 	else{														 // 저장
-		sendRequest("/EduMIS/memo/insertMemo.do", params, function(data){
-			memoDiv.attr("id",data);
-		});
+		$.get("/EduMIS/memo/insertMemo.do",params,function(data){
+		  memoDiv.attr("id",data);
+		})	
+	
 		memoDiv.addClass("saved");
 	}	
 }
@@ -140,7 +187,7 @@ var saveMemo = function(memoDiv) {
 				var params={
 						id : idVal
 				}	
-	 			sendRequest("/EduMIS/memo/deleteMemo.do", params, "");				
+				$.get("/EduMIS/memo/deleteMemo.do",params);
 			}			
 			$(this).parent().remove();
 		});
