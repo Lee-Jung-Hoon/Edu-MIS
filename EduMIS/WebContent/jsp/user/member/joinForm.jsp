@@ -66,8 +66,8 @@ function chkForm() {
 	
 	if(member.pass.value.length < 4 || member.pass.value.length > 12) {
 	  alert("비밀번호를 4~12자리로 입력하세요");
-	  member.id.value="";
-	  member.id.focus();
+	  member.pass.value="";
+	  member.pass.focus();
 	  return false;
 	}
 	
@@ -226,12 +226,17 @@ function callBack() {
 						<li><a href="/EduMIS/user/mypage/detailMyinfo.do"><img
 								src="/EduMIS/images/icon-user.png" alt="" />마이페이지</a></li>
 						<li class="login"><a href="#">로그인</a>
+<!-- 						<li><a href="/EudMIS/user/login/logout.do">로그아웃</a> -->
 							<div class="login-form">
 								<form action="/EduMIS/login/login.do" method="POST">
-									<input type="text" placeholder="아이디" name="id" /> <input type="password"
-										placeholder="비밀번호" name="pass"/> <span><input type="checkbox"
-										id="save" /><label for="save">아이디 저장하기</label></span> <input
-										type="submit" class="btn-submit" />
+									<input type="text" placeholder="아이디" name="id" value="${cookie.loginId.value}" />
+									 <input type="password" placeholder="비밀번호" name="pass"/>
+									  <span><input type="checkbox" id="save" name="save" value="Y" 
+										<c:if test="${not empty cookie.loginId}">
+											checked="checked"
+					</c:if>
+					 /> 
+					<label for="save">아이디 저장하기</label></span> <input type="submit" class="btn-submit" />
 								</form>
 								<button type="button" class="btn-close">닫기</button>
 							</div></li>
