@@ -26,7 +26,7 @@ public class MemoController {
 	public ModelAndView openMemo(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		ModelAndView mav = new ModelAndView("/template/memo.jsp");
 		HttpSession session = req.getSession();
-		MemberVO member = (MemberVO) session.getAttribute("userInfo");
+		MemberVO member = (MemberVO) session.getAttribute("user");
 		ArrayList<MemoVO> list;
 		if (member == null) {
 			list = service.getMemoList("0");
