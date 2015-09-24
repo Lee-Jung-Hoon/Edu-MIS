@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -201,7 +202,7 @@ function chkForm() {
 												</td>
 												<td rowspan="11" class="table-photo">
 													<div>
-														<span id="imgFrame" class="img"><img src="/EduMIS${mvo.filePath}/${mvo.orgFileName}" alt='' /></span>
+														<span id="imgFrame" class="img"><c:if test="${not empty list.filePath}"><img src="/EduMIS${mvo.filePath}/${mvo.orgFileName}" alt='' /></c:if></span>
 														<span class="file btn-txt txt-photo btn-blue"><input type="file" name="attachFile" onchange="loadFile(event)"></span>
 														<ul>
 															<li>- gif 혹은 jpg 형식</li>

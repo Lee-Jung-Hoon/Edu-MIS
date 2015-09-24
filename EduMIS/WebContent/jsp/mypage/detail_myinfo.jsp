@@ -90,7 +90,7 @@
 												<input type = "hidden" id ="realFileName" name = "realFileName" value = "${list.realFileName }" />
 												<input type = "hidden" id ="orgFileName" name = "orgFileName" value = "${list.orgFileName }" />
 													<div>
-														<span id="imgFrame" class="img"><img src="/EduMIS${list.filePath}/${list.realFileName}" alt='' /></span>
+														<span id="imgFrame" class="img"><c:if test="${not empty list.filePath}"><img src="/EduMIS${list.filePath}/${list.realFileName}" alt='' /></c:if></span>
 <!-- 														<span class="file btn-txt txt-photo btn-blue"><input type="file" onchange="loadFile(event)" ></span> -->
 														<ul>
 															<li>- 파일이름</li>
