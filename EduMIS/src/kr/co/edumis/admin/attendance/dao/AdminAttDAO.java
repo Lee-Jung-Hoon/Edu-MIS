@@ -37,7 +37,7 @@ public class AdminAttDAO {
 		session.commit();
 	}
 	public void updateAtt(AdminAttVO att) {
-		session.update("attendance.upd", att);
+		session.update("attendance.updateAttendance", att);
 		session.commit();
 	}
 
