@@ -1,8 +1,9 @@
 package kr.co.edumis.main.service;
 
+import java.util.List;
+
 import kr.co.edumis.admin.schedule.vo.ScheduleVO;
 import kr.co.edumis.main.dao.MainDAO;
-import kr.co.edumis.main.vo.MainAdminAttVO;
 
 public class MainServiceImpl implements MainService{
 	
@@ -12,13 +13,24 @@ public class MainServiceImpl implements MainService{
 		dao = new MainDAO();
 	}
 
+	// 일일 출석현황 결과
 	@Override
-	public MainAdminAttVO selectDailyAttend() throws Exception{
-		return null;
+	public List<String> selectDailyAttend() throws Exception{
+		return dao.selectDailyAttend();
 	}
 
 	@Override
-	public ScheduleVO selectDailySchedule() throws Exception{
+	public List<String> selectDailyLate() throws Exception{
+		return dao.selectDailyLate();
+	}
+	
+	@Override
+	public List<String> selectDailyAbsent() throws Exception{
+		return dao.selectDailyAbsent();
+	}
+
+	@Override
+	public ScheduleVO selectDailySchedule() throws Exception {
 		return null;
 	}
 	

@@ -48,5 +48,6 @@
 		<mapper resource="kr/co/edumis/user/mypage/dao/MypageSQL.xml"/>
 		<mapper resource="kr/co/edumis/user/login/dao/LoginSQL.xml"/>
 		<mapper resource="kr/co/edumis/user/member/dao/IdCheckSQL.xml"/>
+		<mapper resource="kr/co/edumis/main/dao/MainSQL.xml"/>
 	</mappers>
 </configuration>
