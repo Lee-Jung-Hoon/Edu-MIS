@@ -9,6 +9,6 @@
 <body>
 	<h1>로그인</h1>
 	<a href="/EduMIS/jsp/user/member/joinForm.jsp">회원가입폼으로</a>
-	<a href="/EduMIS/user/login/logout.do">로그아웃</a>
+	<a href="/EduMIS/login/logOut.do">로그아웃</a>
 </body>
 </html>

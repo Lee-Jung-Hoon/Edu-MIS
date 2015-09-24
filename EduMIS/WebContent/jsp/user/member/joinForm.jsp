@@ -31,8 +31,8 @@ function chkForm() {
 	
 	 for(var i = 0 ; i < member.id.value.length; i++) {
 	         ch = member.id.value.charAt(i);
-	         if(((ch >= "ㅏ") && (ch <= "ㅣ")) || ((ch >="ㄱ") && (ch <="ㅎ")))  {
-	   alert("한글은 안됩니다.");
+	         if(((ch >= "ㅏ") && (ch <= "히")) || ((ch >="ㄱ") && (ch <="ㅎ")))  {
+	   alert("한글은 사용 할 수 없습니다.");
 	   member.id.value="";
 	   member.id.focus();
 		return false;
@@ -49,7 +49,7 @@ function chkForm() {
 	 for(var i = 0 ; i < member.name.value.length; i++) {
         var name = member.name.value.charAt(i);
 
-        if(((name < "ㅏ") || (name > "ㅣ")) && ((name < "ㄱ") || (name  > "ㅎ"))) {
+        if(((name < "ㅏ") || (name > "히")) && ((name < "ㄱ") || (name  > "ㅎ"))) {
 	     alert("한글이 아닙니다.");
 	     member.name.value="";
 	     member.name.focus();
@@ -90,6 +90,32 @@ function chkForm() {
 		f.pass.select();
 		return false;
 		}
+	
+	var year = member.year.value;
+	if (year == "") {
+		if(value == "") {
+		alert("년을 입력하세요");
+		member.year.focus();
+		return false;
+		}
+	}
+	var month = member.month.value;
+	if (month == "") {
+	  if(value == ""){
+		alert("월을 입력하세요");
+		member.month.focus();
+		return false;
+	  }
+	}
+	var day = member.day.value;
+	if (day == "") {
+	  if(value == ""){
+		alert("일을 입력하세요");
+		member.day.focus();
+		return false;
+	}
+	}
+
 
 	var basicAddr= member.basicAddr.value;
 	if (basicAddr == "") {
@@ -106,7 +132,7 @@ function chkForm() {
 	
 	var phone1 = member.phone1.value;
 	if (phone1 == "") {
-		if(value == "1") {
+		if(value == "010") {
 		alert("휴대폰 번호를 입력하세요");
 		member.phone1.focus();
 		return false;
@@ -218,7 +244,7 @@ function callBack() {
 							<h2>회원가입</h2>
 							<div class="table-common">
 								<form name="memberForm" onsubmit="return chkForm()"
-									action="/EduMIS/user/member/join.do" method="POST">
+									action="/EduMIS/user/member/join.do" method="POST" enctype="multipart/form-data">
 									<table>
 										<colgroup>
 											<col style="width: 20%;" />
@@ -234,8 +260,7 @@ function callBack() {
 												<td rowspan="11" class="table-photo">
 													<div>
 														<span id="imgFrame" class="img"></span> <span
-															class="file btn-txt txt-photo btn-blue"><input
-															type="file" onchange="loadFile(event)"></span>
+															class="file btn-txt txt-photo btn-blue"><input type="file" name="attachFile" onchange="loadFile(event)"></span>
 														<ul>
 															<li>- gif 혹은 jpg 형식</li>
 															<li>- 100kbyte 이내<br />&nbsp;&nbsp;사진만 업로드 가능
@@ -263,7 +288,7 @@ function callBack() {
 											<tr>
 												<th><label for="year">생년월일</label></th>
 												<td><select id="year" name="year">
-														<option value="">출생년도</option>
+														<option value="year">출생년도</option>
 														<%
 															for (int i = 1950; i < 2016; i++) {
 														%>
@@ -272,7 +297,7 @@ function callBack() {
 															}
 														%>
 												</select> <select id="month" name="month">
-														<option value="">월</option>
+														<option value="month">월</option>
 														<%
 															for (int i = 1; i < 13; i++) {
 														%>
@@ -281,7 +306,7 @@ function callBack() {
 															}
 														%>
 												</select> <select id="day" name="day">
-														<option value="">일</option>
+														<option value="day">일</option>
 														<%
 															for (int i = 1; i < 32; i++) {
 														%>
@@ -291,6 +316,7 @@ function callBack() {
 														%>
 												</select></td>
 											</tr>
+									
 											<tr>
 												<th><label for="addr">주소</label></th>
 												<td>
