@@ -8,11 +8,17 @@
 </head>
 <body>
 	<form action="/EduMIS/talk/memberList.do">
-	no<input type="text" name="no" value="1"/>
-	 name<input type="text" name="name" value="강사"/> 
-	grade<input type="text" name="grade" value="s"/>
+	no<input type="text" name="no" />
+	 name<input type="text" name="name"/> 
+	grade<input type="text" name="grade"/>
 	<input type="submit" value="로그인"/>
 	</form>
+<!-- 	<form action="/EduMIS/talk/memberList.do"> -->
+<!-- 	no<input type="text" name="no" value="1"/> -->
+<!-- 	 name<input type="text" name="name" value="강사"/>  -->
+<!-- 	grade<input type="text" name="grade" value="s"/> -->
+<!-- 	<input type="submit" value="로그인"/> -->
+<!-- 	</form> -->
 	
 	
 	
