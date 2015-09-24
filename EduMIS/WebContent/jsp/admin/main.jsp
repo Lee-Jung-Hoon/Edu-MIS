@@ -8,15 +8,22 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width">
 	<title>메인</title>
-	<c:import url="/jsp/admin/include/common.jsp" />	
+	<%@ include file="/jsp/admin/include/common.jsp" %>	
+<script src="http://localhost:10004/socket.io/socket.io.js"></script>
+<script>
+<c:if test="${not empty member}">
+	var socket = io.connect("localhost:10004");
+	socket.emit("setInfo", {no: "${member.no}", name: "${member.name}"})
+</c:if>	
+</script>	
 </head>
 <body class="page-main btn-page">
 	<div class="wrap">
 		<div class="wrap-inner">
-			<c:import url="/jsp/admin/include/leftMenu.jsp" />	
+			<%@ include file="/jsp/admin/include/leftMenu.jsp" %>	
 			<div class="container">
-				<c:import url="/jsp/admin/include/topMenu.jsp" />
-				
+				<%@ include file="/jsp/admin/include/topMenu.jsp" %>
+
 				<div class="container-inner">
 					<div class="content">
 						<section class="main-section">		
@@ -32,8 +39,8 @@
 	</div>
 </body>
 <script type="text/javascript" src="/EduMIS/js/canvasjs.min.js"></script>
-<script type="text/javascript" src="/EduMIS/js/common.js"></script>
 <script type="text/javascript">
+//*
 	window.onload = function () {
 		var chart = new CanvasJS.Chart("chartContainer",
 		{
@@ -56,8 +63,6 @@
 				{  y: 24, indexLabel: "출석 24명" },
 				{  y: 3, indexLabel: "결석 - 임지원 안지원 김지원 3명" },
 				{  y: 1, indexLabel: "지각 - 홍길동" }
-/*				{  y: 0.74, indexLabel: "CSS {y}%" },
-				{  y: 2.06,  indexLabel: "Jquery {y}%"}*/
 
 				]
 			}
@@ -65,5 +70,6 @@
 		});
 		chart.render();
 	}
+	//*/
 </script>
 </html>
