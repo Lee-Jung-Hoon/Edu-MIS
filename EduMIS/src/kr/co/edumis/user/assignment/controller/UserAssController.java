@@ -43,7 +43,7 @@ public class UserAssController {
 		try {
 			//제출여부
 			HttpSession hts = req.getSession();
-			LoginVO session = (LoginVO)hts.getAttribute("userInfo");
+			LoginVO session = (LoginVO)hts.getAttribute("user");
 			String id = session.getId();
 				
 			List<AdminAssVO> list = service.getList(id);
