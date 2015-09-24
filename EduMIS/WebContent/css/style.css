@@ -628,6 +628,10 @@ html, body {
 .txt-restore {
 	background-image:url('../images/txt-restore.png');
 }
+/* 강의목록 */
+.txt-list-lecture {
+	background-image:url('../images/txt-list-lecture.png');
+}
 
 
 /* 버튼 이미지 텍스트 모음 끝*/
@@ -1696,36 +1700,105 @@ section.board {
 	width:100%;
 	padding-top:20px;
 }
-.vod .vod-frame {
+.vod .vod-left-frame {
+	width:500px;
+	float:left;
 	overflow:hidden;
 }
-.vod .vod-frame iframe {
+.vod .vod-left-frame iframe {
 	display:block; 
-	float:left;
 	box-sizing:border-box;
 	border:1px solid #ddd;
 	background:#000;
 }
-.vod .vod-frame .vod-intro {
+.vod .vod-intro {
 	float:right; 
+	padding-bottom: 70px;
+	position:relative;
 	width:230px; 
-	height:281px; 
 	box-sizing:border-box; 
 	overflow-y:auto;
 	border:1px solid #ddd;
 }
-.vod .vod-frame .vod-intro li {
-	
-}
-.vod .vod-frame .vod-intro li span {
-	display:block;
+.vod .vod-intro ul {
 	width:100%;
-	padding-right:30px;
+	height:80%;
+	overflow-y:auto;
+}
+.vod .vod-intro li {
+	display:block;
+	position:relative;
+	width:100%;
+	padding:5px 40px 5px 5px;
+	line-height:20px;
 	border-bottom:1px solid #ddd;
 	box-sizing:border-box;
 }
+.vod .reply-regist-area {
+	position:absolute;
+	bottom:0;
+	left:0;
+	width:100%;
+	box-sizing:border-box;
+	padding:3px 5px;
+	border-top:1px solid #ddd;
+}
+.vod .btn-regist {
+	position:absolute;
+	bottom:4px;
+	right:5px;
+	width:50px;
+	height:30px;
+}
 .vod .vod-content {
 	padding-top:10px;
+}
+.vod .vod-paging {
+	position:absolute;
+	bottom:40px;
+	left:0;
+	width:100%;
+	text-align:center;
+}
+.vod .vod-paging a {
+	display:inline-block;
+	color:#000;
+	text-decoration:none;
+	font-size:15px;
+	padding:0 5px;
+}
+.vod .vod-paging .on {
+	font-weight:bold;
+	font-size:16px;
+	text-decoration:underline;
+	color:#00528c;
+}
+.vod .btn-del {
+	position:absolute;
+	bottom:3px; right:5px;
+	width:33px;
+	height:25px;
+	background-position:2px;
+}
+.vod .btn-paging {
+    display: inline-block;
+    position: relative;
+    top: -1.5px;
+    width: 10px;
+    height: 20px;
+    text-indent: -5000px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 10px 10px;
+    overflow: hidden;
+}
+.vod .btn-paging-prev {
+    background-image:url('../images/btn-arr-prev.png');
+    margin-right:20px;
+}
+.vod .btn-paging-next {
+    background-image:url('../images/btn-arr-next.png');
+    margin-left:20px;
 }
 /* 메인 페이지 */
 .main-content-nav {
