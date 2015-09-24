@@ -33,8 +33,11 @@ public class ExamGradeController {
 
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
-//		String date = req.getParameter("datepicker");
-		String date = "19910915";
+		String datepicker = req.getParameter("datepicker");
+		String year = datepicker.substring(6);
+		String month = datepicker.substring(0,2);
+		String day = datepicker.substring(3,5);
+		String date = year+""+month+""+day;
 
 		ExamBoardVO board = new ExamBoardVO();
 		board.setTitle(title);
@@ -187,7 +190,17 @@ public class ExamGradeController {
 		}
 		return mav;
 	}
-
+	
+	@RequestMapping("/examgrade/ExamTurnDelete.do")
+	public ModelAndView ExamTurnDelete(String no) {
+		ModelAndView mav = new ModelAndView("redirect:/EduMIS/jsp/admin/examgrade/exammain.jsp");
+		try {
+			service.deleteExamTurn(no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
 //	<th width="100px">번호</th>
 //	<th width="200px">이름</th>
 //	<th width="300px">아이디</th>

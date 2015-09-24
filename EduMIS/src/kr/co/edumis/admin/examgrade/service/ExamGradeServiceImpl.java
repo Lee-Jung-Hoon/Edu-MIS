@@ -70,4 +70,9 @@ public class ExamGradeServiceImpl implements ExamGradeService {
 		return member;
 	}
 
+	@Override
+	public void deleteExamTurn(String no) throws Exception {
+		dao.deleteExamTurn(no);
+	}
+
 }
