@@ -12,6 +12,8 @@
  */
 package kr.co.edumis.admin.schedule.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import kr.co.edumis.admin.schedule.vo.ScheduleVO;
@@ -34,4 +36,10 @@ public class ScheduleDAO {
 		session.commit();
 		return 1;
 	}
+	public List<ScheduleVO> listSchedule(ScheduleVO schedule) throws Exception {
+		System.out.println(schedule.getEndDate());
+		System.out.println(schedule.getStartDate());
+		return session.selectList("schedule.dao.SchduleMapper.listSchedule",schedule);
+	}
+	
 }
