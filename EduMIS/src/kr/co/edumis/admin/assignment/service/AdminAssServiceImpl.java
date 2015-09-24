@@ -24,9 +24,9 @@ public class AdminAssServiceImpl implements AdminAssService {
 	}
 
 	@Override
-	public List<AdminAssVO> list() throws Exception {
+	public List<AdminAssVO> list(Map<String, Integer> param) throws Exception {
 		
-		List<AdminAssVO> list = dao.selectList();
+		List<AdminAssVO> list = dao.selectList(param);
 		
 		return list;
 	}
@@ -94,6 +94,13 @@ public class AdminAssServiceImpl implements AdminAssService {
 	public UserAssVO getDetail(Map<String, String> param) {
 		// TODO Auto-generated method stub
 		return dao.selectSubject(param);
+	}
+
+	@Override
+	public int selectCount() throws Exception {
+		
+		return dao.selectCount();
+		
 	}
 
 }

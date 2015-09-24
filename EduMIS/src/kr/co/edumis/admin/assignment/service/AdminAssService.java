@@ -10,7 +10,7 @@ import kr.co.edumis.user.member.vo.MemberVO;
 
 public interface AdminAssService {
 	public void insert(AdminAssVO adAssvo) throws Exception;
-	public List<AdminAssVO> list() throws Exception;
+	public List<AdminAssVO> list(Map<String, Integer> param) throws Exception;
 	public AdminAssVO detail(String no) throws Exception;
 	public List<MemberVO> memberList() throws Exception; 
 	public AdminAssVO modify() throws Exception; 
@@ -22,4 +22,5 @@ public interface AdminAssService {
 	public List<MemberVO> studentAssignmentList() throws Exception ;
 	public List<UserAssVO> getsubList() throws Exception;
 	public UserAssVO getDetail(Map<String, String> param) throws Exception;
+	public int selectCount() throws Exception;
 }
