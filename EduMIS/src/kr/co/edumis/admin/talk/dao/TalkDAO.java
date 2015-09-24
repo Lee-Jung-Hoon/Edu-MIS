@@ -16,33 +16,33 @@ public class TalkDAO {
 	}
 
 	public List<TalkVO> selectReList(int no) {
-		return session.selectList("talk.dao.TalkMember.getReceiveList", no);
+		return session.selectList("talk.dao.TalkMapper.getReceiveList", no);
 	}
 	
 	public List<MemberVO> selectMemberList() {
-		return session.selectList("talk.dao.TalkMember.getMember");
+		return session.selectList("talk.dao.TalkMapper.getMember");
 	}
 	
 	public TalkVO selectNo(int no) {
-		return session.selectOne("talk.dao.TalkMember.getNo", no);
+		return session.selectOne("talk.dao.TalkMapper.getNo", no);
 	}
 	
 	public void insertTalk(TalkVO talk) {
-		session.insert("talk.dao.TalkMember.registTalk", talk);
+		session.insert("talk.dao.TalkMapper.registTalk", talk);
 		session.commit();
 	}
 	
 	public void updateCheck(int no) {
-		session.update("talk.dao.TalkMember.setCheck", no);
+		session.update("talk.dao.TalkMapper.setCheck", no);
 		session.commit();
 	}
 	
 	public int selectSeq() {
-		return session.selectOne("talk.dao.TalkMember.getSeq");
+		return session.selectOne("talk.dao.TalkMapper.getSeq");
 	}
 	
 	public void insertNewTalk(TalkVO talk) {
-		session.insert("talk.dao.TalkMember.registNewTalk", talk);
+		session.insert("talk.dao.TalkMapper.registNewTalk", talk);
 		session.commit();
 	}
 	
