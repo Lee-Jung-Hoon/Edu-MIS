@@ -17,6 +17,9 @@
         <result property="email" column="email"/>
         <result property="emailDomain" column="email_domain"/>
         <result property="major" column="major"/>
+        <result property="orgFileName" column="org_file_name"/>
+        <result property="realFileName" column="real_file_name"/>
+        <result property="filePath" column="file_path"/>
         <result property="joinDate" column="join_date"/>
     </resultMap>
     <select id = "selectMyinfo" parameterType="String" resultMap="myinfo">
@@ -34,6 +37,9 @@
         email,
         email_domain,
         major,
+        org_file_name,
+        real_file_name,
+        file_path,
         join_date
         from t_member
         where id = #{id}    
@@ -54,6 +60,12 @@
         	     email = #{email},
         	     email_domain = #{emailDomain},
         	     major = #{major}
+        	     <if test="orgFileName != null">
+        	     ,
+        	     org_file_name = #{orgFileName},
+        			 real_file_name = #{realFileName},
+        			 file_path = #{filePath}
+        			 </if>
         	 where id = #{id}
     </update>
 

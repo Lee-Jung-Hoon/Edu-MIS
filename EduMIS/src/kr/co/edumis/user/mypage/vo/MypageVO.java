@@ -25,7 +25,29 @@ public class MypageVO {
 	private String team;
 	private String techLeader;
 	private String grade;
+	private String orgFileName;
+	private String realFileName;
+	private String filePath;
 	
+	
+	public String getOrgFileName() {
+		return orgFileName;
+	}
+	public void setOrgFileName(String orgFileName) {
+		this.orgFileName = orgFileName;
+	}
+	public String getRealFileName() {
+		return realFileName;
+	}
+	public void setRealFileName(String realFileName) {
+		this.realFileName = realFileName;
+	}
+	public String getFilePath() {
+		return filePath;
+	}
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
 	public String getEmailDomain() {
 		return emailDomain;
 	}

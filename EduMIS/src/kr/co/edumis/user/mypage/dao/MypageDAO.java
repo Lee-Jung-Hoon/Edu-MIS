@@ -22,17 +22,6 @@ public class MypageDAO {
 
 
 	public void updateMyinfo(MypageVO vo) throws Exception{
-//		System.out.println("Mypage : " + vo.getId());
-//		System.out.println("Mypage : " + vo.getName());
-//		System.out.println("Mypage : " + vo.getPass());
-//		System.out.println("Mypage : " + vo.getPassChk());
-//		System.out.println("Mypage : " + vo.getYear());
-//		System.out.println("Mypage : " + vo.getMonth());
-//		System.out.println("Mypage : " + vo.getDay());
-//		System.out.println("Mypage : " + vo.getPostNo());
-//		System.out.println("Mypage : " + vo.getBasicAddr());
-//		System.out.println("Mypage : " + vo.getDetailAddr());
-//		System.out.println("Mypage : " + vo.getPhone1());
 		session.update("mypage.dao.MypageMapper.updateMyinfo", vo);
 		session.commit();
 	}
