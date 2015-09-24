@@ -89,7 +89,7 @@
 		 		values (seq_t_talk_no.nextval, #{pNo}, #{receiveMemberNo}, #{sendMemberNo},  #{content} )                       
 	</insert>
 	
-	<update id="Check" parameterType="int">
+	<update id="changeCheck" parameterType="int">
 		update t_talk
 		   set check_yn = 'y'
 		 where no = #{tNo}
