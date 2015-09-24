@@ -26,14 +26,18 @@ public class MainController extends HttpServlet{
 	
 	protected void doGet (HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		try{
+			
+	
 		// main페이지 일일 출석 결과 불러오기
 		List<String> attend = service.selectDailyAttend();
 		List<String> absent = service.selectDailyAbsent();
 		List<String> late = service.selectDailyLate();
 		
-		req.setAttribute("attend", attend);
-		req.setAttribute("absent", absent);
-		req.setAttribute("late", late);
+		req.setAttribute("attend", attend.size());
+		req.setAttribute("absent", absent.size());
+		req.setAttribute("absentName", absent);
+		req.setAttribute("late", late.size());
+		req.setAttribute("lateName", late);
 		
 		// main페이지 일일 관리자 일정 결과 불러오기
 		ScheduleVO schedule = service.selectDailySchedule();
@@ -43,7 +47,7 @@ public class MainController extends HttpServlet{
 			
 		
 			
-		RequestDispatcher rd = req.getRequestDispatcher("#");
+		RequestDispatcher rd = req.getRequestDispatcher("/jsp/admin/main.jsp");
 		rd.forward(req, res);
 			
 		}catch(Exception e) { 
