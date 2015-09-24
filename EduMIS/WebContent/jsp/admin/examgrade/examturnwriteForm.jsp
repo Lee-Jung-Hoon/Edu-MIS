@@ -11,12 +11,7 @@
 <link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<link rel="stylesheet" href="/EduMIS/css/examgrade/colorbox.css" />
-<script src="/EduMIS/js/examgrade/jquery.colorbox.js"></script>
 <script>
 	$(function() {
 		$("#datepicker").datepicker();
@@ -26,8 +21,11 @@
 		parent.location.reload();
 	}
 	// ajaxSubmit
-	$("#wForm").ajaxSubmit({
+	function regist_submit() {
+	$.ajax({
+	  type: 'get',
 		url: "${pageContext.request.contextPath}/examgrade/ExamTurnWrite.do",
+		data:  $("#wForm").serialize(),
 		success: function (data) {
 			alert("시험 정보가 등록되었습니다.");
 			jsClose();
@@ -36,28 +34,26 @@
 			alert("등록시 오류가 발생했습니다.");
 		}
 	});
+	}
 </script>
 </head>
-
-<h2>회차 등록</h2>
-<a href="#" onclick="jsClose()">닫기</a>
-<form id="wForm"
-	action="${pageContext.request.contextPath}/examgrade/ExamTurnWrite.do">
-	<input type="submit" value="등록">
-	<table>
+<form name="wForm" method="get"  id="wForm">
+	<table class="table-board scroll">
 		<tr>
 			<th>시험제목</th>
-			<td><input type="text" size="50" name="title"></td>
+			<td><input type="text" size="30" name="title" required autofocus></td>
 		</tr>
 
 		<tr>
 			<th>시험일자</th>
-			<td><input type="text" size="50" id="datepicker"
-				name="datepicker"></td>
+			<td><input type="text" size="30" id="datepicker"
+				name="datepicker" required autofocus></td>
 		</tr>
 		<tr>
 			<th>시험내용</th>
-			<td><input type="text" size="50" name="content"></td>
+			<td><input type="text" size="30" name="content" required autofocus></td>
 		</tr>
 	</table>
+<a href="javascript:regist_submit()" >글등록</a>
+<a href="javascript:jsClose()" >취소</a>
 </form>
