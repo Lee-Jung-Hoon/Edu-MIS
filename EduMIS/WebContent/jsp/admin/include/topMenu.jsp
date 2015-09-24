@@ -103,9 +103,9 @@
 					</div>
 					<!-- 메시지 들어가는 부분 끝 -->
 					<ul>
-						<li><a href="#"><img src="/EduMIS/images/icon-user.png" alt="" />마이페이지</a></li>
+						<li><a href="/EduMIS/user/mypage/detailMyinfo.do"><img src="/EduMIS/images/icon-user.png" alt="" />마이페이지</a></li>
 						<li class="login">
-							<a href="#">로그인</a>
+							<a href="/EduMIS/login/login.do">로그인</a>
 							<div class="login-form">
 								<form action="" method="">
 									<input type="text"  placeholder="아이디" />
@@ -116,6 +116,6 @@
 								<button type="button" class="btn-close">닫기</button>
 							</div>
 						</li>
-						<li><a href="#">회원가입</a></li>
+						<li><a href="/EduMIS/user/member/join.do">회원가입</a></li>
 					</ul>
 				</header>					
