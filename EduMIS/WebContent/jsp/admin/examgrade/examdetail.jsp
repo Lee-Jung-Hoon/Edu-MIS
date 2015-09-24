@@ -21,20 +21,23 @@ google.setOnLoadCallback(drawBasic);
 function drawBasic() {
       var data = google.visualization.arrayToDataTable([                                 
         ['성적', '성적'],
-        [', ', 0]
+      	<c:forEach var="list" items="${list}">
+    			['${list.name}, ${list.id}', Number('${list.score}')],
+    		</c:forEach>
+//         [', ', 0]
 //         ['이정훈, ijhoon4327', 100],
 //         ['김승환, ksh', 80],
 //         ['김성경, ksk', 90]
       ]);
 
 
-		<c:forEach var="list" items="${list}">
-		data.addRows([ ['${list.name}, ${list.id}', Number('${list.score}')] ]);
-		</c:forEach>
+// 		<c:forEach var="list" items="${list}">
+// 		data.addRows([ ['${list.name}, ${list.id}', Number('${list.score}')] ]);
+// 		</c:forEach>
 		
       var options = {
         title: '${board.title}',	// 제목
-        chartArea: {width: '80%', height: '80%'},
+        chartArea: {width: '80%', height: '75%'},
         hAxis: {
           title: '${board.content}',
           minValue: 0
@@ -106,9 +109,9 @@ function drawBasic() {
 
 							<div class="">
 							<input type="button" value="목록" onclick="location.href='/EduMIS/jsp/admin/examgrade/exammain.jsp'">
-							<input type="button" value="수정" onclick="location.href='/EduMIS/examgrade/ExamTurnModify.do''">
-							<input type="button" value="삭제" onclick="">
-								<table>
+							<input type="button" value="수정" onclick="location.href='/EduMIS/examgrade/ExamTurnModify.do'">
+							<input type="button" value="삭제" onclick="location.href='/EduMIS/examgrade/ExamTurnDelete.do?no='+${board.no}">
+								<table class="table-board">
 									<tr>
 									
 										<th width="100px">시험제목</th>
@@ -126,7 +129,7 @@ function drawBasic() {
 								</table>
 								<br/>
 								<br/>
-								<div id="chart_div"></div>
+								<div style="width: 900px; height: 450px" id="chart_div"></div>
 							</div>
 							<!--  작업완료 부분 -->
 						</section>

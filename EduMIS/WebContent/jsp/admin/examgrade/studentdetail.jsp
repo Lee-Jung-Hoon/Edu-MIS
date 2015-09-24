@@ -34,7 +34,9 @@ function drawBasic() {
         },
         vAxis: {
           title: '점수'
-        }
+        },
+        width: 900,
+        height: 500
       };
 
       var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
@@ -125,7 +127,7 @@ function drawBasic() {
 										</tr>
 									</table>
 								</div>
-								<div id="chart_div"></div>
+								<div style="width: 900px; height: 500px" id="chart_div"></div>
 							</div>
 							<!--  작업완료 부분 -->
 						</section>
