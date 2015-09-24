@@ -28,5 +28,7 @@ public interface ExamGradeService {
 
 	public MemberVO getMember(String id) throws Exception;
 
+	public void deleteExamTurn(String no)  throws Exception;
+
 
 }

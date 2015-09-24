@@ -124,4 +124,9 @@
 		from t_member
 		where id = #{id}
 	</select>
+	
+	<delete id="deleteExamTurn" parameterType="string">
+		delete t_exam_board
+		where no = #{no}
+	</delete>
 </mapper>

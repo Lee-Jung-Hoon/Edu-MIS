@@ -67,5 +67,9 @@ public class ExamGradeDAO {
 		return member;
 	}
 
+	public void deleteExamTurn(String no) {
+		session.delete("examgrade.deleteExamTurn", no);
+	}
+
 
 }
