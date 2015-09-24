@@ -1,24 +1,36 @@
 
+// 등록하기 플러그인
+	 $(function() {
+		  $('#writeForm').submit(function(e) {
+			   return false;
+		  });
+
+		  $('.modaltrigger').leanModal({
+			   top : 110,
+			   overlay : 0.8,
+			   closeButton : ".hidemodal"
+		  });
+	 });
 
 
-
-
+// 등록일 종료일 달력 
+	 $(function() {
+		  $("#datepicker").datepicker({
+			   showOtherMonths : true,
+			   selectOtherMonths : true
+		  });
+	 });
+	 $(function() {
+		  $("#datepicker2").datepicker({
+			   showOtherMonths : true,
+			   selectOtherMonths : true
+		  });
+	 });
 
 
 
 $(document).ready(function() {
 
-		$(function() {
-				$('#writeForm').submit(function(e) {
-					return false;
-				});
-
-				$('.modaltrigger').leanModal({
-					top : 110,
-					overlay : 0.8,
-					closeButton : ".hidemodal"
-				});
-			});
 	
 	
 	
@@ -40,11 +52,11 @@ $(document).ready(function() {
 
 var map;
 window.onload = function() {
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	mapOption = {
 		center : new daum.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
 		level : 3
-	// http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=1520853
+//		http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=1520853
 	// 지도의 확대 레벨
 	};
 	map = new daum.maps.Map(mapContainer, mapOption);
@@ -52,12 +64,17 @@ window.onload = function() {
 function search() {
 
 	/*
-	 * var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-	 * mapOption = { center : new daum.maps.LatLng(37.566826, 126.9786567), //
-	 * 지도의 중심좌표 level : 3 // 지도의 확대 레벨 };
-	 *  // 지도를 생성합니다 var map = new daum.maps.Map(mapContainer, mapOption);
-	 */
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	mapOption = {
+		center : new daum.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+		level : 3
+	// 지도의 확대 레벨
+	};
 
+	// 지도를 생성합니다    
+	var map = new daum.maps.Map(mapContainer, mapOption);
+	*/
+	
 	// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
 	var infowindow = new daum.maps.InfoWindow({
 		zIndex : 1
@@ -65,7 +82,7 @@ function search() {
 
 	// 장소 검색 객체를 생성합니다
 	var ps = new daum.maps.services.Places();
-
+	
 	// 키워드로 장소를 검색합니다
 	ps.keywordSearch($("#place").val(), placesSearchCB);
 
@@ -91,19 +108,22 @@ function search() {
 	function displayMarker(place) {
 
 		// 마커를 생성하고 지도에 표시합니다
-		var marker = new daum.maps.Marker({
-			map : map,
-			position : new daum.maps.LatLng(place.latitude, place.longitude)
-		});
+		var marker = new daum.maps.Marker(
+				{
+					map : map,
+					position : new daum.maps.LatLng(place.latitude,
+							place.longitude)
+				});
 
 		// 마커에 클릭이벤트를 등록합니다
 		daum.maps.event.addListener(marker, 'click', function() {
 			if (confirm(place.title + "이(가) 맞습니까?")) {
-				mapContainer = document.getElementById('map'), mapOption = {
-					center : new daum.maps.LatLng(place.latitude,
-							place.longitude),
-					level : 3
-				};
+				mapContainer = document.getElementById('map'),
+						mapOption = {
+							center : new daum.maps.LatLng(place.latitude,
+									place.longitude),
+							level : 3
+						};
 				var map = new daum.maps.Map(mapContainer, mapOption);
 				var marker = new daum.maps.Marker({
 					map : map,
@@ -116,37 +136,10 @@ function search() {
 				longitude.value = place.longitude;
 			}
 			// 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-			infowindow.setContent('<div style="padding:5px;font-size:12px;">'
-					+ place.title + '</div>');
+			infowindow
+					.setContent('<div style="padding:5px;font-size:12px;">'
+							+ place.title + '</div>');
 			infowindow.open(map, marker);
 		});
-		var httpRequest;
-		function requestMsg() {
-			httpRequest = new XMLHttpRequest();
-			httpRequest.onreadystatechange = responseMsg;
-			httpRequest.open("GET", "/place/regschedule.do?latitude="
-					+ latitude + "&longitude=" + longitude, true)
-			httpRequest.send(null);
-		}
-		function responseMsg() {
-			if (httpRequest.readyState == 4) {
-				if (httpRequest.status == 200) {
-					var msgView = document.getElementById("msgView");
-					msgView.innerHTML = httpRequest.responseText;
-				}
-			}
-		}
 	}
 }
-// $(document).ready(function(){
-// .click(function (){
-// $("#latitude").val(latitude.value);
-// $("#longitude").val(longitude.value);
-// alert($("#latitude").val());
-// alert($("#longitude").val());
-// // $("#latitude").val(latitude.value);
-// // $("#longitude").val(longitude.value);
-// // alert(latitude.value);
-// // alert(longitude.value);
-// });
-// });
