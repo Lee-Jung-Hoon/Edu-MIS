@@ -40,6 +40,11 @@
 			<td>${vo.dropDate}${vo.dropReason}</td>
 		</tr>
 		<tr>
+		<tr>
+			<th>잘린이유</th>
+			<td>${vo.dropReason}</td>
+		</tr>
+		<tr>
 		  <th>핸드폰</th>
 			<td>${vo.phone1}-${vo.phone2}-${vo.phone3}</td>
 		</tr>

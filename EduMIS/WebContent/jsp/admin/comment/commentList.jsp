@@ -12,6 +12,48 @@
 	<link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<style>
+	table.scroll {
+    /* width: 100%; */ /* Optional */
+    /* border-collapse: collapse; */
+    border-spacing: 0;
+/*     border: 2px solid black; */
+		}
+
+	table.scroll tbody,
+	table.scroll thead { display: block; }
+	
+	thead tr th { 
+	    height: 30px;
+	    line-height: 30px;
+	    /* text-align: left; */
+	    border-bottom: 2px solid black;
+	}
+	
+	table.scroll tbody {
+	    height: 100px;
+	    overflow-y: auto;
+	    overflow-x: hidden;
+	}
+	
+	tbody {
+/* 	 border-top: 2px solid black;  */
+					width: 500px;	
+					}
+	
+	tbody td, thead th {
+			width: 80px;
+			height: 15px;
+	    /* width: 20%; */ /* Optional */
+/* 	    border-right: 1px solid black; */
+	    /* white-space: nowrap; */
+	}
+	
+	tbody td:last-child, thead th:last-child {
+	    border-right: none;
+	}
+		
+	</style>
 	<script>
 	function popUp(id){
 			window.open("http://localhost:8000/EduMIS/admin/commentSelect.do?id=" + id, // 팝업창에 띄울 페이지 주소
@@ -20,7 +62,27 @@
 		
 		}
 	
+	//Change the selector if needed
+	var $table = $('table.scroll'),
+	    $bodyCells = $table.find('tbody tr:first').children(),
+	    colWidth;
+
+	// Adjust the width of thead cells when window resizes
+	$(window).resize(function() {
+	    // Get the tbody columns width array
+	    colWidth = $bodyCells.map(function() {
+	        return $(this).width();
+	    }).get();
+	    
+	    // Set the width of thead columns
+	    $table.find('thead tr').children().each(function(i, v) {
+	        $(v).width(colWidth[i]);
+	    });    
+	}).resize(); // Trigger resize handler
+	
 	</script>
+	
+	
 </head>
 <body class="page-join btn-page">
 	<div class="wrap">
@@ -86,26 +148,53 @@
 						<section class="join common">
 							<h2>수강생 관리</h2>
 							<div class="student-info">
-								<a href="#" class="btn btn-txt txt-add-member btn-blue btn-add-member">멤버추가</a>
+						
 								<ul>
 									<li>
 										
-										<form action="/EduMIS/admin/commentSelect.do" method="post">
 											<c:forEach var="student" items="${list}">	
+										<form action="/EduMIS/admin/commentInsert.do" method="post">
+										
 											<div class="all-frame">
-												<div class="img-frame">
+												<div class="img-frame" style="margin-right:20px;">
 													<span class="img"><img src="/EduMIS/images/icon-user.png" alt="" /></span>
 													<a href="javascript:popUp('${student.id}');"
 														style = "text-decoration: none;">${student.name}</a>
 												</div>
-												<div class="txt-frame">
-													<textarea name="comment"></textarea>
-													<input type="submit" class="btn btn-txt txt-regist-s btn-blue" value="등록" />
+												
+												<div>
+												<input type="text" style="height:30px; width:500px;" name="content"size="100" />
+												<input type="hidden" value = "${student.id}" name = "id"/>
+												<input type="submit" style="width:80px; height:30px;float:right;" class="btn btn-txt txt-regist-s btn-blue" value="등록" />
+												<br/>
 												</div>
-												<a href="#" class="btn btn-txt txt-drop btn-blue btn-drop">중도포기</a>
-											</div>
+												<div>
+												
+											
+												<br/>
+												
+												<table class="scroll">
+												    <thead>
+												        <tr>
+												            <th style="	width: 80px;">날짜</th>
+												            <th style="	width: 400px;">내용</th>
+												        </tr>
+												    </thead>
+												    <tbody>
+												<c:forEach var="clist" items="${clist}">
+													<c:if test="${student.id eq clist.id}">
+												        <tr>
+												            <td style="	width: 82px;">${clist.reg_date}</td>
+												            <td style="	width: 400px;">${clist.content}</td>
+												        </tr>
+													</c:if>
 												</c:forEach>
+												    </tbody>
+												</table>
+												</div>
+											</div>
 										</form>
+												</c:forEach>
 									</li>
 								
 								</ul>
