@@ -2,6 +2,7 @@ package kr.co.edumis.user.login.controller;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -37,6 +38,16 @@ public class LoginController {
 			
 			String grade = "";
 			HttpSession session = req.getSession();
+			
+			Cookie cookie = new Cookie("loginId", id);
+			cookie.setPath("/");
+
+			if(req.getParameter("save") != null) {
+				cookie.setMaxAge(60 * 60); 
+			} else {
+				cookie.setMaxAge(0);  
+			}
+			res.addCookie(cookie);
 		
 			if(member != null){
 
@@ -56,10 +67,10 @@ public class LoginController {
 				break;
 			case "2":
 				session.setAttribute("user", member);
-				mav.setView("redirect:/EduMIS/jsp/user/login/loginMain.jsp");
+				mav.setView("redirect:/EduMIS/jsp/user/main.jsp");
 				break;
 			default:
-				mav.setView("redirect:/EduMIS/jsp/user/login/loginForm.jsp");
+				mav.setView("redirect:/EduMIS/jsp/user/member/joinForm.jsp");
 				break;
 				
 			}
