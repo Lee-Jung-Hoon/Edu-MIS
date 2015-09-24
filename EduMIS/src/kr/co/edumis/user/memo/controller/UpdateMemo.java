@@ -34,7 +34,6 @@ public class UpdateMemo extends HttpServlet{
 			memo.setPosY(Integer.parseInt(posY));
 			memo.setMemoNo(Integer.parseInt(id));
 			
-			System.out.println("dd11 \n" + memo);
 			service.updateMemo(memo);
 			
 		} catch (Exception e) {

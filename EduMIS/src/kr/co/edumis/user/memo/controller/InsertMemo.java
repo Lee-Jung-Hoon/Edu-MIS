@@ -27,7 +27,7 @@ public class InsertMemo extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		try {
 			HttpSession session = req.getSession();
-			MemberVO member = (MemberVO) session.getAttribute("userInfo");
+			MemberVO member = (MemberVO) session.getAttribute("user");
 			
 			String content = req.getParameter("content");
 			String posX = req.getParameter("posX");
