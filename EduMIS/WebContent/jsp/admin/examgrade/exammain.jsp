@@ -8,20 +8,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width">
 <title>제목</title>
-<link href="css/common.css" rel="stylesheet" type="text/css" />
-<link href="css/layout.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
 <link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
-
-
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<script type="text/javascript" charset="utf-8"
-	src="js/jquery.leanModal.min.js"></script>
+<link rel="stylesheet" href="/EduMIS/css/examgrade/colorbox.css" />
+<script src="/EduMIS/js/examgrade/jquery.colorbox.js"></script>
 <script type="text/javascript">
-
 	$(document).ready(function() {
 		$('#content').load('/EduMIS/examgrade/ExamTurnList.do');
 		$('#exam').click(function() {
@@ -32,13 +27,7 @@
 			$('#content').load('/EduMIS/examgrade/ExamStudentList.do');
 			return false;
 		});
-	});
-	$(function() {
-		$('#modaltrigger').leanModal({
-			top : 110,
-			overlay : 0.8,
-			closeButton : ".hidemodal"
-		});
+		$(".iframe").colorbox({iframe:true, width:"80%", height:"80%", closeButton: "false",onClosed:function(){alert("!!!!")}});
 	});
 	
 
@@ -110,9 +99,7 @@
 								<div></div>
 								<h2>성적관리</h2>
 								<!-- 작업시작부분 div안에 클래스명 넣어서 작업 해 주세요 나머지 url부분은 추후 취합할 예정이니 일단 MENU 부분의 링크태그에 값 넣어서 작업 해주시면 됩니다. 게시판 담당하시는 분들은 추후 공통 클래스 드릴테니 일단 테이블로 작업 부탁드립니다. -->
-								<a href="#registmodal"  id="modaltrigger">시험등록</a>
-							
-								
+								<p><a class='iframe' href="/EduMIS/jsp/admin/examgrade/examturnwriteForm.jsp">시험등록</a></p>
 								<a href="javascript:void(0);" id="exam">시험별</a> 
 								<a href="javascript:void(0);" id="student">학생별</a>
 
@@ -125,20 +112,6 @@
 			</div>
 		</div>
 	</div>
-<div id="registmodal" style="display: none;">
-<h2>회차 등록</h2>
-	<form action="${pageContext.request.contextPath}/examgrade/ExamTurnWrite.do">
-									<br/><br/>
-		<div>시험제목 <input type="text" name="title"></div>
-									<br/>
-		<div>시험일자 <input type="text"  id="datepicker" name="datepicker"></div>
-									<br/>
-		<div>시험내용 <input type="text"  name="content"></div>
-									<br/>
-	<input type="submit" value="등록">
-</form>
-</div>
-
 </body>
 <script type="text/javascript" src="/EduMIS/js/common.js"></script>
 </html>

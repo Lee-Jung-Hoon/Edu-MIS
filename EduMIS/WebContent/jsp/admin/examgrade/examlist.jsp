@@ -10,8 +10,6 @@
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<script type="text/javascript" charset="utf-8"
-	src="js/jquery.leanModal.min.js"></script>
 
 <script type="text/javascript">
 
@@ -35,17 +33,9 @@
 			location.href = "${pageContext.request.contextPath}/examgrade/ExamGradeModifyForm.do?no="+val;
 		}		
 	}
-	$(function() {
-		$('.modaltrigger').leanModal({
-			top : 110,
-			overlay : 0.8,
-			closeButton : ".hidemodal"
-		});
-	});
 </script>
 </head>
 <body>
-<a href="#registmodal2"  class="modaltrigger">시험상세</a>
 	<table border="1" class="table-board">
 		<tr>
 			<th width="100px">회차번호</th>
