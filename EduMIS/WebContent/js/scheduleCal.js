@@ -9,7 +9,7 @@
 	var lastday = lastdate.getDate();
 	// 전달
 	var nMonth = m + 1;
-	
+	 
 
 					function responseMsg() {
 						if(httpRequest.readyState == 4){
