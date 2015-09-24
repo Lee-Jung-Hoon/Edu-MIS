@@ -152,6 +152,45 @@
 													</button>
 												</div>
 											</li>
+											<li>
+												<a href="#"><span class="info1"><strong title="안지원">안지원</strong>으로부터 도착</span><span class="info2">15-09-19 (토) 20:01</span></a>
+												<div class="text-content">
+													<p>안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플</p>
+													<textarea></textarea>
+													<button type="button" class="btn-send">
+														<div class="circle">
+															<div class="envelope-top"></div>
+															<div class="envelope"></div>
+														</div>
+													</button>
+												</div>
+											</li>
+											<li>
+												<a href="#"><span class="info1"><strong title="안지원">안지원</strong>으로부터 도착</span><span class="info2">15-09-19 (토) 20:01</span></a>
+												<div class="text-content">
+													<p>안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플</p>
+													<textarea></textarea>
+													<button type="button" class="btn-send">
+														<div class="circle">
+															<div class="envelope-top"></div>
+															<div class="envelope"></div>
+														</div>
+													</button>
+												</div>
+											</li>
+											<li>
+												<a href="#"><span class="info1"><strong title="안지원">안지원</strong>으로부터 도착</span><span class="info2">15-09-19 (토) 20:01</span></a>
+												<div class="text-content">
+													<p>안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플</p>
+													<textarea></textarea>
+													<button type="button" class="btn-send">
+														<div class="circle">
+															<div class="envelope-top"></div>
+															<div class="envelope"></div>
+														</div>
+													</button>
+												</div>
+											</li>
 											
 										
 										</ul> 
