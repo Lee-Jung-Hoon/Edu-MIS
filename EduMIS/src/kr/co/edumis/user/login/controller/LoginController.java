@@ -2,7 +2,6 @@ package kr.co.edumis.user.login.controller;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -60,20 +59,17 @@ public class LoginController {
 		return mav;
 	}
 	
-//	@RequestMapping("/login/logout.do")
-//	public ModelAndView logout(HttpServletRequest req, HttpServletResponse res)
-//			throws ServletException, IOException {
-//		try {
-//			HttpSession session = req.getSession();
-//			// 세션 삭제
-//			session.invalidate();
-//			
-//			// 프로젝트 / index.jsp 페이지 호출
-////			res.sendRedirect(req.getContextPath());
-//			ModelAndView mav = new ModelAndView("redirect:" + req.getContextPath());
-//			return mav;
-//		} catch (Exception e) {
-//			throw new ServletException(e);
-//		}
-//	}
+	@RequestMapping("/login/logout.do")
+	public ModelAndView logout(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		System.out.println("11111");
+		try {
+			HttpSession session = req.getSession();
+			session.invalidate();
+			
+			ModelAndView mav = new ModelAndView("redirect:/EduMIS/jsp/user/login/loginMain.jsp");
+			return mav;
+		} catch (Exception e) {
+			throw new ServletException(e);
+		}
+	}
 }
