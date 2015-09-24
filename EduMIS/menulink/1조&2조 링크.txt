@@ -1,0 +1,17 @@
+<좌측메뉴> 
+-관리자
+
+출석부 - /EduMIS/jsp/admin/attendance/attendance.jsp
+
+출석통계 - /EduMIS/jsp/admin/attend/attend.jsp
+
+스케줄 - /EduMIS/jsp/admin/schedule/schedule.jsp
+
+성적관리 - /EduMIS/jsp/admin/examgrade/exammain.jsp
+
+
+
+
+<상단메뉴>
+
+마이페이지 - /EduMIS/user/mypage/detailMyinfo.do
