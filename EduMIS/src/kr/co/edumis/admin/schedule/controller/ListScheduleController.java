@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.edumis.admin.schedule.service.ScheduleServiceImpl;
 import kr.co.edumis.admin.schedule.vo.ScheduleVO;
-
 @WebServlet ("/admin/listschedule")
 public class ListScheduleController extends HttpServlet {
 	private ScheduleServiceImpl service;
@@ -40,22 +39,17 @@ public class ListScheduleController extends HttpServlet {
 			schedule.setEndDate(month+"/"+oneday+"/"+year);
 			List<ScheduleVO> list = service.listSchedule(schedule);
 
-			for(int i=0;i<list.size();i++) {
-				System.out.println(list.get(i).getTitle());
-			}
 			
 			PrintWriter out = res.getWriter();
 			String json = "";
-			int cnt = 0;
-			for(int i =0; i<list.size();i++) {
-			cnt ++;
 			json += "[";
+			for(int i =0; i<list.size();i++) {
 			json += "	{";
 			json += "		'importance': "+"'"+ list.get(i).getImportance()+"'"+", ";
 			json += "		'title': "+"'"+ list.get(i).getTitle()+"'"+", ";
 			json += "		'content': "+"'"+ list.get(i).getContent()+"'"+", ";
-			json += "	}";
-			if(cnt==list.size()) {
+			if(i == list.size() -1) {
+				json += "	}";
 				json += "]";
 			}	else {
 				json += "	},";
@@ -72,4 +66,3 @@ public class ListScheduleController extends HttpServlet {
 		}
 	}
 }
-	
