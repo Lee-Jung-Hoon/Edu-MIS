@@ -1,1 +1,1 @@
-sqlldr  userid=jsp2/jsp2  control=zipcode.ctl   log=zipcode.log
+sqlldr  userid=hr/hr  control=zipcode.ctl   log=zipcode.log
