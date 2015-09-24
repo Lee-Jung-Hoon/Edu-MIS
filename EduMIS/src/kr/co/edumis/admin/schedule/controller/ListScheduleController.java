@@ -45,6 +45,7 @@ public class ListScheduleController extends HttpServlet {
 			json += "[";
 			for(int i =0; i<list.size();i++) {
 			json += "	{";
+			json += "		'no': "+"'"+ list.get(i).getNo()+"'"+", ";
 			json += "		'importance': "+"'"+ list.get(i).getImportance()+"'"+", ";
 			json += "		'title': "+"'"+ list.get(i).getTitle()+"'"+", ";
 			json += "		'content': "+"'"+ list.get(i).getContent()+"'"+", ";
