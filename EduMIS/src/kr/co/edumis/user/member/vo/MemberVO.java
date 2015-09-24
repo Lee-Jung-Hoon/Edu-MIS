@@ -18,6 +18,9 @@ public class MemberVO {
 	private String email;
 	private String emailDomain;
 	private String major;
+	private String orgFileName;
+	private String realFileName;
+	private String filePath;
 	private String joinDate;
 	private String dropCheck;
 	private String dropDate;
@@ -127,6 +130,24 @@ public class MemberVO {
 	public void setMajor(String major) {
 		this.major = major;
 	}
+	public String getOrgFileName() {
+		return orgFileName;
+	}
+	public void setOrgFileName(String orgFileName) {
+		this.orgFileName = orgFileName;
+	}
+	public String getRealFileName() {
+		return realFileName;
+	}
+	public void setRealFileName(String realFileName) {
+		this.realFileName = realFileName;
+	}
+	public String getFilePath() {
+		return filePath;
+	}
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
 	public String getJoinDate() {
 		return joinDate;
 	}
@@ -169,4 +190,5 @@ public class MemberVO {
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
+	
 }
