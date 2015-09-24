@@ -15,6 +15,8 @@
 	  $("#day").val("${mvo.day}");
 	  $("#hp1").val("${mvo.phone1}");
 	  $("#emailDomain").val("${mvo.emailDomain}");
+// 	  $("#major").val("${mvo.major}");
+	  $("input:radio[name=major]:input[value='${mvo.major}']").prop('checked', true);
 	});
 	</script>
 	<script>
@@ -184,7 +186,7 @@ function chkForm() {
 						<section class="join common">
 							<h2>수정하기</h2>
 							<div class="table-common">
-								<form name="memberForm" onsubmit="return chkForm()" action ="/EduMIS/user/mypage/modifyMyinfo.do" method="POST">
+								<form name="memberForm" onsubmit="return chkForm()" action ="/EduMIS/user/mypage/modifyMyinfo.do" method="POST" enctype="multipart/form-data">
 									<table>
 										<colgroup>
 											<col style="width:20%;" />
@@ -199,8 +201,8 @@ function chkForm() {
 												</td>
 												<td rowspan="11" class="table-photo">
 													<div>
-														<span id="imgFrame" class="img"></span>
-														<span class="file btn-txt txt-photo btn-blue"><input type="file" onchange="loadFile(event)"></span>
+														<span id="imgFrame" class="img"><img src="/EduMIS${mvo.filePath}/${mvo.orgFileName}" alt='' /></span>
+														<span class="file btn-txt txt-photo btn-blue"><input type="file" name="attachFile" onchange="loadFile(event)"></span>
 														<ul>
 															<li>- gif 혹은 jpg 형식</li>
 															<li>- 100kbyte 이내<br />&nbsp;&nbsp;사진만 업로드 가능</li>
@@ -272,7 +274,7 @@ function chkForm() {
 											<tr>
 												<th><label for="email1">이메일</label></th>
 												<td>
-													<input type="text" id="email1" name="email" class="size-input01" placeholder="이메일 도메인 입력" value = ${mvo.email }/>
+													<input type="text" id="email1" name="email" class="size-input01" placeholder="이메일 도메인 입력" value = "${mvo.email }"/>
 													<label for="">@</label>
 													<select name="emailDomain" id="emailDomain">
 														<option value="1">naver.com</option>

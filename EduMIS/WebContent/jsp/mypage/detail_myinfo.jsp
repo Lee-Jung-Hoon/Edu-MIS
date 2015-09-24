@@ -86,13 +86,15 @@
 <!-- 												    <span id="idResult"></span> -->
 												</td>
 												<td rowspan="11" class="table-photo">
+												<input type = "hidden" id ="filePath" name = "filePath" value = "${list.filePath }" />
+												<input type = "hidden" id ="realFileName" name = "realFileName" value = "${list.realFileName }" />
+												<input type = "hidden" id ="orgFileName" name = "orgFileName" value = "${list.orgFileName }" />
 													<div>
-														<span id="imgFrame" class="img"></span>
-														<span class="file btn-txt txt-photo btn-blue"><input type="file" onchange="loadFile(event)"></span>
+														<span id="imgFrame" class="img"><img src="/EduMIS${list.filePath}/${list.realFileName}" alt='' /></span>
+<!-- 														<span class="file btn-txt txt-photo btn-blue"><input type="file" onchange="loadFile(event)" ></span> -->
 														<ul>
-															<li>- gif 혹은 jpg 형식</li>
-															<li>- 100kbyte 이내<br />&nbsp;&nbsp;사진만 업로드 가능</li>
-															<li>- 권장사이즈 100*150</li>
+															<li>- 파일이름</li>
+															<li>${list.orgFileName}</li>
 														</ul>
 													</div>
 												</td>
