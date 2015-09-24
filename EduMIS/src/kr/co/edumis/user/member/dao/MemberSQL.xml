@@ -21,12 +21,13 @@
 		phone3,
 		email,
 		email_domain,
-		major,
+		major
 		<if test="orgFileName != null">
+    ,
     org_File_Name,
     real_File_Name,
-    </if>
     file_Path
+    </if>
 		) values (
 		seq_member_no.nextVal,
 		#{id},
@@ -44,12 +45,13 @@
 		#{phone3},
 		#{email},
 		#{emailDomain},
-		#{major},
+		#{major}
 		<if test="orgFileName != null">
+    ,
     #{orgFileName},
     #{realFileName},
-    </if>
     #{filePath}
+    </if>
 		)
 	</insert>
 
