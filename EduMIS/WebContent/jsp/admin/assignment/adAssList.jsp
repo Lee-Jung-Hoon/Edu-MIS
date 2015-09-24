@@ -104,7 +104,13 @@
 							<!-- 작업시작부분 div안에 클래스명 넣어서 작업 해 주세요 나머지 url부분은 추후 취합할 예정이니 일단 MENU 부분의 링크태그에 값 넣어서 작업 해주시면 됩니다. 게시판 담당하시는 분들은 추후 공통 클래스 드릴테니 일단 테이블로 작업 부탁드립니다. -->
 								<c:set var = "index" value = "0"/>
 								<div class="adAssRegist">
-									<table class="tb-test" align="center">
+								<table class="table-board board-style1">
+									<colgroup>
+										<col style="width:10%" />
+										<col style="width:15%" />
+										<col style="width:60%" />
+										<col style="width:15%" />
+									</colgroup>
 										<tr>
 											<th>NO</th>
 											<th>과제명</th>
