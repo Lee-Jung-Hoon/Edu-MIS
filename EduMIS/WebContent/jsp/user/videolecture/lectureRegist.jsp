@@ -65,7 +65,7 @@ td {
     }
 
     var com = $("#video").val();
-    if (com.substring(0, 6) != "http://") {
+    if (com.substring(0, 7) != "https://") {
       alert("강의 영상은 링크만 가능합니다.");
       $("#video").focus();
       return false;
