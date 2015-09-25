@@ -26,9 +26,9 @@
 
 <!-- 코멘트 리스트-->
 <select id="evaluationList" resultType="CommentVO">
-			select id,content,to_char(reg_date,'yyyy-mm-dd')as reg_date 
+			select no, id,content,to_char(reg_date,'yyyy-mm-dd')as reg_date 
 			from t_comment
-			order by reg_date desc
+			order by no desc
 
 </select>
 
@@ -36,8 +36,8 @@
 <!-- 코멘트 등록 -->
 <insert id="commentInsert" parameterType="CommentVO">
       
-      insert into t_comment(content, id)
-      values(#{content},#{id})
+      insert into t_comment(no, content, id)
+      values(seq_t_comment_no.nextval, #{content},#{id})
 </insert>
 
 <!-- 수정 -->
@@ -56,4 +56,10 @@
    drop_reason = #{drop_reason}
    where id = #{id}
 </update>
+
+<delete id="deleteCom" parameterType="string">
+	delete 
+	from t_comment
+	where no = #{no}
+</delete>
 </mapper>

@@ -80,6 +80,22 @@
 	    });    
 	}).resize(); // Trigger resize handler
 	
+	
+	$(document).ready(function () {
+	  
+	  $("input[type='button']").click(function () {
+	    var no = this.id;
+	    $.get(
+	        "/EduMIS/comment/delete.do",
+	        {no:no},
+	        function(data){
+	          if(confirm("삭제할거냐?")){
+		          $("#" + no).remove();
+		          $("#" + no).remove();
+	          }
+	        })
+	 		 })
+	})
 	</script>
 	
 	
@@ -173,24 +189,34 @@
 											
 												<br/>
 												
-												<table class="scroll">
-												    <thead>
-												        <tr>
-												            <th style="	width: 80px;">날짜</th>
-												            <th style="	width: 400px;">내용</th>
-												        </tr>
-												    </thead>
-												    <tbody>
-												<c:forEach var="clist" items="${clist}">
-													<c:if test="${student.id eq clist.id}">
-												        <tr>
-												            <td style="	width: 82px;">${clist.reg_date}</td>
-												            <td style="	width: 400px;">${clist.content}</td>
-												        </tr>
-													</c:if>
-												</c:forEach>
-												    </tbody>
-												</table>
+													<div>
+														<table class="scroll">
+														    <thead>
+														        <tr>
+														            <th style="	width: 80px;">날짜</th>
+														            <th style="	width: 400px;">내용</th>
+														        </tr>
+														    </thead>
+														    <tbody>
+														<c:forEach var="clist" items="${clist}">
+															<c:if test="${student.id eq clist.id}">
+														        <tr id = "${clist.no}">
+														            <td style="	width: 82px;">${clist.reg_date}</td>
+														            <td style="	width: 400px;"> ${clist.content}</td>
+														        		<td><input type = "button" value = "삭제" id = "${clist.no}" style="	display:block;
+																																																						width:20px;
+																																																						height:20px;
+																																																						background:url('../images/btn-close.png') no-repeat center;
+																																																						background-size:100%;
+																																																						overflow:hidden;
+																																																						z-index:99;
+																																																						text-indent:-5000px;"/></td>
+														        </tr>
+															</c:if>
+														</c:forEach>
+														    </tbody>
+														</table>
+													</div>
 												</div>
 											</div>
 										</form>
