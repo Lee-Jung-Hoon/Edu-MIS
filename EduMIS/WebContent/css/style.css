@@ -668,6 +668,10 @@ html, body {
 .txt-send-s {
 	background-image:url('../images/txt-send-s.png');
 }
+/* 출석등록(소) */
+.txt-attan-regist-s {
+	background-image:url('../images/txt-attan-regist-s.png');
+}
 
 /* 버튼 이미지 텍스트 모음 끝*/
 .btn-txt {
