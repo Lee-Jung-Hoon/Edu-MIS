@@ -64,6 +64,9 @@
      	 	<when test="searchType == 'title'">
      	 	title like #{searchWord}
      	 	</when>
+     	 	<when test="searchType == 'no'">
+     	 	no like #{searchWord}
+     	 	</when>
      	 </choose>
     </where>
 		order by no desc
