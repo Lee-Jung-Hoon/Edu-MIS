@@ -86,11 +86,7 @@
 									<p><label for="list-all">전체선택</label><input type="checkbox" id="list-all" /></p>
 									
 									<!-- 메세지 보낼수 있는 것 처리 작업 -->
-									<ul>
-										<c:forEach var="member" items="${list}">
-											<li><label for="${member.no}">${member.name}</label><input type="checkbox" id="${member.no}" value="${member.name}" /></li>
-										</c:forEach>
-									</ul>
+									<ul></ul>
 									
 									<button type="button" class="btn-check">확인</button>	
 								</div>
