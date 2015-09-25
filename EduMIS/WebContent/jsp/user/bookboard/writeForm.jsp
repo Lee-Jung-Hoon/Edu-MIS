@@ -29,6 +29,7 @@
 				<td align="left"><input type="file" name="file" /></td>
 			</tr>
 		 </table>
+		
 <input type="submit" value="글등록" />
 </form>
 </body>
