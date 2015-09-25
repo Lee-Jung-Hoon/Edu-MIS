@@ -15,16 +15,16 @@ import kr.co.edumis.user.memo.service.MemoServiceImpl;
 import kr.co.edumis.user.memo.vo.MemoVO;
 
 @Controller
-public class MemoController {
+public class MemoAdminController {
 	MemoService service;
 
-	public MemoController() {
+	public MemoAdminController() {
 		service = new MemoServiceImpl();
 	}
 
-	@RequestMapping("/user/memo/open.do")
+	@RequestMapping("/admin/memo/open.do")
 	public ModelAndView openMemo(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		ModelAndView mav = new ModelAndView("/jsp/user/memo/memo.jsp");
+		ModelAndView mav = new ModelAndView("/jsp/admin/memo/memo.jsp");
 		HttpSession session = req.getSession();
 		MemberVO member = (MemberVO) session.getAttribute("user");
 		ArrayList<MemoVO> list;
