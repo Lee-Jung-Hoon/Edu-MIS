@@ -44,7 +44,7 @@
 		#{email},
 		#{emailDomain},
 		#{major}
-		<if test="orgFileName != null">"C:/java73/MemberSQL.xml"
+		<if test="orgFileName != null">
     ,
     #{orgFileName},
     #{realFileName},
