@@ -15,6 +15,7 @@ import kr.co.edumis.admin.talk.service.TalkService;
 import kr.co.edumis.admin.talk.service.TalkServiceImpl;
 import kr.co.edumis.admin.talk.vo.MemberTestVO;
 import kr.co.edumis.admin.talk.vo.TalkVO;
+import kr.co.edumis.user.login.vo.LoginVO;
 
 @WebServlet("/talk/sub")
 public class TalkSubController extends HttpServlet {
@@ -30,7 +31,7 @@ public class TalkSubController extends HttpServlet {
 		res.setCharacterEncoding("UTF-8");
 		
 		HttpSession session = req.getSession();
-		MemberTestVO member = (MemberTestVO)session.getAttribute("member");
+		LoginVO member = (LoginVO)session.getAttribute("admin");
 		
 		String type = req.getParameter("type");
 		String content = req.getParameter("content");
