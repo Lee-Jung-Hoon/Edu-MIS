@@ -90,7 +90,7 @@
 										<tr>
 											<th style="text-align:center; text-indent:0;">첨부 파일</th>
 											<td align="left">
-												<span class="file btn-txt txt-photo btn-blue" style="display:inline-block; width:70px; height:40px;">
+												<span class="file btn-txt txt-file btn-blue" style="display:inline-block; width:70px; height:40px;">
 													<input type="file" name="file" style="display:block; width:100%; height:100%; cursor:pointer; padding:0; color:transparent; text-indent:-5000px;" />
 												</span>
 												<input type="text" class="val-txt" style="width:80%; border:0; background:none; position:relative; top:8px; -webkit-box-shadow:none;" disabled />
@@ -100,9 +100,9 @@
 									</table>
 								</div>
 								<div class="btn-area" style="text-align:right; margin-bottom:20px;">
-									<input style="width:70px; height:40px; display:inline-block;" value="목록" onclick="moveList();" class="btn txt-list btn-txt btn-blue" />
+									<input type="button" style="width:70px; height:40px; display:inline-block;" value="목록" onclick="moveList();" class="btn txt-assign-list-s btn-txt btn-blue" />
 									<input type="hidden" name = "no" value="${modi.no}"/>
-									<input style="width:70px; height:40px; display:inline-block;" type="submit" value="과제 수정" class="btn txt-modi-assign btn-txt btn-blue" />
+									<input style="width:70px; height:40px; display:inline-block;" type="submit" value="과제 수정" class="btn txt-assign-modify-s btn-txt btn-blue" />
 								</div>
 								<!-- 
 								<div>

@@ -8,30 +8,8 @@
 	<meta name="viewport" content="width=device-width">
 	<title>제목</title>
 	<%@ include file="/jsp/admin/include/common.jsp" %>	
-	<style type="text/css">
-	table {border:0;border-collapse:separate;border-spacing:0;}
-	.tb-test{
-	width: 900px;
-	height: auto;
-	border: 1px;
-	}
-	.tb-test td, .tb-test th{
-	border-bottom: 1px solid #cccccc;
-	}
-	.tb-test th{
-	text-align: center;
-	width: 25%;
-	}
-	.tb-test tr{
-	text-align: center;
-	width: 25%;
-	}
-	.tb-test2{
-	width: 900px;
-	height: auto;
-	text-align: right;
-	}
-	</style>
+	
+	
 	<script>
 		function ckForm() {
 			
@@ -75,7 +53,7 @@
 		}
 	</script>
 </head>
-<body class="page-join">
+<body class="page-join btn-page">
 	<div class="wrap">
 		<div class="wrap-inner">
 					<%@ include file="/jsp/admin/include/leftMenu.jsp" %>	
@@ -96,29 +74,40 @@
 											<col style="width:90%" />
 										</colgourp>
 										<tr>
-											<th>제목</th>
+											<th style="text-align:center; text-indent:0;">제목</th>
 											<td class=""><input type="text" size="100%" name="title" id = "title" placeholder="제목을 입력해주세요." /></td>
 										</tr>
 										<tr>
-											<th>진행기간</th>
-											<td align="center">시작일&nbsp;&nbsp;<input type="date" size="40%" name="startDate" id = "startDate" placeholder="예) 20150918"/>
+											<th style="text-align:center; text-indent:0;">진행기간</th>
+											<td>시작일&nbsp;&nbsp;<input type="date" size="40%" name="startDate" id = "startDate"  />
 											    &nbsp;&nbsp; 종료일&nbsp;&nbsp;<input type="date" size="40%" name="endDate" id = "endDate"/></td>
 										</tr>
 	
 										<tr>
-											<th>글 내용</th>
+											<th style="text-align:center; text-indent:0;">글 내용</th>
 											<td colspan="3"><textarea cols="110" rows="20"
 													name="content" id = "content"></textarea></td>
 										</tr>
 	
 										<tr>
-											<th>첨부 파일</th>
-											<td align="left"><input type="file" name="file" /></td>
+											<th style="text-align:center; text-indent:0;">첨부 파일</th>
+											<td align="left">
+												<span class="file btn-txt txt-file btn-blue" style="display:inline-block; width:70px; height:40px;">
+													<input type="file" name="file" style="display:block; width:100%; height:100%; cursor:pointer; padding:0; color:transparent; text-indent:-5000px;" />
+												</span>
+												<input type="text" class="val-txt" style="width:80%; border:0; background:none; position:relative; top:8px; -webkit-box-shadow:none;" disabled />
+											</td>
 										</tr>
 	
 									</table>
 								</div>
-								<div>
+								<div class="btn-area" style="text-align:right; margin-bottom:20px;">
+									<input type="button" style="width:70px; height:40px; display:inline-block;" value="목록" onclick="moveList();" class="btn txt-assign-list-s btn-txt btn-blue" />
+									<input style="width:70px; height:40px; display:inline-block;" type="submit" value="과제 등록" class="btn txt-assign-regist-s btn-txt btn-blue" />
+								</div>
+								
+								
+								<!-- <div>
 										<table class="tb-test2">
 										<tr>
 											<td>
@@ -127,7 +116,7 @@
 											</td>
 											</tr>
 											</table>
-								</div>
+								</div> -->
 							</form>
 							<!--  작업완료 부분 -->
 						</section>				
