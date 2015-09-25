@@ -51,10 +51,7 @@ public class TalkController {
 		HttpSession session = req.getSession();
 		session.setAttribute("member", member);
 		
-//		MemberTestVO test = (MemberTestVO)session.getAttribute("member");
-		
-		
-//		ModelAndView mav = new ModelAndView("/jsp/admin/main.jsp");
+
 		ModelAndView mav = new ModelAndView("/template/global_memo02.jsp");
 		try {
 			List<MemberVO> list = service.selectMemberList();
@@ -77,7 +74,6 @@ public class TalkController {
 		mvo.setNo("3");
 		hs.setAttribute("user", mvo);
 
-		// MemberVO mvo = (MemberVO)hs.getAttribute("user");
 		int no = Integer.parseInt(mvo.getNo());
 
 		try {
