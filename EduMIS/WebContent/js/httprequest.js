@@ -29,16 +29,18 @@ function sendRequest(url, params, callback, method) {
 	// 전송방식이 생략된 경우 기본으로 GET 방식으로 설정한다.
 	var httpMethod = method ? method : 'GET';
 	// 전송 방법이 GET/POST이외는 무조건 GET 방식으로 설정한다.
+	// 전송 방법 오타일 경우
 	if (httpMethod != 'GET' && httpMethod != 'POST') {
 		httpMethod = 'GET';
 	}
+	
 	// 요청 인자의 기본값을 설정한다.
 	var httpParams = "";
 	if (params != null && params != '') {
 		for ( var key in params) {
 			if (httpParams == "") {
-				//_______________________한글로 uri를 인코딩
 				httpParams = key + '=' + encodeURIComponent(params[key]);
+				// encodeURIComponent = 한글을 인코딩 해줌
 			} else {
 				httpParams += '&' + key + '=' + encodeURIComponent(params[key]);
 			}
@@ -52,6 +54,7 @@ function sendRequest(url, params, callback, method) {
 	}
 	// 전송 방법과 URL을 설정한다.
 	httpRequest.open(httpMethod, httpUrl, true);
+	
 	// 전송 방법이 POST이면 전송할 켄텐츠의 타입을 지정한다.
 	if (httpMethod == 'POST') {
 		httpRequest.setRequestHeader('Content-Type',
