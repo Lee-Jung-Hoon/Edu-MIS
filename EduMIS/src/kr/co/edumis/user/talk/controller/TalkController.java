@@ -37,6 +37,7 @@ public class TalkController {
 			mav.addObject("list", list);
 		} catch (Exception e) {
 			e.printStackTrace();
+		
 		}
 		return mav;
 	}
