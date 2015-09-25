@@ -4,7 +4,7 @@
 	
 <mapper namespace="attendance"> 
 	<select id="memList" resultMap="mem">
-		select no, name 
+		select no, name, grade 
 		from t_member 
 	</select>
 	
@@ -27,6 +27,18 @@
 		<result property="attDate" column="att_date"></result>
 	</resultMap>
 	
+	
+	<!-- 꾸중이 resultMap -->
+   <resultMap type="AdminAttVO" id="att2">
+      <result property="mNo" column="mNo"></result>
+   </resultMap>
+   
+   <resultMap type="AdminAttVO" id="attend">
+      <result property="mNo" column="mNo"></result>
+      <result property="attType" column="att_type"></result>
+   </resultMap>
+   
+<!-- 꾸중이 resultMap -->
 	
 <!-- create table t_member( -->
 <!--    no number primary key, -->
@@ -88,4 +100,30 @@
            set att_type = #{attType}
          where mNo  = #{mNo} and to_char(att_date, 'yyyy-mm-dd') = #{attDate}
     </update>
+    
+    
+    <!--  꾸중이 쿼리-->
+   <select id="attList2" resultMap="att2">
+      select distinct(mName)
+        from t_attend
+        order by mName
+   </select>
+   
+<!--    <select id="attendList" parameterType="int" resultMap="attend"> -->
+<!--       select mName,count(att_type) as attType -->
+<!--      from t_attend -->
+<!--      where att_type = #{att_type} -->
+<!--      group by mName -->
+<!--      order by mName -->
+<!--   </select> -->
+
+   <select id="attendList" parameterType="int" resultMap="attend">
+     select mNo,
+      sum(CASE WHEN att_type = #{att_type} THEN 1 ELSE 0 end) as attType
+     from t_attend
+     group by mNo
+     order by mNo
+  </select>
+    
+    
 </mapper>

@@ -39,5 +39,17 @@ public class AdminAttServiceImpl implements AdminAttService{
 		List<AdminAttVO> attMemList = dao.selectAttMemList(mNo);
 		return attMemList;
 	}
+	//**************** 꾸중이 ********************   
+	   @Override
+	   public List<AdminAttVO> selectAttList2() {
+	      List<AdminAttVO> attList2 = dao.selectAttList2();
+	      return attList2;
+	   }
+	   @Override
+	   public List<AdminAttVO> selectAttendList(int attType) {
+	      List<AdminAttVO> attendList = dao.selectAttendList(attType);
+	      return attendList;
+	   }
+	//**************** 꾸중이 ********************   
 
 }
