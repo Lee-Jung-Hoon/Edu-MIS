@@ -27,7 +27,7 @@ public class ModifyScheduleController extends HttpServlet {
 schedule.setNo(Integer.parseInt(no));
 			ScheduleVO vo = service.detailSchedule(schedule);
 
-			System.out.println(vo.getNo());
+//			System.out.println(vo.getNo());
 			
 			PrintWriter out = res.getWriter();
 			String json = "";
