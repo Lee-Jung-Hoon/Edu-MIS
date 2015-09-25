@@ -93,7 +93,7 @@
 									<c:forEach var="vote" items="${list}">
 									
 										<li>
-											<div class="img"><img src="/EduMIS/images/icon-user.png" alt="" /></div>
+											<div class="img"><img src="/EduMIS/memberFile/${vote.realFileName}" alt="" /></div>
 											<div class="radio">
 												<input type="radio" name="id" id="${vote.id}" value="${vote.id}"/>
 												<label for="${vote.id}"><span class="id">${vote.id}&nbsp;${vote.name}</span><span class="name"></span></label>
