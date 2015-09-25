@@ -30,26 +30,7 @@ img {
 }
 </style>
 <script>
-var httpRequest ;
-window.onload() = function () {
-  httpRequest = new XMLHttpRequest();
-  httpRequest.onreadystatechange = responseResult;
-  httpRequest.open("GET", "/EduMIS/makegroups/ajax", true);
-  httpRequest.send(null);
-};
 
-function responseResult() {
-  if (httpRequest.readyState == 4) {
-    if (httpRequest.status == 200) {
-      value = eval(httpRequest.responseText);
-      for(var i =0;i<value.length<i++){
-        value[i].team 
-        
-      }
-    }
-  }
-  
-}
 
 function timeDelay() {
  setTimeout(fake, 1000);

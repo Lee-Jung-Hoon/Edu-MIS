@@ -15,6 +15,7 @@
 	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 		<%@ include file="/jsp/admin/include/common.jsp" %>	
 <style>
+
 #selectNumber>div {
 	position: relative;
 }
@@ -56,7 +57,7 @@
 
 .droppable-ui-droppable {
 	width: 120px;
-	height: 120px;
+	height: 130px;
 	padding: 0.5em;
 	float: left;
 	margin: 10px 10px 10px 0;
@@ -64,6 +65,9 @@
 }
 
 .draggable {
+  animation-name: example;
+    animation-duration: 4s;
+    animation-iteration-count: 3;
 	width: 100px;
 	height: 100px;
 	padding: 0.5em;
@@ -91,6 +95,7 @@ padding-bottom: 500px;
 </style>
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
 <script>
   var httpRequest;
   var gNum = 0; //전체조의 갯수를 저장할 변수
@@ -182,6 +187,7 @@ padding-bottom: 500px;
         sLeader[i] = "";
       }
     }
+    
     autoMove(num);
 
   }
@@ -260,6 +266,7 @@ padding-bottom: 500px;
   }
 
   function autoMove(val) {
+    
     var moveBox;
 
     if (val <= (gNum / 2)) {
@@ -275,7 +282,9 @@ padding-bottom: 500px;
       if (moveMember.value === pic) {
         var moveDrag = $("#draggable" + j);
         
-        moveDrag.offset(moveBox.offset());
+      
+       moveDrag.animate( {"top":moveBox.offset().top, "left":moveBox.offset().left} ,1000 );
+//         moveDrag.offset(moveBox.offset());
 
         break;
       }
@@ -357,13 +366,13 @@ padding-bottom: 500px;
 							<div id ="mybody">
 							<h2>인연나비- 어떤 인연이..?</h2>
 							전체 몇개의 조가 필요하신가요?
-	<select id="groupNumber" onchange="selectNumber(0)">
+	<select id="groupNumber" onchange="selectNumber(0)" style="height:30px; margin:0 10px;">
 		<option>선택하세요</option>
 		<c:forEach begin="2" end="10" var="i">
 			<option>${i}</option>
 		</c:forEach>
 	</select>개  
-	<input type="button" value="조장초기화" style="text-indent:0; width:80px; height:30px; font-size:14px; color: black; display: inline-block;" onclick="selectNumber(100)" />
+	<input type="button" value="조장초기화" style="display:inline-block; width:100px; height:40px; margin-left:10px;" class="btn txt-leader-reset-s btn-txt btn-blue" onclick="selectNumber(100)" />
 	<br />
 	<div id="drag">
 		<div id="selectNumber" style="width: 100%; padding-bottom: 50px;"></div>
