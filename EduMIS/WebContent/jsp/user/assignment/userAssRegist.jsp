@@ -86,7 +86,7 @@
 					    </c:when>
 						
 						<c:otherwise >
-						  <form action="/EduMIS/user/assBfModify.do?no=${ass.no}" method="POST" enctype="multipart/form-data">
+						  <form action="/EduMIS/user/assBfModify.do?no=${ass.no}&id=${user.id}" method="POST" enctype="multipart/form-data">
 						    <input type ="hidden" name ="no" value="${ass.no}"/>
 						    <input type ="hidden" name ="id" value="${user.id}"/>
 					      <input type ="hidden" name ="name" value="${user.name}"/>
