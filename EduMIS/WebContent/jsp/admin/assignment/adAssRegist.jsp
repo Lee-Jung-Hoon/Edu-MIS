@@ -50,9 +50,9 @@
 		}
 		
 		function moveList() {
-			if (confirm("목록으로 가시겠습니까?")) {
+			
 				location.href = "${pageContext.request.contextPath}/admin/assList.do";
-			}
+			
 		}
 	</script>
 </head>
@@ -105,8 +105,8 @@
 									</table>
 								</div>
 								<div class="btn-area" style="text-align:right; margin-bottom:20px;">
-									<input type="button" style="width:70px; height:40px; display:inline-block;" value="목록" onclick="moveList();" class="btn txt-assign-list-s btn-txt btn-blue" />
 									<input style="width:70px; height:40px; display:inline-block;" type="submit" value="과제 등록" class="btn txt-assign-regist-s btn-txt btn-blue" />
+									<input type="button" style="width:70px; height:40px; display:inline-block;" value="목록" onclick="moveList();" class="btn txt-assign-list-s btn-txt btn-blue" />
 								</div>
 								
 								
