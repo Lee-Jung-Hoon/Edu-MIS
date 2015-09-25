@@ -78,9 +78,14 @@
         )
   </insert>
     
+<!--     update t_attend -->
+<!-- 	set att_type = 2 -->
+<!-- 	where mNo  = 21 and TO_CHAR(att_date, 'yyyy-mm-dd') = '2015-09-25'; -->
+    
+    
     <update id="updateAttendance" parameterType="AdminAttVO" >
         update t_attend
            set att_type = #{attType}
-         where mNo  = #{mNo}
+         where mNo  = #{mNo} and to_char(att_date, 'yyyy-mm-dd') = #{attDate}
     </update>
 </mapper>

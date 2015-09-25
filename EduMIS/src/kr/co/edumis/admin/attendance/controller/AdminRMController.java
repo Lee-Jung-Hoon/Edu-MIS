@@ -77,8 +77,9 @@ public class AdminRMController {
 			for(MemberVO m: member){
 				AdminAttVO avo = new AdminAttVO();
 				int no = Integer.parseInt(req.getParameter("no_"+m.getNo()));
-				String name = req.getParameter(m.getName());
 				String type = req.getParameter(m.getNo());
+				String attDate = req.getParameter("attDate");
+				
 				int attType = 0;
 				switch(type){
 				case "출석":
@@ -99,10 +100,10 @@ public class AdminRMController {
 					break;
 				}
 				avo.setmNo(no);
-				avo.setmName(name);
 				avo.setAttType(attType);
+				avo.setAttDate(attDate);
+//				System.out.println(no + "-" + "-" + type + "-" + attType+ "-" +attDate);
 				service.updateAtt(avo);
-				System.out.println(no + "-" + name + "-" + type + "-" + attType);
 			}
 		} catch(Exception e){
 			e.printStackTrace();
