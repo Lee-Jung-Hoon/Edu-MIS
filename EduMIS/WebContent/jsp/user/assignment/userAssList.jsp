@@ -1,21 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="java.util.Map"%>
-<%@page import="java.util.HashMap"%>
-<%@page import="java.util.List"%>
-<%@page import="kr.co.edumis.admin.assignment.vo.AdminAssVO"%>
-<%@page import="kr.co.edumis.user.assignment.dao.UserAssDAO"%>
-
 <!doctype html>
 <html lang="ko">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width">
-	<title>게시판</title>
-	<link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
-	<link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
+	<title>메인</title>
+	<%@ include file="/jsp/admin/include/common.jsp" %>	
 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 	<script>
 
@@ -29,46 +22,16 @@
 
 	</script>
 </head>
-<body class="page-board">
+<body class="page-main btn-page">
 	<div class="wrap">
 		<div class="wrap-inner">
-			<aside>
-				<h2>MENU</h2>
-				<ul>
-					<li><a href="#">과제 제출 게시판</a></li>
-					<li><a href="#">교육생관리</a></li>
-					<li><a href="#">조짜기</a></li>
-					<li><a href="#">메시지 히스토리</a></li>
-				</ul>
-			</aside>
+			<%@ include file="/jsp/admin/include/leftMenu.jsp" %>	
 			<div class="container">
-				<header class="header">
-					<button type="button" class="btn-menu">
-						  <span></span>
-						  <span></span>
-						  <span></span>
-						  <span></span>
-					</button>
-					<ul>
-						<li><a href="#"><img src="/EduMIS/images/icon-user.png" alt="" />마이페이지</a></li>
-						<li class="login">
-							<a href="#">로그인</a>
-							<div class="login-form">
-								<form action="" method="">
-									<input type="text"  placeholder="아이디" />
-									<input type="password"  placeholder="비밀번호" />
-									<span><input type="checkbox" id="save" /><label for="save">아이디 저장하기</label></span>
-									<input type="submit" class="btn-submit" />
-								</form>
-								<button type="button" class="btn-close">닫기</button>
-							</div>
-						</li>
-						<li><a href="#">회원가입</a></li>
-					</ul>
-				</header>
+				<%@ include file="/jsp/admin/include/topMenu.jsp" %>
+
 				<div class="container-inner">
 					<div class="content">
-						<section class="board common">
+						<section class="userAssList board common">
 							<div class="board-frame">
 								<h2>과제목록</h2>
 								<table class="table-board board-style1">
@@ -91,12 +54,12 @@
 									<tbody>
 									<c:set var = "index" value = "0"/>
 									
-									<c:forEach var="list" items="${list}">
+									<c:forEach var="assList" items="${assList}">
 										<tr>
-											<td>${list.no}</td>
-											<td><a href ="${pageContext.request.contextPath}/user/assDetail.do?no=${list.no}">${list.title}</a></td>
-											<td>${list.startDate} ~ ${list.endDate}</td>
-											<td>${list.isSubmit}</td>
+											<td>${assList.no}</td>
+											<td><a href ="${pageContext.request.contextPath}/user/assDetail.do?no=${assList.no}">${assList.title}</a></td>
+											<td>${assList.startDate} ~ ${assList.endDate}</td>
+											<td>${assList.isSubmit}</td>
 											<td>${ckArr[index]}</td>
 										</tr>
 										<c:set var = "index" value = "${index + 1}"/>
@@ -111,12 +74,11 @@
 									<button type="button" class="btn-paging btn-paging-next">다음</button>
 								</div>
 							</div>
-						</section>				
+						</section>						
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="/EduMIS/js/common.js"></script>
 </html>
