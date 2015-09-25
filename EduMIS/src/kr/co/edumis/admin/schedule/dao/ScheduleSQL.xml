@@ -16,9 +16,11 @@
         <result property="startDate"  column="start_date" />
         <result property="endDate" column="end_date" />
         <result property="importance" column="importance" />
+        <result property="latitude" column="latitude" />
+        <result property="longitude" column="longitude" />
         <result property="place" column="place" />
     </resultMap>
-	<!-- 스케줄 전체를 가져오는 쿼리 -->
+	<!-- 해당 날짜의 스케줄 전체를 가져오는 쿼리 -->
 	
 		<select id="listSchedule" resultMap="result" parameterType="ScheduleVO">
 		select no, title, content, start_date, end_date, importance, place       
@@ -26,6 +28,28 @@
  	    where start_date &lt;= #{startDate} 
  	      and end_date &gt;= #{endDate}
 		</select>
+	
+	<!-- 해당 번호의 정보를 가져오는 쿼리 -->
+	
+			<select id="detailSchedule"  parameterType="ScheduleVO" resultMap="result">
+		select 
+		no,
+		title,
+		content,
+		place,
+ 		start_date, 
+		end_date, 
+		importance,
+		latitude,
+		longitude
+		from t_schedule
+		where no = #{no}
+	</select>
+	
+	
+	
+	
+	
 	
 	<!-- 스케줄을 저장하는 쿼리 -->
 	<insert id="registSchedule" parameterType="ScheduleVO" >
