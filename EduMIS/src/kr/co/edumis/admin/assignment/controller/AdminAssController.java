@@ -130,7 +130,7 @@ public class AdminAssController {
 		mav.addObject("thisPage", reqIndex);
 	
 		List<AdminAssVO> list = service.list(param);
-		mav.addObject("list", list);
+		mav.addObject("asslist", list);
 
 		// 진행여부 체크
 		List<String> ckArr = new ArrayList<String>();
