@@ -219,7 +219,8 @@ padding-bottom: 500px;
                 + value[i].name + '</div>';
           }
         }
-        setName(value, selnum, selsub);
+        setTimeout(setName(value, selnum, selsub), 10000);
+//         setName(value, selnum, selsub);
 
       }
     }
@@ -287,11 +288,30 @@ padding-bottom: 500px;
       var moveMember = document.getElementById("member" + j);
       if (moveMember.value === pic) {
         var moveDrag = $("#draggable" + j);
+        console.log("top : "  +moveBox.offset().top);
+        console.log("left : "  +moveBox.offset().left);
+        console.log("top : "  +moveDrag.offset().top);
+        console.log("left : "  +moveDrag.offset().left);
+        var top = moveBox.offset().top;
+        top -= moveDrag.offset().top;
+        var left = moveBox.offset().left;
+        left -= moveDrag.offset().left;
+        var offset = moveDrag.offset();
         
-      
-//        moveDrag.animate( {"top":moveBox.offset().top, "left":moveBox.offset().left} ,1000 );
-        moveDrag.offset(moveBox.offset());
+//        moveDrag.animate({ "top" : top , "left" : left } ,2000 );
+        
+       moveDrag.animate({ "top" : top,"left" : left  } ,500 );
+     	 moveDrag.offset(offset);
+       
+//        moveDrag.animate({ "top" : "-=300" , "left" : "-=300" } ,2000 );
+       console.log("top : "  +moveBox.offset().top);
+       console.log("left : "  +moveBox.offset().left);
+       console.log("top : "  +top);
+       console.log("left : "  +left);
+     
+//         moveDrag.offset(moveBox.offset());
 
+       
         break;
       }
     }
