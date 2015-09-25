@@ -5,7 +5,7 @@ public class MypageVO {
 	private String id;
 	private String name;
 	private String pass;
-	private String passChk;
+//	private String passChk;
 	private String year;
 	private String month;
 	private String day;
@@ -78,12 +78,12 @@ public class MypageVO {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
-	public String getPassChk() {
-		return passChk;
-	}
-	public void setPassChk(String passChk) {
-		this.passChk = passChk;
-	}
+//	public String getPassChk() {
+//		return passChk;
+//	}
+//	public void setPassChk(String passChk) {
+//		this.passChk = passChk;
+//	}
 	public String getYear() {
 		return year;
 	}

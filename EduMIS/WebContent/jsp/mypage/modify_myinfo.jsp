@@ -202,7 +202,7 @@ function chkForm() {
 												</td>
 												<td rowspan="11" class="table-photo">
 													<div>
-														<span id="imgFrame" class="img"><c:if test="${not empty list.filePath}"><img src="/EduMIS${mvo.filePath}/${mvo.orgFileName}" alt='' /></c:if></span>
+														<span id="imgFrame" class="img"><c:if test="${not empty mvo.filePath}"><img src="/EduMIS${mvo.filePath}/${mvo.orgFileName}" alt='' /></c:if></span>
 														<span class="file btn-txt txt-photo btn-blue"><input type="file" name="attachFile" onchange="loadFile(event)"></span>
 														<ul>
 															<li>- gif 혹은 jpg 형식</li>

@@ -47,7 +47,7 @@
     <update id="updateMyinfo" parameterType="MypageVO">
         update t_member
         	 set pass = #{pass},
-        	     pass_chk = #{passChk},
+<!--         	     pass_chk = #{passChk}, -->
         	     year = #{year},
         	     month = #{month},
         	     day = #{day},

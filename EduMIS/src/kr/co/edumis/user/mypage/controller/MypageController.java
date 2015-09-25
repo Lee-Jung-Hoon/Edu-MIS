@@ -108,7 +108,7 @@ public class MypageController {
 			mvo.setId(mult.getParameter("id"));
 			mvo.setName(mult.getParameter("name"));
 			mvo.setPass(mult.getParameter("pass"));
-			mvo.setPassChk(mult.getParameter("passChk"));
+//			mvo.setPassChk(mult.getParameter("passChk"));
 			mvo.setYear(mult.getParameter("year"));
 			mvo.setMonth(mult.getParameter("month"));
 			mvo.setDay(mult.getParameter("day"));
