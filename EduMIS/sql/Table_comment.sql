@@ -8,8 +8,4 @@ create table t_comment(
 
 );
 
-create sequence seq_t_comment_no=======
-);
-
-
-create sequence seq_t_comment_no;>>>>>>> .r541
+create sequence seq_t_comment_no
