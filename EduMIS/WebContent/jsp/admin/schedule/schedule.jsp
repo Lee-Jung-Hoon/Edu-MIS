@@ -104,21 +104,6 @@
 
 
 
-<style>
-
-
-
-
-.d{
-height: 20px;
-font-style: normal;
-}
-.schedule-list td{
-width: 20%;
-}
-
-</style>
-
 
 
 
@@ -240,7 +225,7 @@ width: 20%;
 										<tr>
 											<hr />
 											<script type="text/javascript"
-												src="//apis.daum.net/maps/maps3.js?apikey=1cd4d7ef46ee8be854cdc1de37076a25&libraries=services"></script>
+src="//apis.daum.net/maps/maps3.js?apikey=1cd4d7ef46ee8be854cdc1de37076a25&libraries=services"></script>
 											</td>
 										</tr>
 
@@ -264,7 +249,7 @@ width: 20%;
 							
 							
 							
-						<!------------------------------------(  수정  폼  )----------------------------------------------------------------------- -->
+							<!------------------------------------(  수정  폼  )----------------------------------------------------------------------- -->
 
 							<div class="modify_form"
 								style="position: fixed; top: 110px; left: 200%; width: 450px; padding: 30px; z-index: 100; background: #fff; box-shadow: 0px 0px 50px rgba(10,10,10,10); border-radius: 40px; " >
@@ -317,8 +302,12 @@ src="//apis.daum.net/maps/maps3.js?apikey=1cd4d7ef46ee8be854cdc1de37076a25&libra
 									</table>
 									<br />
 									<div align="center">
-										<span><input type="button" id="modScheduleBtn" name="modScheduleBtn" value="수정" size="10px" /></span>
+										<span><input type="button" id="modScheduleBtn" name="modScheduleBtn" value="수정" size="10px" >
+										     <input type="button" id="delScheduleBtn" name="delScheduleBtn" value="삭제" size="10px" />
+										</span>
 										<input type="hidden" value="m_no" name="m_no" />
+										<span></span>
+										
 </div>
 								</form>
 								<button type="button" class="cal_close" size="30px">닫기</button>
@@ -336,19 +325,15 @@ src="//apis.daum.net/maps/maps3.js?apikey=1cd4d7ef46ee8be854cdc1de37076a25&libra
 							<!------------------------------------( 디테일 폼)----------------------------------------------------------------------- -->
 
 							<div class="detail_form"
-								style="position: fixed; top: 110px; left: 200%; width: 450px; padding: 30px; z-index: 99; background: #fff; box-shadow: 0px 0px 50px rgba(10,10,10,.3); border-radius: 40px; " >
-								
-								
-								<br/>
-								<div style="font-size: 20px;" class="detail-name" align="center"></div>
-								<br/>
-								<br/>
+								style="position: fixed; top: 110px; left: 200%; width: 450px; padding: 30px; z-index: 99; background: #fff; box-shadow: 0px 0px 50px rgba(10,10,10,10); border-radius: 40px; " >
+								<div style="font-size: 20px;">일정 등록</div>
+								<hr />
 									<table id="reg-Form" style="border-collapse: collapse;">
 										<tr>
 											<th>일 시</th>
-											<td style="width: 150px"><em id="d_startDate"></em> ~ <em id="d_endDate"></em> </td>
+											<td style="width: 230px"><em id="d_startDate"></em> ~ <em id="d_endDate"></em> </td>
 											<th>중요도</th>
-											<td width="70px" align="center">
+											<td width="30px">
 											<em id="d_importance"></em></td>
 										</tr>
 										<tr>
@@ -386,9 +371,16 @@ src="//apis.daum.net/maps/maps3.js?apikey=1cd4d7ef46ee8be854cdc1de37076a25&libra
                            </table>
                            <br />
                      </div>
-
-
 							<!------------------------------------------------------------------------------------------------------------------------------------ -->
+
+
+
+
+
+
+
+
+
 
 
 
@@ -469,7 +461,7 @@ src="//apis.daum.net/maps/maps3.js?apikey=1cd4d7ef46ee8be854cdc1de37076a25&libra
 										</table>
 									</div>
 
-									<div class="test02">
+									<div>
 										<table class="schedule-list">
 											
 										</table>
@@ -509,7 +501,7 @@ src="//apis.daum.net/maps/maps3.js?apikey=1cd4d7ef46ee8be854cdc1de37076a25&libra
 										</table>
 									</div>
 
-									<div class="test02">
+									<div>
 										<table class="schedule-list">
 											
 										</table>
@@ -539,7 +531,7 @@ src="//apis.daum.net/maps/maps3.js?apikey=1cd4d7ef46ee8be854cdc1de37076a25&libra
 										</table>
 									</div>
 
-								<div class="test02">
+									<div>
 										<table class="schedule-list">
 											
 										</table>
@@ -568,7 +560,7 @@ src="//apis.daum.net/maps/maps3.js?apikey=1cd4d7ef46ee8be854cdc1de37076a25&libra
 										</table>
 									</div>
 
-								<div class="test02">
+									<div>
 										<table class="schedule-list">
 											
 										</table>
@@ -598,7 +590,7 @@ src="//apis.daum.net/maps/maps3.js?apikey=1cd4d7ef46ee8be854cdc1de37076a25&libra
 										</table>
 									</div>
 
-									<div class="test02">
+									<div>
 										<table class="schedule-list">
 											
 										</table>
