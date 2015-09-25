@@ -7,11 +7,11 @@
 
 <!-- 과제목록을 불러오는 쿼리 -->
  <select id="adminAssList" parameterType="map" resultType="AdminAssVO">
-    select no,
-           title, 
-           startDate,
-           endDate,
-           case when (select count(*) from t_user_assignment_board where no = no and id = #{id}) = 0 then 'X'
+    select a.no,
+           a.title, 
+           a.startDate,
+           a.endDate,
+           case when (select count(*) from t_user_assignment_board where no = a.no and id = #{id}) = 0 then 'X'
                 else 'O'
             end isSubmit
     from 
@@ -32,7 +32,7 @@
 						content 
 					from t_adm_assignment_board 
 					order by no desc
-				))
+				))a
 				where rnum between #{startIndex} and #{endIndex}
  </select>
  
