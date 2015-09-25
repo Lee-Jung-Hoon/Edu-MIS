@@ -9,7 +9,6 @@
 	<meta name="viewport" content="width=device-width">
 	<title>메인</title>
 	<%@ include file="/jsp/admin/include/common.jsp" %>	
-	<script src="http://192.168.200.72:10004/socket.io/socket.io.js"></script>
 <script>
 <c:if test="${not empty member}">
 	var socket = io.connect("192.168.200.72:10004");
