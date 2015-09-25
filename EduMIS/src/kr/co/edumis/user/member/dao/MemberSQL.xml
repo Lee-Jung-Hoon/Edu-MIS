@@ -9,7 +9,6 @@
 		id,
 		name,
 		pass,
-		pass_chk,
 		year,
 		month,
 		day,
@@ -33,7 +32,6 @@
 		#{id},
 		#{name},
 		#{pass},
-		#{passChk},
 		#{year},
 		#{month},
 		#{day},
@@ -46,7 +44,7 @@
 		#{email},
 		#{emailDomain},
 		#{major}
-		<if test="orgFileName != null">
+		<if test="orgFileName != null">"C:/java73/MemberSQL.xml"
     ,
     #{orgFileName},
     #{realFileName},
@@ -54,5 +52,24 @@
     </if>
 		)
 	</insert>
+	<select id="getMemberList"  resultType="memberVO">
+select * from t_member
+
+
+</select>
+
+<update id ="updateLeader"  parameterType="memberVO">
+update t_member 
+set techLeader = #{techLeader}, team = #{team}
+where no = #{no}
+
+</update>
+<update id ="resetLeader" >
+update t_member 
+set techLeader = '3', team = ' '
+
+
+</update>
+
 
 </mapper>
