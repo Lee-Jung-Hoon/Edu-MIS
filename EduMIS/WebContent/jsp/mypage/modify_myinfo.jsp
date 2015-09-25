@@ -296,7 +296,7 @@ function chkForm() {
 									<div class="btn-area">
 										<span class="width33"><input type="submit" value="수정하기" class="btn txt-modify btn-txt btn-blue" /></span>
 										<span class="width33"><input type="reset" value="재작성" id="reset" class="btn txt-reset btn-txt btn-blue" /></span>
-										<span class="width33"><a href="#" class="btn txt-cancel btn-txt btn-gray">취소</a></span>
+										<span class="width33"><a href="/EduMIS/user/mypage/detailMyinfo.do" class="btn txt-cancel btn-txt btn-gray">취소</a></span>
 									</div>
 								</form>
 							</div>
