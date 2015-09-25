@@ -8,6 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width">
 <title>회원가입</title>
+<c:import url="/jsp/user/include/common.jsp" />	
 <script>
 	
 function chkForm() {
@@ -183,12 +184,6 @@ function callBack() {
 	}
 }
 </script>
-
-<link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
-<link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
-<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<script src="httprequest.js"></script>
 </head>
 <body class="page-join btn-page">
 	<div class="wrap">
@@ -340,7 +335,6 @@ function callBack() {
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="/EduMIS/js/common.js"></script>
 <script type="text/javascript">
   var loadFile = function(event) {
     var reader = new FileReader();
