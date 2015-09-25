@@ -63,7 +63,7 @@ public class LoginController {
 			switch(grade) { 
 			case "1":
 				session.setAttribute("admin", member);
-				mav.setView("redirect:/EduMIS/jsp/user/login/admin.jsp");	
+				mav.setView("redirect:/EduMIS/jsp/admin/main.jsp");	
 				break;
 			case "2":
 				session.setAttribute("user", member);
