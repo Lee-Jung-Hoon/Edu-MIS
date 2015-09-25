@@ -1,11 +1,18 @@
 package kr.co.edumis.user.login.vo;
 
 public class LoginVO {
+	private int no;
 	private String id;
 	private String pass;
 	private String name;
 	private String grade;
 	
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
 	public String getId() {
 		return id;
 	}
