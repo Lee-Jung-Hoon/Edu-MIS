@@ -71,8 +71,18 @@ public class AdminAssController {
 
 	@RequestMapping("/admin/assRegist.do")
 	public String adAssRegist(AdminAssVO adAssvo, HttpServletRequest req) throws Exception {
+		
+		String realPath = req.getServletContext().getRealPath("/assignmentFile");
+		
+		File file = new File(realPath);
+		if( !file.exists() ) {
+			System.out.println(file.mkdirs());
+		} else {
+			System.out.println("디렉토리 존재함..");
+		}
+		
 		MultipartRequest mult = new MultipartRequest(req,
-				"C:\\java73\\web-workspace\\EduMIS\\WebContent\\assignmentFile", 1024 * 1024 * 10, "UTF-8",
+				realPath, 1024 * 1024 * 10, "UTF-8",
 				new DefaultFileRenamePolicy());
 		
 		Enumeration<String> e = mult.getFileNames();
