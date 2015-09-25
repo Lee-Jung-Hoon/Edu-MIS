@@ -20,6 +20,7 @@ public class AdminAssDAO {
 
 	public void insertAss(AdminAssVO adAssvo) {
 		
+		
 		sqlMapper.insert("adminAssignment.registAssignment", adAssvo);
 		sqlMapper.commit();
 	}

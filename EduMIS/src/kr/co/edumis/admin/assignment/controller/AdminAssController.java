@@ -103,6 +103,12 @@ public class AdminAssController {
 				adAssvo.setRealFileName(systemName);
 				adAssvo.setOrgFileName(oriName);
 				adAssvo.setFilePath("/assignmentFile");
+			} else {
+				adAssvo.setStartDate(mult.getParameter("startDate"));
+				adAssvo.setEndDate(mult.getParameter("endDate"));
+				adAssvo.setTitle(mult.getParameter("title"));
+				adAssvo.setContent(mult.getParameter("content"));
+				adAssvo.setFilePath("/assignmentFile");
 			}
 		}
 
