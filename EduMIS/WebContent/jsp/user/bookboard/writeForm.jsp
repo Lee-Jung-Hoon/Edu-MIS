@@ -9,6 +9,27 @@
 <meta name="viewport" content="width=device-width">
 <title>메인</title>
 <%@ include file="/jsp/admin/include/common.jsp"%>
+
+<script>
+	function checkForm() {
+		var f = document.form;
+		
+		var title = f.title.value;
+		var content = f.content.value;
+		if(title == "") {
+			alert("제목을 입력하세요");
+			f.title.focus();
+			return false;
+		}
+		else if(content == "") {
+			alert("내용을 입력하세요");
+			f.content.focus();
+			return false;
+		}
+		return true;
+	}
+</script>
+
 </head>
 <body class="page-main btn-page">
 	<div class="wrap">
@@ -18,9 +39,7 @@
 				<%@ include file="/jsp/admin/include/topMenu.jsp"%>
 				<div class="container-inner">
 					<div class="content">
-						<form action="/EduMIS/bookboard/write.do" method="POST"
-							enctype="multipart/form-data">
-							<input type="hidden" name="id" id="id" value="user.id" /><br />
+						<form action="/EduMIS/bookboard/write.do" method="POST" name="form" enctype="multipart/form-data" onsubmit="return checkForm();" >
 							<table>
 								<tr>
 									<td><input type="hidden" name="id" id="id" value="user.id" /></td>
@@ -38,10 +57,9 @@
 								<tr>
 									<th>첨부 파일</th>
 									<td align="left"><input type="file" name="file" /></td>
+									<td><input type="submit" value="글등록" style="display:inline-block; width:80px; height:30px;" class="btn btn-txt txt-write btn-blue" /></td>
 								</tr>
 							</table>
-
-							<input type="submit" value="글등록" />
 						</form>
 					</div>
 				</div>
