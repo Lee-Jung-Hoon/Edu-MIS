@@ -193,56 +193,9 @@ function callBack() {
 <body class="page-join btn-page">
 	<div class="wrap">
 		<div class="wrap-inner">
-			<aside>
-				<h2>MENU</h2>
-				<ul>
-					<li><a href="#">과제 제출 게시판</a></li>
-					<li><a href="#">교육생관리</a></li>
-					<li><a href="#">조짜기</a></li>
-					<li><a href="#">메시지 히스토리</a></li>
-				</ul>
-			</aside>
+			<%@ include file="/jsp/admin/include/leftMenu.jsp" %>	
 			<div class="container">
-				<header class="header">
-					<button type="button" class="btn-menu">
-						<span></span> <span></span> <span></span> <span></span>
-					</button>
-					<!-- 메시지 들어가는 부분 -->
-					<div class="top-message">
-						<button type="button" class="btn-message">
-							<img src="/EduMIS/images/message.png" alt="" /> <span
-								class="count">1<!-- 메시지 개수 --></span>
-						</button>
-						<div class="message-layer">
-							<button type="button" class="btn-message-close">닫기</button>
-							<div class="message-frame">
-								<!-- 메시지 작업 시작영역 -->
-								<!--  메시지 작업 시작영역 끝 -->
-							</div>
-						</div>
-					</div>
-					<!-- 메시지 들어가는 부분 끝 -->
-					<ul>
-						<li><a href="/EduMIS/user/mypage/detailMyinfo.do"><img
-								src="/EduMIS/images/icon-user.png" alt="" />마이페이지</a></li>
-						<li class="login"><a href="#">로그인</a>
-<!-- 						<li><a href="/EudMIS/user/login/logout.do">로그아웃</a> -->
-							<div class="login-form">
-								<form action="/EduMIS/login/login.do" method="POST">
-									<input type="text" placeholder="아이디" name="id" value="${cookie.loginId.value}" />
-									 <input type="password" placeholder="비밀번호" name="pass"/>
-									  <span><input type="checkbox" id="save" name="save" value="Y" 
-										<c:if test="${not empty cookie.loginId}">
-											checked="checked"
-					</c:if>
-					 /> 
-					<label for="save">아이디 저장하기</label></span> <input type="submit" class="btn-submit" />
-								</form>
-								<button type="button" class="btn-close">닫기</button>
-							</div></li>
-						<li><a href="/EduMIS/user/member/joinForm.do">회원가입</a></li>
-					</ul>
-				</header>
+					<%@ include file="/jsp/admin/include/topMenu.jsp" %>
 				<div class="container-inner">
 					<div class="content">
 						<section class="join common">
