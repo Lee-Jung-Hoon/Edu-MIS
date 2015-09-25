@@ -5,6 +5,7 @@
 $(".examdetail").colorbox({iframe:true, title: "시험별 상세정보",  width:"60%", height:"70%"});
 $(".gradewrite").colorbox({iframe:true, title: "시험 성적 등록",  width:"16%", height:"45%"});
 $(".grademodify").colorbox({iframe:true, title: "시험 성적 수정",  width:"25%", height:"45%"});
+$(".excelExport").colorbox({iframe:true, title: "엑셀 저장",  width:"32%", height:"30%"});
 
 //Change the selector if needed
 var $table = $('table.scrollmain'),
@@ -23,56 +24,46 @@ $(window).resize(function() {
         $(v).width(colWidth[i]);
     });    
 }).resize(); // Trigger resize handler
+
 </script>
+
 <style>
-
-table {
-	width: 100%;
-	height: 100%;
-}
-
-
 table.scrollmain {
-/* 	width: 100%; */
-	/* border-collapse: collapse; */
-	border-spacing: 0;
-	border: 2px solid black;
-}
-32
-
-table.scrollmain tbody, table.scrollmain thead {
-	display: block;
+    /* width: 100%; */ /* Optional */
+    /* border-collapse: collapse; */
+    border-spacing: 0;
+    border: 2px solid black;
 }
 
-thead tr th {
-	height: 30px;
-	line-height: 30px;
-	/* text-align: left; */
+table.scrollmain tbody,
+table.scrollmain thead { display: block; }
+
+thead tr th { 
+    height: 30px;
+    line-height: 30px;
+    /* text-align: left; */
 }
 
 table.scrollmain tbody {
-	height: 200px;
-	overflow-y: auto;
-	overflow-x: hidden;
+    height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
-tbody {
-	border-top: 2px solid black;
-}
+tbody { border-top: 2px solid black; }
 
 tbody td, thead th {
-/* 	width: 20%; */
-	border-right: 1px solid black;
-/* 	white-space: nowrap; */
+    /* width: 20%; */ /* Optional */
+    border-right: 1px solid black;
+    /* white-space: nowrap; */
 }
 
 tbody td:last-child, thead th:last-child {
-	border-right: none;
+    border-right: none;
 }
-
 </style>
 <table class="table-board scrollmain">
-	<thead>
+    <thead>
 		<tr>
 			<th width="5%">회차번호</th>
 			<th width="25%">시험제목</th>
@@ -81,8 +72,8 @@ tbody td:last-child, thead th:last-child {
 			<th width="5%">성적등록/수정</th>
 			<th width="15%">시험삭제</th>
 		</tr>
-	</thead>
-	<tbody>
+    </thead>
+		<tbody>
 		<c:forEach var="list" items="${list}">
 			<tr align="center">
 				<td width="5%">${list.no}</td>
@@ -111,8 +102,8 @@ tbody td:last-child, thead th:last-child {
 					href="${pageContext.request.contextPath}/examgrade/ExamTurnDelete.do?no=+${list.no}">삭제</a></td>
 			</tr>
 		</c:forEach>
-
-	</tbody>
+		</tbody>
 </table>
+		<a href="/EduMIS/jsp/admin/examgrade/excelExport.jsp" class="excelExport">엑셀저장</a>
 </body>
 </html>

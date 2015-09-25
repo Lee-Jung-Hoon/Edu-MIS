@@ -29,7 +29,7 @@ thead tr th {
 }
 
 table.scrollstudent tbody {
-	height: 100px;
+	height: 400px;
 	overflow-y: auto;
 	overflow-x: hidden;
 }
@@ -89,9 +89,6 @@ $(".studentdetail").colorbox({iframe:true, title: "학생별 상세정보",  wid
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td colspan="4"><a href="">전체평균</a></td>
-		</tr>
 		<c:forEach var="member" items="${member}">
 
 			<tr align="center">

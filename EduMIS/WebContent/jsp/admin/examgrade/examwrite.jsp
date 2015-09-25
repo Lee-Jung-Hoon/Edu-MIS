@@ -26,14 +26,69 @@
       }
     });
   }
+  
+//Change the selector if needed
+  var $table = $('table.scrollwrite'),
+      $bodyCells = $table.find('tbody tr:first').children(),
+      colWidth;
+
+  // Adjust the width of thead cells when window resizes
+  $(window).resize(function() {
+      // Get the tbody columns width array
+      colWidth = $bodyCells.map(function() {
+          return $(this).width();
+      }).get();
+      
+      // Set the width of thead columns
+      $table.find('thead tr').children().each(function(i, v) {
+          $(v).width(colWidth[i]);
+      });    
+  }).resize(); // Trigger resize handler
 </script>
+
+<style>
+
+table.scrollwrite {
+    /* width: 100%; */ /* Optional */
+    /* border-collapse: collapse; */
+    border-spacing: 0;
+    border: 2px solid black;
+}
+
+table.scrollwrite tbody,
+table.scrollwrite thead { display: block; }
+
+thead tr th { 
+    height: 30px;
+    line-height: 30px;
+    /* text-align: left; */
+}
+
+table.scrollwrite tbody {
+    height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+tbody { border-top: 2px solid black; }
+
+tbody td, thead th {
+    /* width: 20%; */ /* Optional */
+    border-right: 1px solid black;
+    /* white-space: nowrap; */
+}
+
+tbody td:last-child, thead th:last-child {
+    border-right: none;
+}
+</style>
 <form name="examForm" method="get" id="examForm">
 	<c:if test="${empty member}">
 				입력할 회원이 없습니다.
 		</c:if>
 
 	<c:if test="${!empty member}">
-		<table class="table-board scroll">
+		<table class="table-board scrollwrite">
 			<thead>
 				<tr>
 					<th width="80px">시험제목</th>
