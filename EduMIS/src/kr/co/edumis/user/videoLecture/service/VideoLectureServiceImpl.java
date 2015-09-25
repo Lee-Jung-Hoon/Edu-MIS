@@ -34,5 +34,20 @@ public class VideoLectureServiceImpl implements VideoLectureService {
 		return dao.lectureCount();
 	}
 
+	@Override
+	public void lectureDelete(int no) throws Exception {
+		dao.lectureDelete(no);
+	}
+
+	@Override
+	public VideoLectureVO lectureSelect(int no) throws Exception {
+		return dao.lectureSelect(no);
+	}
+
+	@Override
+	public void lectureModify(int no, VideoLectureVO lecture) throws Exception {
+		dao.lectureModify(no, lecture);
+	}
+
 
 }

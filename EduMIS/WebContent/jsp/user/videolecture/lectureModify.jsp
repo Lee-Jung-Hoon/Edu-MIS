@@ -112,24 +112,25 @@ table {
 							<h2>강의 등록</h2>
 							<!-- 작업시작부분 div안에 클래스명 넣어서 작업 해 주세요 나머지 url부분은 추후 취합할 예정이니 일단 MENU 부분의 링크태그에 값 넣어서 작업 해주시면 됩니다. 게시판 담당하시는 분들은 추후 공통 클래스 드릴테니 일단 테이블로 작업 부탁드립니다. -->
 
-							<form method="POST" action="/EduMIS/user/lectureRegist.do"
+							<form method="POST" action="/EduMIS/user/lectureModify.do"
 								name="regForm" onsubmit="return ckForm();">
+								<input type="hidden" name="no" value="${lecture.no}"/>
 								<div class="adAssRegist">
 									<table class="tb-test" align="center">
 										<tr>
 											<th>강의 제목</th>
 											<td class=""><input type="text" size="100%" name="title"
-												id="title" placeholder="제목을 입력해주세요." /></td>
+												id="title" value="${lecture.title}" /></td>
 										</tr>
 										<tr>
 											<th>강의 내용</th>
 											<td colspan="3"><textarea cols="110" rows="20"
-													name="contents" id="content"></textarea></td>
+													name="contents" id="content" value="${lecture.contents}"></textarea></td>
 										</tr>
 										<tr>
 											<th>강의 파일</th>
 											<td align="left"><input type="text" name="video"
-												size="100%" id="video" /></td>
+												size="100%" id="video" value="${lecture.video}"/></td>
 										</tr>
 									</table>
 								</div>
@@ -137,10 +138,6 @@ table {
 									<table class="tb-test2">
 										<tr>
 											<td><span><input type="submit" value="강의 등록"></span></td>
-										</tr>
-										<tr>
-											<td><span><input type="button" value="강의 목록"
-													onclick="moveList()"></span></td>
 										</tr>
 									</table>
 								</div>
