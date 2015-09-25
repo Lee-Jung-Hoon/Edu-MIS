@@ -47,6 +47,11 @@ public class CommentDAO {
 		session.commit();	
 	}
 
+	public void deleteCom(String no) {
+		session.delete("comment.dao.commentMapper.deleteCom", no);
+		session.commit();
+	}
+
 
 	
 

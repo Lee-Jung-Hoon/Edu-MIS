@@ -21,5 +21,7 @@ public interface CommentService {
 	//코멘트
 	public List<CommentVO> getcList()throws Exception;
 
+	public void deleteComment(String no) throws Exception;
+
 
 }

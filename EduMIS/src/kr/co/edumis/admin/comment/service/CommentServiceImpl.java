@@ -45,5 +45,10 @@ public class CommentServiceImpl implements CommentService {
 		return clist;
 	}
 
+	@Override
+	public void deleteComment(String no) throws Exception {
+		dao.deleteCom(no);
+	}
+
 
 }

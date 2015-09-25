@@ -36,7 +36,6 @@ public class CommentController {
 			List<MemberVO> list = service.getList();
 			List<CommentVO> clist=service.getcList();
 			
-			System.out.println("clist : " + clist.size());
 			
 			
 			mav.addObject("list", list);
