@@ -352,9 +352,13 @@ function callBack() {
 		var popOption = "width=500, height=400, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
 		window.open(popUrl,"",popOption);
 	});
-	function childCall(val, val2) {
-		   $(".size-input03").attr("value",val);
-		   $("#addr").attr("value",val2);
-	   }
+	function childCall1(val, val2) {
+    $(".size-input03").attr("value",val);
+    $("#addr").attr("value",val2);
+ }
+function childCall2(val, val2) {
+ $("#addr").attr("value",val);
+ $(".size-input03").attr("value",val2);
+}
 </script>
 </html>
