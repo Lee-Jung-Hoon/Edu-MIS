@@ -632,6 +632,10 @@ html, body {
 .txt-list-lecture {
 	background-image:url('../images/txt-list-lecture.png');
 }
+/* 강의목록(소) */
+.txt-list-lecture-s {
+	background-image:url('../images/txt-list-lecture-s.png');
+}
 /* 과제등록(소) */
 .txt-assign-regist-s {
 	background-image:url('../images/txt-assign-regist-s.png');
