@@ -20,11 +20,34 @@ $('.login .btn-close').on('click',function(){
   $(this).parent().fadeOut();
   $('body').removeClass('login-layer');
 });
-
-/* ------------------------------------------ 메시지 영역 ------------------------------------------*/
-
-// 메시지 버튼 클릭시
 $(document).ready(function(){
+	$('.btn-menu').on('click',function(){
+		  if ($('body').hasClass('show-menu')) {
+		    $('body').removeClass('show-menu').addClass('hide-menu');
+		    $('#fp-nav').show();
+		  } else {
+		    $('body').removeClass('hide-menu').addClass('show-menu');
+		    $('#fp-nav').hide();
+		  }
+		  return false;
+		});
+		$('.login a').on('click',function(){
+		  $(this).next().css('opacity', 0).slideDown('slow').animate(
+		    { opacity: 1 },
+		    { queue: false, duration: 'slow' }
+		  );
+		  $('body').addClass('login-layer');
+		  return false;
+		});
+		$('.login .btn-close').on('click',function(){
+		  $(this).parent().fadeOut();
+		  $('body').removeClass('login-layer');
+		});
+		
+		/* ------------------------------------------ 메시지 영역 ------------------------------------------*/
+		
+		// 메시지 버튼 클릭시
+		
   $('.btn-message').on('click', function(){
     //리스트 추가 부분
     if ($('.btn-message').next().css('display') == 'none') {
