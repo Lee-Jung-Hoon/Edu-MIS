@@ -70,14 +70,14 @@
 						switch (param) {
 						case "send":
 							//sendRequest("/EduMIS/talk/sendList.do", true);
-							location.href = '/EduMIS/talk/sendList.do';
+							location.href = '/EduMIS/talk/user/sendList.do';
 							break;
 						case "receive":
 							//sendRequest("/EduMIS/talk/receiveList.do", true);
-							location.href = '/EduMIS/talk/recvList.do';
+							location.href = '/EduMIS/talk/user/recvList.do';
 							break;
 						case "basket":
-							location.href = '/EduMIS/talk/talkTrash.do';
+							location.href = '/EduMIS/talk/user/talkTrash.do';
 							//sendRequest("/EduMIS/talk/receiveList.do", true);
 							break;
 						}
@@ -98,7 +98,7 @@
 									<option value="basket">휴지통</option>
 								</select>
 								
-								<form action="/EduMIS/talk/checkDelete.do">
+								<form action="/EduMIS/talk/user/checkDelete.do">
 								<input type="hidden" name = "type" value="send_del" />
 								<input type="submit"  style="width:50px; height:30px;" class="btn btn-txt txt-del-s btn-blue"  value="삭제" />
 								<table style="width: 100%" border="1" class="table-board">
@@ -121,7 +121,7 @@
 									</c:forEach>
 								</table>
 								</form>
-								<form action="/EduMIS/talk/searchTalk2.do"
+								<form action="/EduMIS/talk/user/searchTalk2.do"
 									style="padding-left: 300px;">
 									<select name="searchType">
 										<option value="content" selected="selected">제목</option>

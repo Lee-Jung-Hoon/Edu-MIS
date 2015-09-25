@@ -117,14 +117,14 @@ tbody td:last-child, thead th:last-child {
 						switch (param) {
 						case "send":
 							//sendRequest("/EduMIS/talk/sendList.do", true);
-							location.href = '/EduMIS/talk/sendList.do';
+							location.href = '/EduMIS/talk/user/sendList.do';
 							break;
 						case "receive":
 							//sendRequest("/EduMIS/talk/receiveList.do", true);
-							location.href = '/EduMIS/talk/recvList.do';
+							location.href = '/EduMIS/talk/user/recvList.do';
 							break;
 						case "basket":
-							location.href = '/EduMIS/talk/talkTrash.do';
+							location.href = '/EduMIS/talk/user/talkTrash.do';
 							//sendRequest("/EduMIS/talk/receiveList.do", true);
 							break;
 						}
@@ -162,7 +162,7 @@ tbody td:last-child, thead th:last-child {
 									<option value="basket">휴지통</option>
 								</select>
 
-								<form action="/EduMIS/talk/checkDelete.do">
+								<form action="/EduMIS/talk/user/checkDelete.do">
 								<input type="hidden" name = "type" value="receive_del" />
 								<input type="submit" style="width:50px; height:30px;" class="btn btn-txt txt-del-s btn-blue" value="삭제" />
 <!-- 									<table style="width: 100%" border="1" class="table-board"> -->
@@ -191,7 +191,7 @@ tbody td:last-child, thead th:last-child {
 														class="delCheck" name="delCheck" value="${list.no}" /></td>
 													<td>${list.name}</td>
 													<td><a style="width: 200px"
-														href="/EduMIS/talk/datilTalk.do?no=${list.no}&name=${list.name}&sendNo=${list.sendMemberNo}&receiveNo=${list.receiveMemberNo}&pNo=${list.pNo}">${list.content}</a></td>
+														href="/EduMIS/talk/user/datilTalk.do?no=${list.no}&name=${list.name}&sendNo=${list.sendMemberNo}&receiveNo=${list.receiveMemberNo}&pNo=${list.pNo}">${list.content}</a></td>
 													<td>${list.sendDate}</td>
 												</tr>
 											</c:forEach>
@@ -202,7 +202,7 @@ tbody td:last-child, thead th:last-child {
 							<!-- 페이징 -->
 							<!-- 페이징 -->
 							<!-- 페이징 -->
-							<form action="/EduMIS/talk/searchTalk.do" style=" padding-left: 300px; ">
+							<form action="/EduMIS/talk/user/searchTalk.do" style=" padding-left: 300px; ">
 									<select name="searchType">
 										<option value="content" selected="selected">제목</option>
 										<option value="send_member_no">보낸사람</option>
