@@ -4,7 +4,7 @@
 <mapper namespace="login.dao.LoginMapper">
 
 <select id="login" parameterType="LoginVO" resultType="LoginVO">
-			select id, name, pass, grade
+			select id, name, pass, grade, no
 			from t_member      	
 			where id = #{id} and pass = #{pass}
 </select>
