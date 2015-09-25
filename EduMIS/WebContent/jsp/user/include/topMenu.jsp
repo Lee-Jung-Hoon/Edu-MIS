@@ -103,34 +103,31 @@
 					</div>
 					<!-- 메시지 들어가는 부분 끝 -->
 	<ul>
-<!-- 		<li><a href="#"><img src="/EduMIS/images/icon-user.png" alt="" />마이페이지</a></li> -->
 		<c:choose>
 		<c:when test="${empty sessionScope.user}">
-			<li class="login">
-			<a href="#">로그인</a>
+			<li class="login"><a href="#">로그인</a>
+				<div class="login-form">
+					<form action="/EduMIS/user/login/login.do" method="POST">
+										<input type="text" placeholder="아이디" name="id" value="${cookie.loginId.value}" />
+										 <input type="password" placeholder="비밀번호" name="pass"/>
+										  <span><input type="checkbox" id="save" name="save" value="Y" 
+											<c:if test="${not empty cookie.loginId}">
+												checked="checked"
+						</c:if>
+						 />
+						<label for="save">아이디 저장하기</label></span>
+						<input type="submit" class="btn-submit" />
+					</form>
+					<button type="button" class="btn-close">닫기</button>
+				</div>
+			</li>
+			<li><a href="/EduMIS/user/member/joinForm.do">회원가입</a></li>
 			</c:when>
 			<c:otherwise>
 				<li><a href="#"><img src="/EduMIS/images/icon-user.png" alt="" />마이페이지</a></li>
-			<li>
-			<a href="/EduMIS/user/login/logout.do">로그아웃</a>
+			<li><a href="/EduMIS/user/login/logout.do">로그아웃</a> </li>
 			</c:otherwise>
 			</c:choose>
 			
-			<div class="login-form">
-				<form action="/EduMIS/user/login/login.do" method="POST">
-									<input type="text" placeholder="아이디" name="id" value="${cookie.loginId.value}" />
-									 <input type="password" placeholder="비밀번호" name="pass"/>
-									  <span><input type="checkbox" id="save" name="save" value="Y" 
-										<c:if test="${not empty cookie.loginId}">
-											checked="checked"
-					</c:if>
-					 />
-					<label for="save">아이디 저장하기</label></span>
-					<input type="submit" class="btn-submit" />
-				</form>
-				<button type="button" class="btn-close">닫기</button>
-			</div>
-		</li>
-		<li><a href="/EduMIS/user/member/joinForm.do">회원가입</a></li>
 	</ul>
 </header>
