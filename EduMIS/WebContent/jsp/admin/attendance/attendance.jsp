@@ -8,12 +8,13 @@
 <meta name="viewport" content="width=device-width">
 <title>출석</title>
 
-<link href="/EduMIS/css/layout.css" rel="stylesheet">
-<link href="/EduMIS/css/common.css" rel="stylesheet">
-<link href="/EduMIS/css/attstyle.css" rel="stylesheet">
 <link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
 <link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<%@ include file="/jsp/admin/include/common.jsp" %>	
+<link href="/EduMIS/css/layout.css" rel="stylesheet">
+<link href="/EduMIS/css/common.css" rel="stylesheet">
+<link href="/EduMIS/css/attstyle.css" rel="stylesheet">
 <script src="/EduMIS/jsp/admin/attendance/httprequest.js"></script>
 <script type="text/javascript" charset="utf-8"
 	src="/EduMIS/js/jquery.leanModal.min.js"></script>
@@ -25,29 +26,27 @@
 	var today = new Date();
 	var gAttList = null;
 	$(document).ready(function () {
-// 		var param = {mNo:"1"};
 		idDate('kCalendar');
 
-// 		sendRequest("/EduMIS/attendance/memAttList.do", null, kCalendar, "GET");
 	});
 	
-//Change the selector if needed
-// 	var $table = $('table.scroll'),
-// 	    $bodyCells = $table.find('tbody tr:first').children(),
-// 	    colWidth;
+// Change the selector if needed
+	var $table = $('table.scroll'),
+	    $bodyCells = $table.find('tbody tr:first').children(),
+	    colWidth;
 
-// 	// Adjust the width of thead cells when window resizes
-// 	$(window).resize(function() {
-// 	    // Get the tbody columns width array
-// 	    colWidth = $bodyCells.map(function() {
-// 	        return $(this).width();
-// 	    }).get();
+	// Adjust the width of thead cells when window resizes
+	$(window).resize(function() {
+	    // Get the tbody columns width array
+	    colWidth = $bodyCells.map(function() {
+	        return $(this).width();
+	    }).get();
 	    
-// 	    // Set the width of thead columns
-// 	    $table.find('thead tr').children().each(function(i, v) {
-// 	        $(v).width(colWidth[i]);
-// 	    });    
-// 	}).resize(); // Trigger resize handler
+	    // Set the width of thead columns
+	    $table.find('thead tr').children().each(function(i, v) {
+	        $(v).width(colWidth[i]);
+	    });    
+	}).resize(); // Trigger resize handler
 	
 	
 	
@@ -66,29 +65,32 @@
   var today = new Date();
 	function memberList() {
 	  var tr = "";
+	  var todayDate = null;
     var tableList = document.createElement("table");
-    $("table").attr("class","scroll");
+    $("#list").attr("class","scroll");
 		
 	  if (httpRequest.readyState == 4) {
 		  if (httpRequest.status == 200) {
-		    if(confirm("출석을 등록하시겠습니까?")){
 		      var cnt = 0;
-		      
+		      var attDate;
+
 		      for(var i = 0; i < gAttList.length; i++){
 		  			var type = null;
 		  			var attArr = gAttList[i].attInfo;
 
 		  			for (var key in attArr) {
-		  				var attDate = attArr[key].split(":")[1].split("-");
+		  				attDate = attArr[key].split(":")[1].split("-");
 		  					
 		  				if((Number(attDate[0]) == today.getFullYear()) && 
 		  				    (Number(attDate[1]) == today.getMonth() + 1) && 
 		  				    (Number(attDate[2]) == today.getDate())){
+		  				  	console.log(gAttList[i].mName+" : "+cnt);
 		  						cnt++;
 		  				}
 		  			}
 		  			
 		  		}
+		      todayDate = today.getFullYear()+"-"+"0"+(today.getMonth()+1)+"-"+today.getDate();
 					var chk = document.getElementById("chk");
 			    var listDIV = document.getElementById("memberList");
 			    var todayDIV = document.getElementById("today");
@@ -97,29 +99,30 @@
 		      
 			    var tableList = document.getElementById("list");
 			    chk.innerHTML = "";
+
 // 			    tableList.innerHTML = "";
 				
 			    if(cnt == gAttList.length){
-			      
 			      chk.innerHTML = "<form class='test' action='/EduMIS/attendance/AttUpdate.do'></form>";
 			    }
-			    else{		      
+			    else{
 				    chk.innerHTML = "<form class='test' action='/EduMIS/attendance/AttRegist.do'></form>";
 			    }
+			    tbody = document.createElement("tbody");
+			    tableList.innerHTML = "";
 			    for(var i=0; i < memList.length; i++) {
 			      var mem = memList[i];
 			      
-			      tr = document.createElement("tr");
-			      tr.innerHTML = "<td align = 'center'><span><input type = 'text' id = '" + mem.no  +  "' name = '" + mem.mName + "' value = '" + mem.mName + "' readonly = 'readonly' style = 'display: inline-block;'/>" + 
+			   		tr = document.createElement("tr");
+			      tr.innerHTML = "<td align = 'center'><span><input type = 'text' id = '" + mem.no  +  "' name = '" + mem.mName + "' value = '" + mem.mName + "' readonly = 'readonly' style = 'display: inline-block;'/><input type='hidden' value='"+todayDate+"' name='attDate' >" + 
 			       "<select id = '" + mem.no + "' name = '" + mem.no + "'><option>출석</option><option>지각</option><option>조퇴</option><option>결석</option></select><input type = 'hidden' id = '" + mem.no  +  "' name = 'no_" + mem.no + "' value = '" + mem.no + "' readonly = 'readonly' /></td>";
-			      
-			      tableList.appendChild(tr);
-// 						tr.innerHTML = "";
+			      tbody.appendChild(tr);
+			      tableList.appendChild(tbody);
 			    }
+// 			    $('.test').insertBefore("<div align='center'>"+today.getFullYear() + "년 " + (today.getMonth() + 1) + "월 " + today.getDate() + "일</div>");
 			    $('.test').append(tableList);
-			    $('.test').append("<input type='submit' value='등록' />");	
+			    $('.test').append("<div align='center'><input type='submit' value='등록' /></div>");
 		    }
-		  }
 		  }
 	  }
 	
@@ -256,14 +259,9 @@
 					// 출석 사항 뿌려주는 곳
 					// 여기에 월, 일, 마지막 일수까지 얻어온다음 for문 돌면서 attType
 					for(var j = 0; j < currentLastDate; j++){
-// 					  alert(j + "--" + attList[i].attDate.length)
-	// 					alert(attList[j].attType);
-
-// 					  console.log("--" + attList[i].attInfo)
-					  
 					  var type = null;
-					 
 					  var attArr = attList[i].attInfo;
+					  
 					  for (var key in attArr) {
 							var attDate = attArr[key].split(":")[1].split("-");
 							
@@ -295,7 +293,7 @@
 				
 				calendar += '			</tbody>';
 				calendar += '		</table>';
-				calendar += '		* 화면상태 표시 설명 => 출석:[○] 지각:[◎] 조퇴:[▲] 결석:[×] ';
+				calendar += '		<span class="attType">* 화면상태 표시 설명 => 출석:[○] 지각:[◎] 조퇴:[▲] 결석:[×] </span>';
 				kCalendar.innerHTML = calendar;
 			}
 		}
@@ -306,59 +304,19 @@
 <body class="page-join">
 	<div class="wrap">
 		<div class="wrap-inner">
-			<aside>
-				<h2>MENU</h2>
-				<ul>
-					<li><a href="#">과제 제출 게시판</a></li>
-					<li><a href="#">교육생관리</a></li>
-					<li><a href="#">조짜기</a></li>
-					<li><a href="#">메시지 히스토리</a></li>
-				</ul>
-			</aside>
+		<%@ include file="/jsp/admin/include/leftMenu.jsp" %>	
 			<div class="container">
-				<header class="header">
-					<button type="button" class="btn-menu">
-						<span></span> <span></span> <span></span> <span></span>
-					</button>
-					<!-- 메시지 들어가는 부분 -->
-					<div class="top-message">
-						<button type="button" class="btn-message">
-							<img src="/EduMIS/images/message.png" alt="" /> <span
-								class="count">1<!-- 메시지 개수 --></span>
-						</button>
-						<div class="message-layer">
-							<button type="button" class="btn-message-close">닫기</button>
-							<div class="message-frame">
-								<!-- 메시지 작업 시작영역 -->
-								<!--  메시지 작업 시작영역 끝 -->
-							</div>
-						</div>
-					</div>
-					<!-- 메시지 들어가는 부분 끝 -->
-					<ul>
-						<li><a href="#"><img src="/EduMIS/images/icon-user.png"
-								alt="" />마이페이지</a></li>
-						<li class="login"><a href="#">로그인</a>
-							<div class="login-form">
-								<form action="" method="">
-									<input type="text" placeholder="아이디" /> <input type="password"
-										placeholder="비밀번호" /> <span><input type="checkbox"
-										id="save" /><label for="save">아이디 저장하기</label></span> <input
-										type="submit" value="LOGIN" class="btn-submit" />
-								</form>
-								<button type="button" class="btn-close">닫기</button>
-							</div></li>
-						<li><a href="#">회원가입</a></li>
-					</ul>
-				</header>
+				<%@ include file="/jsp/admin/include/topMenu.jsp" %>
+				
 				<div class="container-inner">
 					<div class="content">
 						<!--  test-class 부분을  s-aaa 형식의 이름으로 클래스 잡아주세요  common 클래스 이름은 지우지 마세요 -->
 						<section class="test-class common">
 							<!--  작업부분 제목 써주세요 -->
 							<h2>출석부</h2>
+<!-- 							<input type="button" value="출석등록" id="modaltrigger" onclick="regAttend()" /> -->
 							<!-- 작업시작부분 div안에 클래스명 넣어서 작업 해 주세요 나머지 url부분은 추후 취합할 예정이니 일단 MENU 부분의 링크태그에 값 넣어서 작업 해주시면 됩니다. 게시판 담당하시는 분들은 추후 공통 클래스 드릴테니 일단 테이블로 작업 부탁드립니다. -->
-							 <a href="#loginmodal" onclick="regAttend()" id="modaltrigger">출석등록</a>
+							 <a href="#loginmodal" class="btn txt-modify btn-txt btn-blue" onclick="regAttend()" id="modaltrigger">출석등록</a>
 							<div id="kCalendar"></div>
 							<!--  작업완료 부분 -->
 						</section>
@@ -373,13 +331,13 @@
 	
 		<h2 align="center">출석등록</h2>
 		<!-- 등록 주소 재설정 -->
+		<div id = "today" align="center" ></div>
 		<div id="chk">
 
 			<br />
 			<div align="center" ></div>
 			<div id="memberList"></div>
 			
-			<div id = "today" align="center" ></div>
 			<br/>
 			<table id = "list">
 			</table>
