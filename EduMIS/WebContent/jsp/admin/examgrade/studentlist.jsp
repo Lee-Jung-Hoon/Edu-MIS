@@ -104,16 +104,3 @@ $(".studentdetail").colorbox({iframe:true, title: "학생별 상세정보",  wid
 		</c:forEach>
 	</tbody>
 </table>
-<br />
-<div class="search_box">
-	<form
-		action="/OurCommunity/bitcampboard/NoticeBitcampListBoardController"
-		method="get">
-		검색 구분 <select name="searchCategory" class="searchCategory">
-			<option value="1">제목</option>
-			<option value="2">내용</option>
-			<option value="3">작성자</option>
-		</select> <input type="text" name="search"> <input type="submit"
-			value="검색">
-	</form>
-</div>
