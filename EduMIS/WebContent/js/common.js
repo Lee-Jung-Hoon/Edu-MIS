@@ -1,31 +1,30 @@
+$('.btn-menu').on('click',function(){
+  if ($('body').hasClass('show-menu')) {
+    $('body').removeClass('show-menu').addClass('hide-menu');
+    $('#fp-nav').show();
+  } else {
+    $('body').removeClass('hide-menu').addClass('show-menu');
+    $('#fp-nav').hide();
+  }
+  return false;
+});
+$('.login a').on('click',function(){
+  $(this).next().css('opacity', 0).slideDown('slow').animate(
+    { opacity: 1 },
+    { queue: false, duration: 'slow' }
+  );
+  $('body').addClass('login-layer');
+  return false;
+});
+$('.login .btn-close').on('click',function(){
+  $(this).parent().fadeOut();
+  $('body').removeClass('login-layer');
+});
+
+/* ------------------------------------------ 메시지 영역 ------------------------------------------*/
+
+// 메시지 버튼 클릭시
 $(document).ready(function(){
-	$('.btn-menu').on('click',function(){
-		  if ($('body').hasClass('show-menu')) {
-		    $('body').removeClass('show-menu').addClass('hide-menu');
-		    $('#fp-nav').show();
-		  } else {
-		    $('body').removeClass('hide-menu').addClass('show-menu');
-		    $('#fp-nav').hide();
-		  }
-		  return false;
-		});
-		$('.login a').on('click',function(){
-		  $(this).next().css('opacity', 0).slideDown('slow').animate(
-		    { opacity: 1 },
-		    { queue: false, duration: 'slow' }
-		  );
-		  $('body').addClass('login-layer');
-		  return false;
-		});
-		$('.login .btn-close').on('click',function(){
-		  $(this).parent().fadeOut();
-		  $('body').removeClass('login-layer');
-		});
-		
-		/* ------------------------------------------ 메시지 영역 ------------------------------------------*/
-		
-		// 메시지 버튼 클릭시
-		
   $('.btn-message').on('click', function(){
     //리스트 추가 부분
     if ($('.btn-message').next().css('display') == 'none') {
@@ -88,11 +87,18 @@ $(document).ready(function(){
    $(this).parent().hide().next().show();
   });
   
-  //새로운 쪽지 + 버튼 클릭 시
-  $('.btn-plus').on('click', function(){
-   $('.layer-side').show();
-   $('.layer-side').find(':checkbox').prop('checked', false);
+//새로운 쪽지 + 버튼 클릭 시
+$('.btn-plus').on('click', function(){
+  $.ajax({
+    type : "get",
+    url : "/EduMIS/talk/memberList.do"
+  }).done (function (data) {
+    $("#memberUL").html(data);
+    // 쪽지추가 부분
+    $('.layer-side').show();
+    $('.layer-side').find(':checkbox').prop('checked', false);
   });
+});
   
   //새로운 쪽지 우측 레이어 체크박스 버튼 전체선택 클릭 시
   $('#list-all').change(function () {
