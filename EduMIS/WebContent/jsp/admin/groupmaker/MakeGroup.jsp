@@ -132,6 +132,7 @@ padding-bottom: 500px;
             //             ui.draggable.css('top', 100);
           }
         });
+    refreshValue();
     var send = 0;
     var httpParams ="";
     if (memberLoading != 100 && memberLoading != 0) {
@@ -163,13 +164,7 @@ padding-bottom: 500px;
     }
   }
   
-
-  function DropMember(num, val) {
-    memberLoading = 2;
-    httpRequest = new XMLHttpRequest();
-    httpRequest.onreadystatechange = responseSelect;
-    httpRequest.open("GET", "/EduMIS/makegroups/ajax", true);
-    httpRequest.send(null);
+  function refreshValue() {
     for (var i = 1; i <= gNum; i++) {
       if (i <= (gNum / 2)) {
         sLeader[i] = document.getElementById("techleader" + i).value;
@@ -178,6 +173,17 @@ padding-bottom: 500px;
         sLeader[i] = document.getElementById("subbleader" + i).value
       }
     }
+    
+  }
+  
+
+  function DropMember(num, val) {
+    memberLoading = 2;
+    httpRequest = new XMLHttpRequest();
+    httpRequest.onreadystatechange = responseSelect;
+    httpRequest.open("GET", "/EduMIS/makegroups/ajax", true);
+    httpRequest.send(null);
+    refreshValue();
 
     for (var i = 1; i <= gNum; i++) {
       if (i == num) {
