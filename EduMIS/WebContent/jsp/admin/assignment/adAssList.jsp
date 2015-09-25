@@ -56,7 +56,7 @@
 	}
 	</script>
 </head>
-<body class="page-join">
+<body class="page-join  btn-page">
 	<div class="wrap">
 		<div class="wrap-inner">
 				<%@ include file="/jsp/admin/include/leftMenu.jsp" %>	
@@ -95,21 +95,17 @@
 									</table>
 								</div>
 								<div>
-										<table class="tb-test2">
-										<tr>
-											<td>
-												<span><input type="button" value="과제 등록" onclick="moveRegist()""></span>	
-											</td>
-											</tr>
-											</table>
-										<div align="center" class="board-paging">
-											<button type="button" class="btn-paging btn-paging-prev" onclick="prePage()">이전</button>
-											<c:forEach var="i" begin = "1" end = "${pageIndex}">
-												<a href="/EduMIS/admin/assList.do?reqIndex=${i}" id = "a${i}" style="text-decoration: none;">${i}</a>
-											</c:forEach>
-											<button type="button" class="btn-paging btn-paging-next" onclick="nextPage()">다음</button>
-										</div>
+								<div style="text-align:right; margin:10px 0">
+									<input style="width:70px; height:40px; display:inline-block;" type="submit" onclick="moveRegist();" value="과제 등록" class="btn txt-assign-regist-s btn-txt btn-blue" />
 								</div>
+								<div align="center" class="board-paging">
+									<button type="button" class="btn-paging btn-paging-prev" onclick="prePage()">이전</button>
+									<c:forEach var="i" begin = "1" end = "${pageIndex}">
+										<a href="/EduMIS/admin/assList.do?reqIndex=${i}" id = "a${i}" style="text-decoration: none;">${i}</a>
+									</c:forEach>
+									<button type="button" class="btn-paging btn-paging-next" onclick="nextPage()">다음</button>
+								</div>
+						</div>
 							<!--  작업완료 부분 -->
 						</section>				
 					</div>

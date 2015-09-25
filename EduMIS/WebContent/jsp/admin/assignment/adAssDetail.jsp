@@ -60,22 +60,22 @@
 									</colgroup>
 									<tr>
 										<th>과제명</th>
-										<td>${detail.title}</td>
+										<td style="text-align: left; padding:0 10px; box-sizing:border-box;">${detail.title}</td>
 									</tr>
 									<tr>
 										<th>파일 다운로드</th>
-										  <td><a href='${pageContext.request.contextPath}/fileDownload?orgFileName=${detail.orgFileName}&realFileName=${detail.realFileName}'>${detail.orgFileName}</a></td>
+										 <td style="text-align: left; padding:0 10px; box-sizing:border-box;"><a href='${pageContext.request.contextPath}/fileDownload?orgFileName=${detail.orgFileName}&realFileName=${detail.realFileName}'>${detail.orgFileName}</a></td>
 									</tr>
 									<tr>
 										<th>과제 내용</th>
-										  <td>${detail.content}</td>
+										  <td style="text-align: left; padding:0 10px; box-sizing:border-box;">${detail.content}</td>
 									</tr>
 								</table>
 							</div>
 							<div class="btn-area" style="text-align:right; margin-bottom:20px;">
-								<input style="width:70px; height:40px; display:inline-block;" type="submit" value="과제 수정" onclick="modifyAss()" class="btn txt-modi-assign btn-txt btn-blue" />
-								<input style="width:70px; height:40px; display:inline-block;" type="reset" value="과제 삭제" onclick="deleteAss()" class="btn txt-del btn-txt btn-blue" />
-								<input style="width:70px; height:40px; display:inline-block;" type="reset" value="과제 목록" onclick="listAss()" class="btn txt-list btn-txt btn-blue" />
+								<input style="width:70px; height:40px; display:inline-block;" type="submit" value="과제 수정" onclick="modifyAss()" class="btn txt-assign-modify-s btn-txt btn-blue" />
+								<input style="width:70px; height:40px; display:inline-block;" type="reset" value="과제 삭제" onclick="deleteAss()" class="btn txt-assign-del-s btn-txt btn-blue" />
+								<input style="width:70px; height:40px; display:inline-block;" type="reset" value="과제 목록" onclick="listAss()" class="btn txt-assign-list-s btn-txt btn-blue" />
 							</div>
 							<!--
 							  <div>
