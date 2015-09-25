@@ -7,16 +7,21 @@
 	<link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>제출 과제 상세</title>
+<style>
+	.tb-test th{
+		text-align: center;
+	}
+</style>
 </head>
 <body class = "page-popup">
 	<br/>
 	<br/>
 	<h2 align="center" style = "font-weight: bold;">과제 제출 상세</h2>
 	<br/>
-	<table class = "table-common">
+	<table class="tb-test table-board" align="center">
 		<colgroup>
-			<col style = "width:25%"/>
-			<col style = "width:75%"/>
+			<col style = "width:15%"/>
+			<col style = "width:85%"/>
 		</colgroup>
 		<tr>
 			<th>과제 번호</th>
