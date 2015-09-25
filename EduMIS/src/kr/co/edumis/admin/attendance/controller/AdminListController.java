@@ -39,12 +39,15 @@ public class AdminListController extends HttpServlet{
 			if(i == memList.size() - 1){
 				json += "  {";
 				json += "	'no': "+"'"+mem.getNo()+"'"+",  ";
-				json += "	'mName': "+"'"+mem.getName()+"'";
+				json += "	'mName': "+"'"+mem.getName()+"'"+",  ";
+				json += "	'grade': "+"'"+mem.getGrade()+"'";
+				
 				json += "  } ";
 			} else{
 				json += "  {";
 				json += "	'no': "+"'"+mem.getNo()+"'"+",  ";
-				json += "	'mName': "+"'"+mem.getName()+"'";
+				json += "	'mName': "+"'"+mem.getName()+"'"+",  ";
+				json += "	'grade': "+"'"+mem.getGrade()+"'";
 				json += "  }, ";
 			}
 		}

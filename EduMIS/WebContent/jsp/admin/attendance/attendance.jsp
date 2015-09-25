@@ -70,17 +70,19 @@
 		  if (httpRequest.status == 200) {
 		      var cnt = 0;
 		      var attDate;
+			    var memList = eval(httpRequest.responseText);
 
 		      for(var i = 0; i < gAttList.length; i++){
 		  			var type = null;
 		  			var attArr = gAttList[i].attInfo;
+		  			var m = memList[i];
 
 		  			for (var key in attArr) {
 		  				attDate = attArr[key].split(":")[1].split("-");
 		  					
 		  				if((Number(attDate[0]) == today.getFullYear()) && 
 		  				    (Number(attDate[1]) == today.getMonth() + 1) && 
-		  				    (Number(attDate[2]) == today.getDate())){
+		  				    (Number(attDate[2]) == today.getDate()) && Number(m.grade) != 1){
 		  				  	console.log(gAttList[i].mName+" : "+cnt);
 		  						cnt++;
 		  				}
@@ -92,24 +94,29 @@
 			    var listDIV = document.getElementById("memberList");
 			    var todayDIV = document.getElementById("today");
 			    todayDIV.innerHTML = today.getFullYear() + "년 " + (today.getMonth() + 1) + "월 " + today.getDate() + "일";
-			    var memList = eval(httpRequest.responseText);
 		      
 			    var tableList = document.getElementById("list");
 			    chk.innerHTML = "";
 
 // 			    tableList.innerHTML = "";
-				
+					
+					var mode=0;
 			    if(cnt == gAttList.length){
 			      chk.innerHTML = "<form class='test' action='/EduMIS/attendance/AttUpdate.do'></form>";
+			    	mode=1;
 			    }
 			    else{
 				    chk.innerHTML = "<form class='test' action='/EduMIS/attendance/AttRegist.do'></form>";
+				    
 			    }
 			    tbody = document.createElement("tbody");
 			    tableList.innerHTML = "";
+			    
 			    for(var i=0; i < memList.length; i++) {
 			      var mem = memList[i];
-			      
+			      if(mem.grade == 1){
+			        continue;
+			      }
 			   		tr = document.createElement("tr");
 			      tr.innerHTML = "<td align = 'center'><span><input type = 'text' id = '" + mem.no  +  "' name = '" + mem.mName + "' value = '" + mem.mName + "' readonly = 'readonly' style = 'display: inline-block;'/><input type='hidden' value='"+todayDate+"' name='attDate' >" + 
 			       "<select id = '" + mem.no + "' name = '" + mem.no + "'><option>출석</option><option>지각</option><option>조퇴</option><option>결석</option></select><input type = 'hidden' id = '" + mem.no  +  "' name = 'no_" + mem.no + "' value = '" + mem.no + "' readonly = 'readonly' /></td>";
@@ -118,8 +125,13 @@
 			    }
 // 			    $('.test').insertBefore("<div align='center'>"+today.getFullYear() + "년 " + (today.getMonth() + 1) + "월 " + today.getDate() + "일</div>");
 			    $('.test').append(tableList);
-			    $('.test').append("<div align='center'><input type='submit' value='등록' /></div>");
-		    }
+			    if(mode == 1){
+			   	  $('.test').append("<div align='center'><input type='submit' value='수정' /></div>");
+			    }
+			    else{
+			      $('.test').append("<div align='center'><input type='submit' value='등록' /></div>");
+			    }
+			   }
 		  }
 	  }
 	

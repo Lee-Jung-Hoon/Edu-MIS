@@ -17,6 +17,10 @@ public interface AdminAttService {
 	
 	public void updateAtt(AdminAttVO att);
 	
+	public List<AdminAttVO> selectAttList2();
+	   
+	public List<AdminAttVO> selectAttendList(int attType);
+	
 	
 	
 }
