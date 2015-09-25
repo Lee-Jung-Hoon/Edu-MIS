@@ -220,7 +220,7 @@ padding-bottom: 500px;
                 + value[i].name + '</div>';
           }
         }
-        setTimeout(setName(value, selnum, selsub), 10000);
+        setTimeout(setName(value, selnum, selsub), 700);
 //         setName(value, selnum, selsub);
 
       }
@@ -396,7 +396,7 @@ padding-bottom: 500px;
 					<div class="content">
 					<section class="groups common">
 							<div id ="mybody">
-							<h2>인연나비- 어떤 인연이..?</h2>
+							<h2>조짜기- 어떤 인연이..?</h2>
 							전체 몇개의 조가 필요하신가요?
 	<select id="groupNumber" onchange="selectNumber(0)" style="height:30px; margin:0 10px;">
 		<option>선택하세요</option>
