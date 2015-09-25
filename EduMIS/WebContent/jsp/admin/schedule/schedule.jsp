@@ -47,16 +47,7 @@
 
 	 $(document).ready(function() {
 		  
-		  
-// 		  for (var i = 1; i <= lastday; i++) {
-// 		              $("#date" + startnum).html("<div class='date-wrap-frame' style='position:relative; width:100%; height:100%;'><div class='date-inner-frame' style='position:absolute; width:100px; height:50px; background-color:red; bottom:10px; left:50%; margin-left:-50px; text-align:center; line-height:50px'></div>"+i+"</div>");
-// 		              if (i == 13) {
-// 		                $("#date" + startnum).find('.date-inner-frame')
-// 		                .html("123");
-// 		              }
-// 		               startnum++;
-// 		            }
-		  
+
 		  
 		  
 		  
@@ -87,7 +78,13 @@
 			   // 					  $('.plan_form').animate(1000);
 
 		  });
+		  
+		  
+		  
+		  
 
+		  
+		  
 		  $('.cal_close').on('click', function() {
 			   // 					  $('.plan_form').animate({'left':'20%'},1000);
 			   $('.plan_form').animate({
@@ -96,37 +93,17 @@
 			   // 					  $('.plan_form').animate(1000);
 
 		  });
+		  
+		  
+		  
+		  
+		  
 
 	 });
 </script>
 
 
 
-
-
-
-
-
-
-<script type="text/javascript">
-	 $(document).ready(function() {
-		  $(".schedule-list tr").click(function() {
-			   $.get("/EduMIS/detailshedule.do", {
-				    no : "42"
-			   }, function(data) {
-				    $(".iframe").colorbox({
-					     iframe : true,
-					     width : "80%",
-					     height : "80%"
-				    });
-				    $("#resultDiv").html(data);
-			   }).fail(function() {
-				    alert("에러발생")
-			   })
-
-		  });
-	 });
-</script>
 
 
 
@@ -258,6 +235,68 @@
 									</div>
 								</form>
 								<button type="button" class="cal_close" size="30px">닫기</button>
+							</div>
+
+
+							<!------------------------------------------------------------------------------------------------------------------------------------ -->
+							
+							
+							
+							
+							
+							
+							
+							<!------------------------------------( 디테일 폼)----------------------------------------------------------------------- -->
+
+							<div class="detail_form"
+								style="position: fixed; top: 110px; left: 200%; width: 450px; padding: 30px; z-index: 99; background: #fff; box-shadow: 0px 0px 50px rgba(10,10,10,10); border-radius: 40px; " >
+								<div style="font-size: 20px;">일정 등록</div>
+								<hr />
+								<form action="/EduMIS/regschedule.do">
+									<table id="reg-Form" style="border-collapse: collapse;">
+										<tr>
+											<th>일 시</th>
+											<td style="width: 230px"><em id="d_startDate"></em> ~ <em id="d_endDate"></em> </td>
+											<th>중요도</th>
+											<td width="30px">
+											<em id="d_importance"></em></td>
+										</tr>
+										<tr>
+											<th>제 목</th>
+											<td colspan="3"><em id="d_title"></em></td>
+										</tr>
+										<tr>
+											<th>내 용</th>
+											<td colspan="3">
+											 <em id="d_content"></em> 
+										</td>
+										</tr>
+
+
+										<tr>
+											<th width="30%">장 소</th>
+											<td colspan="3">
+												<div id="search">
+												
+												<em id="d_place"></em>
+<!-- 													<input type="text" id="place" name="place"> <input -->
+<!-- 														type="button" value="장소 검색" onclick="search()" -->
+<!-- 														style="display: inline-block; width: 100px; height: 30px;"> -->
+<!-- 													<input type="hidden" id="latitude" name="latitude"> -->
+<!-- 													<input type="hidden" id="longitude" name="longitude"> -->
+												</div>
+												<div id="map" style="width: 100%; height: 200px;"></div>
+											</td>
+										</tr>
+										<tr>
+											<hr />
+											<script type="text/javascript"
+												src="//apis.daum.net/maps/maps3.js?apikey=1cd4d7ef46ee8be854cdc1de37076a25&libraries=services"></script>
+											</td>
+										</tr>
+
+									</table>
+									<br />
 							</div>
 
 
