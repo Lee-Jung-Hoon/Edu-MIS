@@ -13,6 +13,7 @@ import kr.co.edumis.admin.talk.vo.TalkVO;
 import kr.co.edumis.framework.Controller;
 import kr.co.edumis.framework.ModelAndView;
 import kr.co.edumis.framework.RequestMapping;
+import kr.co.edumis.user.login.vo.LoginVO;
 import kr.co.edumis.user.member.vo.MemberVO;
 
 @Controller
@@ -28,7 +29,7 @@ public class TalkController {
 		ModelAndView mav = new ModelAndView("/jsp/admin/talk/receiveList.jsp");
 		try {
 			HttpSession session = req.getSession();
-			MemberTestVO member = (MemberTestVO)session.getAttribute("member");
+			LoginVO member = (LoginVO)session.getAttribute("admin");
 			
 			List<TalkVO> list = service.selectReList(member.getNo());
 			System.out.println("size" + list.size());
@@ -83,16 +84,15 @@ public class TalkController {
 		System.out.println("1");
 
 		// 임시
-		HttpSession hs = req.getSession();
-		MemberVO mvo = new MemberVO();
-		mvo.setNo("3");
-		hs.setAttribute("user", mvo);
+//		MemberVO mvo = new MemberVO();
+//		mvo.setNo("3");
+//		hs.setAttribute("user", mvo);
 
-		// MemberVO mvo = (MemberVO)hs.getAttribute("user");
-		int no = Integer.parseInt(mvo.getNo());
+		HttpSession session = req.getSession();
+		LoginVO member = (LoginVO)session.getAttribute("admin");
 
 		try {
-			List<TalkVO> list = service.selectReceiveTalkList(no);
+			List<TalkVO> list = service.selectReceiveTalkList(member.getNo());
 			System.out.println("2");
 			mav.addObject("list", list);
 			for (TalkVO talk : list) {
@@ -204,13 +204,11 @@ public class TalkController {
 	public ModelAndView SendTalkList(HttpServletRequest req, HttpServletResponse res) {
 		ModelAndView mav = new ModelAndView();
 
-		HttpSession hs = req.getSession();
-		MemberVO mvo = (MemberVO) hs.getAttribute("user");
-
-		int no = Integer.parseInt(mvo.getNo());
+		HttpSession session = req.getSession();
+		LoginVO member = (LoginVO)session.getAttribute("admin");
 
 		try {
-			List<TalkVO> list = service.selectSendTalkList(no);
+			List<TalkVO> list = service.selectSendTalkList(member.getNo());
 			System.out.println(list.size());
 			mav.addObject("list", list);
 
@@ -289,10 +287,10 @@ public class TalkController {
 		String type = req.getParameter("searchType");
 		String text = req.getParameter("searchTalk");
 
-		HttpSession hs = req.getSession();
-		MemberVO mvo = (MemberVO) hs.getAttribute("user");
+		HttpSession session = req.getSession();
+		LoginVO member = (LoginVO)session.getAttribute("admin");
 
-		int no = Integer.parseInt(mvo.getNo());
+		int no = member.getNo();
 
 		ModelAndView mav = new ModelAndView("/jsp/admin/talk/receiveHistory.jsp");
 		try {
@@ -322,10 +320,10 @@ public class TalkController {
 		String type = req.getParameter("searchType");
 		String text = req.getParameter("searchTalk");
 
-		HttpSession hs = req.getSession();
-		MemberVO mvo = (MemberVO) hs.getAttribute("user");
+		HttpSession session = req.getSession();
+		LoginVO member = (LoginVO)session.getAttribute("admin");
 
-		int no = Integer.parseInt(mvo.getNo());
+		int no = member.getNo();
 
 		ModelAndView mav = new ModelAndView("/jsp/admin/talk/sendHistory.jsp");
 		try {
@@ -354,10 +352,10 @@ public class TalkController {
 	public ModelAndView TalkTrash(HttpServletRequest req, HttpServletResponse res) {
 		ModelAndView mav = new ModelAndView();
 
-		HttpSession hs = req.getSession();
-		MemberVO mvo = (MemberVO) hs.getAttribute("user");
+		HttpSession session = req.getSession();
+		LoginVO member = (LoginVO)session.getAttribute("admin");
 
-		int no = Integer.parseInt(mvo.getNo());
+		int no = member.getNo();
 
 		try {
 			List<TalkVO> list = service.talkTrash(no);
