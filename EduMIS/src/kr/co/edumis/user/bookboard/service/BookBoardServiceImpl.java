@@ -1,6 +1,7 @@
 package kr.co.edumis.user.bookboard.service;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.co.edumis.user.bookboard.dao.BookBoardDAO;
 import kr.co.edumis.user.bookboard.vo.BookBoardVO;
@@ -27,6 +28,16 @@ public class BookBoardServiceImpl implements BookBoardService{
 	@Override
 	public BookBoardVO getDetail(int no) throws Exception {
 		return dao.detailBoard(no);
+	}
+
+	@Override
+	public void getDelete(int no) throws Exception {
+		dao.deleteBoard(no);
+	}
+
+	@Override
+	public List<BookBoardVO> searchBoard(Map<String, String> search) throws Exception {
+		return dao.searchBoard(search);
 	}
 
 	

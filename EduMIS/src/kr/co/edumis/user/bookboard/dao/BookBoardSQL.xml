@@ -3,6 +3,12 @@
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="bookboard.dao.BoardMapper">
 
+
+	<delete id="deleteBoard" parameterType="Integer">
+			delete t_book_board
+			where no=#{no}
+	</delete>
+
 	<insert id="insertBoard" parameterType="bookBoardVO" >
 		insert into t_book_board(
 			no,
@@ -22,7 +28,6 @@
  			#{filePath}
 			)
 	</insert>
-	
 	<select id="selectBoard" resultType="bookBoardVO">
 		select 
 		no,
@@ -35,13 +40,37 @@
 	
 	<select id="detailBoard" parameterType="Integer" resultType="bookBoardVO">
 		select
+		no,
 		title,
 		content,
-		FILE_PATH,
-		org_file_name
+		FILE_PATH as filePath,
+		org_file_name as orgFileName
 		from t_book_board
 		where no = #{no}
 	</select>
 	
+		<select id="searchBoard" parameterType="map" resultType="bookBoardVO">
+		select 
+		no,
+		id,
+		title,
+		to_char(reg_date, 'yyyy-mm-dd') as regDate 
+		from t_book_board
+		<where>
+     	 <choose>
+     	 	<when test="searchType == 'id'">
+     	 	id like '%' || #{searchWord} || '%'
+     	 	</when>
+     	 	<when test="searchType == 'title'">
+     	 	title like #{searchWord}
+     	 	</when>
+     	 	<when test="searchType == 'regDate'">
+     	 	regDate like #{regDate}
+     	 	</when>
+     	 	
+     	 </choose>
+    </where>
+		order by no desc
+	</select>
 	
 </mapper>
