@@ -7,7 +7,7 @@
 		<li><a href="/EduMIS/admin/commentList.do">교육생관리</a></li>
 		<li><a href="/EduMIS/jsp/admin/examgrade/exammain.jsp">성적관리</a></li>
 		<li><a href="/EduMIS/jsp/admin/attendance/attendance.jsp">출석부</a></li>
-		<li><a href="/EduMIS/jsp/admin/attend/attend.jsp">출석통계</a></li>
+		<li><a href="/EduMIS/attend/attend.do">출석통계</a></li>
 		<li><a href="/EduMIS/makegroups/result.do">조 현황보기</a></li>
 		<li><a href="/EduMIS/jsp/admin/groupmaker/MakeGroup.jsp">인연나비 조만들기</a></li>
 		<li><a href="/EduMIS/jsp/admin/schedule/schedule.jsp">스케줄</a></li>
