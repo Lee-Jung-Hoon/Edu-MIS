@@ -150,9 +150,14 @@ public class BookBoardController {
 			ModelAndView mav = new ModelAndView("/jsp/user/bookboard/list.jsp");
 			
 			Map<String, String> param = new HashMap<String, String>();
+			
 			param.put("searchType", req.getParameter("choice"));
+			if("searchType".equals("no")) {
+				Integer.parseInt(req.getParameter("search"));
+			}
 			param.put("searchWord", req.getParameter("search"));
-			 
+			
+			
 			List<BookBoardVO> list = service.searchBoard(param);
 			
 			mav.addObject("board", list);
