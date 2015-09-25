@@ -70,14 +70,14 @@
 						switch (param) {
 						case "send":
 							//sendRequest("/EduMIS/talk/sendList.do", true);
-							location.href = '/EduMIS/talk/sendList.do';
+							location.href = '/EduMIS/talk/user/sendList.do';
 							break;
 						case "receive":
 							//sendRequest("/EduMIS/talk/receiveList.do", true);
-							location.href = '/EduMIS/talk/recvList.do';
+							location.href = '/EduMIS/talk/user/recvList.do';
 							break;
 						case "trash":
-							location.href = '/EduMIS/talk/trashList.do';
+							location.href = '/EduMIS/talk/user/trashList.do';
 							//sendRequest("/EduMIS/talk/receiveList.do", true);
 							break;
 						}
@@ -97,10 +97,10 @@
 			    f.delCheck.value = ckVal;
 					switch(type) {
 					case 1:
-					  f.action = "/EduMIS/talk/realDelete.do";
+					  f.action = "/EduMIS/talk/user/realDelete.do";
 					  break;
 					case 2:
-					  f.action = "/EduMIS/talk/reviveTalk.do";
+					  f.action = "/EduMIS/talk/user/reviveTalk.do";
 					  break;
 					}				
 					f.submit();
