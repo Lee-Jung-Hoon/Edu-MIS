@@ -40,8 +40,7 @@ public class AdminListController extends HttpServlet{
 				json += "  {";
 				json += "	'no': "+"'"+mem.getNo()+"'"+",  ";
 				json += "	'mName': "+"'"+mem.getName()+"'"+",  ";
-				json += "	'grade': "+"'"+mem.getGrade()+"'";
-				
+				json += "	'grade': "+"'"+mem.getGrade()+"'";				
 				json += "  } ";
 			} else{
 				json += "  {";
