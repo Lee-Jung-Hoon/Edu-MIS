@@ -9,7 +9,10 @@
 <meta name="viewport" content="width=device-width">
 <title>조장 추천 게시판</title>
 
-	<%@ include file="/jsp/user/include/common.jsp" %>	
+<link href="http://fonts.googleapis.com/earlyaccess/jejuhallasan.css"
+	rel="stylesheet" type="text/css" />
+	<%@ include file="/jsp/admin/include/common.jsp" %>	
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
