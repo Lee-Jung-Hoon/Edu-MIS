@@ -47,7 +47,8 @@ public class AdminAttController extends HttpServlet{
 
 			json += "  {";
 			json += "	'no': '" + mem.getNo() + "', ";
-			json += "	'mName': "+"'"+mem.getName() + "' ";
+			json += "	'mName': "+"'"+mem.getName() + "', ";
+			json += "	'grade': "+"'"+mem.getGrade() + "'";
 
 			List<AdminAttVO> attMemList = service.selectAttMemList(mem.getNo());
 			for(int j = 0; j < attMemList.size(); j++) {
