@@ -49,10 +49,8 @@
 	<!-- 정보를 수정하는 쿼리 쿼리 -->
 	
 			<update id="modifySchedule"  parameterType="ScheduleVO">
-			
-			update t_schedule(
-			set 
-		title 					= #{title},
+			update t_schedule
+			set  title 					= #{title},
 		content 		= #{content},
 		place 				= #{place},
  		start_date = #{startDate},
@@ -60,12 +58,10 @@
 		importance= #{importance},
 		latitude      = #{latitude},
 		longitude   = #{longitude}
-	   where 
-	   no = #{no}
+	   where no = #{no}
 	   
 	</update>
-	
-	
+
 	
 	
 	
