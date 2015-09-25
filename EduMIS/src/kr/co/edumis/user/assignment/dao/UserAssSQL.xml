@@ -37,7 +37,7 @@
  </select>
  
  <!-- 해야할 과제 상세 조회 -->
-  <select id="adminAssDetail" parameterType="integer" resultType="AdminAssVO">
+  <select id="adminAssDetail" parameterType="String" resultType="AdminAssVO">
     select no,
            title,
            content,
@@ -73,7 +73,7 @@ insert into t_user_assignment_board(
 </insert>
 
 <!-- 내가 제출한 과제 조회 -->
-<select id="userAssDetail" parameterType="integer" resultType="UserAssVO">
+<select id="userAssDetail" parameterType="map" resultType="UserAssVO">
   select id,
          name,
          no,
@@ -82,7 +82,7 @@ insert into t_user_assignment_board(
          real_File_Name as realFileName,
          file_Path as filePath
     from t_user_assignment_board
-    where no =#{no}
+    where no =#{no} and id=#{id}
 </select>
 
 <!-- 내가 제출한 과제 수정 -->

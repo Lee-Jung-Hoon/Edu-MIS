@@ -14,10 +14,10 @@ public interface UserAssService {
 	public void registAssignment(UserAssVO userass) throws Exception;
 	
 	//과제내용- 상세조회
-	public AdminAssVO admdetail(int no) throws Exception;
+	public AdminAssVO admdetail(String no) throws Exception;
 	
 	//제출한 과제 상세조회
-	public UserAssVO userdetail(int no)throws Exception;
+	public UserAssVO userdetail(Map<String, String> param)throws Exception;
 	
 	//과제 수정
 	public void updateUserAss(UserAssVO userass)throws Exception;

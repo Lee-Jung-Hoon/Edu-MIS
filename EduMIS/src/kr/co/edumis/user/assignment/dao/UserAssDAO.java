@@ -24,15 +24,15 @@ public class UserAssDAO {
 		return list;
 	}
 	
-	public AdminAssVO selectDetailAssignment(int no) throws Exception{
+	public AdminAssVO selectDetailAssignment(String no) throws Exception{
 		return sqls.selectOne("userAssMapper.adminAssDetail", no);
 	}
 	public void registAssignment(UserAssVO userass) throws Exception{
 		sqls.insert("userAssMapper.assRegist", userass);
 		sqls.commit();
 	}
-	public UserAssVO userdetail(int no)throws Exception{
-		return sqls.selectOne("userAssMapper.userAssDetail",no);
+	public UserAssVO userdetail(Map<String, String> param)throws Exception{
+		return sqls.selectOne("userAssMapper.userAssDetail",param);
 	}
 	
 	public void updateUserAss(UserAssVO userass)throws Exception{
