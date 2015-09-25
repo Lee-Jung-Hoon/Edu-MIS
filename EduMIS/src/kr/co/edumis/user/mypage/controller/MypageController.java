@@ -100,8 +100,18 @@ public class MypageController {
 			throws ServletException, IOException{
 		try{
 			ModelAndView mav = new ModelAndView("redirect:/EduMIS/user/mypage/detailMyinfo.do");
+			
+			String realPath = req.getServletContext().getRealPath("/memberFile");
+			
+			File file = new File(realPath);
+			if( !file.exists() ) {
+				System.out.println(file.mkdirs());
+			} else {
+				System.out.println("디렉토리 존재함..");
+			}
+			
 			MultipartRequest mult = new MultipartRequest(req,
-					"C:\\java73\\web-workspace\\EduMIS\\WebContent\\memberFile", 1024 * 1024 * 10, "UTF-8",
+					realPath, 1024 * 1024 * 10, "UTF-8",
 					new DefaultFileRenamePolicy());
 			
 			MypageVO mvo = new MypageVO();
