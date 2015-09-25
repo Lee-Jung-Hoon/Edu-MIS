@@ -36,9 +36,18 @@ public class BookBoardController {
 	public ModelAndView write(BookBoardVO board, HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 		
+			String realPath = req.getServletContext().getRealPath("/bookFile");
+		
+			File file = new File(realPath);
+			if( !file.exists() ) {
+				System.out.println(file.mkdirs());
+			} else {
+				System.out.println("디렉토리 존재함..");
+			}
+			
 			MultipartRequest multi = new MultipartRequest(
 		    		req,
-		    		"C:\\java73\\web-workspace\\EduMIS\\WebContent\\jsp\\user\\bookboard\\bookFile",
+		    		realPath,
 					1024*1024*10, 
 					"UTF-8",
 					new DefaultFileRenamePolicy() //파일의 이름이 같을 때 사용할 정책 설정
@@ -66,7 +75,7 @@ public class BookBoardController {
 		    	board.setContent(multi.getParameter("content"));
 		    	board.setOrgFileName(orgFileName);
 		    	board.setRealFileName(realFileName);
-		    	board.setFilePath("/jsp/user/bookboard/bookFile");
+		    	board.setFilePath("/bookFile");
 		    	}
 		    }
 		    

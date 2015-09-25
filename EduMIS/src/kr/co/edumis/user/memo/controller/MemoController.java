@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 import kr.co.edumis.framework.Controller;
 import kr.co.edumis.framework.ModelAndView;
 import kr.co.edumis.framework.RequestMapping;
-import kr.co.edumis.user.member.vo.MemberVO;
+import kr.co.edumis.user.login.vo.LoginVO;
 import kr.co.edumis.user.memo.service.MemoService;
 import kr.co.edumis.user.memo.service.MemoServiceImpl;
 import kr.co.edumis.user.memo.vo.MemoVO;
@@ -26,12 +26,12 @@ public class MemoController {
 	public ModelAndView openMemo(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		ModelAndView mav = new ModelAndView("/jsp/user/memo/memo.jsp");
 		HttpSession session = req.getSession();
-		MemberVO member = (MemberVO) session.getAttribute("user");
+		LoginVO member = (LoginVO) session.getAttribute("user");
 		ArrayList<MemoVO> list;
 		if (member == null) {
 			list = service.getMemoList("0");
 		} else {
-			list = service.getMemoList(member.getNo());
+			list = service.getMemoList(member.getNo() + "");
 		}
 		mav.addObject("list", list);
 
