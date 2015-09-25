@@ -57,8 +57,10 @@ insert into t_user_assignment_board(
    name,
    no,
    content,
+   <if test="orgFileName != null">
    org_File_Name,
    real_File_Name,
+   </if>
    file_Path
    )
    values(
@@ -66,8 +68,10 @@ insert into t_user_assignment_board(
    #{name},
    #{no},
    #{content},
+      <if test="orgFileName != null">
    #{orgFileName},
    #{realFileName},
+   </if>
    #{filePath}
    )
 </insert>
