@@ -57,7 +57,7 @@ $(document).ready(function() {
 	});
 });
 
-$(".studentdetail").colorbox({iframe:true, title: "학생별 상세정보",  width:"60%", height:"75%"});
+$(".studentdetail").colorbox({iframe:true, title: "학생별 상세정보",  width:"80%", height:"75%"});
 
 // var $table = $('table.scroll'),
 // $bodyCells = $table.find('tbody tr:first').children(),

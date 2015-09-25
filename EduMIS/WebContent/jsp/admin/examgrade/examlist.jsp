@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script>
 $(".examdetail").colorbox({iframe:true, title: "시험별 상세정보",  width:"80%", height:"90%"});
-$(".gradewrite").colorbox({iframe:true, title: "시험 성적 등록",  width:"16%", height:"45%"});
+$(".gradewrite").colorbox({iframe:true, title: "시험 성적 등록",  width:"30%", height:"65%"});
 $(".grademodify").colorbox({iframe:true, title: "시험 성적 수정",  width:"25%", height:"45%"});
 $(".excelExport").colorbox({iframe:true, title: "엑셀 저장",  width:"40%", height:"40%"});
 
