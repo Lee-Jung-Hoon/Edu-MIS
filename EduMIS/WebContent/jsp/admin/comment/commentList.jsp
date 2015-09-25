@@ -8,10 +8,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width">
 	<title>수강생 관리</title>
-	<link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
-	<link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
-	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	
+		<%@ include file="/jsp/admin/include/common.jsp" %>	
 	<style>
 	table.scroll {
     /* width: 100%; */ /* Optional */
@@ -89,7 +87,7 @@
 	        "/EduMIS/comment/delete.do",
 	        {no:no},
 	        function(data){
-	          if(confirm("삭제할거냐?")){
+	          if(confirm("삭제하시겠습니까?")){
 		          $("#" + no).remove();
 		          $("#" + no).remove();
 	          }

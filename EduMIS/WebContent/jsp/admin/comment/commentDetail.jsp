@@ -36,12 +36,12 @@
 		</tr>
 
 		<tr>
-			<th>잘린일시</th>
+			<th>중도포기 일시</th>
 			<td>${vo.dropDate}${vo.dropReason}</td>
 		</tr>
 		<tr>
 		<tr>
-			<th>잘린이유</th>
+			<th>중도포기 이유</th>
 			<td>${vo.dropReason}</td>
 		</tr>
 		<tr>
@@ -53,7 +53,7 @@
 		<td>${vo.email}@${vo.emailDomain}</td>
 		</tr>
 		<tr>
-			<th>이건또뭐냐.</th>
+			<th>기술조장</th>
 			<td>${vo.techLeader}</td>
 		</tr>
 		<tr>
