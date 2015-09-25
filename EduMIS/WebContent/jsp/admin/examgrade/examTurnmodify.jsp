@@ -13,6 +13,7 @@
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script>
   google.load('visualization', '1', {
     packages : [ 'corechart', 'bar' ]
@@ -49,43 +50,43 @@
   }
 
   // ajaxSubmit
-  function DeleteBoard() {
-    $.ajax({
-      type : 'get',
-      url : "/EduMIS/examgrade/ExamTurnDelete.do?no=" + "${board.no}",
-      success : function() {
-        alert("시험 정보가 삭제되었습니다.");
-        jsClose();
-      },
-      error : function(err) {
-        alert("삭제시 오류가 발생했습니다.");
-      }
-    });
-  }
-
-  function doModify(no) {
-    if (confirm("게시글을 수정하시겠습니까?")) {
-      				location.href = "${pageContext.request.contextPath}/examgrade/ExamTurnModify.do?no="+no;
+ function modifyTurn_submit() {
+  $.ajax({
+    type : 'get',
+    url : '${pageContext.request.contextPath}/examgrade/ExamTurnUpdate.do',
+    data : $("#examTurnmodifyForm").serialize(),
+    success : function(data) {
+      alert("시험 정보가 수정되었습니다.");
+      jsClose();
+    },
+    error : function(err) {
+      alert("수정시 오류가 발생했습니다.");
     }
-  }
+  });
+}
+  
+	$(function() {
+		$("#datepicker").datepicker();
+	});
 </script>
-<input type="button" value="수정" onclick="doModify(${board.no})">
-<input type="button" value="삭제" onclick="DeleteBoard()">
+<form name="examTurnmodifyForm" method="get" id="examTurnmodifyForm">
 <table class="table-board">
 	<tr>
+		<input type="hidden" value="${no}"/>
 		<th width="100px">시험제목</th>
-		<td>${board.title}</td>
+		<td align="left"><input size="170px" id="title" name="title" type="text" value="${board.title}"></td>
 	</tr>
 
 	<tr>
 		<th width="100px">시험일자</th>
-		<td>${board.regDate}</td>
+		<td align="left">${board.regDate}</td>
 	</tr>
 	<tr>
 		<th width="100px">시험내용</th>
-		<td>${board.content}</td>
+		<td align="left"><input size="170px" id="content" name="content" type="text" value="${board.content}"></td>
 	</tr>
 </table>
+</form>
 <br/>
 <table>
 	<tr>
@@ -98,4 +99,4 @@
 		</td>
 	</tr>
 </table>
-<br />
+	<a href="javascript:modifyTurn_submit()">성적 수정</a>
