@@ -9,15 +9,7 @@
 	<meta name="viewport" content="width=device-width">
 	<title>메인</title>
 	<%@ include file="/jsp/user/include/common.jsp" %>
-	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-	<script>
-	   function List() {
-		   if (confirm("목록으로 가시겠습니까?")) {
-				location.href = "${pageContext.request.contextPath}/user/assList.do";
-			}
-	}
 
-	</script>	
 </head>
 <body class="page-main btn-page">
 	<div class="wrap">
@@ -80,7 +72,7 @@
 							 </table>
 							 <div class="btn-area">
 									<span class="width50"><input type="submit" class="btn txt-send-assign btn-txt btn-blue" value="과제 제출" /></span>
-									<span class="width50"><input type="button" class="btn txt-list btn-txt btn-blue" value="목록" onclick="List();"/></span>
+									<span class="width50"><input type="button" class="btn txt-list btn-txt btn-blue" value="목록" onclick="location.href='${pageContext.request.contextPath}/user/assList.do'"/></span>
 								</div>
 							</form>
 					    </c:when>
@@ -104,7 +96,7 @@
 							 </table>
 							 <div class="btn-area">
 									<span class="width50"><input type="submit" class="btn txt-modi-assign btn-txt btn-blue" value="과제 수정" /></span>
-									<span class="width50"><input type="button" class="btn txt-list btn-txt btn-blue" value="목록" onclick="List();"/></span>
+									<span class="width50"><input type="button" class="btn txt-list btn-txt btn-blue" value="목록" onclick="location.href='${pageContext.request.contextPath}/user/assList.do'"/></span>
 								</div>
 							</form>
 						</c:otherwise>
