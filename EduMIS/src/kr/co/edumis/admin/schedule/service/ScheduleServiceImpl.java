@@ -24,6 +24,9 @@ public class ScheduleServiceImpl implements ScheduleService {
 	public ScheduleVO detailSchedule(ScheduleVO schedule) throws Exception {
 		return dao.detailSchedule(schedule);
 	}
+	public void modifySchedule(ScheduleVO schedule) {
+		dao.modifySchedule(schedule);
+	}
 	
 	
 }

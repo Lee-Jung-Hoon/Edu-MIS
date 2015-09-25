@@ -35,6 +35,19 @@ public class ScheduleController {
 			throw new ServletException(e);
 		}
 	}
+	//수정 하는 mav
+	@RequestMapping("/modifyschedule.do")
+	public ModelAndView modify (HttpServletRequest req, HttpServletResponse res)
+			throws ServletException, IOException {
+		
+		ScheduleVO schedule = (ScheduleVO) WebUtil.getFromParamToVO("kr.co.edumis.admin.schedule.vo.ScheduleVO",req);
+		try {
+			service.modifySchedule(schedule);
+			return new ModelAndView("redirect:/EduMIS/jsp/admin/schedule/schedule.jsp");
+		} catch (Exception e) {
+			throw new ServletException(e);
+		}
+	}
 	
 }
 
