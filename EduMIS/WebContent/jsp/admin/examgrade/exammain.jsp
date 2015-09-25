@@ -8,14 +8,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width">
 <title>메인</title>
-<link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
-<link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <link rel="stylesheet" href="/EduMIS/css/examgrade/colorbox.css" />
 <%@ include file="/jsp/admin/include/common.jsp"%>
-<script src="/EduMIS/js/examgrade/jquery.colorbox.js"></script>
 <style>
 	.iframe {
 		background-image:url('/EduMIS/images/txt-test-regist-s.png');
