@@ -100,7 +100,12 @@
 										<c:forEach var = "list" items ="${list}">
 											<tr>
 												<td><c:if test="${list.pass eq 'O'}"><a href="javascript:popUp('${list.pass}', '${detail.no}', '${list.id}');"
-													style = "text-decoration: none;">${list.name}</a></c:if></td>
+														style = "text-decoration: none;">${list.name}</a>
+														</c:if>
+														<c:if test="${list.pass eq 'X' }">
+														${list.name}
+														</c:if>
+												</td>
 												<td>${list.pass}</td>
 											</tr>
 										</c:forEach>
