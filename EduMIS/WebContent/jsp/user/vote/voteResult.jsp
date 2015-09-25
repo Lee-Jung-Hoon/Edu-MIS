@@ -107,8 +107,8 @@
 							<table class = "tb-test2">
 								<tr>
 									<td>
-									<span><input type="button" value="되돌아가기" onclick="moveVote()"
-									class="btn txt-back btn-txt btn-gray"/></span>
+									<span><a href="${pageContext.request.contextPath}/user/votelist.do"
+									class="btn txt-back btn-txt btn-gray"></a></span>
 									</td>
 								</tr>
 							</table>
