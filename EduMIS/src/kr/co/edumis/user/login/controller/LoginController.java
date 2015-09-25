@@ -22,7 +22,7 @@ public class LoginController {
 		service = new LoginServiceImpl();
 	}
 
-	@RequestMapping("/login/login.do")
+	@RequestMapping("/user/login/login.do")
 	public ModelAndView login(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		String id = req.getParameter("id");
 		System.out.println(id);
@@ -80,20 +80,20 @@ public class LoginController {
 		}
 	}
 	
-	@RequestMapping("/login/loginForm.do")
+	@RequestMapping("/user/login/loginForm.do")
 	public ModelAndView loginForm(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		ModelAndView mav = new ModelAndView("redirect:/EduMIS/jsp/user/login/loginForm.jsp");
 		return mav;
 	}
 	
-	@RequestMapping("/login/logout.do")
+	@RequestMapping("/user/login/logout.do")
 	public ModelAndView logout(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
 		try {
 			HttpSession session = req.getSession();
 			session.invalidate();
 			
-			ModelAndView mav = new ModelAndView("redirect:/EduMIS/jsp/user/login/loginForm.jsp");
+			ModelAndView mav = new ModelAndView("redirect:/EduMIS/jsp/user/main.jsp");
 			return mav;
 		} catch (Exception e) {
 			throw new ServletException(e);

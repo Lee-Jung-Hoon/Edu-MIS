@@ -104,18 +104,19 @@
 					<!-- 메시지 들어가는 부분 끝 -->
 	<ul>
 		<li><a href="#"><img src="/EduMIS/images/icon-user.png" alt="" />마이페이지</a></li>
-		<li class="login">
 		<c:choose>
 		<c:when test="${empty sessionScope.user}">
-			<a href="/EduMIS/user/login/login.do">로그인</a>
+			<li class="login">
+			<a href="#">로그인</a>
 			</c:when>
 			<c:otherwise>
+			<li>
 			<a href="/EduMIS/user/login/logout.do">로그아웃</a>
 			</c:otherwise>
 			</c:choose>
 			
 			<div class="login-form">
-				<form action="/EduMIS/login/login.do" method="POST">
+				<form action="/EduMIS/user/login/login.do" method="POST">
 									<input type="text" placeholder="아이디" name="id" value="${cookie.loginId.value}" />
 									 <input type="password" placeholder="비밀번호" name="pass"/>
 									  <span><input type="checkbox" id="save" name="save" value="Y" 
