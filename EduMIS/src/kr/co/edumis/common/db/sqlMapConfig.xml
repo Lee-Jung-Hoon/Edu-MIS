@@ -22,6 +22,7 @@
 		<typeAlias alias="LoginVO" type="kr.co.edumis.user.login.vo.LoginVO"/>
 		<typeAlias alias="VideoLectureVO" type="kr.co.edumis.user.videoLecture.vo.VideoLectureVO"/>
 		<typeAlias alias="lecCommentVO" type="kr.co.edumis.user.videoLecture.vo.LecCommentVO"/>
+		<typeAlias alias="AdminAttVO" type="kr.co.edumis.admin.attendance.vo.AdminAttVO"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -53,5 +54,6 @@
 		<mapper resource="kr/co/edumis/main/dao/MainSQL.xml"/>
 		<mapper resource="kr/co/edumis/user/videoLecture/dao/VideoLectureSQL.xml"/>
 		 <mapper resource="kr/co/edumis/user/videoLecture/dao/LecCommentSQL.xml"/>
+		 <mapper resource="kr/co/edumis/admin/attendance/dao/AdminAttSQL.xml"/>
 	</mappers>
 </configuration>
