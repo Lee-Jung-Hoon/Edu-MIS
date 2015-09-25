@@ -8,73 +8,19 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width">
 	<title>메모</title>
-	<link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
-	<link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
-	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<%@ include file="/jsp/user/include/common.jsp" %>
+		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="/EduMIS/template/httprequest.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 </head>
 <body class="page-memo btn-page">
 	<div class="wrap">
 		<div class="wrap-inner">
-			<aside>
-				<h2>MENU</h2>
-				<ul>
-					<li><a href="#">과제 제출 게시판</a></li>
-					<li><a href="#">교육생관리</a></li>
-					<li><a href="#">조짜기</a></li>
-					<li><a href="#">메시지 히스토리</a></li>
-				</ul>
-			</aside>
+			<%@ include file="/jsp/user/include/leftMenu.jsp" %>
 			<div class="container">
-				<header class="header">
-					<button type="button" class="btn-menu">
-						  <span></span>
-						  <span></span>
-						  <span></span>
-						  <span></span>
-					</button>
-					<!-- 메시지 들어가는 부분 -->
-					<div class="top-message">
-						<button type="button" class="btn-message">
-							<img src="/EduMIS/images/message.png" alt="" />
-							<span class="count">1<!-- 메시지 개수 --></span>
-							
-						</button>
-						<div class="message-layer">
-							<button type="button" class="btn-message-close">닫기</button>
-							<div class="message-frame">
-							<!-- 메시지 작업 시작영역 -->
-							<!--  메시지 작업 시작영역 끝 -->	
-							<a href="#" class="btn-send">
-							  <div class="circle">
-								<div class="envelope-top"></div>
-								<div class="envelope"></div>
-							  </div>
-							</a>
-							</div>
-						</div>
-					</div>
-					<!-- 메시지 들어가는 부분 끝 -->
-					<ul>
-						<li><a href="#"><img src="/EduMIS/images/icon-user.png" alt="" />마이페이지</a></li>
-						<li class="login">
-							<a href="#">로그인</a>
-							<div class="login-form">
-								<form action="" method="">
-									<input type="text"  placeholder="아이디" />
-									<input type="password"  placeholder="비밀번호" />
-									<span><input type="checkbox" id="save" /><label for="save">아이디 저장하기</label></span>
-									<input type="submit" class="btn-submit" />
-								</form>
-								<button type="button" class="btn-close">닫기</button>
-							</div>
-						</li>
-						<li><a href="#">회원가입</a></li>
-					</ul>
-				</header>
+				<%@ include file="/jsp/user/include/topMenu.jsp" %>
 				<div class="container-inner">
-					<button type="button" class="btn-memo btn txt-new-memo btn-txt btn-blue">메모생성</button>
+					<button type="button" class="btn-memo">메모생성</button>
 					<div class="inner-layer">
 						<!-- <div class="memo">
 							<textarea></textarea>
@@ -105,29 +51,29 @@
 
 
 var saveMemo = function(memoDiv) {
-		var content = memoDiv.find('textarea').val(); 
-		var posXVal = parseInt(memoDiv.css('left'));				
-		var posYVal = parseInt(memoDiv.css('top'));				
-		var idVal = memoDiv.attr("id");
-		
-			var params = {
-						posX: posXVal, 
-						posY: posYVal,
-						content : content,
-						id : idVal
-						};
-						
-			if(memoDiv.hasClass("saved")){		 // 업데이트
-					$.get("/EduMIS/memo/updateMemo.do",params,function(){
-					})
-			}
-			else{														 // 저장
-				$.get("/EduMIS/memo/insertMemo.do",params,function(data){
-				  memoDiv.attr("id",data);
-				})	
-			
-				memoDiv.addClass("saved");
-			}	
+var content = memoDiv.find('textarea').val(); 
+var posXVal = parseInt(memoDiv.css('left'));				
+var posYVal = parseInt(memoDiv.css('top'));				
+var idVal = memoDiv.attr("id");
+
+	var params = {
+				posX: posXVal, 
+				posY: posYVal,
+				content : content,
+				id : idVal
+				};
+				
+	if(memoDiv.hasClass("saved")){		 // 업데이트
+			$.get("/EduMIS/memo/updateMemo.do",params,function(){
+			})
+	}
+	else{														 // 저장
+		$.get("/EduMIS/memo/insertMemo.do",params,function(data){
+		  memoDiv.attr("id",data);
+		})	
+	
+		memoDiv.addClass("saved");
+	}	
 }
 	
 	$(document).ready(function(){
@@ -152,7 +98,8 @@ var saveMemo = function(memoDiv) {
 		
 		// 키보드 떼면 저장
 		$(".container-inner").on('keyup',".memo",function(){
-			saveMemo($(this));
+			mDiv = $(this);
+			saveMemo(mDiv);
 		})
 	})//ready종료
 
