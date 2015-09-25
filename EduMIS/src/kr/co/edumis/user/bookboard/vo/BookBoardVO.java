@@ -12,7 +12,7 @@ public class BookBoardVO {
 	private String search;
 	private String choice;
 	
-	
+	 
 	public String getChoice() {
 		return choice;
 	}

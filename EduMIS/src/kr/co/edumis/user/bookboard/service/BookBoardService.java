@@ -16,3 +16,4 @@ public interface BookBoardService {
 
 	public List<BookBoardVO> searchBoard(Map<String, String> search) throws Exception;
 }
+ 

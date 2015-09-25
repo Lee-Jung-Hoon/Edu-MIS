@@ -19,7 +19,6 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import kr.co.edumis.framework.Controller;
 import kr.co.edumis.framework.ModelAndView;
 import kr.co.edumis.framework.RequestMapping;
-import kr.co.edumis.framework.WebUtil;
 import kr.co.edumis.user.bookboard.service.BookBoardService;
 import kr.co.edumis.user.bookboard.service.BookBoardServiceImpl;
 import kr.co.edumis.user.bookboard.vo.BookBoardVO;
@@ -98,7 +97,7 @@ public class BookBoardController {
 			
 			List<BookBoardVO> list = service.getList();
 			
-			mav.addObject("list", list);
+			mav.addObject("board", list);
 			
 			if("W".equals(call)) {
 				mav.addObject("msg", "게시글이 등록되었습니다.");
@@ -148,15 +147,15 @@ public class BookBoardController {
 	public ModelAndView search(BookBoardVO board, HttpServletRequest req, HttpServletResponse res) 
 			throws ServletException, IOException {
 		try {
-			ModelAndView mav = new ModelAndView("/jsp/user/bookboard/searchList.jsp");
+			ModelAndView mav = new ModelAndView("/jsp/user/bookboard/list.jsp");
 			
 			Map<String, String> param = new HashMap<String, String>();
 			param.put("searchType", req.getParameter("choice"));
 			param.put("searchWord", req.getParameter("search"));
-			
+			 
 			List<BookBoardVO> list = service.searchBoard(param);
 			
-			mav.addObject("list", list);
+			mav.addObject("board", list);
 			
 			System.out.println(req.getParameter("search"));
 			

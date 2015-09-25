@@ -17,7 +17,7 @@ public class BookBoardServiceImpl implements BookBoardService{
 	@Override
 	public void registBoard(BookBoardVO board) throws Exception {
 		dao.insertBoard(board);
-	}
+	} 
 
 	@Override
 	public List<BookBoardVO> getList() throws Exception {
