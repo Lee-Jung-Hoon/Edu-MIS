@@ -27,6 +27,11 @@ public class ScheduleServiceImpl implements ScheduleService {
 	public void modifySchedule(ScheduleVO schedule) {
 		dao.modifySchedule(schedule);
 	}
+	@Override
+	public void delSchedule(ScheduleVO schedule) throws Exception {
+		dao.delSchedule(schedule);
+	}
+	
 	
 	
 }
