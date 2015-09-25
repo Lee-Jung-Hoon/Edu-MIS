@@ -76,7 +76,7 @@ public class UserAssController {
 //			System.out.println(list.get(0).getIsSubmit());
 //			System.out.println(list.get(1).getIsSubmit());
 			mav.addObject("thisPage", reqIndex);
-			mav.addObject("list", list);
+			mav.addObject("assList", list);
 
 			
 			
@@ -114,16 +114,20 @@ public class UserAssController {
 	@RequestMapping("/user/assDetail.do")
 	public ModelAndView userDetail(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
-		int no = Integer.parseInt(req.getParameter("no"));
+		String no = req.getParameter("no");
+		
+		Map<String, String> param = new HashMap<>();
+		String id = req.getParameter("id");
+		param.put("id", id);
+		param.put("no", no);
 		
 		ModelAndView mav = new ModelAndView("/jsp/user/assignment/userAssRegist.jsp");
 				
-		try {
-					
+		try {					
 					AdminAssVO admass = service.admdetail(no);
 					mav.addObject("ass", admass);
 
-					UserAssVO userass = service.userdetail(no);
+					UserAssVO userass = service.userdetail(param);
 					mav.addObject("userass", userass);
 
 				} catch (Exception e) {
@@ -169,6 +173,7 @@ public class UserAssController {
 	    
 	    try {
 			service.registAssignment(userass);
+			System.out.println(multi.getParameter("id"));
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
@@ -178,17 +183,22 @@ public class UserAssController {
 	}
 	
 	@RequestMapping("/user/assBfModify.do")
-	public ModelAndView userAssBfModify(int no)
+	public ModelAndView userAssBfModify(String no,HttpServletRequest req)
 			throws ServletException, IOException {
 		
 
 		ModelAndView mav = new ModelAndView("/jsp/user/assignment/userAssModify.jsp");
+		Map<String, String> param = new HashMap<>();
+		String id = req.getParameter("id");
+		param.put("id", id);
+		param.put("no", no);
+		
 
 		try {
 			AdminAssVO admass = service.admdetail(no);
 			mav.addObject("ass", admass);
 			
-			UserAssVO userass = service.userdetail(no);
+			UserAssVO userass = service.userdetail(param);
 			mav.addObject("userass", userass);
 			
 			

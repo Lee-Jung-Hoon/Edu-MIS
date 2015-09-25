@@ -19,7 +19,7 @@ public class UserAssServiceImpl implements UserAssService{
 		return uasdao.selectAssignment(param);
 	}
 	
-	public AdminAssVO admdetail(int no) throws Exception{
+	public AdminAssVO admdetail(String no) throws Exception{
 		
 		return uasdao.selectDetailAssignment(no);
 	}
@@ -28,8 +28,8 @@ public class UserAssServiceImpl implements UserAssService{
 		uasdao.registAssignment(userass); 
 	}
 	
-	public UserAssVO userdetail(int no)throws Exception{
-		return uasdao.userdetail(no);
+	public UserAssVO userdetail(Map<String, String> param)throws Exception{
+		return uasdao.userdetail(param);
 	}
 	
 	public void updateUserAss(UserAssVO userass)throws Exception{
