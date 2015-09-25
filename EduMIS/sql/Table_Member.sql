@@ -3,19 +3,18 @@ create table t_member(
    id varchar2(10) not null,
    name varchar2(30) not null,
    pass varchar2(30) not null,
-   pass_chk varchar2(30) not null,
-   year varchar2(4) not null,
-   month varchar2(4) not null,
-   day varchar2(4) not null,
-   post_no char(7) not null,  
-   basic_addr varchar2(100) not null,
-   detail_addr varchar2(100) not null,
-   phone1 char(3) not null,
-   phone2 char(4) not null,
-   phone3 char(4) not null,
-   email varchar2(30) not null,
-   email_domain varchar2(20) not null,
-   major varchar2(10) not null,
+   year varchar2(4) ,
+   month varchar2(4) ,
+   day varchar2(4) ,
+   post_no char(7) ,  
+   basic_addr varchar2(100) ,
+   detail_addr varchar2(100) ,
+   phone1 char(3) ,
+   phone2 char(4) ,
+   phone3 char(4) ,
+   email varchar2(30) ,
+   email_domain varchar2(20) ,
+   major varchar2(10) ,
    join_date date default sysdate,
    drop_check varchar2(3),
    drop_date date,
@@ -30,7 +29,4 @@ create table t_member(
 
 create sequence seq_member_no
 
-
-update t_member
-set grade=1
-where id = 'admin'
+insert into t_member (no, id, name, pass, grade) values (seq_member_no.nextVal, 'admin', '관리자', '1234', '1');
