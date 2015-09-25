@@ -38,7 +38,6 @@ public class MemberController {
 		member.setId(mult.getParameter("id"));
 		member.setName(mult.getParameter("name"));
 		member.setPass(mult.getParameter("pass"));
-		member.setPassChk(mult.getParameter("passChk"));
 		member.setYear(mult.getParameter("year"));
 		member.setMonth(mult.getParameter("month"));
 		member.setDay(mult.getParameter("day"));
