@@ -63,7 +63,7 @@ public class TalkController {
 		member.setGrade(req.getParameter("grade"));
 		
 		HttpSession session = req.getSession();
-		session.setAttribute("member", member);
+		session.setAttribute("admin", member);
 		
 		
 //		ModelAndView mav = new ModelAndView("/jsp/admin/main.jsp");
