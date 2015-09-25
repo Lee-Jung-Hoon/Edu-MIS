@@ -672,6 +672,22 @@ html, body {
 .txt-attan-regist-s {
 	background-image:url('../images/txt-attan-regist-s.png');
 }
+/* 시험등록(소) */
+.txt-test-regist-s {
+	background-image:url('../images/txt-test-regist-s.png');
+}
+/* 성적등록(소) */
+.txt-test-score-s {
+	background-image:url('../images/txt-test-score-s.png');
+}
+/* 시험별(소) */
+.txt-test-sort-s {
+	background-image:url('../images/txt-test-sort-s.png');
+}
+/* 학생별(소) */
+.txt-test-student-s {
+	background-image:url('../images/txt-test-student-s.png');
+}
 
 /* 버튼 이미지 텍스트 모음 끝*/
 .btn-txt {
