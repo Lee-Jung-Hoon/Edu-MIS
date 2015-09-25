@@ -13,6 +13,19 @@
 	<link href="http://fonts.googleapis.com/earlyaccess/jejuhallasan.css" rel="stylesheet" type="text/css" />	
 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script>
+
+	
+	function voteChk(){
+	  if($("input[name='id']:checked").length==0)
+	    {
+	    	alert("투표할 수강생을 선택해주세요");
+	   		return false;
+	    }
+	  return true;
+	};
+	
+	</script>
 </head>
 <body class="page-leader btn-page">
 	<div class="wrap">
@@ -78,7 +91,7 @@
 						<section class="leader common">
 
 							<h2>조장 추천 게시판</h2>
-							<form action="/EduMIS/user/voteInsert.do" method="POST">
+							<form action="/EduMIS/user/voteInsert.do" name="voteForm" method="POST" onsubmit="return voteChk()">
 								<div class="leader-frame">
 									<ul>
 									<c:forEach var="vote" items="${list}">
@@ -93,7 +106,7 @@
 										</c:forEach>
 									</ul>
 									<div class="btn-area">
-										<span class="width50"><input type="submit" class="btn txt-vote btn-txt btn-blue" value="투표하기" onclick="voteChk()" /></span>
+										<span class="width50"><input type="submit" class="btn txt-vote btn-txt btn-blue" value="투표하기" /></span>
 										<span class="width50"><a href="${pageContext.request.contextPath}/user/voteResult.do" class="btn txt-result btn-txt btn-blue">결과보기</a></span>
 									</div>
 								</div>
