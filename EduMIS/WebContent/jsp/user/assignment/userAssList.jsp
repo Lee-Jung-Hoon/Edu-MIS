@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.List"%>
+<%@page import="kr.co.edumis.admin.assignment.vo.AdminAssVO"%>
+<%@page import="kr.co.edumis.user.assignment.dao.UserAssDAO"%>
 
 <!doctype html>
 <html lang="ko">
@@ -13,10 +18,13 @@
 	<link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 	<script>
-	   function List() {
-		   if (confirm("목록으로 가시겠습니까?")) {
-				location.href = "${pageContext.request.contextPath}/user/assList.do";
-			}
+
+	function prePage() {
+	  location.href = "/EduMIS/user/assList.do?reqIndex=${thisPage-1}";
+	}
+	
+	function nextPage() {
+	  location.href = "/EduMIS/user/assList.do?reqIndex=${thisPage+1}";
 	}
 
 	</script>
@@ -97,11 +105,9 @@
 								</table>
 								<div class="board-paging">
 									<button type="button" class="btn-paging btn-paging-prev">이전</button>
-									<a href="#">1</a>
-									<a href="#" class="on">2</a>
-									<a href="#">3</a>
-									<a href="#">4</a>
-									<a href="#">5</a>
+									<c:forEach var="i" begin = "1" end = "${pageIndex}">
+												<a href="/EduMIS/user/assList.do?reqIndex=${i}" id = "a${i}" style="text-decoration: none;">${i}</a>
+											</c:forEach>
 									<button type="button" class="btn-paging btn-paging-next">다음</button>
 								</div>
 							</div>
