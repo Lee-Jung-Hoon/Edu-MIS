@@ -283,8 +283,8 @@ padding-bottom: 500px;
         var moveDrag = $("#draggable" + j);
         
       
-       moveDrag.animate( {"top":moveBox.offset().top, "left":moveBox.offset().left} ,1000 );
-//         moveDrag.offset(moveBox.offset());
+//        moveDrag.animate( {"top":moveBox.offset().top, "left":moveBox.offset().left} ,1000 );
+        moveDrag.offset(moveBox.offset());
 
         break;
       }
