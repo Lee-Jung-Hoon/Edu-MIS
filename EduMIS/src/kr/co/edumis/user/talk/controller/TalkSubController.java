@@ -17,7 +17,7 @@ import kr.co.edumis.admin.talk.vo.MemberTestVO;
 import kr.co.edumis.admin.talk.vo.TalkVO;
 import kr.co.edumis.user.login.vo.LoginVO;
 
-@WebServlet("/talk/sub")
+@WebServlet("/talk/user/sub")
 public class TalkSubController extends HttpServlet {
 	private TalkService service;
 
