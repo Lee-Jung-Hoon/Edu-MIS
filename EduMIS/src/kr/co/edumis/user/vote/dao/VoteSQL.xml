@@ -7,7 +7,7 @@
 	<!-- 투표 -->
 	<select id="vote" resultType="VoteVO">
 
-		select Id, Name
+		select Id, Name, real_file_name as realFileName
 		from t_member
 	</select>
 
