@@ -17,7 +17,7 @@ import kr.co.edumis.user.videoLecture.vo.VideoLectureVO;
 
 @Controller
 public class VideoLectureController {
-	final double page = 5;
+	final double page = 10;
 
 	private VideoLectureService service;
 	private LecCommentService lecService;
@@ -84,6 +84,41 @@ public class VideoLectureController {
 		lecComment.setComments(comments);
 
 		lecService.lecCommentRegist(lecComment);
+		return mav;
+	}
+
+	@RequestMapping("/user/lectureDelete.do")
+	public String lectureDelete(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		int no = Integer.parseInt(req.getParameter("no"));
+		service.lectureDelete(no);
+		return "redirect:/EduMIS/user/lectureList.do";
+	}
+
+	@RequestMapping("/user/lectureSelect.do")
+	public ModelAndView lectureSelect(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		ModelAndView mav = new ModelAndView("/jsp/user/videolecture/lectureModify.jsp");
+		int no = Integer.parseInt(req.getParameter("no"));
+		VideoLectureVO lecture = service.lectureSelect(no);
+		mav.addObject("lecture", lecture);
+		return mav;
+	}
+
+	@RequestMapping("/user/lectureModify.do")
+	public ModelAndView lectureModify(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		ModelAndView mav = new ModelAndView("/jsp/user/videolecture/lectureDetail.jsp");
+
+		int no = Integer.parseInt(req.getParameter("no"));
+		String title = req.getParameter("titme");
+		String contents = req.getParameter("contents");
+		String video = req.getParameter("video");
+
+		VideoLectureVO lecture = new VideoLectureVO();
+		lecture.setTitle(title);
+		lecture.setContents(contents);
+		lecture.setVideo(video);
+
+		service.lectureModify(no, lecture);
+		mav.addObject("lecture", lecture);
 		return mav;
 	}
 

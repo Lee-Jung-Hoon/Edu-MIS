@@ -1,7 +1,5 @@
 package kr.co.edumis.user.videoLecture.vo;
 
-import java.util.Date;
-
 public class VideoLectureVO {
 	private int no;
 	private String title;

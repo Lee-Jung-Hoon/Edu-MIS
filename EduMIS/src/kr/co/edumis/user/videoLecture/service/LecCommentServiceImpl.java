@@ -5,10 +5,10 @@ import java.util.List;
 import kr.co.edumis.user.videoLecture.dao.LecCommentDAO;
 import kr.co.edumis.user.videoLecture.vo.LecCommentVO;
 
-public class LecCommentServiceImpl implements LecCommentService{
+public class LecCommentServiceImpl implements LecCommentService {
 	private LecCommentDAO dao;
-	
-	public LecCommentServiceImpl(){
+
+	public LecCommentServiceImpl() {
 		dao = new LecCommentDAO();
 	}
 
@@ -23,4 +23,10 @@ public class LecCommentServiceImpl implements LecCommentService{
 		return list;
 	}
 
+	@Override
+	public void lecCommentDelete(int no) throws Exception {
+		dao.lecCommentDelete(no);
+		
+	}
+	
 }

@@ -10,4 +10,5 @@ public interface LecCommentService {
 
 	List<LecCommentVO> lecCommentList(int no) throws Exception;
 
+	void lecCommentDelete(int no) throws Exception;
 }

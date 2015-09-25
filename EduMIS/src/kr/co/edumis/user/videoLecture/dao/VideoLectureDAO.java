@@ -36,4 +36,23 @@ public class VideoLectureDAO {
 		return session.selectOne("videoLecture.dao.LectureMapper.lectureCount");
 	}
 
+	public void lectureDelete(int no) {
+		session.delete("videoLecture.dao.LectureMapper.lectureDelete",no);
+		session.commit();
+	}
+
+	public VideoLectureVO lectureSelect(int no) {
+		return session.selectOne("videoLecture.dao.LectureMapper.lectureSelect",no);
+	}
+
+	public void lectureModify(int no, VideoLectureVO lecture) {
+		Map<String, String> lec = new HashMap<String, String>();
+		lec.put("title",lecture.getTitle());
+		lec.put("contents",lecture.getContents());
+		lec.put("video",lecture.getVideo());
+		lec.put("no",no+"");		
+		session.update("videoLecture.dao.LectureMapper.lectureModify",lec);
+		session.commit();
+	}
+
 }

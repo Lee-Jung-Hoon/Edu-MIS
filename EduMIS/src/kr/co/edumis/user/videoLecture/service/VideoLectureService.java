@@ -14,5 +14,10 @@ public interface VideoLectureService {
 
 	int lectureCount() throws Exception;
 
+	void lectureDelete(int no) throws Exception;
+	
+	VideoLectureVO lectureSelect(int no) throws Exception;
+
+	void lectureModify(int no, VideoLectureVO lecture) throws Exception;
 
 }
