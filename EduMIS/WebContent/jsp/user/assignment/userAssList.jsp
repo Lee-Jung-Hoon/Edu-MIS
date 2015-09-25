@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width">
 	<title>메인</title>
-	<%@ include file="/jsp/admin/include/common.jsp" %>	
+	<%@ include file="/jsp/user/include/common.jsp" %>	
 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 	<script>
 
@@ -25,9 +25,9 @@
 <body class="page-main btn-page">
 	<div class="wrap">
 		<div class="wrap-inner">
-			<%@ include file="/jsp/admin/include/leftMenu.jsp" %>	
+			<%@ include file="/jsp/user/include/leftMenu.jsp" %>	
 			<div class="container">
-				<%@ include file="/jsp/admin/include/topMenu.jsp" %>
+				<%@ include file="/jsp/user/include/topMenu.jsp" %>
 
 				<div class="container-inner">
 					<div class="content">
