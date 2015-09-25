@@ -214,7 +214,7 @@
 											   $.get("/EduMIS/admin/listschedule.do", {year: y, month: nMonth, oneday: oneday}, function(data) {
 												    	var dataArr = eval("(" + data + ")");	
 												    	$(".schedule-list").html( "");
-												    	
+												    // 클릭과 동시에 DB의 값을 가져와서 <TR> 태그에 입력된다.
 												     for(var i = 0; i < dataArr.length; i++){
 												    		 $(".schedule-list").html( $(".schedule-list").html()+"<tr id="+dataArr[i].no+" class='d'><td>" + dataArr[i].importance + "</td><td>"+ dataArr[i].title +"</td><td>"+  dataArr[i].content +"</td></tr>");
 												    		
@@ -336,7 +336,144 @@
 					
 					
 					
-						});
+					
+					
+					
+					
+					
+					
+					
+					
+					// 등록후 등록된글 바로 보여주기 
+					//	__________________________________________________________________________________________________
+					 
+						
+						$("#regScheduleBtn").click(function () {
+					    var formData = $("#regscheduleForm").serialize();
+					    
+					    $.ajax({
+					      type : "GET",
+					      url : "/EduMIS/admin/regschedule",
+					      cache : false,
+					      data : formData,
+					      success : onSuccess,
+					      error : onError
+					    });
+					    
+					    $('.plan_form').animate({
+					      'left' : '200%'
+					    }, 1000);
+					    
+					  });
+						
+						
+						
+					  function onSuccess(json, status) {
+					    alert("스케줄 등록 완료"); 
+					    $(".schedule-list").html( "");
+	                $.get("/EduMIS/admin/listschedule.do", {year: y, month: nMonth, oneday: oneday}, function(data) {
+	                     var dataArr = eval("(" + data + ")"); 
+	                     $(".schedule-list").html( "");
+	                     
+	                    for(var i = 0; i < dataArr.length; i++){
+	                        $(".schedule-list").html( $(".schedule-list").html()+"<tr id="+dataArr[i].no+" class='d'><td>" + dataArr[i].importance + "</td><td>"+ dataArr[i].title +"</td><td>"+  dataArr[i].content +"</td></tr>");
+	                       
+	                        
+	                        // 각각의 list의 <tr>에 커서를 올려 놓을시 detail 창 발생
+	                        $(".schedule-list tr").mouseenter( function () {
+
+	                           
+	                           // id 값을 가지고 온다.
+	                           var searchNo = $(this).attr("id");
+	                           
+	                         
+	                           // jquery - Ajax  로  json 객체를 가지고 와서 detail에 뿌려준다.
+	                           $.get("/EduMIS/admin/detailschedule.do", {no: searchNo}, function(data1) {
+	                              
+	                           var dataArr = eval("(" + data1 + ")");  
+	                           
+	                           
+	                           $('#d_startDate').text(dataArr.startDate);
+	                           $('#d_content').text(dataArr.content);
+	                           $('#d_place').text(dataArr.place);
+	                           $('#d_endDate').text(dataArr.endDate);
+	                           $('#d_title').text(dataArr.title);
+	                           $('#d_importance').text(dataArr.importance);
+	                           
+	                           $('.detail_form').stop().animate({ 'left' : '38%'   }, 1);
+	                            
+	                         
+	                              
+	                     }).fail( function (){
+	                       alert("에러발생");
+	                     });
+	                           
+	                        }).mouseleave( function () {
+	                           
+	                          $('.detail_form').animate({
+	                           'left' : '200%'
+	                        }, 100);
+	                   });   
+	                        
+	                        // 각각의 list의 <tr>클릭시 modify 창 발생
+	                        $(".schedule-list tr").click( function () {
+	                           
+	                         $('.detail_form').attr("display","none");
+	                           
+	                           // id 값을 가지고 온다.
+	                           var searchNo = $(this).attr("id");
+	                           
+	                           
+	                           // jquery - Ajax  로  json 객체를 가지고 와서   등록폼에  수정을 할 수 있도록 뿌려준다.
+	                           $.get("/EduMIS/admin/detailschedule.do", {no: searchNo}, function(data2) {
+	                              
+	                              var dataArr = eval("(" + data2 + ")"); 
+	                              
+	                              $("input[name=m_startDate]").val(dataArr.startDate);
+	                              $("input[name=m_endDate]").val(dataArr.endDate);
+	                              $("input[name=m_title]").val(dataArr.title);
+	                              $("input[id=m_content]").val(dataArr.content);
+	                              $("input[name=m_place]").val(dataArr.place);
+	                              $("input[name=m_importance]").val(dataArr.importance);
+	                           
+	                              
+	                              $('.modify_form').animate({ 'left' : '38%'   }, 1);
+	                              
+	                              
+	                              
+	                            $('.cal_close').on('click', function() {
+	                                //             $('.plan_form').animate({'left':'20%'},1000);
+	                                $('.modify_form').animate({
+	                                   'left' : '200%'
+	                                }, 1000);
+	                                //             $('.plan_form').animate(1000);
+
+	                             });
+	                              
+	                              
+	                              
+	                           }).fail( function (){
+	                              alert("에러발생");
+	                           });
+	                           
+	                        });
+	                        
+	                       
+	                     }
+	               }).fail( function (){
+	                 alert("에러발생")
+	               })
+	         //__________________________________________________________________________________________________
+	             var index = $(this).index();
+					          
+  }
+					  
+					  
+					  function onError(data, status){alert("에러 입니다");}
+					  
+							});
+			
+					
 				
 				
 				
