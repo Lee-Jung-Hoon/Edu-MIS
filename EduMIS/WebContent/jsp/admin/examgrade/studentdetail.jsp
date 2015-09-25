@@ -26,7 +26,7 @@ function drawBasic() {
         vAxis: {
           title: '점수'
         },
-        width: 1200,
+        width: 900,
         height: 500
       };
 
@@ -57,7 +57,7 @@ function drawBasic() {
 		</tr>
 	</table>
 </div>
-<div align="center" style="width: 1200px; height: 500px" id="chart_div"></div>
+<div align="center" style="width: 900px; height: 500px" id="chart_div"></div>
 
 <script type="text/javascript" src="/EduMIS/js/common.js"></script>
 
