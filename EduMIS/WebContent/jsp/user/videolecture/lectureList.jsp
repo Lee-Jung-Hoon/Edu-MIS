@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
+<%@ include file="/jsp/admin/include/common.jsp" %>	
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	int paging = (int) request.getAttribute("paging");
@@ -11,7 +12,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width">
 <title>제목</title>
-<%@ include file="/jsp/admin/include/common.jsp" %>	
 <script>
   function moveRegist() {
     location.href = "${pageContext.request.contextPath}/jsp/user/videolecture/lectureRegist.jsp";
@@ -25,6 +25,7 @@
 			<div class="container">
 				<%@ include file="/jsp/admin/include/topMenu.jsp" %>
 				<div class="container-inner">
+
 					<div class="content">
 						<!--  test-class 부분을  s-aaa 형식의 이름으로 클래스 잡아주세요  common 클래스 이름은 지우지 마세요 -->
 						<section class="test-class common board"> <!--  작업부분 제목 써주세요 -->
