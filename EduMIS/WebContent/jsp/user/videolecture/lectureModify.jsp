@@ -11,48 +11,6 @@
 <link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<style type="text/css">
-table {
-	border: 0;
-	border-collapse: separate;
-	border-spacing: 0;
-}
-
-.tb-test {
-	width: 900px;
-	height: auto;
-	border: 1px;
-}
-
-.tb-test td, .tb-test th {
-	border-bottom: 1px solid #cccccc;
-}
-
-.tb-test th {
-	text-align: center;
-	width: 25%;
-}
-
-.tb-test tr {
-	text-align: center;
-	width: 25%;
-}
-
-.tb-test2 {
-	width: 900px;
-	height: auto;
-	text-align: right;
-}
-
-th {
-	text-align: center !important;
-	text-indent: 0 !important;
-}
-
-td {
-	text-align: left !important;
-}
-</style>
 <script>
   function ckForm() {
     if ($("#title").val() == "") {
@@ -79,8 +37,11 @@ td {
     location.href = "${pageContext.request.contextPath}/user/lectureList.do";
   }
 </script>
+<style>
+	th {text-align:center !important; text-indent:0 !important;}
+</style>
 </head>
-<body class="page-join">
+<body class="page-join btn-page">
 	<div class="wrap">
 		<div class="wrap-inner">
 			<aside>
@@ -126,6 +87,10 @@ td {
 								<input type="hidden" name="no" value="${lecture.no}" />
 								<div class="adAssRegist">
 									<table class="tb-test" align="center">
+										<colgroup>
+											<col style="width:20%" />
+											<col style="width:80%" />
+										</colgroup>
 										<tr>
 											<th>강의 제목</th>
 											<td class=""><input type="text" size="100%" name="title"

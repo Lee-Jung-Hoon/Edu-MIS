@@ -30,7 +30,7 @@
                       $("#cList").html()
                           + "<li>"
                           + commentList[index].id
-                          + "&nbsp;&nbsp;:&nbsp;&nbsp;"
+                          + "&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;"
                           + commentList[index].comments
                           + "<button class='btn btn-txt txt-del btn-blue btn-del deleteComment' type='button'" 
   	               + "name='comno' value='"+commentList[index].comno+"'>"
@@ -40,13 +40,14 @@
 
   $(document).ready(function() {
     $("#insertComment").click(function() {
-      
+
+
       if ($("#comments").val() == "") {
         alert("댓글을 입력해주세요")
         $("#comments").focus();
         return false;
       }
-      
+
       $.get("/EduMIS/user/LecCommentController", {
         //     id : "${user.id}",
         no : "${lecture.no}",
@@ -56,13 +57,13 @@
         alert("에러 발생");
       });
 
-      $("#comments").attr("value", "");
       $.get("/EduMIS/user/LecCommentList", {
         no : "${lecture.no}"
       }, function(data) {
         list(data);
       });
-
+      
+      $('#comments').val("");
     });
 
     $("#cList").on("click", ".deleteComment", function() {
@@ -171,8 +172,7 @@
 															</ul>
 															<div class="reply-regist-area">
 																<input type="text" placeholder="댓글등록" name="comments"
-																	id="comments"/> <input
-																	type="button"
+																	id="comments" /> <input type="button"
 																	class="btn btn-txt txt-regist-s btn-blue btn-regist"
 																	value="등록" id="insertComment" />
 															</div>
