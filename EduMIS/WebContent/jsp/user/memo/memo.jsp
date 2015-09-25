@@ -58,11 +58,11 @@ var idVal = memoDiv.attr("id");
 				};
 				
 	if(memoDiv.hasClass("saved")){		 // 업데이트
-			$.get("/EduMIS/user/memo/updateMemo.do",params,function(){
+			$.get("/EduMIS/memo/updateMemo.do",params,function(){
 			})
 	}
 	else{														 // 저장
-		$.get("/EduMIS/user/memo/insertMemo.do",params,function(data){
+		$.get("/EduMIS/memo/insertMemo.do",params,function(data){
 		  memoDiv.attr("id",data);
 		})	
 	
@@ -80,7 +80,7 @@ var idVal = memoDiv.attr("id");
 				var params={
 						id : idVal
 				}	
-				$.get("/EduMIS/user/memo/deleteMemo.do",params);
+				$.get("/EduMIS/memo/deleteMemo.do",params);
 			}			
 			$(this).parent().remove();
 		});
