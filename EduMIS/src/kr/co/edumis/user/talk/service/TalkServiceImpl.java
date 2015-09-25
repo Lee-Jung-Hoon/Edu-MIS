@@ -2,8 +2,8 @@ package kr.co.edumis.user.talk.service;
 
 import java.util.List;
 
-import kr.co.edumis.admin.talk.dao.TalkDAO;
-import kr.co.edumis.admin.talk.vo.TalkVO;
+import kr.co.edumis.user.talk.dao.TalkDAO;
+import kr.co.edumis.user.talk.vo.TalkVO;
 import kr.co.edumis.user.member.vo.MemberVO;
 
 public class TalkServiceImpl implements TalkService {

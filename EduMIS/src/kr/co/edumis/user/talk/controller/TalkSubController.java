@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import kr.co.edumis.admin.talk.service.TalkService;
-import kr.co.edumis.admin.talk.service.TalkServiceImpl;
-import kr.co.edumis.admin.talk.vo.MemberTestVO;
-import kr.co.edumis.admin.talk.vo.TalkVO;
+import kr.co.edumis.user.talk.service.TalkService;
+import kr.co.edumis.user.talk.service.TalkServiceImpl;
+import kr.co.edumis.user.talk.vo.MemberTestVO;
+import kr.co.edumis.user.talk.vo.TalkVO;
 import kr.co.edumis.user.login.vo.LoginVO;
 
 @WebServlet("/talk/user/sub")
