@@ -2,6 +2,7 @@ create table t_schedule(
 no number primary key,
 title varchar2(90),
 content varchar2(300),
+place varchar2(30),
 reg_date date default sysdate,
 start_date varchar2(30) ,
 end_date varchar2(30),
