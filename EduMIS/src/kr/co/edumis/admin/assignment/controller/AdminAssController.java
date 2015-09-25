@@ -85,7 +85,7 @@ public class AdminAssController {
 				realPath, 1024 * 1024 * 10, "UTF-8",
 				new DefaultFileRenamePolicy());
 		
-		Enumeration<String> e = mult.getFileNames();
+		Enumeration<String> e = mult.getFileNames();   
 
 		while (e.hasMoreElements()) {
 			String fileNmae = e.nextElement();
