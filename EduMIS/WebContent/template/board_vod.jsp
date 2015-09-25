@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width">
-	<title>강의영상 게시판</title>
+	<title>영상</title>
 	<link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
 	<link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
@@ -35,7 +35,7 @@
 					<!-- 메시지 들어가는 부분 -->
 					<div class="top-message">
 						<button type="button" class="btn-message">
-							<img src="/EduMIS/images/message.png" alt="" />
+							<img src=/EduMIS/message.png" alt="" />
 							<span class="count">1<!-- 메시지 개수 --></span>
 							
 						</button>
@@ -55,7 +55,7 @@
 					</div>
 					<!-- 메시지 들어가는 부분 끝 -->
 					<ul>
-						<li><a href="#"><img src="/EduMIS/images/icon-user.png" alt="" />마이페이지</a></li>
+						<li><a href="#"><img src=/EduMIS/icon-user.png" alt="" />마이페이지</a></li>
 						<li class="login">
 							<a href="#">로그인</a>
 							<div class="login-form">
@@ -74,7 +74,7 @@
 				<div class="container-inner">
 					<div class="content">
 						<section class="join common">
-							<h2>강의영상 게시판</h2>
+							<h2>학습 영상 게시판</h2>
 							<div class="table-common vod">
 								<form action="" method="">
 									<table>
@@ -84,27 +84,10 @@
 										</colgroup>
 										<tbody>
 											<tr>
-												<th>샘플제목</th>
-												<td></td>
-											</tr>
-											<tr>
-												<th>샘플제목</th>
-												<td></td>
-											</tr>
-											<tr>
-												<th>샘플제목</th>
-												<td></td>
-											</tr>
-											<tr>
-												<th>샘플제목</th>
-												<td></td>
-											</tr>
-											<tr>
-												<th>학습영상</th>
-												<td>
+												<td colspan="2" class="vod-frame-td">
 													<div class="vod-wrap-frame">
 														<div class="vod-left-frame">
-															<iframe width="500" height="281" src="https://www.youtube.com/embed/gBqFVEGN2xo?list=PL68HocmNHe998_R-5H7V_oz5Awdh2KZ1l" frameborder="0" allowfullscreen></iframe>
+															<iframe width="660" height="371" src="https://www.youtube.com/embed/gBqFVEGN2xo?list=PL68HocmNHe998_R-5H7V_oz5Awdh2KZ1l" frameborder="0" allowfullscreen></iframe>
 															<div class="vod-content">
 																<p>샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. 샘플 텍스트입니다. </p>
 															</div>

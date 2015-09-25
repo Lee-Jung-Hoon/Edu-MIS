@@ -1700,8 +1700,10 @@ section.board {
 	width:100%;
 	padding-top:20px;
 }
+/* 학습 영상 게시판 */
+
 .vod .vod-left-frame {
-	width:500px;
+	width:660px;
 	float:left;
 	overflow:hidden;
 }
@@ -1710,6 +1712,9 @@ section.board {
 	box-sizing:border-box;
 	border:1px solid #ddd;
 	background:#000;
+}
+.vod .vod-frame-td {
+	padding-left:0;
 }
 .vod .vod-intro {
 	float:right; 
@@ -1800,6 +1805,8 @@ section.board {
     background-image:url('../images/btn-arr-next.png');
     margin-left:20px;
 }
+/* 학습 영상 게시판 끝*/
+
 /* 메인 페이지 */
 .page-main .intro {
 	position:relative;
