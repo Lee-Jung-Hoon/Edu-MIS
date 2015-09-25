@@ -57,7 +57,7 @@ public class TalkController {
 	@RequestMapping("/talk/login.do")
 	public ModelAndView login(HttpServletRequest req) throws Exception {
 		req.setCharacterEncoding("UTF-8");
-		MemberTestVO member = new MemberTestVO();
+		LoginVO member = new LoginVO();
 		member.setNo(Integer.parseInt(req.getParameter("no")));
 		member.setName(req.getParameter("name"));
 		member.setGrade(req.getParameter("grade"));
