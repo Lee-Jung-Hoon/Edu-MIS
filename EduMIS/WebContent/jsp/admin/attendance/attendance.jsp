@@ -8,9 +8,6 @@
 <meta name="viewport" content="width=device-width">
 <title>출석</title>
 
-<link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
-<link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
-<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <%@ include file="/jsp/admin/include/common.jsp" %>	
 <link href="/EduMIS/css/layout.css" rel="stylesheet">
 <link href="/EduMIS/css/common.css" rel="stylesheet">
@@ -316,7 +313,7 @@
 							<h2>출석부</h2>
 <!-- 							<input type="button" value="출석등록" id="modaltrigger" onclick="regAttend()" /> -->
 							<!-- 작업시작부분 div안에 클래스명 넣어서 작업 해 주세요 나머지 url부분은 추후 취합할 예정이니 일단 MENU 부분의 링크태그에 값 넣어서 작업 해주시면 됩니다. 게시판 담당하시는 분들은 추후 공통 클래스 드릴테니 일단 테이블로 작업 부탁드립니다. -->
-							 <a href="#loginmodal" class="btn txt-modify btn-txt btn-blue" onclick="regAttend()" id="modaltrigger">출석등록</a>
+							 <a href="#loginmodal" style="display:inline-block; text-indent:-5000px; width:80px; height:40px;" class="btn txt-attan-regist-s btn-txt btn-blue" onclick="regAttend()" id="modaltrigger">출석등록</a>
 							<div id="kCalendar"></div>
 							<!--  작업완료 부분 -->
 						</section>
@@ -342,10 +339,7 @@
 			<table id = "list">
 			</table>
 			<br/>
-			
-		
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="/EduMIS/js/common.js"></script>
 </html>

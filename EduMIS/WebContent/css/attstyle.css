@@ -10,9 +10,6 @@
 #kCalendar .tbName {width: 50px;}
 #kCalendar table td {height:50px; vertical-align:middle;}
 #kCalendar table tr:first-child td, #kCalendar table tr:nth-child(2) td {height:auto;}
- 
-
-
 #kCalendar .sun {color: deeppink;}
 #kCalendar .mon {text-align: center;}
 #kCalendar .tue {text-align: center;}
@@ -22,3 +19,38 @@
 #kCalendar .sat {text-align: center; color: deepskyblue;}
 #kCalendar .test {display:none;}
 #kCalendar th, #kCalendar td {border-right:1px solid #ddd; border-bottom:1px solid #ddd;} 
+
+
+table.scroll {
+    width: 100%; Optional
+    border-collapse: collapse;
+    border-spacing: 0;
+/*     border: 2px solid black; */
+}
+
+table.scroll tbody,
+table.scroll thead { display: block; }
+
+thead tr th { 
+    height: 30px;
+    line-height: 30px;
+    text-align: left;
+}
+
+table.scroll tbody {
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* .scroll tbody { border-top: 2px solid black; } */
+
+.scroll tbody td, thead th {
+    width: 20%; Optional
+    border-right: 1px solid black;
+    white-space: nowrap;
+}
+
+.scroll tbody td:last-child, thead th:last-child {
+    border-right: none;
+}
