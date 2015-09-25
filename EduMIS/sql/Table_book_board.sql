@@ -10,7 +10,7 @@ real_File_Name varchar2(120),
 file_Path varchar(210),
 reg_date date default sysdate
 );
-
+ 
 create sequence seq_t_book_board_no;
 
 create table t_book_comment(
