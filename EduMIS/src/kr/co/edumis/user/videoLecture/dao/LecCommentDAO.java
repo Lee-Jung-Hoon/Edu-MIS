@@ -25,8 +25,8 @@ public class LecCommentDAO {
 		return list;
 	}
 
-	public void lecCommentDelete(int no) {
-		session.delete("videoLecture.dao.LectureMapper.lecCommentDelete", no);
+	public void lecCommentDelete(int comno) {
+		session.delete("videoLecture.dao.LectureMapper.lecCommentDelete", comno);
 		session.commit();
 	}
 }

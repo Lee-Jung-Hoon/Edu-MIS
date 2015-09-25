@@ -15,46 +15,13 @@
 <link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<style type="text/css">
-table {
-	border: 0;
-	border-collapse: separate;
-	border-spacing: 0;
-}
-
-.tb-test {
-	width: 900px;
-	height: auto;
-	border: 1px;
-}
-
-.tb-test td, .tb-test th {
-	border-bottom: 1px solid #cccccc;
-}
-
-.tb-test th {
-	text-align: center;
-	width: 25%;
-}
-
-.tb-test tr {
-	text-align: center;
-	width: 25%;
-}
-
-.tb-test2 {
-	width: 900px;
-	height: auto;
-	text-align: right;
-}
-</style>
 <script>
   function moveRegist() {
     location.href = "${pageContext.request.contextPath}/jsp/user/videolecture/lectureRegist.jsp";
   }
 </script>
 </head>
-<body class="page-join">
+<body class="page-join btn-page">
 	<div class="wrap">
 		<div class="wrap-inner">
 			<aside>
@@ -96,6 +63,11 @@ table {
 						<c:set var="index" value="0" />
 						<div class="adAssRegist">
 							<table class="tb-test table-board" align="center">
+								<colgroup>
+									<col style="width:10%" />
+									<col style="width:60%" />
+									<col style="width:30%" />
+								</colgroup>
 								<tr>
 									<th>NO</th>
 									<th>강의 제목</th>
@@ -114,27 +86,22 @@ table {
 							</table>
 						</div>
 						<div class="board-paging">
-								<button type="button" class="btn-paging btn-paging-prev">이전</button>
-								<c:forEach var="i" begin="1" end="${paging}">
-									<a href="/EduMIS/user/lectureList.do?pageNum=${i}">[${i}] </a>
-								</c:forEach>
-								<button type="button" class="btn-paging btn-paging-next">다음</button>
-							</div>
-						<!-- <div class="vod-paging" align="center">
-							<button type="button" class="btn-paging btn-paging-prev" >이전</button>
-							
+							<button type="button" class="btn-paging btn-paging-prev">이전</button>
 							<c:forEach var="i" begin="1" end="${paging}">
 								<a href="/EduMIS/user/lectureList.do?pageNum=${i}">[${i}] </a>
 							</c:forEach>
 							<button type="button" class="btn-paging btn-paging-next">다음</button>
-						</div> -->
-						
-						<table class="tb-test2">
-							<tr>
-								<td><span><input type="button" value="강의 등록"
-										onclick="moveRegist()""></span></td>
-							</tr>
-						</table>
+						</div>
+
+						<div class="btn-area" style="text-align:right">
+<%-- 							<c:if test="${user.id eq 'admin'}"> --%>
+								
+									<input type="button" style="display:inline-block; width:70px; height:40px;" class="btn btn-txt btn-blue txt-regist-s" value="강의 등록"
+											onclick="moveRegist()" />
+								
+<%-- 							</c:if> --%>
+
+						</div>
 					</div>
 					<!--  작업완료 부분 -->
 					</section>

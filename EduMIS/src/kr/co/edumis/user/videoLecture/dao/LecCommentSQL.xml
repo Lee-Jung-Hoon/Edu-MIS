@@ -4,17 +4,18 @@
 <mapper namespace="videoLecture.dao.LectureMapper">
 	<insert id="lecCommentRegist" parameterType="LecCommentVO">
 		insert into	t_lecComment(comno, no, id, comments)
-		values (seq_user_lecture_no.nextVal, #{no}, #{id}, #{comments})
+		values (seq_t_lecComment_comno.nextVal, #{no}, #{id}, #{comments})
 	</insert>
 
 	<select id="lecCommentList" resultType="LecCommentVO">
 		select comno, no, id, comments
 		from t_lecComment
 		where no =#{no}
+		order by comno desc
 	</select>
 	
 	<delete id="lecCommentDelete" parameterType="int">
 		delete t_lecComment 
-		where comno=#{no}
+		where comno=#{comno}
 	</delete>
 </mapper>

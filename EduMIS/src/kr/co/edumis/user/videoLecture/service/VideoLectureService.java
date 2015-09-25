@@ -18,6 +18,6 @@ public interface VideoLectureService {
 	
 	VideoLectureVO lectureSelect(int no) throws Exception;
 
-	void lectureModify(int no, VideoLectureVO lecture) throws Exception;
+	void lectureModify(VideoLectureVO lecture) throws Exception;
 
 }

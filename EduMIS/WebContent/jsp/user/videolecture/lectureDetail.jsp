@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width">
-<title>강의영상 게시판</title>
+<title>영상</title>
 <link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
 <link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
@@ -16,18 +16,37 @@
     location.href = "${pageContext.request.contextPath}/user/lectureList.do";
   }
 
-  var list = function() {
-    var list = eval(str);
-    $("#id").empty();
-    $("#comment").empty();
-    $.each(list, function(index, value) {
-      $("#id").append(list[index].id);
-      $("#comment").append(list[index].comments);
-    });
+  function list(str) {
+    var commentList = eval(str);
+    $("#cList").empty();
+    $
+        .each(
+            commentList,
+            function(index, value) {
+              console.log(commentList[index].comno);
+
+              $("#cList")
+                  .html(
+                      $("#cList").html()
+                          + "<li>"
+                          + commentList[index].id
+                          + "&nbsp;&nbsp;:&nbsp;&nbsp;"
+                          + commentList[index].comments
+                          + "<button class='btn btn-txt txt-del btn-blue btn-del deleteComment' type='button'" 
+  	               + "name='comno' value='"+commentList[index].comno+"'>"
+                          + "</button></li>");
+            });
   };
 
   $(document).ready(function() {
     $("#insertComment").click(function() {
+      
+      if ($("#comments").val() == "") {
+        alert("댓글을 입력해주세요")
+        $("#comments").focus();
+        return false;
+      }
+      
       $.get("/EduMIS/user/LecCommentController", {
         //     id : "${user.id}",
         no : "${lecture.no}",
@@ -37,20 +56,25 @@
         alert("에러 발생");
       });
 
+      $("#comments").attr("value", "");
       $.get("/EduMIS/user/LecCommentList", {
         no : "${lecture.no}"
-      }, list);
+      }, function(data) {
+        list(data);
+      });
 
     });
 
-    $("#deleteComment").click(function() {
+    $("#cList").on("click", ".deleteComment", function() {
       $.get("/EduMIS/user/LecCommentDelete", {
-        no : $(this).val()
-      })
+        comno : $(this).val()
+      });
 
       $.get("/EduMIS/user/LecCommentList", {
         no : "${lecture.no}"
-      }, list);
+      }, function(data) {
+        list(data);
+      });
 
     });
   });
@@ -114,6 +138,7 @@
 				<div class="container-inner">
 					<div class="content">
 						<section class="join common">
+							<h2>${lecture.no}강&nbsp;&nbsp;${lecture.title}</h2>
 							<div class="table-common vod">
 								<form action="" method="">
 									<table>
@@ -123,32 +148,31 @@
 										</colgroup>
 										<tbody>
 											<tr>
-												<th>${lecture.no}강</th>
-												<td>${lecture.title}</td>
-											</tr>
-
-											<tr>
-												<td colspan="2">
+												<td colspan="2" class="vod-frame-td">
 													<div class="vod-wrap-frame">
 														<div class="vod-left-frame">
-															<iframe width="500" height="281"
+															<iframe width="660" height="371"
 																src="https://www.youtube.com/embed/gBqFVEGN2xo?list=PL68HocmNHe998_R-5H7V_oz5Awdh2KZ1l"
 																frameborder="0" allowfullscreen></iframe>
+															<div class="vod-content">
+																<p>&nbsp;&nbsp;${lecture.contents}</p>
+															</div>
 														</div>
-														<br />
 														<div class="vod-intro">
-															<ul>
-																<c:forEach var="lecComment" items="${lecComment }">
+															<ul id="cList" style="height: 373px; overflow-y: auto;">
+																<c:forEach var="lecComment" items="${lecComment}">
 																	<li>${lecComment.id}&nbsp;&nbsp;:&nbsp;&nbsp;${lecComment.comments}
-																		<button class="btn btn-txt txt-del btn-blue btn-del"
-																			type="button" id="deleteComment"
+																		<button
+																			class="btn btn-txt txt-del btn-blue btn-del deleteComment"
+																			type="button" name="comno"
 																			value="${lecComment.comno}">삭제</button>
 																	</li>
 																</c:forEach>
 															</ul>
 															<div class="reply-regist-area">
 																<input type="text" placeholder="댓글등록" name="comments"
-																	id="comments" /> <input type="button"
+																	id="comments"/> <input
+																	type="button"
 																	class="btn btn-txt txt-regist-s btn-blue btn-regist"
 																	value="등록" id="insertComment" />
 															</div>
@@ -156,25 +180,19 @@
 													</div>
 												</td>
 											</tr>
-											<tr>
-												<th>강의 내용</th>
-												<td>
-													<div class="vod-content">
-														<p>${lecture.contents}</p>
-													</div>
-												</td>
-											</tr>
 										</tbody>
 									</table>
+									<%-- 									<c:if test="${user.id eq 'admin'}"> --%>
 									<div style="text-align: right; margin-top: 10px;">
 										<a
 											href="${pageContext.request.contextPath}/user/lectureSelect.do?no=${lecture.no}"
 											style="display: inline-block; width: 80px; height: 40px;"
 											class="btn btn-txt txt-edit btn-blue">수정</a> <a
-											href="${pageContext.request.contextPath}/user/lectureSelect.do?no=${lecture.no}"
+											href="${pageContext.request.contextPath}/user/lectureDelete.do?no=${lecture.no}"
 											style="display: inline-block; width: 80px; height: 40px;"
 											class="btn btn-txt txt-del btn-blue">삭제</a>
 									</div>
+									<%-- 									</c:if> --%>
 									<div class="btn-area">
 										<a
 											href="${pageContext.request.contextPath}/user/lectureList.do"
@@ -189,5 +207,5 @@
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="/EduMIS/js/common.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
 </html>

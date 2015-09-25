@@ -45,12 +45,12 @@ public class VideoLectureDAO {
 		return session.selectOne("videoLecture.dao.LectureMapper.lectureSelect",no);
 	}
 
-	public void lectureModify(int no, VideoLectureVO lecture) {
+	public void lectureModify(VideoLectureVO lecture) {
 		Map<String, String> lec = new HashMap<String, String>();
 		lec.put("title",lecture.getTitle());
 		lec.put("contents",lecture.getContents());
 		lec.put("video",lecture.getVideo());
-		lec.put("no",no+"");		
+		lec.put("no",lecture.getNo()+"");		
 		session.update("videoLecture.dao.LectureMapper.lectureModify",lec);
 		session.commit();
 	}
