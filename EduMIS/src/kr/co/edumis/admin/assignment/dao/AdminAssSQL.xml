@@ -70,6 +70,7 @@
 	
 	<select id="submitList" resultType="userAssVO">
 		select
+		id,
 		name,
 		no
 		from t_user_assignment_board

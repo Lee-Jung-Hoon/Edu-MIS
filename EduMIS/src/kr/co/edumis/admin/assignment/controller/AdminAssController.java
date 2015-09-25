@@ -52,7 +52,7 @@ public class AdminAssController {
 			boolean bool = false;
 			
 			for(UserAssVO uVO : subList) {
-				if(vo.getName().equals(uVO.getName()) && no.equals(String.valueOf(uVO.getNo()))){
+				if(vo.getId().equals(uVO.getId()) && no.equals(String.valueOf(uVO.getNo()))){
 					System.out.println("ddd : " + uVO.getNo());
 					bool = true;
 					break;
