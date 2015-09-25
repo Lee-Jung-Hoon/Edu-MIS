@@ -43,7 +43,6 @@
 	<update id="updateMemo" parameterType="MemoVO">
 		update t_memo
 		set
-			user_no = #{userNo},
 			content = #{content},
 			pos_x = #{posX},
 			pos_y = #{posY}
