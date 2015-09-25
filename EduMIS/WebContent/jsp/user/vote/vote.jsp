@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width">
 	<title>조장 추천 게시판</title>
-	<%@ include file="/jsp/admin/include/common.jsp" %>	
+	<%@ include file="/jsp/user/include/common.jsp" %>	
 	<script>
 
 	
