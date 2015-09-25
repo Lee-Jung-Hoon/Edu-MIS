@@ -41,8 +41,10 @@
 			$("#endDate").focus();
 			return false;
 		}
-		
+		if (confirm("과제를 수정 하시겠습니까?")) {
 		return true;
+		}
+		return false;
 	}
 		
 	function moveList() {

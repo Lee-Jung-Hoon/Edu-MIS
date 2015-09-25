@@ -43,7 +43,10 @@
 				return false;
 			}
 			
-			return true;
+			if (confirm("과제를 등록 하시겠습니까?")) {
+				return true;
+				}
+				return false;
 		}
 		
 		function moveList() {
@@ -128,3 +131,8 @@
 </body>
 <script type="text/javascript" src="/EduMIS/js/common.js"></script>
 </html>
+<script>
+	$('input:file').on('change', function(){
+	  $('.val-txt').val($(this).val())
+	});
+</script>
