@@ -140,9 +140,18 @@ public class UserAssController {
 	@RequestMapping("/user/assRegist.do")
 	public String userAssRegist(UserAssVO userass,HttpServletRequest req) throws ServletException, IOException {
 	   
+		String realPath = req.getServletContext().getRealPath("/assignmentFile");
+		
+		File file = new File(realPath);
+		if( !file.exists() ) {
+			System.out.println(file.mkdirs());
+		} else {
+			System.out.println("디렉토리 존재함..");
+		}
+		
 		MultipartRequest multi = new MultipartRequest(
 	    		req,
-	    		"C:\\java73\\web-workspace\\EduMIS\\WebContent\\assignmentFile",
+	    		realPath,
 				1024*1024*10, 
 				"UTF-8",
 				new DefaultFileRenamePolicy() //파일의 이름이 같을 때 사용할 정책 설정
@@ -214,9 +223,19 @@ public class UserAssController {
 	@RequestMapping("/user/assModify.do")
 	public String userAssModify(UserAssVO userass,HttpServletRequest req)
 			throws ServletException, IOException {
+		
+		String realPath = req.getServletContext().getRealPath("/assignmentFile");
+		
+		File file = new File(realPath);
+		if( !file.exists() ) {
+			System.out.println(file.mkdirs());
+		} else {
+			System.out.println("디렉토리 존재함..");
+		}
+		
 		MultipartRequest multi = new MultipartRequest(
 	    		req,
-	    		"C:\\java73\\web-workspace\\EduMIS\\WebContent\\assignmentFile",
+	    		realPath,
 				1024*1024*10, 
 				"UTF-8",
 				new DefaultFileRenamePolicy() //파일의 이름이 같을 때 사용할 정책 설정
