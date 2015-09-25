@@ -12,3 +12,10 @@ create table t_attend(
 	att_type number,				
 	primary key(mNo, att_date)
 )
+
+
+INSERT INTO t_attend
+VALUES(21, '유희헌' ,SYSDATE, 1)
+
+INSERT INTO t_attend
+VALUES(22, '조보성', SYSDATE, 2)
