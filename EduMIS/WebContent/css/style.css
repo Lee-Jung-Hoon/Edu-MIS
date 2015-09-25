@@ -656,6 +656,10 @@ html, body {
 .txt-assign-list-s {
 	background-image:url('../images/txt-assign-list-s.png');
 }
+/* 조장초기화(소) */
+.txt-leader-reset-s {
+	background-image:url('../images/txt-leader-reset-s.png');
+}
 
 /* 버튼 이미지 텍스트 모음 끝*/
 .btn-txt {
