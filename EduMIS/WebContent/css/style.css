@@ -632,7 +632,26 @@ html, body {
 .txt-list-lecture {
 	background-image:url('../images/txt-list-lecture.png');
 }
-
+/* 과제등록(소) */
+.txt-assign-regist-s {
+	background-image:url('../images/txt-assign-regist-s.png');
+}
+/* 과제수정(소) */
+.txt-assign-modify-s {
+	background-image:url('../images/txt-assign-modify-s.png');
+}
+/* 과제삭제(소) */
+.txt-assign-del-s {
+	background-image:url('../images/txt-assign-del-s.png');
+}
+/* 첨부파일(소) */
+.txt-file {
+	background-image:url('../images/txt-file.png');
+}
+/* 과제목록(소) */
+.txt-assign-list-s {
+	background-image:url('../images/txt-assign-list-s.png');
+}
 
 /* 버튼 이미지 텍스트 모음 끝*/
 .btn-txt {
