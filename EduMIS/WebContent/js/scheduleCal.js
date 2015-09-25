@@ -7,6 +7,11 @@
 	var startnum = eval(firstday + 1);
 	var lastdate = new Date(y, m + 1, 0);
 	var lastday = lastdate.getDate();
+
+	
+
+	
+	
 	// 전달
 	var nMonth = m + 1;
 	 
@@ -28,6 +33,18 @@
 				
 				
 				
+				 
+				 
+				 
+
+				 
+				 
+				 
+				 
+				 
+				 
+				 
+				 
 				
 				// 일정등록 누를시 화면 변경
 			
@@ -101,6 +118,12 @@
 					}
 
 					for (var i = 1; i <= lastday; i++) {
+						 
+						// 페이지가 넘어갈 때 미리보기 페이지 정보를  없앤다.
+						 $(".schedule-list").html( "");
+						 // 페이지가 넘어 갈때 미리보기 페이지를 없앤다.
+						 $('.test01').slideUp();
+						 
 						$("#date" + startnum).html(i);
 						startnum++;
 					}
@@ -137,6 +160,11 @@
 					}
 					for (var i = 1; i <= lastday; i++) {
 
+						// 페이지가 넘어갈 때 미리보기 페이지 정보를  없앤다.
+						 $(".schedule-list").html( "");
+						 // 페이지가 넘어 갈때 미리보기 페이지를 없앤다.
+						 $('.test01').slideUp();
+						 
 						$("#date" + startnum).html(i);
 						startnum++;
 					}
@@ -166,6 +194,7 @@
 				
 				
 				
+				
 
 				$(document).ready(
 						function() {
@@ -174,51 +203,58 @@
 										'660px', '780px' ]
 					
 					
+					 
+					
+					
+					
+					
 								  $(".test00 td").on("click",function() {
-									   
-									   
-									   
-									   
-											   $.get("/EduMIS/admin/listschedule", {year: y, month: nMonth, oneday: oneday}, function(data) {
-													
+									   // __________________________________ 리스트 출력 ______________________________________________
+											   $.get("/EduMIS/admin/listschedule.do", {year: y, month: nMonth, oneday: oneday}, function(data) {
 												    	var dataArr = eval("(" + data + ")");	
 												    	$(".schedule-list").html( "");
 												     for(var i = 0; i < dataArr.length; i++){
-												    		 $(".schedule-list").html( $(".schedule-list").html()+"<tr><td>" + dataArr[i].importance + "</td><td>"+ dataArr[i].title +"</td><td>"+  dataArr[i].content +"</td></tr>");
+												    		 $(".schedule-list").html( $(".schedule-list").html()+"<tr id="+dataArr[i].no+" class='d'><td>" + dataArr[i].importance + "</td><td>"+ dataArr[i].title +"</td><td>"+  dataArr[i].content +"</td></tr>");
+												    		
 												    		 
-												    		 
-												    		 
+												    		 // 각각의 list의 <tr>을 눌렀을시에 이벤트 발생
+												    		 $(".schedule-list tr").on("click",function() {
+												    			  
+												    			  // id 값을 가지고 온다.
+												    			  var searchNo = $(this).attr("id");
+												    			
+												    			  // jquery - Ajax  로  json 객체를 가지고 와서 detail에 뿌려준다.
+												    			  $.get("/EduMIS/admin/detailschedule.do", {no: searchNo}, function(data1) {
+												    				   
+												    				var dataArr = eval("(" + data1 + ")");	
+												    				
+												    				alert(dataArr);
+												    				alert(dataArr.no);
+												    				
+												    				
+												    				$('#d_startDate').text(dataArr.startDate);
+												    				
+												    				$('.detail_form').animate({ 'left' : '38%'   }, 300);
+												    				 
+												    		  
+												    				   
+												 			}).fail( function (){
+												 				alert("에러발생")
+												 			});
+												    			  
+												    		 })	  
+												    		
 												    	}
-												    
-													
 												}).fail( function (){
 													alert("에러발생")
 												})
-											   
-											   
-								    
-
-								    
-								    
+									//__________________________________________________________________________________________________
 											var index = $(this).index();
 											
 											
 											if ($(this).hasClass('open')) {
 												$('.test00 td').removeClass('open');
 												$('.test01').slideUp();
-												
-												
-//								        $('.test00 td').click(function() {
-//				                  oneday=$(this).html();
-//				                              });
-								        
-								        
-								        
-
-								        
-								        
-								        
-												
 											} 
 											
 											else if ($(this).siblings().hasClass('open')) {
@@ -226,40 +262,20 @@
 												$(this).addClass('open').parents(".test00")
 														.next().slideDown().find('span').css(
 																'left', sizeArray[index]);
-												
-												
-												
-//										    $('.test00 td').click(function() {
-//				                  oneday=$(this).html();
-//				                              });
-										    
-										    
-										    
-										    
-										
-												
-												
-										    
 											} 
-											
-											
 											else {
 												$('.test00 td').removeClass('open');
 												$('.test01').slideUp();
 												$(this).addClass('open').parents(".test00")
 														.next().slideDown().find('span').css(
 																'left', sizeArray[index]);
-												
-//						            $('.test00 td').click(function() {
-//				                  oneday=$(this).html();
-//				                              });
-												
 											}
-											
-
-											
-					
 										});
+					
+					
+					
+					
+					
 						});
 				
 				
