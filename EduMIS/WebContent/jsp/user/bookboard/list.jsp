@@ -68,6 +68,7 @@
 										<option value="">선택하세요</option>
 										<option value="id">아이디</option>
 										<option value="title">제목</option>
+										<option value="no">글번호</option>
 									</select>
 									<input type="text" name="search" id="search" placeholder="검색" style="height:30px; padding-left:10px;" />
 									<input style="display:inline-block; width:60px; height:30px; margin-left:10px;" type="submit" value="검색" class="btn btn-txt txt-search btn-blue" />
