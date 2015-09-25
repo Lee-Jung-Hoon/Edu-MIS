@@ -13,4 +13,7 @@ public interface ScheduleService {
 	
 	// 디테일 정보 가져오기
 	public ScheduleVO detailSchedule(ScheduleVO schedule)throws Exception;
+	public void modifySchedule(ScheduleVO schedule)throws Exception;
+	
+	
 }

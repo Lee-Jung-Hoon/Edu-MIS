@@ -44,5 +44,9 @@ public class ScheduleDAO {
 	public ScheduleVO detailSchedule(ScheduleVO schedule)throws Exception{
 		return session.selectOne("schedule.dao.SchduleMapper.detailSchedule", schedule);
 	}
+	public int modifySchedule(ScheduleVO schedule) {
+		session.update("schedule.dao.SchduleMapper.modifySchedule", schedule);
+		return 1;
+	}
 	
 }
