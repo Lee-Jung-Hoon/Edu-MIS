@@ -177,10 +177,11 @@
 							<!------------------------------------( 등록 폼)----------------------------------------------------------------------- -->
 
 							<div class="plan_form"
-								style="position: fixed; top: 110px; left: 200%; width: 450px; padding: 30px; z-index: 100; background: #fff; box-shadow: 0px 0px 50px rgba(10,10,10,10); border-radius: 40px; " >
+								style="position: fixed; top: 110px; left: 200%; width: 450px; padding: 30px; z-index: 99; background: #fff; box-shadow: 0px 0px 50px rgba(10,10,10,10); border-radius: 40px; " >
 								<div style="font-size: 20px;">일정 등록</div>
 								<hr />
-								<form action="/EduMIS/regschedule.do">
+<!-- 								<form action="/EduMIS/admin/regschedule"> -->
+								<form name="regscheduleForm" id="regscheduleForm" action="">
 									<table id="reg-Form" style="border-collapse: collapse;">
 										<tr>
 											<th>일 시</th>
@@ -231,10 +232,13 @@
 									</table>
 									<br />
 									<div align="center">
-										<span><input type="submit" value="저장" size="10px" /></span>
+										<span>
+											<input type="button" id="regScheduleBtn" name="regScheduleBtn" value="저장" size="10px" />
+<!-- 										<input type="button" value="저장" id="regSchedule" size="10px" /> -->
+										</span>
 									</div>
 								</form>
-								<button type="button" class="cal_close" size="30px">닫기</button>
+								<input type="button" class="cal_close" size="30px">닫기
 							</div>
 
 
@@ -249,15 +253,15 @@
 
 							<div class="modify_form"
 								style="position: fixed; top: 110px; left: 200%; width: 450px; padding: 30px; z-index: 100; background: #fff; box-shadow: 0px 0px 50px rgba(10,10,10,10); border-radius: 40px; " >
-								<div style="font-size: 20px;">일정 등록</div>
+								<div style="font-size: 20px;">일정 수정</div>
 								<hr />
 								<form action="/EduMIS/updateschedule.do">
 									<table id="reg-Form" style="border-collapse: collapse;">
 										<tr>
 											<th>일 시</th>
-											<td style="width: 230px"> <input type="text" 	id="datepicker" name="m_startDate" size="10px" style="width: 100px" /> ~ <input type="text"	id="datepicker2" name="m_endDate" size="10px"	style="width: 100px" /></td>
+											<td style="width: 230px"> <input type="text" 	id="datepicker" name="startDate" size="10px" style="width: 100px" /> ~ <input type="text"	id="datepicker2" name="endDate" size="10px"	style="width: 100px" /></td>
 											<th>중요도</th>
-											<td width="30px"><select id="importance" name="m_importance">
+											<td width="30px"><select id="importance" name="importance">
 													<option value="1" selected="selected">보통</option>
 													<option value="2">중요함</option>
 													<option value="3">매우중요함</option>
@@ -265,12 +269,12 @@
 										</tr>
 										<tr>
 											<th>제 목</th>
-											<td colspan="3"><input type="text" id="title" size="46"
-												maxlength="20px" name="m_title" /></td>
+											<td colspan="3"><input type="text" id="m_title" size="46"
+												maxlength="20px" name="title" /></td>
 										</tr>
 										<tr>
 											<th>내 용</th>
-											<td colspan="3"><textarea rows="5" id="m_content"
+											<td colspan="3"><textarea rows="5" id="content"
 													name="m_content" cols="45" maxlength="100px"></textarea></td>
 										</tr>
 
