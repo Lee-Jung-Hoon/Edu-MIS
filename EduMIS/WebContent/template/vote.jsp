@@ -7,11 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width">
 	<title>조장 추천 게시판</title>
-	<link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
-	<link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
-	<link href="http://fonts.googleapis.com/earlyaccess/jejuhallasan.css" rel="stylesheet" type="text/css" />	
-	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<%@ include file="/jsp/admin/include/common.jsp" %>	
 </head>
 <body class="page-leader btn-page">
 	<div class="wrap">
