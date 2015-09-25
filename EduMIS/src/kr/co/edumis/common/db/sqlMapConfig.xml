@@ -20,6 +20,8 @@
 		<typeAlias alias="bookBoardVO" type="kr.co.edumis.user.bookboard.vo.BookBoardVO"/>
 		<typeAlias alias="MypageVO" type = "kr.co.edumis.user.mypage.vo.MypageVO"/>
 		<typeAlias alias="LoginVO" type="kr.co.edumis.user.login.vo.LoginVO"/>
+		<typeAlias alias="VideoLectureVO" type="kr.co.edumis.user.videoLecture.vo.VideoLectureVO"/>
+		<typeAlias alias="lecCommentVO" type="kr.co.edumis.user.videoLecture.vo.LecCommentVO"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -49,5 +51,7 @@
 		<mapper resource="kr/co/edumis/user/login/dao/LoginSQL.xml"/>
 		<mapper resource="kr/co/edumis/user/member/dao/IdCheckSQL.xml"/>
 		<mapper resource="kr/co/edumis/main/dao/MainSQL.xml"/>
+		<mapper resource="kr/co/edumis/user/videoLecture/dao/VideoLectureSQL.xml"/>
+		 <mapper resource="kr/co/edumis/user/videoLecture/dao/LecCommentSQL.xml"/>
 	</mappers>
 </configuration>
