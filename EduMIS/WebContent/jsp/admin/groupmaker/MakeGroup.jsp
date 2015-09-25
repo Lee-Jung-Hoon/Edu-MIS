@@ -103,6 +103,7 @@ padding-bottom: 500px;
   var selectedParam = ""; //조장 선택창에 selected를 시킬지 안시킬지 결정할 변수
   var memberLoading = 1;
   var value = " ";
+  var dropValue = 0;
 
   window.onload = function() {
     memberLoading = 100;
@@ -125,7 +126,7 @@ padding-bottom: 500px;
             $(this).find("select").val(ui.draggable.find("input").val());
 
             var leng = $(this).find("select").attr("id").substring(10);
-
+            dropValue = 1;
             DropMember($(this).find("select").attr("id").substring(10),
                 ui.draggable.find("input").val());
             //             alert(ui.draggable.find("input").val());
@@ -230,7 +231,7 @@ padding-bottom: 500px;
  
 
   function selectNumber(val) {
-
+    dropValue = 0;
     memberLoading = val;
     switch (val) {
     case 0:
@@ -299,9 +300,15 @@ padding-bottom: 500px;
         var offset = moveDrag.offset();
         
 //        moveDrag.animate({ "top" : top , "left" : left } ,2000 );
-        
+  		if(dropValue ==0){
        moveDrag.animate({ "top" : top,"left" : left  } ,500 );
-     	 moveDrag.offset(offset);
+       moveDrag.offset(offset);
+  		  
+  		}else {
+        moveDrag.offset(moveBox.offset());
+  		  
+  		  
+  		}      
        
 //        moveDrag.animate({ "top" : "-=300" , "left" : "-=300" } ,2000 );
        console.log("top : "  +moveBox.offset().top);
@@ -309,7 +316,6 @@ padding-bottom: 500px;
        console.log("top : "  +top);
        console.log("left : "  +left);
      
-//         moveDrag.offset(moveBox.offset());
 
        
         break;
