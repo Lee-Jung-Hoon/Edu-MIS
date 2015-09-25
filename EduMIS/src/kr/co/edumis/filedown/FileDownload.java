@@ -47,7 +47,8 @@ public class FileDownload extends HttpServlet
     	realFileName = request.getParameter( "realFileName" );
     	type = request.getParameter( "type" );
 
-    	uploadPath = "c:/java73/web-workspace/EduMIS/WebContent/assignmentFile";
+    	uploadPath = request.getServletContext().getRealPath("/assignmentFile");
+//    	uploadPath = "c:/java73/web-workspace/EduMIS/WebContent/assignmentFile";
 
      	File file = new File( uploadPath, realFileName );
     	FileInputStream fileInput = new FileInputStream( file);
