@@ -35,7 +35,7 @@
 					<!-- 메시지 들어가는 부분 -->
 					<div class="top-message">
 						<button type="button" class="btn-message">
-							<img src=/EduMIS/message.png" alt="" />
+							<img src="/EduMIS/images/message.png" alt="" />
 							<span class="count">1<!-- 메시지 개수 --></span>
 							
 						</button>
@@ -55,7 +55,7 @@
 					</div>
 					<!-- 메시지 들어가는 부분 끝 -->
 					<ul>
-						<li><a href="#"><img src=/EduMIS/icon-user.png" alt="" />마이페이지</a></li>
+						<li><a href="#"><img src="/EduMIS/images/icon-user.png" alt="" />마이페이지</a></li>
 						<li class="login">
 							<a href="#">로그인</a>
 							<div class="login-form">
@@ -143,5 +143,5 @@
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="/EduMIS/js/common.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
 </html>
