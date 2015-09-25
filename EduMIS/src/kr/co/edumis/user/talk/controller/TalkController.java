@@ -24,7 +24,7 @@ public class TalkController {
 		service = new TalkServiceImpl();
 	}
 
-	@RequestMapping("/talk/receiveList.do")
+	@RequestMapping("/talk/user/receiveList.do")
 	public ModelAndView receiveList(HttpServletRequest req) {
 		ModelAndView mav = new ModelAndView("/jsp/admin/talk/receiveList.jsp");
 		try {
@@ -42,7 +42,7 @@ public class TalkController {
 		return mav;
 	}
 	
-	@RequestMapping("/talk/memberList.do")
+	@RequestMapping("/talk/user/memberList.do")
 	public ModelAndView memberList(HttpServletRequest req) throws Exception {
 		req.setCharacterEncoding("UTF-8");
 		ModelAndView mav = new ModelAndView("/jsp/admin/talk/memberList.jsp");
@@ -55,10 +55,10 @@ public class TalkController {
 		}
 		return mav;
 	}
-	@RequestMapping("/talk/login.do")
+	@RequestMapping("/talk/user/login.do")
 	public ModelAndView login(HttpServletRequest req) throws Exception {
 		req.setCharacterEncoding("UTF-8");
-		MemberTestVO member = new MemberTestVO();
+		LoginVO member = new LoginVO();
 		member.setNo(Integer.parseInt(req.getParameter("no")));
 		member.setName(req.getParameter("name"));
 		member.setGrade(req.getParameter("grade"));
@@ -79,7 +79,7 @@ public class TalkController {
 		return mav;
 	}
 	
-	@RequestMapping("/talk/recvList.do")
+	@RequestMapping("/talk/user/user/recvList.do")
 	public ModelAndView ReceiveTalkList(HttpServletRequest req, HttpServletResponse res){
 		ModelAndView mav = new ModelAndView();
 		System.out.println("1");
@@ -107,7 +107,7 @@ public class TalkController {
 		return mav;
 	}
 
-	@RequestMapping("/talk/checkDelete.do")
+	@RequestMapping("/talk/user/checkDelete.do")
 	public ModelAndView DeleteCheckTalk(HttpServletRequest req, HttpServletResponse res) {
 		ModelAndView mav = new ModelAndView();
 
@@ -142,7 +142,7 @@ public class TalkController {
 		}
 		return null;
 	}
-	@RequestMapping("/talk/reviveTalk.do")
+	@RequestMapping("/talk/user/reviveTalk.do")
 	public ModelAndView ReviveCheckTalk(HttpServletRequest req, HttpServletResponse res){
 		ModelAndView mav = new ModelAndView();
 		
@@ -158,7 +158,7 @@ public class TalkController {
 		return new ModelAndView("redirect:/EduMIS/talk/talkTrash.do");
 	}
 
-	@RequestMapping("/talk/realDelete.do")
+	@RequestMapping("/talk/user/realDelete.do")
 	public ModelAndView RealDeleteCheckTalk(HttpServletRequest req, HttpServletResponse res) {
 		
 		
@@ -176,7 +176,7 @@ public class TalkController {
 		return new ModelAndView("redirect:/EduMIS/talk/talkTrash.do");
 	}
 
-	@RequestMapping("/talk/allCheckDelete.do")
+	@RequestMapping("/talk/user/allCheckDelete.do")
 	public ModelAndView DeleteAllCheckTalk(HttpServletRequest req, HttpServletResponse res) {
 		ModelAndView mav = new ModelAndView();
 
@@ -201,7 +201,7 @@ public class TalkController {
 		return new ModelAndView("redirect:/EduMIS/talk/recvList.do");
 	}
 
-	@RequestMapping("/talk/sendList.do")
+	@RequestMapping("/talk/user/sendList.do")
 	public ModelAndView SendTalkList(HttpServletRequest req, HttpServletResponse res) {
 		ModelAndView mav = new ModelAndView();
 
@@ -220,7 +220,7 @@ public class TalkController {
 		return mav;
 	}
 
-	@RequestMapping("/talk/datilTalk.do")
+	@RequestMapping("/talk/user/datilTalk.do")
 	public ModelAndView DetailTalk(HttpServletRequest req, HttpServletResponse res) {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("no : " + req.getParameter("no"));
@@ -247,7 +247,7 @@ public class TalkController {
 		return mav;
 	}
 
-	@RequestMapping("/talk/insertSendTalk.do")
+	@RequestMapping("/talk/user/insertSendTalk.do")
 	public ModelAndView insertTalk(HttpServletRequest req, HttpServletResponse res) {
 		int sendmNo = Integer.parseInt(req.getParameter("sendMemberNo"));
 		int receivemNo = Integer.parseInt(req.getParameter("receiveMemberNo"));
@@ -271,7 +271,7 @@ public class TalkController {
 		return new ModelAndView("redirect:/EduMIS/talk/recvList.do");
 	}
 
-	@RequestMapping("/talk/deleteTalk.do")
+	@RequestMapping("/talk/user/deleteTalk.do")
 	public ModelAndView deleteTalk(HttpServletRequest req, HttpServletResponse res) {
 		int no = Integer.parseInt(req.getParameter("no"));
 		try {
@@ -283,7 +283,7 @@ public class TalkController {
 		return new ModelAndView("redirect:/EduMIS/talk/recvList.do");
 	}
 
-	@RequestMapping("/talk/searchTalk.do")
+	@RequestMapping("/talk/user/searchTalk.do")
 	public ModelAndView searchTalk(HttpServletRequest req, HttpServletResponse res) {
 		String type = req.getParameter("searchType");
 		String text = req.getParameter("searchTalk");
@@ -316,7 +316,7 @@ public class TalkController {
 		return mav;
 	}
 
-	@RequestMapping("/talk/searchTalk2.do")
+	@RequestMapping("/talk/user/searchTalk2.do")
 	public ModelAndView searchSendTalk(HttpServletRequest req, HttpServletResponse res) {
 		String type = req.getParameter("searchType");
 		String text = req.getParameter("searchTalk");
@@ -349,7 +349,7 @@ public class TalkController {
 		return mav;
 	}
 
-	@RequestMapping("/talk/talkTrash.do")
+	@RequestMapping("/talk/user/talkTrash.do")
 	public ModelAndView TalkTrash(HttpServletRequest req, HttpServletResponse res) {
 		ModelAndView mav = new ModelAndView();
 
