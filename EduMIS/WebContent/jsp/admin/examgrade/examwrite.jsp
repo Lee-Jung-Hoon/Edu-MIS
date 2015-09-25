@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 
 <link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
 <link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
@@ -104,11 +105,14 @@ tbody td:last-child, thead th:last-child {
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="member" items="${member}">
+				<c:set var="list" value="${member}" />
+				<c:forEach var="member" items="${member}" varStatus="loop">
 					<tr>
+						<c:if test="${loop.first}">
+							<th rowspan="${fn:length(list)}">입력</th>
+						</c:if>
 						<td width="80px"><c:out value="${member.name}" /></td>
-						<td width="170px"><input type="text" id="${member.id}"
-							name="${member.id}"></td>
+						<td width="170px"><input type="text" id="${member.id}" name="${member.id}"></td>
 					</tr>
 				</c:forEach>
 			</tbody>
