@@ -48,7 +48,7 @@ public class VoteController {
 		try {
 			ModelAndView mav = new ModelAndView("/jsp/user/vote/voteResult.jsp");
 			List<VoteVO> list = service.getResult();
-			mav.addObject("list", list);
+			mav.addObject("votelist", list);
 			return mav;
 		} catch (Exception e) {
 			throw new ServletException(e);
