@@ -3,11 +3,15 @@ package kr.co.edumis.user.bookboard.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.ibatis.session.SqlSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -15,6 +19,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import kr.co.edumis.framework.Controller;
 import kr.co.edumis.framework.ModelAndView;
 import kr.co.edumis.framework.RequestMapping;
+import kr.co.edumis.framework.WebUtil;
 import kr.co.edumis.user.bookboard.service.BookBoardService;
 import kr.co.edumis.user.bookboard.service.BookBoardServiceImpl;
 import kr.co.edumis.user.bookboard.vo.BookBoardVO;
@@ -22,13 +27,14 @@ import kr.co.edumis.user.bookboard.vo.BookBoardVO;
 @Controller
 public class BookBoardController {
 	private BookBoardService service;
+	private static SqlSession sqlMapper;
 	
 	public BookBoardController() {
 		service = new BookBoardServiceImpl();
 	}
-
+	
 	@RequestMapping("/bookboard/write.do")
-	public ModelAndView write(BookBoardVO board ,HttpServletRequest req, HttpServletResponse res)
+	public ModelAndView write(BookBoardVO board, HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 		
 			MultipartRequest multi = new MultipartRequest(
@@ -39,8 +45,14 @@ public class BookBoardController {
 					new DefaultFileRenamePolicy() //파일의 이름이 같을 때 사용할 정책 설정
 					);
 		    Enumeration<String> e = multi.getFileNames();
+
+//		    BookBoardVO  board = 
+//		    		(BookBoardVO)WebUtil.getFromParamToVO(
+//		    				"kr.co.edumis.user.bookboard.vo.BookBoardVO", req);
+//		    
 		    
-		    while(e.hasMoreElements()){
+		  
+		      	while(e.hasMoreElements()){
 		    	String filename = e.nextElement();
 		    	
 		    	File f = multi.getFile(filename);
@@ -58,6 +70,7 @@ public class BookBoardController {
 		    	board.setFilePath("/jsp/user/bookboard/bookFile");
 		    	}
 		    }
+		    
 			
 		    try {
 			service.registBoard(board);
@@ -90,6 +103,9 @@ public class BookBoardController {
 			if("W".equals(call)) {
 				mav.addObject("msg", "게시글이 등록되었습니다.");
 			}
+			else if("D".equals(call)) {
+					mav.addObject("msg2", "게시글이 삭제되었습니다.");
+			}
 			return mav;
 		}catch(Exception e) {
 			throw new ServletException(e);
@@ -103,9 +119,23 @@ public class BookBoardController {
 			ModelAndView mav = new ModelAndView("/jsp/user/bookboard/detail.jsp");
 			
 			BookBoardVO detail = service.getDetail(Integer.parseInt(no));
-			System.out.println(detail.getTitle());
-			System.out.println(detail.getFilePath());
-			System.out.println(detail.getOrgFileName());
+			mav.addObject("board", detail);
+			return mav;
+		}catch(Exception e) {
+			throw new ServletException(e);
+		}
+	}
+	
+	@RequestMapping("/bookboard/delete.do")
+	public ModelAndView delete(String no, HttpServletRequest req, HttpServletResponse res) 
+			throws ServletException, IOException {
+		try {
+			BookBoardVO detail = service.getDetail(Integer.parseInt(no));
+			
+			
+			service.getDelete(Integer.parseInt(no));
+			System.out.println("no : " + no);
+			ModelAndView mav = new ModelAndView("redirect:/EduMIS/bookboard/list.do?call=D");
 			
 			mav.addObject("board", detail);
 			return mav;
@@ -113,6 +143,30 @@ public class BookBoardController {
 			throw new ServletException(e);
 		}
 	}
+	
+	@RequestMapping("/bookboard/search.do")
+	public ModelAndView search(BookBoardVO board, HttpServletRequest req, HttpServletResponse res) 
+			throws ServletException, IOException {
+		try {
+			ModelAndView mav = new ModelAndView("/jsp/user/bookboard/searchList.jsp");
+			
+			Map<String, String> param = new HashMap<String, String>();
+			param.put("searchType", req.getParameter("choice"));
+			param.put("searchWord", req.getParameter("search"));
+			
+			List<BookBoardVO> list = service.searchBoard(param);
+			
+			mav.addObject("list", list);
+			
+			System.out.println(req.getParameter("search"));
+			
+			return mav;
+		}catch(Exception e) {
+			throw new ServletException(e);
+		}
+	}
+
+	
 	
 	
 }

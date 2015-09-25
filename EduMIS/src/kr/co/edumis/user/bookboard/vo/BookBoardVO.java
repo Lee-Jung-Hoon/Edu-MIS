@@ -9,7 +9,22 @@ public class BookBoardVO {
 	private String orgFileName;
 	private String filePath; 
 	private String regDate;
+	private String search;
+	private String choice;
 	
+	
+	public String getChoice() {
+		return choice;
+	}
+	public void setChoice(String choice) {
+		this.choice = choice;
+	}
+	public String getSearch() {
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
+	}
 	public int getNo() {
 		return no;
 	}
@@ -58,4 +73,12 @@ public class BookBoardVO {
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
+	@Override
+	public String toString() {
+		return "BookBoardVO [no=" + no + ", title=" + title + ", content=" + content + ", id=" + id + ", realFileName="
+				+ realFileName + ", orgFileName=" + orgFileName + ", filePath=" + filePath + ", regDate=" + regDate
+				+ "]";
+	}
+	
+	
 }
