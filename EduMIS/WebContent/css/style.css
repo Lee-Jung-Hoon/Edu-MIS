@@ -662,7 +662,7 @@ html, body {
 }
 /* 삭제(대) */
 .txt-del-b {
-	background-image:url('../images/txt-leader-reset-s.png');
+	background-image:url('../images/txt-del-b.png');
 }
 /* 보내기(소) */
 .txt-send-s {
