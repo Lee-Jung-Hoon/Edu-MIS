@@ -29,10 +29,19 @@ public class MemberController {
 	@RequestMapping("/user/member/join.do")
 	public ModelAndView join(MemberVO member, HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		ModelAndView mav = new ModelAndView("/jsp/user/member/main.jsp");
+		ModelAndView mav = new ModelAndView("/jsp/user/main.jsp");
+		
+		String realPath = req.getServletContext().getRealPath("/memberFile");
+		
+		File file = new File(realPath);
+		if( !file.exists() ) {
+			System.out.println(file.mkdirs());
+		} else {
+			System.out.println("디렉토리 존재함..");
+		}
 		
 		MultipartRequest mult = new MultipartRequest(req,
-				"C:\\java73\\web-workspace\\EduMIS\\WebContent\\memberFile", 1024 * 1024 * 10, "UTF-8",
+				realPath, 1024 * 1024 * 10, "UTF-8",
 				new DefaultFileRenamePolicy());
 		
 		member.setId(mult.getParameter("id"));
@@ -56,12 +65,10 @@ public class MemberController {
 		if (f != null) {
 			String systemName = mult.getFilesystemName("attachFile");
 			String oriName = mult.getOriginalFileName("attachFile");
-	
 			
 			member.setRealFileName(systemName);
 			member.setOrgFileName(oriName);
 			member.setFilePath("/memberFile");				
-	
 		}
 		
 		try {
