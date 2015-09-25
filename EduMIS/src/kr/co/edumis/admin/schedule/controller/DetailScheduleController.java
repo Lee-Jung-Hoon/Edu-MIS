@@ -23,11 +23,11 @@ public class DetailScheduleController extends HttpServlet {
 		try {
 			ScheduleVO schedule = new ScheduleVO(); 
 			String no = req.getParameter("no");
-		System.out.println(no);
-schedule.setNo(Integer.parseInt(no));
+//		System.out.println(no);
+			schedule.setNo(Integer.parseInt(no));
 			ScheduleVO vo = service.detailSchedule(schedule);
 
-			System.out.println(vo.getNo());
+//			System.out.println(vo.getNo());
 			
 			PrintWriter out = res.getWriter();
 			String json = "";
