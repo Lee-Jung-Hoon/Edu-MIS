@@ -17,9 +17,9 @@ public class AdminAttendController {
 		service = new AdminAttServiceImpl();
 		
 	}
-		@RequestMapping("/template/attend.do")
+		@RequestMapping("/attend/attend.do")
 		public ModelAndView AttList() {
-			ModelAndView mav = new ModelAndView("/template/attend.jsp");
+			ModelAndView mav = new ModelAndView("/jsp/admin/attend/attend.jsp");
 			try {
 				List<AdminAttVO> list = service.selectAttList2();
 				
