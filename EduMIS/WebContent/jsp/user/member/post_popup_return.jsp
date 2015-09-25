@@ -12,13 +12,17 @@
 	<link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
 	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script>
-		$(document).ready(function() {
-			$(".returnPost").click(function(){
-				self.close();
-				opener.childCall($(this).html(), $(this).parent().parent().find(".returnAddr").html());
-			});	
-		});
-	</script>
+      $(document).ready(function() {
+         $(".returnPost").click(function(){
+            self.close();
+            opener.childCall1($(this).html(), $(this).parent().parent().find(".returnAddr").html());
+         });   
+         $(".returnAddr").click(function(){
+            self.close();
+            opener.childCall2($(this).html(), $(this).parent().parent().find(".returnPost").html());
+         });   
+      });
+   </script>
 </head>
 <body class="page-popup btn-page">
 	<div class="wrap">
