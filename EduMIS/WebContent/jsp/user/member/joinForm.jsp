@@ -188,9 +188,9 @@ function callBack() {
 <body class="page-join btn-page">
 	<div class="wrap">
 		<div class="wrap-inner">
-			<%@ include file="/jsp/admin/include/leftMenu.jsp" %>	
+			<%@ include file="/jsp/user/include/leftMenu.jsp" %>	
 			<div class="container">
-					<%@ include file="/jsp/admin/include/topMenu.jsp" %>
+					<%@ include file="/jsp/user/include/topMenu.jsp" %>
 				<div class="container-inner">
 					<div class="content">
 						<section class="join common">
@@ -274,10 +274,10 @@ function callBack() {
 												<th><label for="addr">주소</label></th>
 												<td>
 													<div class="post-addr">
-														<label for="">(우)</label><input type="text" name="postNo"
+														<label for="">(우)</label><input type="text" name="postNo" readonly="readonly"
 															class="size-input03" style="width: 100px" />
 														<button type="button" class="btn-post btn-txt btn-blue">우편번호검색</button>
-													</div> <input type="text" id="addr" name="basicAddr"
+													</div> <input type="text" id="addr" name="basicAddr" readonly="readonly"
 													class="size-input02" placeholder="주소를 동까지 입력해주세요" /><span
 													class="txt-rest">(동까지 입력)</span>
 												</td>
@@ -348,7 +348,7 @@ function callBack() {
 		$('#imgFrame').find('img').remove();
 	});
 	$('.btn-post').on('click',function(){
-		var popUrl = "post_popup.jsp";	//팝업창에 출력될 페이지 URL
+		var popUrl = "${pageContext.request.contextPath}/jsp/user/member/post_popup.jsp";	//팝업창에 출력될 페이지 URL
 		var popOption = "width=500, height=400, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
 		window.open(popUrl,"",popOption);
 	});
