@@ -176,6 +176,14 @@ public class UserAssController {
 	    	userass.setName(multi.getParameter("name"));
 	    	userass.setId(multi.getParameter("id"));
 	    	userass.setFilePath("/assignmentFile");
+	    	}else{
+
+	    		userass.setContent(multi.getParameter("usertext"));
+	    		userass.setNo(Integer.parseInt(multi.getParameter("no")));
+	    		userass.setName(multi.getParameter("name"));
+	    		userass.setId(multi.getParameter("id"));
+	    		userass.setFilePath("/assignmentFile");
+	    		
 	    	}
 	    }
 	    
