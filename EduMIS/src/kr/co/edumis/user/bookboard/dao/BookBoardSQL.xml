@@ -64,10 +64,6 @@
      	 	<when test="searchType == 'title'">
      	 	title like #{searchWord}
      	 	</when>
-     	 	<when test="searchType == 'regDate'">
-     	 	regDate like #{regDate}
-     	 	</when>
-     	 	
      	 </choose>
     </where>
 		order by no desc

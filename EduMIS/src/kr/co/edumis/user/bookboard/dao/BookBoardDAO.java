@@ -28,7 +28,6 @@ public class BookBoardDAO {
 	}
 	
 	public List<BookBoardVO> searchBoard(Map<String, String> param) {
-
 		return session.selectList("bookboard.dao.BoardMapper.searchBoard", param);
 	}
 	
