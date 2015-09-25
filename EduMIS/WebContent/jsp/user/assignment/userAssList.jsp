@@ -55,9 +55,10 @@
 									<c:set var = "index" value = "0"/>
 									
 									<c:forEach var="assList" items="${assList}">
+									<input type ="hidden" name ="id" value="${user.id}"/>
 										<tr>
 											<td>${assList.no}</td>
-											<td><a href ="${pageContext.request.contextPath}/user/assDetail.do?no=${assList.no}">${assList.title}</a></td>
+											<td><a href ="${pageContext.request.contextPath}/user/assDetail.do?no=${assList.no}&id=${user.id}">${assList.title}</a></td>
 											<td>${assList.startDate} ~ ${assList.endDate}</td>
 											<td>${assList.isSubmit}</td>
 											<td>${ckArr[index]}</td>
