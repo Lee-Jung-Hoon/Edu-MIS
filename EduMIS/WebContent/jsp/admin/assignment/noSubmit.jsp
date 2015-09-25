@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<tit\\le>Insert title here</title>
 </head>
 <body>
 	<h1>제출된 과제가 없습니다.</h1>
