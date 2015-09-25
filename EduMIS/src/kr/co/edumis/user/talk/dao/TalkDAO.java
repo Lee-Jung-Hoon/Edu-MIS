@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import kr.co.edumis.admin.talk.vo.TalkVO;
+import kr.co.edumis.user.talk.vo.TalkVO;
 import kr.co.edumis.common.db.MyAppSqlConfig;
 import kr.co.edumis.user.member.vo.MemberVO;
 

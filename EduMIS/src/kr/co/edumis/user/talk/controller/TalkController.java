@@ -6,10 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import kr.co.edumis.admin.talk.service.TalkService;
-import kr.co.edumis.admin.talk.service.TalkServiceImpl;
-import kr.co.edumis.admin.talk.vo.MemberTestVO;
-import kr.co.edumis.admin.talk.vo.TalkVO;
+import kr.co.edumis.user.talk.service.TalkService;
+import kr.co.edumis.user.talk.service.TalkServiceImpl;
+import kr.co.edumis.user.talk.vo.MemberTestVO;
+import kr.co.edumis.user.talk.vo.TalkVO;
 import kr.co.edumis.framework.Controller;
 import kr.co.edumis.framework.ModelAndView;
 import kr.co.edumis.framework.RequestMapping;
@@ -26,7 +26,7 @@ public class TalkController {
 
 	@RequestMapping("/talk/user/receiveList.do")
 	public ModelAndView receiveList(HttpServletRequest req) {
-		ModelAndView mav = new ModelAndView("/jsp/admin/talk/receiveList.jsp");
+		ModelAndView mav = new ModelAndView("/jsp/user/talk/receiveList.jsp");
 		try {
 			HttpSession session = req.getSession();
 			LoginVO member = (LoginVO)session.getAttribute("user");
@@ -45,7 +45,7 @@ public class TalkController {
 	@RequestMapping("/talk/user/memberList.do")
 	public ModelAndView memberList(HttpServletRequest req) throws Exception {
 		req.setCharacterEncoding("UTF-8");
-		ModelAndView mav = new ModelAndView("/jsp/admin/talk/memberList.jsp");
+		ModelAndView mav = new ModelAndView("/jsp/user/talk/memberList.jsp");
 		try {
 			List<MemberVO> list = service.selectMemberList();
 			System.out.println(list.size());
@@ -67,7 +67,7 @@ public class TalkController {
 		session.setAttribute("member", member);
 		
 		
-//		ModelAndView mav = new ModelAndView("/jsp/admin/main.jsp");
+//		ModelAndView mav = new ModelAndView("/jsp/user/main.jsp");
 		ModelAndView mav = new ModelAndView("/template/global_memo02.jsp");
 		try {
 			List<MemberVO> list = service.selectMemberList();
@@ -79,7 +79,7 @@ public class TalkController {
 		return mav;
 	}
 	
-	@RequestMapping("/talk/user/user/recvList.do")
+	@RequestMapping("/talk/user/recvList.do")
 	public ModelAndView ReceiveTalkList(HttpServletRequest req, HttpServletResponse res){
 		ModelAndView mav = new ModelAndView();
 		System.out.println("1");
@@ -100,7 +100,7 @@ public class TalkController {
 				System.out.println(talk.getNo());
 			}
 			System.out.println();
-			mav.setView("/jsp/admin/talk/receiveHistory.jsp");
+			mav.setView("/jsp/user/talk/receiveHistory.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -124,7 +124,7 @@ public class TalkController {
 					System.out.println(talk.getName());
 					service.deleteCheckTalk(talk);
 				}
-				return new ModelAndView("redirect:/EduMIS/talk/recvList.do");
+				return new ModelAndView("redirect:/EduMIS/talk/user/recvList.do");
 			} else {
 				for (int i = 0; i < delList.length; i++) {
 					int tNo = Integer.parseInt(delList[i]);
@@ -135,7 +135,7 @@ public class TalkController {
 					service.deleteCheckTalk(talk);
 				}
 			}
-			return new ModelAndView("redirect:/EduMIS/talk/sendList.do");
+			return new ModelAndView("redirect:/EduMIS/talk/user/sendList.do");
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -155,7 +155,7 @@ public class TalkController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ModelAndView("redirect:/EduMIS/talk/talkTrash.do");
+		return new ModelAndView("redirect:/EduMIS/talk/user/talkTrash.do");
 	}
 
 	@RequestMapping("/talk/user/realDelete.do")
@@ -173,7 +173,7 @@ public class TalkController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ModelAndView("redirect:/EduMIS/talk/talkTrash.do");
+		return new ModelAndView("redirect:/EduMIS/talk/user/talkTrash.do");
 	}
 
 	@RequestMapping("/talk/user/allCheckDelete.do")
@@ -198,7 +198,7 @@ public class TalkController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ModelAndView("redirect:/EduMIS/talk/recvList.do");
+		return new ModelAndView("redirect:/EduMIS/talk/user/recvList.do");
 	}
 
 	@RequestMapping("/talk/user/sendList.do")
@@ -213,7 +213,7 @@ public class TalkController {
 			System.out.println(list.size());
 			mav.addObject("list", list);
 
-			mav.setView("/jsp/admin/talk/sendHistory.jsp");
+			mav.setView("/jsp/user/talk/sendHistory.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -240,7 +240,7 @@ public class TalkController {
 			talk.setReceiveMemberNo(receivemNo);
 			talk.setpNo(pNo);
 			mav.addObject("detail", talk);
-			mav.setView("/jsp/admin/talk/detailTalk.jsp");
+			mav.setView("/jsp/user/talk/detailTalk.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -268,7 +268,7 @@ public class TalkController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ModelAndView("redirect:/EduMIS/talk/recvList.do");
+		return new ModelAndView("redirect:/EduMIS/talk/user/recvList.do");
 	}
 
 	@RequestMapping("/talk/user/deleteTalk.do")
@@ -280,7 +280,7 @@ public class TalkController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ModelAndView("redirect:/EduMIS/talk/recvList.do");
+		return new ModelAndView("redirect:/EduMIS/talk/user/recvList.do");
 	}
 
 	@RequestMapping("/talk/user/searchTalk.do")
@@ -293,7 +293,7 @@ public class TalkController {
 
 		int no = member.getNo();
 
-		ModelAndView mav = new ModelAndView("/jsp/admin/talk/receiveHistory.jsp");
+		ModelAndView mav = new ModelAndView("/jsp/user/talk/receiveHistory.jsp");
 		try {
 			if (type.equals("content")) {
 				TalkVO talk = new TalkVO();
@@ -326,7 +326,7 @@ public class TalkController {
 
 		int no = member.getNo();
 
-		ModelAndView mav = new ModelAndView("/jsp/admin/talk/sendHistory.jsp");
+		ModelAndView mav = new ModelAndView("/jsp/user/talk/user/sendHistory.jsp");
 		try {
 			if (type.equals("content")) {
 				TalkVO talk = new TalkVO();
@@ -365,7 +365,7 @@ public class TalkController {
 				System.out.println(talk.getNo());
 			}
 			System.out.println();
-			mav.setView("/jsp/admin/talk/talkTrash.jsp");
+			mav.setView("/jsp/user/talk/talkTrash.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
