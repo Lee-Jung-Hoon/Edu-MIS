@@ -15,8 +15,8 @@ public class UserAssServiceImpl implements UserAssService{
 		uasdao = new UserAssDAO();
 	}
 	
-	public List<AdminAssVO> getList(String id) throws Exception{
-		return uasdao.selectAssignment(id);
+	public List<AdminAssVO> getList(Map<String, String> param) throws Exception{
+		return uasdao.selectAssignment(param);
 	}
 	
 	public AdminAssVO admdetail(int no) throws Exception{
@@ -35,9 +35,11 @@ public class UserAssServiceImpl implements UserAssService{
 	public void updateUserAss(UserAssVO userass)throws Exception{
 		uasdao.updateUserAss(userass);
 	}
-//	public List<String> userSubmitCheck(String id)throws Exception{
-//		return uasdao
-//	}
+	//전체 게시물 조회
+	public int AssCount() throws Exception{
+		return uasdao.AssCount();
+	}
+
 
 
 

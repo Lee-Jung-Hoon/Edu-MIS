@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -41,17 +43,43 @@ public class UserAssController {
 		ModelAndView mav = new ModelAndView("/jsp/user/assignment/userAssList.jsp");
 
 		try {
+            //페이징
+			//페이지 수
+			int pageIndex = (int)Math.ceil(service.AssCount()/10d);
+			mav.addObject("pageIndex", pageIndex);
+			
+			int reqIndex = 1; 
+			if (req.getParameter("reqIndex") != null) {
+				reqIndex = Integer.parseInt(req.getParameter("reqIndex"));
+			}
+			if(reqIndex > pageIndex) {
+				reqIndex = pageIndex;
+			} else if(reqIndex < 1){
+				reqIndex = 1;
+			}
+			
+			String startIndex = String.valueOf(1 + (reqIndex - 1) * 10);
+			String endIndex = String.valueOf(10 + (reqIndex - 1) * 10);
+			Map<String, String> param = new HashMap<>();
+			param.put("startIndex",startIndex);
+			param.put("endIndex", endIndex);
+			
+			
 			//제출여부
 			HttpSession hts = req.getSession();
 			LoginVO session = (LoginVO)hts.getAttribute("user");
 			String id = session.getId();
-				
-			List<AdminAssVO> list = service.getList(id);
-			System.out.println(list.get(0).getIsSubmit());
-			System.out.println(list.get(1).getIsSubmit());
+			param.put("id", id);
 			
+				
+			List<AdminAssVO> list = service.getList(param);
+//			System.out.println(list.get(0).getIsSubmit());
+//			System.out.println(list.get(1).getIsSubmit());
+			mav.addObject("thisPage", reqIndex);
 			mav.addObject("list", list);
 
+			
+			
 			// 진행여부
 			List<String> ckArr = new ArrayList<String>();
 			Calendar c = Calendar.getInstance();
@@ -73,8 +101,7 @@ public class UserAssController {
 			mav.addObject("ckArr", ckArr);
 			
 			
-			System.out.println(id);
-		
+
 			
 			
 		} catch (Exception e) {

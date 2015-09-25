@@ -6,15 +6,34 @@
 
 
 <!-- 과제목록을 불러오는 쿼리 -->
- <select id="adminAssList" parameterType="String" resultType="AdminAssVO">
-    select a.no,
-           a.title, 
-           to_char(a.start_Date,'yyyy-mm-dd')as startDate,
-           to_char(a.end_Date,'yyyy-mm-dd')as endDate,
-           case when (select count(*) from t_user_assignment_board where no = a.no and id = #{id}) = 0 then 'X'
+ <select id="adminAssList" parameterType="map" resultType="AdminAssVO">
+    select no,
+           title, 
+           startDate,
+           endDate,
+           case when (select count(*) from t_user_assignment_board where no = no and id = #{id}) = 0 then 'X'
                 else 'O'
             end isSubmit
-    from t_adm_assignment_board a
+    from 
+			(
+				select no, 
+					startDate,
+					endDate,
+					title,
+					content,
+					rownum rnum
+				from 
+				(
+					select 
+						no, 
+						to_char(start_date, 'yyyy-mm-dd') as startDate,
+						to_char(end_date, 'yyyy-mm-dd') as endDate,
+						title,
+						content 
+					from t_adm_assignment_board 
+					order by no desc
+				))
+				where rnum between #{startIndex} and #{endIndex}
  </select>
  
  <!-- 해야할 과제 상세 조회 -->
@@ -76,9 +95,40 @@ insert into t_user_assignment_board(
    where no =#{no}
 </update>
 
-<!-- 제출여부 조회 -->
-<select id="userSubmitCheck" parameterType="String" >
+<!-- 전체 게시물 갯수 조회 -->
+<select id="AssCount" resultType="int">
+ select count(*) as count
+ from t_adm_assignment_board
+</select>
 
+<!-- 페이징하려고 과제 조회 -->
+<select id="AdminListPage" parameterType="map" resultType="AdminAssVO">
+		select 
+			no, 
+			startDate,
+			endDate,
+			title,
+			content
+			from 
+			(
+				select no, 
+					startDate,
+					endDate,
+					title,
+					content,
+					rownum rnum
+				from 
+				(
+					select 
+						no, 
+						to_char(start_date, 'yyyy-mm-dd') as startDate,
+						to_char(end_date, 'yyyy-mm-dd') as endDate,
+						title,
+						content 
+					from t_adm_assignment_board 
+					order by no desc
+				))
+			where rnum between #{startIndex} and #{endIndex}
 </select>
 
 
