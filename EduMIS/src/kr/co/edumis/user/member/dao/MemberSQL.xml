@@ -22,11 +22,11 @@
 		email_domain,
 		major
 		<if test="orgFileName != null">
-    ,
-    org_File_Name,
-    real_File_Name,
-    file_Path
-    </if>
+			,
+			org_File_Name,
+			real_File_Name,
+			file_Path
+		</if>
 		) values (
 		seq_member_no.nextVal,
 		#{id},
@@ -45,31 +45,39 @@
 		#{emailDomain},
 		#{major}
 		<if test="orgFileName != null">
-    ,
-    #{orgFileName},
-    #{realFileName},
-    #{filePath}
-    </if>
+			,
+			#{orgFileName},
+			#{realFileName},
+			#{filePath}
+		</if>
 		)
 	</insert>
-	<select id="getMemberList"  resultType="memberVO">
-select * from t_member
 
 
-</select>
 
-<update id ="updateLeader"  parameterType="memberVO">
-update t_member 
-set techLeader = #{techLeader}, team = #{team}
-where no = #{no}
-
-</update>
-<update id ="resetLeader" >
-update t_member 
-set techLeader = '3', team = ' '
+	<select id="getMemberList" resultType="memberVO">
+		select no,
+		id,
+		name,
+		tech_Leader as techLeader,
+		team
+		from t_member
 
 
-</update>
+	</select>
+
+	<update id="updateLeader" parameterType="memberVO">
+		update t_member
+		set tech_Leader = #{techLeader}, team = #{team}
+		where no = #{no}
+
+	</update>
+	<update id="resetLeader">
+		update t_member
+		set tech_Leader = '3', team = ' '
+
+
+	</update>
 
 
 </mapper>
