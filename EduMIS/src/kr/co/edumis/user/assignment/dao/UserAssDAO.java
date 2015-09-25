@@ -17,8 +17,11 @@ public class UserAssDAO {
 		sqls = MyAppSqlConfig.getSqlSessionInstance();
 	}
 	
-	public List<AdminAssVO> selectAssignment(String id) throws Exception{
-		return sqls.selectList("userAssMapper.adminAssList", id);
+	public List<AdminAssVO> selectAssignment(Map<String, String> param) throws Exception{
+		
+    List<AdminAssVO> list = sqls.selectList("userAssMapper.adminAssList", param);
+		
+		return list;
 	}
 	
 	public AdminAssVO selectDetailAssignment(int no) throws Exception{
@@ -39,6 +42,17 @@ public class UserAssDAO {
 	public List<String> userSubmitCheck(String id)throws Exception{
 		return sqls.selectList("userAssMapper.adminAssList",id);
 	}
+	
+	
+	//페이징 할 디비목록!!
+	public List<AdminAssVO> selectPage(Map<String,Integer> param) throws Exception{
+		return sqls.selectList("userAssMapper.adminAssList", param);
+	}
+	// 전체 게시물수
+	public int AssCount() throws Exception{
+		return sqls.selectOne("userAssMapper.AssCount");
+	}
+	
 	
 
 
