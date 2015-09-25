@@ -101,7 +101,7 @@
 // 			    tableList.innerHTML = "";
 					
 					var mode=0;
-			    if(cnt == gAttList.length){
+			    if(cnt == gAttList.length - 1){
 			      chk.innerHTML = "<form class='test' action='/EduMIS/attendance/AttUpdate.do'></form>";
 			    	mode=1;
 			    }
@@ -114,7 +114,9 @@
 			    
 			    for(var i=0; i < memList.length; i++) {
 			      var mem = memList[i];
-			      if(mem.grade == 1){
+			      console.log(mem.grade+" -- "+mem.no+" -- "+mem.mName);
+			      if(Number(mem.grade) == 1){
+			        alert("관리자");
 			        continue;
 			      }
 			   		tr = document.createElement("tr");
@@ -263,7 +265,13 @@
 				// 이름 뿌려주는 곳
 				for(var i = 0; i < attList.length; i++){
 					calendar += '			<tr>';
-					calendar += '<td>'+attList[i].mName+'</td>';
+					console.log(attList[i].grade + "---"+ attList[i].mName);
+					if(Number(attList[i].grade) == 1){
+					  continue;
+					}
+					else{
+						calendar += '<td>'+attList[i].mName+'</td>';
+					}
 					/* att_type의 1: 출석  2: 지각   3: 조퇴   4: 결석   */
 					// 출석 사항 뿌려주는 곳
 					// 여기에 월, 일, 마지막 일수까지 얻어온다음 for문 돌면서 attType

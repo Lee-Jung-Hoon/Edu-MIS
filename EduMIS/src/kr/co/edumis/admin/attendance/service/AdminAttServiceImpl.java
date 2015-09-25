@@ -17,13 +17,16 @@ public class AdminAttServiceImpl implements AdminAttService{
 	public List<MemberVO> selectMemList() {
 		
 		List<MemberVO> memList = dao.selectMemList();
+		for(int i = 0; i < memList.size(); i++){
+			System.out.println(memList.get(i).getGrade() + " ---- ");			
+		}
 		return memList;
 	}
 	@Override
 	public List<AdminAttVO> selectAttList() {
 		
 		List<AdminAttVO> attList = dao.selectAttList();
-		System.out.println(attList.size());
+		
 		return attList;
 	}
 	@Override

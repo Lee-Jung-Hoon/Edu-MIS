@@ -11,6 +11,7 @@
 	<resultMap type="memberVO" id="mem">
 		<result property="no" column="no"></result>
 		<result property="name" column="name"></result>
+		<result property="grade" column="grade"></result>
 	</resultMap>
 	
 	<resultMap type="AdminAttVO" id="att">
