@@ -8,21 +8,21 @@
 		select mName
 		from t_attend
 		where to_char(att_date) = to_char(sysdate)
-		and att_type =1
+		and att_type = 1
 	</select>
 
 	<select id="late" resultType="String">
 		select mName
 		from t_attend
 		where to_char(att_date) = to_char(sysdate)
-		and att_type =2
+		and att_type = 2
 	</select>
 
 	<select id="absent" resultType="String">
 		select mName
 		from t_attend
 		where to_char(att_date) = to_char(sysdate)
-		and att_type =4
+		and att_type = 4
 	</select>
 
 	<select id="selectBookBoard" resultType="bookBoardVO">
@@ -36,7 +36,6 @@
 		file_path filePath,
 		reg_date regDate
 		from t_book_board
-		where rownum <= 5
 		order by no desc
 	</select>
 
@@ -51,7 +50,7 @@
 		real_file_name realFileName,
 		file_path filePath
 		from t_adm_assignment_board
-		where rownum <= 5
+		where rownum &lt;= 5
 		order by no desc
 	</select>
 
@@ -63,7 +62,7 @@
 		video,
 		time
 		from t_lecture
-		where rownum <= 5
+		where rownum &lt;= 5
 		order by no desc
 	</select>
 
@@ -77,7 +76,7 @@
 		score,
 		reg_date regDate
 		from t_exam_grade
-		where rownum <= 5 and id=#{id}
+		where rownum &lt;= 5 and id=#{id}
 		order by no desc
 	</select>
 
@@ -105,10 +104,10 @@
 		place,
 		longitude
 		from t_schedule
-		where to_number(to_char(start_date,'mm')) <= #{month}
+		where to_number(to_char(start_date,'mm')) &lt;= #{month}
 		and to_number(to_char(end_date,'mm')) >= #{month}
 		and to_number(to_char(start_date,'dd')) >= #{day}
-		and to_number(to_char(end_date,'dd')) <= #{day}
+		and to_number(to_char(end_date,'dd')) &lt;= #{day}
 	</select>
 
 </mapper>
