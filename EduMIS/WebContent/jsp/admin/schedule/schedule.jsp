@@ -177,7 +177,7 @@
 							<!------------------------------------( 등록 폼)----------------------------------------------------------------------- -->
 
 							<div class="plan_form"
-								style="position: fixed; top: 110px; left: 200%; width: 450px; padding: 30px; z-index: 99; background: #fff; box-shadow: 0px 0px 50px rgba(10,10,10,10); border-radius: 40px; " >
+								style="position: fixed; top: 110px; left: 200%; width: 450px; padding: 30px; z-index: 100; background: #fff; box-shadow: 0px 0px 50px rgba(10,10,10,10); border-radius: 40px; " >
 								<div style="font-size: 20px;">일정 등록</div>
 								<hr />
 								<form action="/EduMIS/regschedule.do">
@@ -245,6 +245,73 @@
 							
 							
 							
+							<!------------------------------------(  수정  폼  )----------------------------------------------------------------------- -->
+
+							<div class="modify_form"
+								style="position: fixed; top: 110px; left: 200%; width: 450px; padding: 30px; z-index: 100; background: #fff; box-shadow: 0px 0px 50px rgba(10,10,10,10); border-radius: 40px; " >
+								<div style="font-size: 20px;">일정 등록</div>
+								<hr />
+								<form action="/EduMIS/updateschedule.do">
+									<table id="reg-Form" style="border-collapse: collapse;">
+										<tr>
+											<th>일 시</th>
+											<td style="width: 230px"> <input type="text" 	id="datepicker" name="m_startDate" size="10px" style="width: 100px" /> ~ <input type="text"	id="datepicker2" name="m_endDate" size="10px"	style="width: 100px" /></td>
+											<th>중요도</th>
+											<td width="30px"><select id="importance" name="m_importance">
+													<option value="1" selected="selected">보통</option>
+													<option value="2">중요함</option>
+													<option value="3">매우중요함</option>
+											</select></td>
+										</tr>
+										<tr>
+											<th>제 목</th>
+											<td colspan="3"><input type="text" id="title" size="46"
+												maxlength="20px" name="m_title" /></td>
+										</tr>
+										<tr>
+											<th>내 용</th>
+											<td colspan="3"><textarea rows="5" id="m_content"
+													name="m_content" cols="45" maxlength="100px"></textarea></td>
+										</tr>
+
+
+										<tr>
+											<th width="30%">장 소</th>
+											<td colspan="3">
+												<div id="search">
+													<input type="text" id="m_place" name="m_place"> <input
+														type="button" value="장소 검색" onclick="search()"
+														style="display: inline-block; width: 100px; height: 30px;">
+													<input type="hidden" id="latitude" name="latitude">
+													<input type="hidden" id="longitude" name="longitude">
+												</div>
+												<div id="map" style="width: 100%; height: 200px;"></div>
+											</td>
+										</tr>
+										<tr>
+											<hr />
+											<script type="text/javascript"
+												src="//apis.daum.net/maps/maps3.js?apikey=1cd4d7ef46ee8be854cdc1de37076a25&libraries=services"></script>
+											</td>
+										</tr>
+
+									</table>
+									<br />
+									<div align="center">
+										<span><input type="submit" value="수정" size="10px" /></span>
+									</div>
+								</form>
+								<button type="button" class="cal_close" size="30px">닫기</button>
+							</div>
+
+
+							<!------------------------------------------------------------------------------------------------------------------------------------ -->
+							
+							
+							
+							
+							
+							
 							
 							<!------------------------------------( 디테일 폼)----------------------------------------------------------------------- -->
 
@@ -252,7 +319,6 @@
 								style="position: fixed; top: 110px; left: 200%; width: 450px; padding: 30px; z-index: 99; background: #fff; box-shadow: 0px 0px 50px rgba(10,10,10,10); border-radius: 40px; " >
 								<div style="font-size: 20px;">일정 등록</div>
 								<hr />
-								<form action="/EduMIS/regschedule.do">
 									<table id="reg-Form" style="border-collapse: collapse;">
 										<tr>
 											<th>일 시</th>
