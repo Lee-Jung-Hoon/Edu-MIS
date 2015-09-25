@@ -48,5 +48,9 @@ public class ScheduleDAO {
 		session.update("schedule.dao.SchduleMapper.modifySchedule", schedule);
 		return 1;
 	}
+	public int delSchedule(ScheduleVO schedule) {
+		session.update("schedule.dao.SchduleMapper.delSchedule", schedule);
+		return 1;
+	}
 	
 }
