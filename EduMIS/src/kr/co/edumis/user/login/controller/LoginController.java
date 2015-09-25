@@ -59,6 +59,7 @@ public class LoginController {
 			else{
 				grade = "3";
 			}
+			
 
 			switch(grade) { 
 			case "1":
