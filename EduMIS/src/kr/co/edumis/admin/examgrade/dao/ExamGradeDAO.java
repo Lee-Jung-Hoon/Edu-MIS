@@ -71,5 +71,13 @@ public class ExamGradeDAO {
 		session.delete("examgrade.deleteExamTurn", no);
 	}
 
+	public void UpdateExamTurn(ExamBoardVO board) {
+		session.update("examgrade.setExamTurn", board);
+		session.commit();
+	}
 
+	public void deleteExamGrade(String no) {
+		session.delete("examgrade.deleteExamGrade", no);
+		session.commit();
+	}
 }

@@ -30,5 +30,9 @@ public interface ExamGradeService {
 
 	public void deleteExamTurn(String no)  throws Exception;
 
+	public void UpdateExamTurn(ExamBoardVO board) throws Exception;
+
+	public void deleteExamGrade(String no) throws Exception;
+
 
 }

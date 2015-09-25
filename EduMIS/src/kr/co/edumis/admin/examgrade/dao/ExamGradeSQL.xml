@@ -7,9 +7,8 @@
 	<!-- 회차정보를 저장하는 부분 -->
 	<insert id="inserExamBoard" parameterType="ExamBoardVO">
 		insert into
-		t_exam_board(title, content, no, ck, reg_date)
-		values(#{title},
-		#{content}, seq_t_exam_board_no.nextVal, 'false', #{regDate})
+		t_exam_board(title, content, no, ck, reg_date )
+		values(#{title}, #{content}, seq_t_exam_board_no.nextVal, 'false', #{regDate})
 	</insert>
 
 	<resultMap id="result" type="ExamBoardVO">
@@ -44,7 +43,6 @@
 		<result property="content" column="content" />
 		<result property="regDate" column="reg_date" />
 	</resultMap>
-
 
 
 	<!-- no number primary key, -->
@@ -104,8 +102,7 @@
 	</update>
 
 	<select id="getGradeList" resultMap="gradeResult" parameterType="string">
-		select name, id, title, content, no, score, to_char(reg_date,
-		'yyyy-mm-dd') as reg_date
+		select name, id, title, content, no, score, to_char(reg_date, 'yyyy-mm-dd') as reg_date
 		from t_exam_grade
 		where no = #{no}
 	</select>
@@ -128,5 +125,16 @@
 	<delete id="deleteExamTurn" parameterType="string">
 		delete t_exam_board
 		where no = #{no}
+	</delete>
+	
+	<update id="setExamTurn" parameterType="ExamBoardVO">
+		update t_exam_board
+		set title = #{title}, content = #{content}, reg_date = #{regDate}
+		where no = #{no}
+	</update>
+	
+	<delete id="deleteExamGrade" parameterType="string">
+		delete t_exam_grade
+			where no = #{no}
 	</delete>
 </mapper>

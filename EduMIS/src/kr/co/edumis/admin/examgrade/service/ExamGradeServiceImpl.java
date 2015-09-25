@@ -75,4 +75,15 @@ public class ExamGradeServiceImpl implements ExamGradeService {
 		dao.deleteExamTurn(no);
 	}
 
+	@Override
+	public void UpdateExamTurn(ExamBoardVO board) throws Exception {
+		dao.UpdateExamTurn(board);
+	}
+
+	@Override
+	public void deleteExamGrade(String no) throws Exception {
+		dao.deleteExamGrade(no);
+		
+	}
+
 }

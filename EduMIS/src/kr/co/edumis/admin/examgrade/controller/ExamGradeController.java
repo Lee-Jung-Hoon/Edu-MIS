@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.tomcat.jni.File;
+
 import kr.co.edumis.admin.examgrade.service.ExamGradeService;
 import kr.co.edumis.admin.examgrade.service.ExamGradeServiceImpl;
 import kr.co.edumis.admin.examgrade.vo.ExamBoardVO;
@@ -23,6 +25,7 @@ public class ExamGradeController {
 
 	@RequestMapping("/examgrade/ExamTurnWriteForm.do")
 	public ModelAndView ExamTurnWriteForm() {
+		File f = new File();
 		ModelAndView mav = new ModelAndView("redirect:/EduMIS/jsp/admin/examgrade/examturnwriteForm.jsp");
 		return mav;
 	}
@@ -195,20 +198,56 @@ public class ExamGradeController {
 	public ModelAndView ExamTurnDelete(String no) {
 		ModelAndView mav = new ModelAndView("redirect:/EduMIS/jsp/admin/examgrade/exammain.jsp");
 		try {
+			service.deleteExamGrade(no);
 			service.deleteExamTurn(no);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return mav;
+	}	
+	
+	@RequestMapping("/examgrade/ExamTurnModify.do")
+	public ModelAndView ExamTurnModify(String no) {
+		ModelAndView mav = new ModelAndView("/jsp/admin/examgrade/examTurnmodify.jsp");
+		try {
+			List<ExamGradeVO> list = service.getGradeList(no);
+			mav.addObject("list", list);
+			ExamBoardVO board = service.getBoard(no);
+			mav.addObject("board", board);
+			mav.addObject("no", no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}	
+	
+	
+	
+	@RequestMapping("/examgrade/ExamTurnUpdate.do")
+	public ModelAndView ExamTurnUpdate(HttpServletRequest req) {
+		ModelAndView mav = new ModelAndView("redirect:/EduMIS/jsp/admin/examgrade/exammain.jsp");
+
+		String no = req.getParameter("no");
+		String title = req.getParameter("title");
+		String content = req.getParameter("content");
+		String datepicker = req.getParameter("datepicker");
+		String year = datepicker.substring(6);
+		String month = datepicker.substring(0,2);
+		String day = datepicker.substring(3,5);
+		String date = year+""+month+""+day;
+
+		ExamBoardVO board = new ExamBoardVO();
+		board.setTitle(title);
+		board.setRegDate(date);
+		board.setContent(content);
+		board.setNo(no);
+
+		try {
+			service.UpdateExamTurn(board);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
 	}
-	
-	
-	
-//	<th width="100px">번호</th>
-//	<th width="200px">이름</th>
-//	<th width="300px">아이디</th>
-//	<th width="100px">가입일</th>
-	
-	
-//	ExamTurnModify.do
+//	
 }
