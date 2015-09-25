@@ -86,7 +86,7 @@ public class LoginController {
 		return mav;
 	}
 	
-	@RequestMapping("/login/logOut.do")
+	@RequestMapping("/login/logout.do")
 	public ModelAndView logout(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
 		try {
