@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/EduMIS/talk/memberList.do">
+	<form action="/EduMIS/talk/login.do">
 	no<input type="text" name="no" />
 	 name<input type="text" name="name"/> 
 	grade<input type="text" name="grade"/>
