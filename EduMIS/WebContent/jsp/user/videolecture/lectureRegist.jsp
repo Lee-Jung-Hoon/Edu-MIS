@@ -43,6 +43,13 @@ table {
 	height: auto;
 	text-align: right;
 }
+th {
+	text-align:center !important;
+	text-indent:0 !important;
+}
+td {
+	text-align:left !important;
+}
 </style>
 <script>
   function ckForm() {
@@ -71,7 +78,7 @@ table {
   }
 </script>
 </head>
-<body class="page-join">
+<body class="page-join btn-page">
 	<div class="wrap">
 		<div class="wrap-inner">
 			<aside>
@@ -129,20 +136,12 @@ table {
 										<tr>
 											<th>강의 파일</th>
 											<td align="left"><input type="text" name="video"
-												size="100%" id="video" /></td>
+												size="100%" id="video" placeholder="링크를 입력해주세요."/></td>
 										</tr>
 									</table>
 								</div>
-								<div>
-									<table class="tb-test2">
-										<tr>
-											<td><span><input type="submit" value="강의 등록"></span></td>
-										</tr>
-										<tr>
-											<td><span><input type="button" value="강의 목록"
-													onclick="moveList()"></span></td>
-										</tr>
-									</table>
+								<div class="btn-area" style="text-align:right">
+									<input type="submit" style="display:inline-block; width:70px; height:40px;" class="btn txt-regist-s btn-txt btn-blue" value="강의 등록"></td>
 								</div>
 							</form>
 							<!--  작업완료 부분 -->

@@ -4,9 +4,9 @@
 <mapper namespace="videoLecture.dao.LectureMapper">
 	<insert id="lectureRegist" parameterType="VideoLectureVO">
 		insert into
-		user_lecture(no, title, contents, video)
+		t_lecture(no, title, contents, video)
 		values
-		(seq_user_lecture_no.nextVal, #{title}, #{contents}, #{video})
+		(seq_t_lecture_no.nextVal, #{title}, #{contents}, #{video})
 	</insert>
 
 	<select id="lectureList" resultType="VideoLectureVO"
@@ -16,7 +16,7 @@
 		title, time, rownum as rnum
 		from(select no, title,
 		to_char(time,'yyyy-mm-dd') as time
-		from user_lecture
+		from t_lecture
 		order by no desc))
 		where rnum between #{startPage} and #{endPage}
 	</select>
@@ -25,7 +25,7 @@
 		resultType="VideoLectureVO">
 		select no, title, contents, video,
 		to_char(time,'yyyy-mm-dd') as time
-		from user_lecture
+		from t_lecture
 		where no=#{no}
 
 	</select>
@@ -33,22 +33,22 @@
 	<select id="lectureCount" resultType="int">
 		select count(no)
 		from
-		user_lecture
+		t_lecture
 	</select>
 
 	<delete id="lectureDelete" parameterType="int">
-		delete user_lecture
+		delete t_lecture
 		where no=#{no}
 	</delete>
 
 	<select id="lectureSelect" resultType="VideoLectureVO" parameterType="int">
 		select no, title, contents, video
-		from user_lecture
+		from t_lecture
 		where no=#{no}
 	</select>
 
 	<update id="lectureModify" parameterType="map">
-		update user_lecture
+		update t_lecture
 		set title=#{title}, contents=#{contents}, video=#{video} 
 		where no=#{no}
 	</update>

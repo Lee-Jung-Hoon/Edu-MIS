@@ -98,8 +98,10 @@ public class VideoLectureController {
 	public ModelAndView lectureSelect(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		ModelAndView mav = new ModelAndView("/jsp/user/videolecture/lectureModify.jsp");
 		int no = Integer.parseInt(req.getParameter("no"));
+		
 		VideoLectureVO lecture = service.lectureSelect(no);
 		mav.addObject("lecture", lecture);
+		
 		return mav;
 	}
 
@@ -108,17 +110,20 @@ public class VideoLectureController {
 		ModelAndView mav = new ModelAndView("/jsp/user/videolecture/lectureDetail.jsp");
 
 		int no = Integer.parseInt(req.getParameter("no"));
-		String title = req.getParameter("titme");
+		String title = req.getParameter("title");
 		String contents = req.getParameter("contents");
 		String video = req.getParameter("video");
 
 		VideoLectureVO lecture = new VideoLectureVO();
+		lecture.setNo(no);
 		lecture.setTitle(title);
 		lecture.setContents(contents);
 		lecture.setVideo(video);
-
-		service.lectureModify(no, lecture);
+		
+		List<LecCommentVO> lecComment = lecService.lecCommentList(no);
+		service.lectureModify(lecture);
 		mav.addObject("lecture", lecture);
+		mav.addObject("lecComment", lecComment);
 		return mav;
 	}
 

@@ -35,6 +35,7 @@ public class LecCommentList extends HttpServlet {
 			str += "[";
 			for (LecCommentVO lec : list) {
 				str += "{";
+				str += " 'comno' : '" + lec.getComno() + "' ,";
 				str += " 'id' : '" + lec.getId() + "' ,";
 				str += " 'comments' : '" + lec.getComments() + "'";
 				str += "},";

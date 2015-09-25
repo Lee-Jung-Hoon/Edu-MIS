@@ -39,7 +39,6 @@ public class LecCommentController extends HttpServlet {
 		lecComment.setNo(no);
 		
 		System.out.println(lecComment);
-		System.out.println(lecComment.getComno());
 
 		LecCommentDAO dao = new LecCommentDAO();
 		try {

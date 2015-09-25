@@ -24,8 +24,8 @@ public class LecCommentServiceImpl implements LecCommentService {
 	}
 
 	@Override
-	public void lecCommentDelete(int no) throws Exception {
-		dao.lecCommentDelete(no);
+	public void lecCommentDelete(int comno) throws Exception {
+		dao.lecCommentDelete(comno);
 		
 	}
 	

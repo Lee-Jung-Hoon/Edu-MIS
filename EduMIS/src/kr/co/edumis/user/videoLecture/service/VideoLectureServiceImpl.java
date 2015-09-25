@@ -45,8 +45,8 @@ public class VideoLectureServiceImpl implements VideoLectureService {
 	}
 
 	@Override
-	public void lectureModify(int no, VideoLectureVO lecture) throws Exception {
-		dao.lectureModify(no, lecture);
+	public void lectureModify(VideoLectureVO lecture) throws Exception {
+		dao.lectureModify(lecture);
 	}
 
 
