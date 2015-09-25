@@ -43,12 +43,14 @@ table {
 	height: auto;
 	text-align: right;
 }
+
 th {
-	text-align:center !important;
-	text-indent:0 !important;
+	text-align: center !important;
+	text-indent: 0 !important;
 }
+
 td {
-	text-align:left !important;
+	text-align: left !important;
 }
 </style>
 <script>
@@ -62,6 +64,13 @@ td {
     if ($("#contents").val() == "") {
       alert("강의 내용을 입력하세요")
       $("#contents").focus();
+      return false;
+    }
+
+    var com = $("#video").val();
+    if (com.substring(0, 6) != "http://") {
+      alert("강의 영상은 링크만 가능합니다.");
+      $("#video").focus();
       return false;
     }
 
@@ -136,12 +145,15 @@ td {
 										<tr>
 											<th>강의 파일</th>
 											<td align="left"><input type="text" name="video"
-												size="100%" id="video" placeholder="링크를 입력해주세요."/></td>
+												size="100%" id="video" placeholder="링크를 입력해주세요." /></td>
 										</tr>
 									</table>
 								</div>
-								<div class="btn-area" style="text-align:right">
-									<input type="submit" style="display:inline-block; width:70px; height:40px;" class="btn txt-regist-s btn-txt btn-blue" value="강의 등록"></td>
+								<div class="btn-area" style="text-align: right">
+									<input type="submit"
+										style="display: inline-block; width: 70px; height: 40px;"
+										class="btn txt-regist-s btn-txt btn-blue" value="강의 등록">
+									</td>
 								</div>
 							</form>
 							<!--  작업완료 부분 -->

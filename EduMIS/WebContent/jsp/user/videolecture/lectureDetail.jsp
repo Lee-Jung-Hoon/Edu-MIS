@@ -41,7 +41,6 @@
   $(document).ready(function() {
     $("#insertComment").click(function() {
 
-
       if ($("#comments").val() == "") {
         alert("댓글을 입력해주세요")
         $("#comments").focus();
@@ -62,7 +61,7 @@
       }, function(data) {
         list(data);
       });
-      
+
       $('#comments').val("");
     });
 
@@ -153,7 +152,7 @@
 													<div class="vod-wrap-frame">
 														<div class="vod-left-frame">
 															<iframe width="660" height="371"
-																src="https://www.youtube.com/embed/gBqFVEGN2xo?list=PL68HocmNHe998_R-5H7V_oz5Awdh2KZ1l"
+																src="${lecture.video}?list=PL68HocmNHe998_R-5H7V_oz5Awdh2KZ1l"
 																frameborder="0" allowfullscreen></iframe>
 															<div class="vod-content">
 																<p>&nbsp;&nbsp;${lecture.contents}</p>
