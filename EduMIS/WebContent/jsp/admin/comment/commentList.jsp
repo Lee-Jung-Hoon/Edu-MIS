@@ -81,17 +81,36 @@
 	$(document).ready(function () {
 	  
 	  $("input[type='button']").click(function () {
-	    var no = this.id;
-	    $.get(
-	        "/EduMIS/comment/delete.do",
-	        {no:no},
-	        function(data){
-	          if(confirm("삭제하시겠습니까?")){
-		          $("#" + no).remove();
-		          $("#" + no).remove();
-	          }
-	        })
-	 		 })
+	    if($(this).val() == '삭제') {
+		    var no = this.id;
+		      if(confirm("삭제하시겠습니까?")){
+		    $.get(
+		      "/EduMIS/comment/delete.do",
+		      {no:no},
+		      function(data){
+			      $("#" + no).remove();
+	  	    })
+		     }
+			 } else if ($(this).val() == '등록') {
+			   if(confirm("등록하시겠습니까?")){
+					var id = $("#id").val();
+					var content = $("#content").val();
+					
+         $.post(
+            "/EduMIS/comment/RegistComment.do",
+            {id:id, content:content},
+            function(data) {
+              $("#a").prepend(
+              "<tr id = '39'>" + 
+              "<td style=' width:82px;'> sdf</td>" + 
+							"<td style=' width:400px;'> sdf</td>" + 
+							"<td><input type = 'button' value = '삭제' id = '39' style=\"display:block; width:20px; height:20px; background:url(\'../images/btn-close.png\') no-repeat center; background-size:100%; overflow:hidden; z-index:99; text-indent:-5000px;\"></td>" + 
+							"</tr>"
+              )
+            })
+			   }
+			 }
+    })
 	})
 	</script>
 	
@@ -124,9 +143,9 @@
 												</div>
 												
 												<div>
-												<input type="text" style="height:30px; width:500px;" name="content"size="100" />
-												<input type="hidden" value = "${student.id}" name = "id"/>
-												<input type="submit" style="width:80px; height:30px;float:right;" class="btn btn-txt txt-regist-s btn-blue" value="등록" />
+												<input type="text" style="height:30px; width:500px;" name="content" id = "content" size="100" />
+												<input type="hidden" value = "${student.id}" name = "id" id = "id"/>
+												<input type="button" style="width:80px; height:30px;float:right;" class="btn btn-txt txt-regist-s btn-blue" value="등록" />
 												<br/>
 												</div>
 												<div>
@@ -142,7 +161,7 @@
 														            <th style="	width: 400px;">내용</th>
 														        </tr>
 														    </thead>
-														    <tbody>
+														    <tbody id = "${student.id}">
 														<c:forEach var="clist" items="${clist}">
 															<c:if test="${student.id eq clist.id}">
 														        <tr id = "${clist.no}">
