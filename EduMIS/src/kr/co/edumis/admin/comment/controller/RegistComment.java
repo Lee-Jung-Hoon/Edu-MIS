@@ -1,6 +1,7 @@
 package kr.co.edumis.admin.comment.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,6 +30,25 @@ public class RegistComment extends HttpServlet{
 		
 		try {
 			service.commentInsert(vo);
+			vo = service.selectOneComment();
+			
+			String json= "";
+//			json += "[";
+			json += "  {";
+			json += "    'regDate':'" + vo.getReg_date() + "',";
+			json += "    'content':'" + vo.getContent() + "',";
+			json += "    'no':'" + vo.getNo() + "'";
+			json += "   }";
+//			json += "]";
+			
+			res.setContentType("text/html; charSet=UTF-8");
+			
+			PrintWriter out = res.getWriter();
+			
+			out.println(json);
+			out.close();
+			
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

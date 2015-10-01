@@ -23,5 +23,7 @@ public interface CommentService {
 
 	public void deleteComment(String no) throws Exception;
 
+	public CommentVO selectOneComment() throws Exception;
+
 
 }

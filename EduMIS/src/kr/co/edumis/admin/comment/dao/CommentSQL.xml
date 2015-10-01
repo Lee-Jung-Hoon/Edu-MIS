@@ -62,4 +62,25 @@
 	from t_comment
 	where no = #{no}
 </delete>
+
+<select id="selectLastComment" resultType="CommentVO">
+select 	no, 
+				id, 
+				content, 
+				reg_date, 
+				rnum
+from (select  no, 
+							id, 
+							content, 
+							reg_date, 
+							rownum rnum
+				from (select  no, 
+											id, 
+											content, 
+											to_char(reg_date, 'yyyy-mm-dd') as reg_date 
+							from t_comment 
+							order by no desc)
+				order by rnum desc)
+where rnum = 1
+</select>
 </mapper>
