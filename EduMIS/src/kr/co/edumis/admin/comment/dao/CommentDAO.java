@@ -52,6 +52,10 @@ public class CommentDAO {
 		session.commit();
 	}
 
+	public CommentVO selectLast() {
+		return session.selectOne("comment.dao.commentMapper.selectLastComment");
+	}
+
 
 	
 

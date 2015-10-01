@@ -50,5 +50,10 @@ public class CommentServiceImpl implements CommentService {
 		dao.deleteCom(no);
 	}
 
+	@Override
+	public CommentVO selectOneComment() throws Exception {
+		return dao.selectLast();
+	}
+
 
 }

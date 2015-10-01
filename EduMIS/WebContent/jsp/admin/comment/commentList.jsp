@@ -1,57 +1,57 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="ko">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width">
-	<title>수강생 관리</title>
-<%@ include file="/jsp/admin/include/common.jsp" %>	
-	<style>
-	table.scroll {
-    /* width: 100%; */ /* Optional */
-    /* border-collapse: collapse; */
-    border-spacing: 0;
-/*     border: 2px solid black; */
-		}
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width">
+<title>수강생 관리</title>
+<%@ include file="/jsp/admin/include/common.jsp"%>
+<style>
+table.scroll {
+	/* width: 100%; */ /* Optional */
+	/* border-collapse: collapse; */
+	border-spacing: 0;
+	/*     border: 2px solid black; */
+}
 
-	table.scroll tbody,
-	table.scroll thead { display: block; }
-	
-	thead tr th { 
-	    height: 30px;
-	    line-height: 30px;
-	    /* text-align: left; */
-	    border-bottom: 2px solid black;
-	}
-	
-	table.scroll tbody {
-	    height: 100px;
-	    overflow-y: auto;
-	    overflow-x: hidden;
-	}
-	
-	tbody {
-/* 	 border-top: 2px solid black;  */
-					width: 500px;	
-					}
-	
-	tbody td, thead th {
-			width: 80px;
-			height: 15px;
-	    /* width: 20%; */ /* Optional */
-/* 	    border-right: 1px solid black; */
-	    /* white-space: nowrap; */
-	}
-	
-	tbody td:last-child, thead th:last-child {
-	    border-right: none;
-	}
-		
-	</style>
-	<script>
+table.scroll tbody, table.scroll thead {
+	display: block;
+}
+
+thead tr th {
+	height: 30px;
+	line-height: 30px;
+	/* text-align: left; */
+	border-bottom: 2px solid black;
+}
+
+table.scroll tbody {
+	height: 100px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+tbody {
+	/* 	 border-top: 2px solid black;  */
+	width: 500px;
+}
+
+tbody td, thead th {
+	width: 80px;
+	height: 15px;
+	/* width: 20%; */ /* Optional */
+	/* 	    border-right: 1px solid black; */
+	/* white-space: nowrap; */
+}
+
+tbody td:last-child, thead th:last-child {
+	border-right: none;
+}
+</style>
+<script>
 	function popUp(id){
 			window.open("http://localhost:8000/EduMIS/admin/commentSelect.do?id=" + id, // 팝업창에 띄울 페이지 주소
 			"수강생 정보", // 팝업창에 이름 설정
@@ -80,117 +80,122 @@
 	
 	$(document).ready(function () {
 	  
-	  $("input[type='button']").click(function () {
-	    if($(this).val() == '삭제') {
-		    var no = this.id;
-		      if(confirm("삭제하시겠습니까?")){
-		    $.get(
-		      "/EduMIS/comment/delete.do",
-		      {no:no},
-		      function(data){
-			      $("#" + no).remove();
-	  	    })
-		     }
-			 } else if ($(this).val() == '등록') {
+	  $("input[type='button']").on("click", function () {
+				 if ($(this).val() == '등록') {
 			   if(confirm("등록하시겠습니까?")){
-					var id = $("#id").val();
-					var content = $("#content").val();
-					
-         $.post(
-            "/EduMIS/comment/RegistComment.do",
-            {id:id, content:content},
-            function(data) {
-              $("#a").prepend(
-              "<tr id = '39'>" + 
-              "<td style=' width:82px;'> sdf</td>" + 
-							"<td style=' width:400px;'> sdf</td>" + 
-							"<td><input type = 'button' value = '삭제' id = '39' style=\"display:block; width:20px; height:20px; background:url(\'../images/btn-close.png\') no-repeat center; background-size:100%; overflow:hidden; z-index:99; text-indent:-5000px;\"></td>" + 
-							"</tr>"
-              )
-            })
+					var id = this.id;
+					var content = $("#" + id).val();
+										
+	         $.ajax({
+	           url:"/EduMIS/comment/RegistComment.do",
+	           type:"POST",
+	           datatype:"json",
+	           data:{id:id, content:content},
+	           success: function onSuccess(data, status) {
+	           var jsondata = eval('(' + data +  ')');
+	             $("#" + id + "com").prepend(
+		 	              "<tr id = "+ jsondata.no + "com>" + 
+		 	              "<td style=' width:82px;'>" + jsondata.regDate + "</td>" + 
+		 								"<td style=' width:400px;'>" + jsondata.content + "</td>" + 
+		 								"<td><input type = 'button' value = '삭제' id = " + jsondata.no + " style=\"display:block; width:20px; height:20px; background:url(\'../images/btn-close.png\') no-repeat center; background-size:100%; overflow:hidden; z-index:99; text-indent:-5000px;\"></td>" + 
+		 								"</tr>"
+						 )}
+	         })
 			   }
 			 }
     })
 	})
+	
+	$(document).on("click", "input[type='button']", function() {
+	  if($(this).val() == '삭제') {
+	     if(confirm("삭제하시겠습니까?")){
+	       var no = this.id;
+			    $.get(
+			      "/EduMIS/comment/delete.do",
+			      {no:no},
+			      function(data){
+				      $("#" + no + "com").remove();
+		  	    })
+		  	  }
+	     }
+	  })
+
+					
+
 	</script>
-	
-	
+
+
 </head>
 <body class="page-join btn-page">
 	<div class="wrap">
 		<div class="wrap-inner">
-			<%@ include file="/jsp/admin/include/leftMenu.jsp" %>	
+			<%@ include file="/jsp/admin/include/leftMenu.jsp"%>
 			<div class="container">
-				<%@ include file="/jsp/admin/include/topMenu.jsp" %>
+				<%@ include file="/jsp/admin/include/topMenu.jsp"%>
 
 				<div class="container-inner">
 					<div class="content">
 						<section class="join common">
 							<h2>수강생 관리</h2>
 							<div class="student-info">
-						
+
 								<ul>
-									<li>
-										
-											<c:forEach var="student" items="${list}">	
-										<form action="/EduMIS/admin/commentInsert.do" method="post">
-										
-											<div class="all-frame">
-												<div class="img-frame" style="margin-right:20px;">
-													<span class="img"><img src="/EduMIS/images/icon-user.png" alt="" /></span>
-													<a href="javascript:popUp('${student.id}');"
-														style = "text-decoration: none;">${student.name}</a>
-												</div>
-												
-												<div>
-												<input type="text" style="height:30px; width:500px;" name="content" id = "content" size="100" />
-												<input type="hidden" value = "${student.id}" name = "id" id = "id"/>
-												<input type="button" style="width:80px; height:30px;float:right;" class="btn btn-txt txt-regist-s btn-blue" value="등록" />
-												<br/>
-												</div>
-												<div>
-												
-											
-												<br/>
-												
+									<li><c:forEach var="student" items="${list}">
+											<form action="/EduMIS/admin/commentInsert.do" method="post">
+
+												<div class="all-frame">
+													<div class="img-frame" style="margin-right: 20px;">
+														<span class="img"><img
+															src="/EduMIS/images/icon-user.png" alt="" /></span> <a
+															href="javascript:popUp('${student.id}');"
+															style="text-decoration: none;">${student.name}</a>
+													</div>
+
 													<div>
-														<table class="scroll">
-														    <thead>
-														        <tr>
-														            <th style="	width: 80px;">날짜</th>
-														            <th style="	width: 400px;">내용</th>
-														        </tr>
-														    </thead>
-														    <tbody id = "${student.id}">
-														<c:forEach var="clist" items="${clist}">
-															<c:if test="${student.id eq clist.id}">
-														        <tr id = "${clist.no}">
-														            <td style="	width: 82px;">${clist.reg_date}</td>
-														            <td style="	width: 400px;"> ${clist.content}</td>
-														        		<td><input type = "button" value = "삭제" id = "${clist.no}" style="	display:block;
-														        																																				
-														        																																				width:20px;
-																																																						height:20px;
-																																																						background:url('../images/btn-close.png') no-repeat center;
-																																																						background-size:100%;
-																																																						overflow:hidden;
-																																																						z-index:99;
-																																																						text-indent:-5000px;"/></td>
-														        </tr>
-															</c:if>
-														</c:forEach>
-														    </tbody>
-														</table>
+														<input type="text" style="height: 30px; width: 500px;"
+															name="content" id="${student.id}" size="100" />
+														<input type="button"
+															id = "${student.id}"
+															style="width: 80px; height: 30px; float: right;"
+															class="btn btn-txt txt-regist-s btn-blue" value="등록" />
+														<br />
+													</div>
+													<div>
+
+
+														<br />
+
+														<div>
+															<table class="scroll">
+																<thead>
+																	<tr>
+																		<th style="width: 80px;">날짜</th>
+																		<th style="width: 400px;">내용</th>
+																	</tr>
+																</thead>
+																<tbody id="${student.id}com">
+																	<c:forEach var="clist" items="${clist}">
+																		<c:if test="${student.id eq clist.id}">
+																			<tr id="${clist.no}">
+																				<td style="width: 82px;">${clist.reg_date}</td>
+																				<td style="width: 400px;">${clist.content}</td>
+																				<td><input type="button" value="삭제"
+																					id="${clist.no}"
+																					style="display: block; width: 20px; height: 20px; background: url('../images/btn-close.png') no-repeat center; background-size: 100%; overflow: hidden; z-index: 99; text-indent: -5000px;" /></td>
+																			</tr>
+																		</c:if>
+																	</c:forEach>
+																</tbody>
+															</table>
+														</div>
 													</div>
 												</div>
-											</div>
-										</form>
-												</c:forEach>
-									</li>
-								
+											</form>
+										</c:forEach></li>
+
 								</ul>
 							</div>
-						</section>				
+						</section>
 					</div>
 				</div>
 			</div>
