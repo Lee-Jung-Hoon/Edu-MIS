@@ -99,7 +99,10 @@ tbody td:last-child, thead th:last-child {
 		 								"<td style=' width:400px;'>" + jsondata.content + "</td>" + 
 		 								"<td><input type = 'button' value = '삭제' id = " + jsondata.no + " style=\"display:block; width:20px; height:20px; background:url(\'../images/btn-close.png\') no-repeat center; background-size:100%; overflow:hidden; z-index:99; text-indent:-5000px;\"></td>" + 
 		 								"</tr>"
-						 )}
+						 )
+						 $("#" + id).val("");
+						 
+	           }
 	         })
 			   }
 			 }
