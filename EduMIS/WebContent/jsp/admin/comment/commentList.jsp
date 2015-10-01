@@ -176,7 +176,7 @@ tbody td:last-child, thead th:last-child {
 																<tbody id="${student.id}com">
 																	<c:forEach var="clist" items="${clist}">
 																		<c:if test="${student.id eq clist.id}">
-																			<tr id="${clist.no}">
+																			<tr id="${clist.no}com">
 																				<td style="width: 82px;">${clist.reg_date}</td>
 																				<td style="width: 400px;">${clist.content}</td>
 																				<td><input type="button" value="삭제"
