@@ -47,7 +47,9 @@ public class TalkController {
 		req.setCharacterEncoding("UTF-8");
 		ModelAndView mav = new ModelAndView("/jsp/user/talk/memberList.jsp");
 		try {
-			List<MemberVO> list = service.selectMemberList();
+			HttpSession session = req.getSession();
+			LoginVO member = (LoginVO)session.getAttribute("user");
+			List<MemberVO> list = service.selectMemberList(member.getNo());
 			System.out.println(list.size());
 			mav.addObject("list", list);
 		} catch (Exception e) {
@@ -55,29 +57,29 @@ public class TalkController {
 		}
 		return mav;
 	}
-	@RequestMapping("/talk/user/login.do")
-	public ModelAndView login(HttpServletRequest req) throws Exception {
-		req.setCharacterEncoding("UTF-8");
-		LoginVO member = new LoginVO();
-		member.setNo(Integer.parseInt(req.getParameter("no")));
-		member.setName(req.getParameter("name"));
-		member.setGrade(req.getParameter("grade"));
-		
-		HttpSession session = req.getSession();
-		session.setAttribute("member", member);
-		
-		
-//		ModelAndView mav = new ModelAndView("/jsp/user/main.jsp");
-		ModelAndView mav = new ModelAndView("/template/global_memo02.jsp");
-		try {
-			List<MemberVO> list = service.selectMemberList();
-			System.out.println(list.size());
-			mav.addObject("list", list);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return mav;
-	}
+//	@RequestMapping("/talk/user/login.do")
+//	public ModelAndView login(HttpServletRequest req) throws Exception {
+//		req.setCharacterEncoding("UTF-8");
+//		LoginVO member = new LoginVO();
+//		member.setNo(Integer.parseInt(req.getParameter("no")));
+//		member.setName(req.getParameter("name"));
+//		member.setGrade(req.getParameter("grade"));
+//		
+//		HttpSession session = req.getSession();
+//		session.setAttribute("member", member);
+//		
+//		
+////		ModelAndView mav = new ModelAndView("/jsp/user/main.jsp");
+//		ModelAndView mav = new ModelAndView("/template/global_memo02.jsp");
+//		try {
+//			List<MemberVO> list = service.selectMemberList();
+//			System.out.println(list.size());
+//			mav.addObject("list", list);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return mav;
+//	}
 	
 	@RequestMapping("/talk/user/recvList.do")
 	public ModelAndView ReceiveTalkList(HttpServletRequest req, HttpServletResponse res){

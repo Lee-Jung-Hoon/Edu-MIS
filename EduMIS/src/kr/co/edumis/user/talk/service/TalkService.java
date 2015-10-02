@@ -9,7 +9,7 @@ public interface TalkService {
 
 	public List<TalkVO> selectReList(int no) throws Exception;
 
-	public List<MemberVO> selectMemberList() throws Exception;
+	public List<MemberVO> selectMemberList(int no) throws Exception;
 
 	public TalkVO selectNo(int no) throws Exception;
 
