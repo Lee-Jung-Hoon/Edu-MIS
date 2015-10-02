@@ -43,7 +43,6 @@ public class MainController extends HttpServlet {
 			mav.addObject("late", late.size());
 			mav.addObject("lateName", late);
 
-			
 			// main페이지 일일 관리자 일정 결과 불러오기
 			ScheduleVO schedule = service.selectDailySchedule();
 
@@ -56,12 +55,12 @@ public class MainController extends HttpServlet {
 			
 			// main페이지 일일 자리 배치도 불러오기
 				
+			/*
 			// 과제게시판 리스트 5개
 			List<BookBoardVO> bookList = service.selectBookBoardList();
 
 			// 과제게시판 리스트 5개 //
 			List<AdminAssVO> assList = service.selectAssList();
-			/*
 			 * 사용자	
 			// 성적게시판 본인꺼 최근 리스트 5개 //
 			HttpSession session = req.getSession();
