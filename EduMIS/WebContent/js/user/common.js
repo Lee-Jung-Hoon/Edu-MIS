@@ -49,9 +49,9 @@ $(document).ready(function(){
 	          url : "/EduMIS/talk/user/receiveList.do"
 	        }).done (function (data) {
 	          $("#messageUL").html(data);
-	          $("#countView").html($("#count").val());
+//	          $("#countView").html($("#count").val());
+	          $(".count").html($("#count").val());
 	          //쪽지추가 부분
-	          
 	        
 	          // 쪽지 메시지 링크 클릭 시
 	          $('.message-inner li > a').on('click', function(){
@@ -167,7 +167,7 @@ $(document).ready(function(){
 	            type : "re"
 	          }, function() {
 	            con.parents('li').remove();
-	             $("#countView").html($("#countView").html()-1);
+	            $(".count").html($(".count").html()-1);
 	          });
 //	          socket.emit("countUp", {recvNo : no, sendNo : "${member.no}" } );
 	        }
@@ -198,9 +198,8 @@ $(document).ready(function(){
 	        type : "check"
 	      }, function () {
 	        $("#" + no).parents('li').remove();
-	        $("#countView").html($("#countView").html()-1);
+	        $(".count").html($(".count").html()-1);
 	      })
-	      
 	      
 	  }
 	    /* ------------------------------------------------------------------------------------ */
