@@ -19,8 +19,8 @@ public class TalkDAO {
 		return session.selectList("talk.dao.TalkMapper.getReceiveList", no);
 	}
 	
-	public List<MemberVO> selectMemberList() {
-		return session.selectList("talk.dao.TalkMapper.getMember");
+	public List<MemberVO> selectMemberList(int no) {
+		return session.selectList("talk.dao.TalkMapper.getMember", no);
 	}
 	
 	public TalkVO selectNo(int no) {
