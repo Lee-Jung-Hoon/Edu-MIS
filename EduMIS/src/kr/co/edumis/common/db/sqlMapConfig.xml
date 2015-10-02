@@ -12,6 +12,7 @@
 		<typeAlias alias="userAssVO" type="kr.co.edumis.user.assignment.vo.UserAssVO"/>
 		<typeAlias alias="AdminAssVO" type="kr.co.edumis.admin.assignment.vo.AdminAssVO"/>
 		<typeAlias alias="TalkVO" type="kr.co.edumis.admin.talk.vo.TalkVO"/> 
+		<typeAlias alias="UserTalkVO" type="kr.co.edumis.user.talk.vo.TalkVO"/> 
 		<typeAlias  alias ="VoteVO" type="kr.co.edumis.user.vote.vo.VoteVO"/>
 		<typeAlias alias="ScheduleVO" type="kr.co.edumis.admin.schedule.vo.ScheduleVO"/>
 		<typeAlias alias="MemoVO" type="kr.co.edumis.user.memo.vo.MemoVO"/>
@@ -42,6 +43,7 @@
 		<mapper resource="kr/co/edumis/user/assignment/dao/UserAssSQL.xml"/>
 		<mapper resource="kr/co/edumis/admin/assignment/dao/AdminAssSQL.xml"/>
 		<mapper resource="kr/co/edumis/admin/talk/dao/TalkSQL.xml"/> 
+		<mapper resource="kr/co/edumis/user/talk/dao/TalkSQL.xml"/> 
 		<mapper resource="kr/co/edumis/user/vote/dao/VoteSQL.xml"/>
 		<mapper resource="kr/co/edumis/admin/schedule/dao/ScheduleSQL.xml"/>
 		<mapper resource="kr/co/edumis/user/memo/dao/MemoSQL.xml"/>
@@ -53,7 +55,7 @@
 		<mapper resource="kr/co/edumis/user/member/dao/IdCheckSQL.xml"/>
 		<mapper resource="kr/co/edumis/main/dao/MainSQL.xml"/>
 		<mapper resource="kr/co/edumis/user/videoLecture/dao/VideoLectureSQL.xml"/>
-		 <mapper resource="kr/co/edumis/user/videoLecture/dao/LecCommentSQL.xml"/>
+		 <mapper resource="kr/co/edumis/user/videoLecture/dao/LecCommentSQL.xml"/> 
 		 <mapper resource="kr/co/edumis/admin/attendance/dao/AdminAttSQL.xml"/>
 	</mappers>
 </configuration>

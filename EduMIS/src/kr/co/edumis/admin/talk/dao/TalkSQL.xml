@@ -13,6 +13,16 @@
  			   and tm.no = tt.send_member_no
  		order by no desc
 	</select>
+
+	<!-- 읽지 않은 쪽지 리스트 받아오기 -->
+	<select id="getReceiveCount" parameterType="int" resultType="int">
+		select count(*)
+		  from t_talk tt
+		 where tt.receive_member_no = #{no}
+  		   and receive_del = 'n'
+ 		   and tt.check_yn = 'n'
+ 		 order by no desc
+	</select>
 	
 	<!-- 체크 여부 y로 바꾸기 -->
 	<update id="setCheck" parameterType="int">
