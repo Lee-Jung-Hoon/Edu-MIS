@@ -36,10 +36,10 @@
 
 
 	<!-- 회원목록 뽑아오기 (강사님이 로그인 할 때만 사용), 강사님꺼 제외하고 뽑아옴 (쿼리 수정해야 함!) -->
-	<select id="getMember" resultType="memberVO">
+	<select id="getMember" parameterType="int" resultType="memberVO">
 		select no, id, name
 		from t_member 
-		where no != 1
+		where no != #{no}
 	</select>
 	
 	<!-- 시퀀스 값 가져오기 -->

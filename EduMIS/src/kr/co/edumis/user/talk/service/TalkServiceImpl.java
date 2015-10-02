@@ -18,8 +18,8 @@ public class TalkServiceImpl implements TalkService {
 		return dao.selectReList(no);
 	}
 
-	public List<MemberVO> selectMemberList() throws Exception {
-		return dao.selectMemberList();
+	public List<MemberVO> selectMemberList(int no) throws Exception {
+		return dao.selectMemberList(no);
 	}
 
 	public TalkVO selectNo(int no) throws Exception {
