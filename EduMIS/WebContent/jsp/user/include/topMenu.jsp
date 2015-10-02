@@ -12,7 +12,7 @@
 					<div class="top-message">
 						<button type="button" class="btn-message">
 							<img src="/EduMIS/images/message.png" alt="" />
-							<span class="count">1<!-- 메시지 개수 --></span>	
+							<span class="count"><!-- 메시지 개수 --></span>	
 						</button>
 						<div class="message-layer">
 							<button type="button" class="btn-message-close" onclick="msgClose()">닫기</button>
@@ -26,52 +26,23 @@
 									
 									<div class="message-inner">
 									<form>
-										<ul id="messageUL" class="message-list">
-											<li>
-												<button type="button" class="btn-message-remove">삭제</button>
-												<a href="#"><span class="info1"><strong title="안지원">안지원</strong>으로부터 도착</span><span class="info2">15-09-19 (토) 20:01</span></a>
-												<div class="text-content">
-													<p>안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 샘플 텍스트입니다.안녕하세요 .</p>
-													<textarea></textarea>
-													<button type="button" class="btn-send">
-														<div class="circle">
-															<div class="envelope-top"></div>
-															<div class="envelope"></div>
-														</div>
-													</button>
-												</div>
-											</li>
-											<li><a href='#'><span class='info1'><strong title='안지원'>안지원</strong>으로부터 도착</span><span class='info2'>15-09-19 (토) 20:01</span></a><div class='text-content'><p>안녕하세요 .</p><textarea></textarea><button type='button' class='btn-send'><div class='circle'><div class='envelope-top'></div><div class='envelope'></div></div></button></div></li>
-										</ul> 
+										<ul id="messageUL" class="message-list"></ul> 
 									</form>
 									</div>
 								</div>
 								<!-- 쪽지 끝 -->
-
 
 								<!-- 새로운 쪽지 시작 -->
 								<div class="message-frame-sort2">
 									<button type="button" class="btn-toggle btn-return">되돌아가기</button>
 									<form action="" method="">
 										<h2><img src="/EduMIS/images/txt-letter-new.png" alt="새로운 쪽지" /></h2>
-										<!--  디폴트 관리자 -->
-										<div class="message-receive">
-											<p>받는사람 : </p>
-
-											<!-- 학생일 경우 -->
-										<!-- <div class="message-receive student">
-											<p>받는사람 : 강사님</p> -->
-
-											<!-- 디폴트 관리자 ※ 학생일 경우 아래 태그 제외 -->
-											<div class="message-receive-inner">
-											<button type="button" class="btn-plus">추가</button></div>
-
-										</div>
-
-										<!-- 디폴트 관리자 -->
-										<textarea class="text-receive" ></textarea>
 										<!-- 학생일 경우 -->
-										<!-- <textarea class="text-receive student"></textarea> -->
+										<div class="message-receive student">
+											<p>받는사람 : 강사님</p>
+										</div>
+										<!-- 학생일 경우 -->
+										<textarea class="text-receive student"></textarea>
 
 										<button type="button" class="btn-send" onclick="sendTalk()">
 											<div class="circle">
