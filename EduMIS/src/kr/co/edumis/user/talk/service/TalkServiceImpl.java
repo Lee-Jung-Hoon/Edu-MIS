@@ -12,6 +12,11 @@ public class TalkServiceImpl implements TalkService {
 	public TalkServiceImpl() {
 		dao = new TalkDAO();
 	}
+	
+	public int selectAdminNo() throws Exception {
+		
+		return dao.selectAdminNo();
+	}
 
 	public List<TalkVO> selectReList(int no) throws Exception {
 
