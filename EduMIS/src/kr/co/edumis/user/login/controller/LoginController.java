@@ -66,7 +66,7 @@ public class LoginController {
 				return "redirect:/EduMIS/admin/main.do";	
 			case "2":
 				session.setAttribute("user", member);
-				return "redirect:/EduMIS/jsp/user/main.jsp";
+				return "redirect:/EduMIS/user/main.do";
 			default:
 				return "redirect:/EduMIS/jsp/user/member/joinForm.jsp";
 			}
