@@ -17,6 +17,11 @@ public class TalkServiceImpl implements TalkService {
 
 		return dao.selectReList(no);
 	}
+	
+	public int selectReCount(int no) throws Exception {
+		
+		return dao.selectReCount(no);
+	}
 
 	public List<MemberVO> selectMemberList(int no) throws Exception {
 		System.out.println("service no : " + no);
