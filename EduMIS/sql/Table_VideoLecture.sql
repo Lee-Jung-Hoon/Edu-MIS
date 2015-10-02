@@ -6,7 +6,7 @@ video varchar2(400),
 time date default sysdate
 );
 
-create sequence seq_user_lecture_no;
+create sequence seq_t_lecture_no;
 
 create table t_lecComment(
 comno number(4),
@@ -16,3 +16,4 @@ comments varchar2(500)
 );
 
 create sequence seq_t_lecComment_comno;
+
