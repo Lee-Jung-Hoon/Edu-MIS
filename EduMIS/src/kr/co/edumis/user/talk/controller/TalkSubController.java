@@ -54,18 +54,14 @@ public class TalkSubController extends HttpServlet {
 				talk.setContent(content);
 				service.insertTalk(talk);
 			} else {
-				String[] arr = req.getParameter("name").split("/");
-
-				for (int i = 1; i < arr.length; i++) {
-					TalkVO talk = new TalkVO();
-					int seq = service.selectSeq();
-					talk.setNo(seq);
-					talk.setpNo(seq);
-					talk.setSendMemberNo(member.getNo()); // session number 로 지정해야 함
-					talk.setReceiveMemberNo(Integer.parseInt(arr[i]));
-					talk.setContent(content);
-					service.insertNewTalk(talk);
-				}
+				TalkVO talk = new TalkVO();
+				int seq = service.selectSeq();
+				talk.setNo(seq);
+				talk.setpNo(seq);
+				talk.setSendMemberNo(member.getNo()); // session number 로 지정해야 함
+				talk.setReceiveMemberNo(service.selectAdminNo());
+				talk.setContent(content);
+				service.insertNewTalk(talk);
 			}
 		} catch (Exception e) {
 			throw new ServletException(e);

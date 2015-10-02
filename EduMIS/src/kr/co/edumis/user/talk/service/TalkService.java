@@ -7,6 +7,8 @@ import kr.co.edumis.user.member.vo.MemberVO;
 
 public interface TalkService {
 
+	public int selectAdminNo() throws Exception;
+	
 	public List<TalkVO> selectReList(int no) throws Exception;
 
 	public List<MemberVO> selectMemberList(int no) throws Exception;
