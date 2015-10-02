@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.co.edumis.framework.Controller;
-import kr.co.edumis.framework.ModelAndView;
 import kr.co.edumis.framework.RequestMapping;
 import kr.co.edumis.user.login.service.LoginService;
 import kr.co.edumis.user.login.service.LoginServiceImpl;
@@ -23,7 +22,7 @@ public class LoginController {
 	}
 
 	@RequestMapping("/user/login/login.do")
-	public ModelAndView login(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	public String login(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		String id = req.getParameter("id");
 		System.out.println(id);
 
@@ -34,8 +33,7 @@ public class LoginController {
 		
 		try {
 			LoginVO member = service.login(login);
-			ModelAndView mav = new ModelAndView();
-			
+
 			String grade = "";
 			HttpSession session = req.getSession();
 			
@@ -50,7 +48,7 @@ public class LoginController {
 			res.addCookie(cookie);
 		
 			if(member != null){
-
+				System.out.println("member is not null");	
 				login.setName(member.getName());
 				login.setGrade(member.getGrade());
 				
@@ -60,44 +58,37 @@ public class LoginController {
 				grade = "3";
 			}
 			
-
+			System.out.println("grade : " + grade);
+			
 			switch(grade) { 
 			case "1":
 				session.setAttribute("admin", member);
-				mav.setView("redirect:/EduMIS/jsp/admin/main.jsp");	
-				break;
+				return "redirect:/EduMIS/admin/main.do";	
 			case "2":
 				session.setAttribute("user", member);
-				mav.setView("redirect:/EduMIS/jsp/user/main.jsp");
-				break;
+				return "redirect:/EduMIS/jsp/user/main.jsp";
 			default:
-				mav.setView("redirect:/EduMIS/jsp/user/member/joinForm.jsp");
-				break;
-				
+				return "redirect:/EduMIS/jsp/user/member/joinForm.jsp";
 			}
-			return mav;
 		} catch (Exception e) {
 			throw new ServletException(e);
 		}
 	}
 	
 	@RequestMapping("/user/login/loginForm.do")
-	public ModelAndView loginForm(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		ModelAndView mav = new ModelAndView("redirect:/EduMIS/jsp/user/login/loginForm.jsp");
-		return mav;
+	public String loginForm( ) {
+		return "redirect:/EduMIS/jsp/user/login/loginForm.jsp";
 	}
 	
 	@RequestMapping("/user/login/logout.do")
-	public ModelAndView logout(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-
-		try {
-			HttpSession session = req.getSession();
-			session.invalidate();
-			
-			ModelAndView mav = new ModelAndView("redirect:/EduMIS/jsp/user/main.jsp");
-			return mav;
-		} catch (Exception e) {
-			throw new ServletException(e);
-		}
+	public String userLogout(HttpServletRequest req) throws Exception {
+		req.getSession().invalidate();
+		return "redirect:/EduMIS/jsp/user/main.jsp";
+	}
+	
+	@RequestMapping("/admin/login/logout.do")
+	public String adminLogout(HttpServletRequest req) throws Exception {
+		req.getSession().invalidate();
+		return "redirect:/EduMIS/admin/main.do";
 	}
 }
