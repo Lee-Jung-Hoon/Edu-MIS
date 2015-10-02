@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 				<header class="header">
+				<c:if test="${not empty sessionScope.user}">
 					<button type="button" class="btn-menu">
 						  <span></span>
 						  <span></span>
@@ -12,7 +13,7 @@
 					<div class="top-message">
 						<button type="button" class="btn-message">
 							<img src="/EduMIS/images/message.png" alt="" />
-							<span class="count"><!-- 메시지 개수 --></span>	
+							<span class="count">${msgCount}</span>	
 						</button>
 						<div class="message-layer">
 							<button type="button" class="btn-message-close" onclick="msgClose()">닫기</button>
@@ -69,6 +70,7 @@
 						</div>
 					</div>
 					<!-- 메시지 들어가는 부분 끝 -->
+					</c:if>
 	<ul>
 		<c:choose>
 		<c:when test="${empty sessionScope.user}">
