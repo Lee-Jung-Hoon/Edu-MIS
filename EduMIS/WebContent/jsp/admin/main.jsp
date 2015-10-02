@@ -11,8 +11,8 @@
 	<%@ include file="/jsp/admin/include/common.jsp" %>	
 <script>
 <c:if test="${not empty member}">
-	var socket = io.connect("192.168.200.72:10004");
-	socket.emit("setInfo", {no: "${member.no}", name: "${member.name}"})
+	var socket = io.connect("localhost:10004");
+	socket.emit("setInfo", {no: "${admin.no}", name: "${admin.name}"})
 </c:if>	
 </script>	
 </head>
