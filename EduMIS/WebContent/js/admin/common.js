@@ -50,7 +50,8 @@ $(document).ready(function(){
         url : "/EduMIS/talk/receiveList.do"
       }).done (function (data) {
         $("#messageUL").html(data);
-        $("#countView").html($("#count").val());
+//        $("#countView").html($("#count").val());
+        $(".count").html($("#count").val());
         //쪽지추가 부분
         
         // 쪽지 메시지 링크 클릭 시
@@ -112,6 +113,29 @@ $('.btn-plus').on('click', function(){
      $('.layer-side').find(':checkbox').prop('checked', false);
    }
   });
+  
+  //새로운 쪽지 우측 레이어 하단 확인 버튼 클릭 시
+  $('.layer-side .btn-check').on('click', function(){
+    $('.layer-side ul').find(':checkbox:checked').filter(function (index, item) {
+      var memoId = document.getElementsByName("memoId");
+      for (var i = 0; i < memoId.length; i++)
+      {
+        if ($(this).attr("id") == memoId[i].value)
+        {
+          return false;
+        }
+      }
+      return true;
+    })
+    .each(function (index, item) {
+      $('.message-receive-inner').append('<span>'+$(this).prev().text()+'<input type="hidden" name="memoId" value="'+$(this).attr('id')+'" /><button type="button" class="btn-cancel-s">취소</button></span>');
+    });
+    $(this).parent().hide();
+    $('.btn-cancel-s').on('click', function(){
+      $(this).parent().remove();
+    });
+  });
+  
   //새로운 쪽지 우측 레이어 하단 확인 버튼 클릭 시
   $('.layer-side .btn-check').on('click', function(){
    $('.layer-side ul').find(':checkbox:checked').filter(function (index, item) {
@@ -165,7 +189,8 @@ $('.btn-plus').on('click', function(){
           type : "re"
         }, function() {
           con.parents('li').remove();
-           $("#countView").html($("#countView").html()-1);
+//           $("#countView").html($("#countView").html()-1);
+          $(".count").html($(".count").html()-1);
         });
 //        socket.emit("countUp", {recvNo : no, sendNo : "${member.no}" } );
       }
@@ -179,6 +204,7 @@ $('.btn-plus').on('click', function(){
           alert("내용을 입력해주세요");
         } else if (!sendNameList.length){
           alert("받을 사람을 선택해주세요");
+          
         } else {
           for(var i = 0; i < sendNameList.length; i++) {
             name += "/" + sendNameList[i].value;
@@ -201,7 +227,8 @@ $('.btn-plus').on('click', function(){
       type : "check"
     }, function () {
       $("#" + no).parents('li').remove();
-      $("#countView").html($("#countView").html()-1);
+//      $("#countView").html($("#countView").html()-1);
+      $(".count").html($(".count").html()-1);
     })
     
     
