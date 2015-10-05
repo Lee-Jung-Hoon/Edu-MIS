@@ -7,3 +7,4 @@
   <!-- 메세지 전송 부분 추가 -->
   <script type="text/javascript" src="/EduMIS/js/admin/common.js"></script>	
   <script src="http://localhost:10004/socket.io/socket.io.js"></script>
+  
