@@ -1,6 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:if test="${not empty sessionScope.admin}">
+	<script>
+		alert(isAccess);
+		if (!isAccess) {
+			// 소켓서버에 접속
+		  	socket = io.connect("http://localhost:10004");
+		  	socket.emit("login", {id: "${admin.id}", name: "${admin.name}"});
+		  	isAccess = true;
+		}		
+	  	socket.on("msg", function (sendInfo) {
+		  var msg = "";
+		  if (sendInfo) {
+			  msg = sendInfo.name + "님에게 "
+		  }
+		  alert(msg + "메시지가 도착했습니다.");
+	  	});
+	</script>
+</c:if>
+
+
 				<header class="header">
 					<button type="button" class="btn-menu">
 						  <span></span>
