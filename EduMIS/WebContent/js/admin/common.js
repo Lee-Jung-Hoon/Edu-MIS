@@ -1,6 +1,56 @@
 /* ------------------------------------------ 메시지 영역 ------------------------------------------*/
+// 실시간 노드 서버 접속 소켓 정의
+var socket;
+// 접속 여부 판단 변수
+var isAccess = false;
+
 // 메시지 버튼 클릭시
 $(document).ready(function(){
+	// 쪽지 목록 사용자 클릭 이벤트 처리
+	$('#memberUL').on('click', "[type=checkbox]", function(){
+		if ($(this).prop("checked")) {
+			$('.message-receive-inner')
+			.append('<span>' + $(this).prev().text() + 
+					'    <input type="hidden" name="memoId" id="memoId' + $(this).attr('id') + '" value="' + $(this).attr('id') + '" />' +
+			        '    <button type="button" class="btn-cancel-s">취소</button>' +
+					'</span>');
+			$('.btn-cancel-s').on('click', function(){
+				$(this).parent().remove();
+				$('#memberUL [id="' + $(this).prev().val() + '"]').prop("checked", false);
+			});
+		} else {
+			$('#memoId' + $(this).attr('id')).parent().remove();
+		}	
+		
+		/*
+		   $('.layer-side ul').find(':checkbox:checked').filter(function (index, item) {
+			     var memoId = document.getElementsByName("memoId");
+			     for (var i = 0; i < memoId.length; i++)
+			     {
+			       if ($(this).attr("id") == memoId[i].value)
+			       {
+			         return false;
+			       }
+			     }
+			     return true;
+			   })
+			   .each(function (index, item) {
+			     $('.message-receive-inner').append('<span>'+$(this).prev().text()+'<input type="hidden" name="memoId" value="'+$(this).attr('id')+'" /><button type="button" class="btn-cancel-s">취소</button></span>');
+			   });
+			   $(this).parent().hide();
+			   $('.btn-cancel-s').on('click', function(){
+			     $(this).parent().remove();
+			   });
+		*/	   
+			   
+			   
+			   
+		
+		
+		
+	});
+	
+	
 	$('.btn-menu').on('click',function(){
 
 		if(!adminLogin) {
@@ -107,11 +157,23 @@ $('.btn-plus').on('click', function(){
   
   //새로운 쪽지 우측 레이어 체크박스 버튼 전체선택 클릭 시
   $('#list-all').change(function () {
-   if (this.checked) {
-     $('.layer-side').find(':checkbox').prop('checked', true);
-   } else {
-     $('.layer-side').find(':checkbox').prop('checked', false);
-   }
+	  $('[id *= memoId]').parent().remove();
+	  if (this.checked) {
+		  $('.layer-side').find(':checkbox').prop('checked', true);
+		  $('#memberUL :checked').each(function () {
+			  $('.message-receive-inner')
+			  .append('<span>' + $(this).prev().text() + 
+					  '    <input type="hidden" name="memoId" id="memoId' + $(this).attr('id') + '" value="' + $(this).attr('id') + '" />' +
+					  '    <button type="button" class="btn-cancel-s">취소</button>' +
+			  '</span>');
+			  $('.btn-cancel-s').on('click', function(){
+				  $(this).parent().remove();
+				  $('#memberUL [id="' + $(this).prev().val() + '"]').prop("checked", false);
+			  });
+		  });
+	  } else {
+		  $('.layer-side').find(':checkbox').prop('checked', false);
+	  }
   });
   
   //새로운 쪽지 우측 레이어 하단 확인 버튼 클릭 시
@@ -138,6 +200,7 @@ $('.btn-plus').on('click', function(){
   
   //새로운 쪽지 우측 레이어 하단 확인 버튼 클릭 시
   $('.layer-side .btn-check').on('click', function(){
+   /*	  
    $('.layer-side ul').find(':checkbox:checked').filter(function (index, item) {
      var memoId = document.getElementsByName("memoId");
      for (var i = 0; i < memoId.length; i++)
@@ -152,6 +215,7 @@ $('.btn-plus').on('click', function(){
    .each(function (index, item) {
      $('.message-receive-inner').append('<span>'+$(this).prev().text()+'<input type="hidden" name="memoId" value="'+$(this).attr('id')+'" /><button type="button" class="btn-cancel-s">취소</button></span>');
    });
+   */
    $(this).parent().hide();
    $('.btn-cancel-s').on('click', function(){
      $(this).parent().remove();
@@ -220,19 +284,16 @@ $('.btn-plus').on('click', function(){
     }
   }
   
-//x버튼 클릭시 처리할 함수
+  // x버튼 클릭시 처리할 함수
   function checkTalk(no) {
     $.post("/EduMIS/talk/sub", {
       no : no,
       type : "check"
     }, function () {
       $("#" + no).parents('li').remove();
-//      $("#countView").html($("#countView").html()-1);
       $(".count").html($(".count").html()-1);
     })
-    
-    
-}
+  }
   
   
 /* ------------------------------------------------------------------------------------ */
