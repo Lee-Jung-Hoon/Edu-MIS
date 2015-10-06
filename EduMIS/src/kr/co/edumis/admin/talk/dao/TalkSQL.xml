@@ -5,7 +5,7 @@
 
 	<!-- 읽지 않은 쪽지 리스트 받아오기 -->
 	<select id="getReceiveList" parameterType="int" resultType="TalkVO">
-		select tt.no as no,  tm.name name, to_char(tt.send_date, 'yy/mm/dd HH24:mi') as sendDate, tt.content as content
+		select tt.no as no,  tt.send_member_no as sendMemberNo, tm.name name, to_char(tt.send_date, 'yy/mm/dd HH24:mi') as sendDate, tt.content as content
 		from t_talk tt, t_member tm
 		where tt.receive_member_no = #{no}
   			   and receive_del = 'n'
