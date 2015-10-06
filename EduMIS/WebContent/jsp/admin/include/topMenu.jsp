@@ -3,20 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:if test="${not empty sessionScope.admin}">
 	<script>
-		alert(isAccess);
-		if (!isAccess) {
-			// 소켓서버에 접속
-		  	socket = io.connect("http://localhost:10004");
-		  	socket.emit("login", {id: "${admin.id}", name: "${admin.name}"});
-		  	isAccess = true;
-		}		
-	  	socket.on("msg", function (sendInfo) {
-		  var msg = "";
-		  if (sendInfo) {
-			  msg = sendInfo.name + "님에게 "
-		  }
-		  alert(msg + "메시지가 도착했습니다.");
+		// 소켓서버에 접속
+	  	socket = io.connect("http://localhost:10004");
+	  	socket.emit("login", {no: "${admin.no}", name: "${admin.name}"});
+	  	socket.on("msg", function (sendName) {
+		  alert(sendName + "님에게메시지가 도착했습니다.");
 	  	});
+	  	
 	</script>
 </c:if>
 
@@ -77,8 +70,8 @@
 										<textarea class="text-receive" ></textarea>
 										<!-- 학생일 경우 -->
 										<!-- <textarea class="text-receive student"></textarea> -->
-
-										<button type="button" class="btn-send" onclick="sendTalk()">
+										<!-- 신규일 경우 사용됨.. -->
+										<button type="button" class="btn-send" onclick="sendTalk(0, 0, '${admin.name}')">
 											<div class="circle">
 												<div class="envelope-top"></div>
 												<div class="envelope"></div>
@@ -93,7 +86,7 @@
 									<!-- 메세지 보낼수 있는 것 처리 작업 -->
 									<ul id="memberUL"></ul>
 									
-									<button type="button" class="btn-check">확인</button>	
+									<button type="button" class="btn-check">닫기</button>	
 								</div>
 
 								<!-- 새로운 쪽지 끝 -->

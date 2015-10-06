@@ -11,7 +11,7 @@
 		<div class='text-content'>
 			<p >${talk.content}</p>
 			<textarea id="${talk.no}"></textarea>
-			<button type='button' class='btn-send' onclick="sendTalk(${talk.no})">
+			<button type='button' class='btn-send' onclick="sendTalk(${talk.no}, '${talk.sendMemberNo}', '${admin.name}')">
 				<div class='circle'>
 					<div class='envelope-top'></div>
 					<div class='envelope'></div>
