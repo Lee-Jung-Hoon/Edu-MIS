@@ -1,8 +1,6 @@
 /* ------------------------------------------ 메시지 영역 ------------------------------------------*/
 // 실시간 노드 서버 접속 소켓 정의
 var socket;
-// 접속 여부 판단 변수
-var isAccess = false;
 
 // 메시지 버튼 클릭시
 $(document).ready(function(){
@@ -239,7 +237,7 @@ $('.btn-plus').on('click', function(){
 
 
 // 답변/새메세지 전송
-  function sendTalk(no) {
+  function sendTalk(no, recvNo, sendName) {
     if (no) {
       //답변 talk
       var con = $("#" + no);
@@ -256,7 +254,7 @@ $('.btn-plus').on('click', function(){
 //           $("#countView").html($("#countView").html()-1);
           $(".count").html($(".count").html()-1);
         });
-//        socket.emit("countUp", {recvNo : no, sendNo : "${member.no}" } );
+        socket.emit("msg", {recvNo : recvNo, sendName : sendName } );
       }
       
     } else {   
@@ -272,13 +270,15 @@ $('.btn-plus').on('click', function(){
         } else {
           for(var i = 0; i < sendNameList.length; i++) {
             name += "/" + sendNameList[i].value;
+            socket.emit("msg", {recvNo : sendNameList[i].value, sendName : sendName } );
           }
+          console.log("name : " + name);
           $.post("/EduMIS/talk/sub", {
-          name : name,
-          content : content,
-          type : "new"
+	          name : name,
+	          content : content,
+	          type : "new"
           }, function() {
-            $('.btn-return').click();
+        	  $('.btn-return').click();
           });
         }
     }

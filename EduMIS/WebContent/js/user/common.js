@@ -1,4 +1,6 @@
 /* ------------------------------------------ 메시지 영역 ------------------------------------------*/
+// 실시간 노드 서버 접속 소켓 정의
+var socket;
 
 // 메시지 버튼 클릭시
 $(document).ready(function(){
@@ -153,7 +155,7 @@ $(document).ready(function(){
 
 
 	  // 답변/새메세지 전송
-	    function sendTalk(no) {
+	    function sendTalk(no, sendName) {
 	      if (no) {
 	        //답변 talk
 	        var con = $("#" + no);
@@ -169,7 +171,7 @@ $(document).ready(function(){
 	            con.parents('li').remove();
 	            $(".count").html($(".count").html()-1);
 	          });
-//	          socket.emit("countUp", {recvNo : no, sendNo : "${member.no}" } );
+	          socket.emit("adminMsg", sendName);
 	        }
 	        
 	      } else {   
@@ -186,7 +188,9 @@ $(document).ready(function(){
 	            	type : "new"
 	            }, function() {
 	            	$('.btn-return').click();
+	            	
 	            });
+	            socket.emit("adminMsg", sendName);
 	          }
 	      }
 	    }
