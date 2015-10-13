@@ -251,7 +251,7 @@ $('.btn-plus').on('click', function(){
           con.parents('li').remove();
           $(".count").html($(".count").html()-1);
         });
-//        socket.emit("msg", {recvNo : recvNo, sendName : sendName } );
+        socket.emit("msg", {recvNo : recvNo, sendName : sendName } );
       }
       
     } else {   
@@ -267,7 +267,7 @@ $('.btn-plus').on('click', function(){
         } else {
           for(var i = 0; i < sendNameList.length; i++) {
             name += "/" + sendNameList[i].value;
-//            socket.emit("msg", {recvNo : sendNameList[i].value, sendName : sendName } );
+            socket.emit("msg", {recvNo : sendNameList[i].value, sendName : sendName } );
           }
           console.log("name : " + name);
           $.post("/AdvanceEduMIS/talk/newTalk.do", {
