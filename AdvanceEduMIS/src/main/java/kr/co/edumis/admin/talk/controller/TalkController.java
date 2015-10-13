@@ -42,7 +42,7 @@ public class TalkController {
 	@RequestMapping("/memberList.do")
 	public ModelAndView memberList(HttpServletRequest req) throws Exception {
 		req.setCharacterEncoding("UTF-8");
-		ModelAndView mav = new ModelAndView("/jsp/admin/talk/memberList.jsp");
+		ModelAndView mav = new ModelAndView("admin/talk/memberList");
 		try {
 			List<MemberVO> list = service.selectMemberList();
 			System.out.println(list.size());
@@ -78,7 +78,7 @@ public class TalkController {
 	
 	@RequestMapping("/recvList.do")
 	   public ModelAndView ReceiveTalkList(HttpServletRequest req, HttpServletResponse res){
-	      ModelAndView mav = new ModelAndView("/jsp/admin/talk/receiveHistory.jsp");
+	      ModelAndView mav = new ModelAndView("admin/talk/receiveHistory");
 	      System.out.println("1");
 
 	      // 임시
@@ -138,7 +138,7 @@ public class TalkController {
 	      return null;
 	   }
 	   @RequestMapping("/reviveTalk.do")
-	   public ModelAndView ReviveCheckTalk(HttpServletRequest req, HttpServletResponse res){
+	   public ModelAndView ReviveCheckTalk(HttpServletRequest req){
 	      ModelAndView mav = new ModelAndView();
 	      
 	      String[] delList = req.getParameter("delCheck").split(",");
@@ -154,7 +154,7 @@ public class TalkController {
 	   }
 
 	   @RequestMapping("/realDelete.do")
-	   public ModelAndView RealDeleteCheckTalk(HttpServletRequest req, HttpServletResponse res) {
+	   public ModelAndView RealDeleteCheckTalk(HttpServletRequest req) {
 	      
 	      
 	      ModelAndView mav = new ModelAndView();
@@ -198,7 +198,7 @@ public class TalkController {
 
 	   @RequestMapping("/sendList.do")
 	   public ModelAndView SendTalkList(HttpServletRequest req) {
-	      ModelAndView mav = new ModelAndView("/jsp/admin/talk/sendHistory.jsp");
+	      ModelAndView mav = new ModelAndView("admin/talk/sendHistory");
 
 	      HttpSession session = req.getSession();
 	      LoginVO member = (LoginVO)session.getAttribute("admin");
@@ -215,7 +215,7 @@ public class TalkController {
 
 	   @RequestMapping("/datilTalk.do")
 	   public ModelAndView DetailTalk(HttpServletRequest req) {
-	      ModelAndView mav = new ModelAndView("/jsp/admin/talk/detailTalk.jsp");
+	      ModelAndView mav = new ModelAndView("admin/talk/detailTalk");
 	      System.out.println("no : " + req.getParameter("no"));
 	      int tNo = Integer.parseInt(req.getParameter("no"));
 	      String name = req.getParameter("name");
@@ -289,7 +289,7 @@ public class TalkController {
 	      talk.setContent(text);
 	      talk.setNo(no);
 
-	      ModelAndView mav = new ModelAndView("/jsp/admin/talk/receiveHistory.jsp");
+	      ModelAndView mav = new ModelAndView("admin/talk/receiveHistory");
 	      try {
 	         if (type.equals("content")) {
 	            List<TalkVO> list = service.searchTalk(talk);
@@ -318,7 +318,7 @@ public class TalkController {
 	      talk.setContent(text);
 	      talk.setNo(no);
 
-	      ModelAndView mav = new ModelAndView("/jsp/admin/talk/sendHistory.jsp");
+	      ModelAndView mav = new ModelAndView("admin/talk/sendHistory");
 	      try {
 	         if (type.equals("content")) {
 	            List<TalkVO> list = service.searchTalk2(talk);
@@ -335,7 +335,7 @@ public class TalkController {
 
 	   @RequestMapping("/talkTrash.do")
 	   public ModelAndView TalkTrash(HttpServletRequest req) {
-	      ModelAndView mav = new ModelAndView("/jsp/admin/talk/talkTrash.jsp");
+	      ModelAndView mav = new ModelAndView("admin/talk/talkTrash");
 
 	      HttpSession session = req.getSession();
 	      LoginVO member = (LoginVO)session.getAttribute("admin");
