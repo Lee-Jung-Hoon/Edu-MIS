@@ -14,13 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/user")
 public class LoginController {
 
 	@Autowired
 	private LoginService service;
 
-	@RequestMapping("/login/login.do")
+	@RequestMapping("/user/login/login.do")
 	public String login(@RequestParam("id") String id, LoginVO login, HttpServletRequest req,
 			HttpServletResponse res) throws Exception {
 
@@ -63,10 +62,10 @@ public class LoginController {
 		}
 	}
 
-	@RequestMapping("/logout.do")
+	@RequestMapping("/user/login/logout.do")
 	public String userLogout(HttpServletRequest req) throws Exception {
 		req.getSession().invalidate();
-		return "redirect:/user/main";
+		return "redirect:/user/main.do";
 	}
 
 	@RequestMapping("/admin/login/logout.do")
