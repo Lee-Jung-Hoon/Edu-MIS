@@ -42,7 +42,7 @@
 									</tr>
 								</table>
 							
-								<Form action="/EduMIS/talk/insertSendTalk.do?receiveNo">
+								<Form action="${pageContext.request.contextPath}/talk/insertSendTalk.do">
 									<table class="table-common" style="margin-top:20px;">
 										<tr>
 											
@@ -57,8 +57,8 @@
 										</tr>
 									</table>
 									<div class="btn-area">
-										<span class="width50"><a class="btn btn-txt txt-list btn-blue" href="/EduMIS/talk/recvList.do">목록</a></span>
-										<span class="width50"><a class="btn btn-txt txt-del-b btn-blue" href="/EduMIS/talk/deleteTalk.do?no=${detail.no}">삭제</a></span>
+										<span class="width50"><a class="btn btn-txt txt-list btn-blue" href="${pageContext.request.contextPath}/talk/recvList.do">목록</a></span>
+										<span class="width50"><a class="btn btn-txt txt-del-b btn-blue" href="${pageContext.request.contextPath}/talk/deleteTalk.do?no=${detail.no}">삭제</a></span>
 									</div>
 								</Form>
 

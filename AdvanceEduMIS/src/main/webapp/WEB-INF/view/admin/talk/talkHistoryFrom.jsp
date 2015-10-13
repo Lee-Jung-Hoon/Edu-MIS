@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="/EduMIS/talk/receiveList.do">리스트!~!</a>
-	<a href="/EduMIS/talk/sendList.do">리스트!~!</a>
+	<a href="${pageContext.request.contextPath}/talk/receiveList.do">리스트!~!</a>
+	<a href="${pageContext.request.contextPath}/talk/sendList.do">리스트!~!</a>
 </body>
 </html>

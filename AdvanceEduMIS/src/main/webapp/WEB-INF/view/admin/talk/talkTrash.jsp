@@ -147,14 +147,14 @@ tbody td:last-child, thead th:last-child {
 						switch (param) {
 						case "send":
 							//sendRequest("/EduMIS/talk/sendList.do", true);
-							location.href = '/EduMIS/talk/sendList.do';
+							location.href = '${pageContext.request.contextPath}/talk/sendList.do';
 							break;
 						case "receive":
 							//sendRequest("/EduMIS/talk/receiveList.do", true);
-							location.href = '/EduMIS/talk/recvList.do';
+							location.href = '${pageContext.request.contextPath}/talk/recvList.do';
 							break;
 						case "basket":
-							location.href = '/EduMIS/talk/talkTrash.do';
+							location.href = '${pageContext.request.contextPath}/talk/talkTrash.do';
 							//sendRequest("/EduMIS/talk/receiveList.do", true);
 							break;
 						}
@@ -190,10 +190,10 @@ tbody td:last-child, thead th:last-child {
 			    f.delCheck.value = ckVal;
 					switch(type) {
 					case 1:
-					  f.action = "/EduMIS/talk/realDelete.do";
+					  f.action = "${pageContext.request.contextPath}/talk/realDelete.do";
 					  break;
 					case 2:
-					  f.action = "/EduMIS/talk/reviveTalk.do";
+					  f.action = "${pageContext.request.contextPath}/talk/reviveTalk.do";
 					  break;
 					}				
 					f.submit();

@@ -147,14 +147,14 @@ tbody td:last-child, thead th:last-child {
 						switch (param) {
 						case "send":
 							//sendRequest("/EduMIS/talk/sendList.do", true);
-							location.href = '/EduMIS/talk/sendList.do';
+							location.href = '${pageContext.request.contextPath}/talk/sendList.do';
 							break;
 						case "receive":
 							//sendRequest("/EduMIS/talk/receiveList.do", true);
-							location.href = '/EduMIS/talk/recvList.do';
+							location.href = '${pageContext.request.contextPath}/talk/recvList.do';
 							break;
 						case "basket":
-							location.href = '/EduMIS/talk/talkTrash.do';
+							location.href = '${pageContext.request.contextPath}/talk/talkTrash.do';
 							//sendRequest("/EduMIS/talk/receiveList.do", true);
 							break;
 						}
@@ -192,7 +192,7 @@ tbody td:last-child, thead th:last-child {
 											<option value="basket">휴지통</option>
 										</select>
 										
-							<form action="/EduMIS/talk/checkDelete.do">
+							<form action="${pageContext.request.contextPath}/talk/checkDelete.do">
 							
 								<input type="hidden" name="type" value="send_del" /> 
 								<input type="submit" style="width: 50px; height: 30px;" class="btn btn-txt txt-del-s btn-blue btn-del" value="삭제" />
@@ -234,13 +234,13 @@ tbody td:last-child, thead th:last-child {
 							<!-- 페이징 -->
 							<!-- 페이징 -->
 
-							<form action="/EduMIS/talk/searchTalk2.do">
+							<form action="${pageContext.request.contextPath}/talk/searchTalk2.do">
 							<div class="talk-form-inner-last">
 								<select name="searchType">
 									<option value="content" selected="selected">제목</option>
 									<option value="send_member_no">보낸사람</option>
 								</select> 
-								<input type="text" name="searchTalk" /> 
+								<input type="text" name="content" /> 
 								<input type="submit" style="width: 50px; height: 30px;" class="btn btn-txt txt-search btn-blue" value="검색" />
 								</div>
 							</form>
