@@ -9,12 +9,6 @@
 	<meta name="viewport" content="width=device-width">
 	<title>메인</title>
 	<%@ include file="/WEB-INF/view/user/include/common.jsp" %>	
-<script>
-<c:if test="${not empty member}">
-	var socket = io.connect("http://localhost:10004");
-	socket.emit("setInfo", {no: "${member.no}", name: "${member.name}"})
-</c:if>	
-</script>	
 </head>
 <body class="page-main btn-page">
 	<div class="wrap">
