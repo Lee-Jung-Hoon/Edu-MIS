@@ -1,86 +1,75 @@
 package kr.co.edumis.user.member.controller;
 
-
 import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.UUID;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 
-import kr.co.edumis.framework.Controller;
-import kr.co.edumis.framework.ModelAndView;
-import kr.co.edumis.framework.RequestMapping;
 import kr.co.edumis.user.member.service.MemberService;
-import kr.co.edumis.user.member.service.MemberServiceImpl;
 import kr.co.edumis.user.member.vo.MemberVO;
 
 @Controller
+@RequestMapping("/user/member")
 public class MemberController {
+	@Autowired
 	private MemberService service;
-	
-	public MemberController(){
-		service = new MemberServiceImpl();
-	}
-	
-	@RequestMapping("/user/member/join.do")
-	public ModelAndView join(MemberVO member, HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		req.setCharacterEncoding("utf-8");
-		ModelAndView mav = new ModelAndView("/jsp/user/main.jsp");
-		
-		String realPath = req.getServletContext().getRealPath("/memberFile");
-		
+
+	@Autowired
+	private ServletContext servletContext;
+
+	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
+	public ModelAndView join(MultipartHttpServletRequest req, MemberVO member) throws Exception {
+
+		ModelAndView mav = new ModelAndView("/user/main");
+		String realPath = servletContext.getRealPath("/memberFile");
+
 		File file = new File(realPath);
-		if( !file.exists() ) {
+		if (!file.exists()) {
 			System.out.println(file.mkdirs());
 		} else {
 			System.out.println("디렉토리 존재함..");
 		}
-		
-		MultipartRequest mult = new MultipartRequest(req,
-				realPath, 1024 * 1024 * 10, "UTF-8",
-				new DefaultFileRenamePolicy());
-		
-		member.setId(mult.getParameter("id"));
-		member.setName(mult.getParameter("name"));
-		member.setPass(mult.getParameter("pass"));
-		member.setYear(mult.getParameter("year"));
-		member.setMonth(mult.getParameter("month"));
-		member.setDay(mult.getParameter("day"));
-		member.setPostNo(mult.getParameter("postNo"));
-		member.setBasicAddr(mult.getParameter("basicAddr"));
-		member.setDetailAddr(mult.getParameter("detailAddr"));
-		member.setPhone1(mult.getParameter("phone1"));
-		member.setPhone2(mult.getParameter("phone2"));
-		member.setPhone3(mult.getParameter("phone3"));
-		member.setEmail(mult.getParameter("email"));
-		member.setEmailDomain(mult.getParameter("emailDomain"));
-		member.setMajor(mult.getParameter("major"));
-		
-		File f = mult.getFile("attachFile");
-	
-		if (f != null) {
-			String systemName = mult.getFilesystemName("attachFile");
-			String oriName = mult.getOriginalFileName("attachFile");
-			
-			member.setRealFileName(systemName);
-			member.setOrgFileName(oriName);
-			member.setFilePath("/memberFile");				
-		}
-		
-		try {
-			service.insertMember(member);
-		} catch (Exception e) {
-			e.printStackTrace();
+
+		Iterator<String> iter = req.getFileNames();
+		while (iter.hasNext()) {
+
+			String formFileName = iter.next();
+			MultipartFile mult = req.getFile(formFileName);
+
+			String oriName = mult.getOriginalFilename();
+
+			if (oriName != null && !oriName.equals("")) {
+
+				String ext = "";
+				int index = oriName.lastIndexOf(".");
+				if (index != -1) {
+					ext = oriName.substring(index);
+				}
+
+				long fileSize = mult.getSize();
+				String saveFileName = "mlec-" + UUID.randomUUID().toString() + ext;
+
+				mult.transferTo(new File(realPath + "/" + saveFileName));
+
+				service.insertMember(member);
+			}
 		}
 		return mav;
 	}
-	
-	@RequestMapping("/user/member/joinForm.do")
+
+	@RequestMapping("/joinForm.do")
 	public String joinForm() throws ServletException, IOException {
-		return "/jsp/user/member/joinForm.jsp";
+		return "redirect:/user/joinForm";
 	}
 }
