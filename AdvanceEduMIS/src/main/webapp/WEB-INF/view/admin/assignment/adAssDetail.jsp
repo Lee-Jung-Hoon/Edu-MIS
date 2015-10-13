@@ -27,7 +27,7 @@
 	function popUp(type, no, id){
 		switch (type) {
 		case "O":
-			window.open("http://localhost:8000/${pageContext.request.contextPath}/admin/assUserDetail.do?no=" + no + "&id=" + id, // 팝업창에 띄울 페이지 주소
+			window.open("assUserDetail.do?no=" + no + "&id=" + id, // 팝업창에 띄울 페이지 주소
 			"제출 상세", // 팝업창에 이름 설정
 			"width=600, height=500, resizable=no");
 			break;
