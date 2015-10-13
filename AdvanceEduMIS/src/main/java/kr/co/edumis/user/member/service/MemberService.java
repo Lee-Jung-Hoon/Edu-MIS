@@ -1,9 +1,14 @@
 package kr.co.edumis.user.member.service;
 
+import java.util.List;
+
 import kr.co.edumis.user.member.vo.MemberVO;
 
 public interface MemberService {
 
-	void insertMember(MemberVO member) throws Exception;
-
+	public void insertMember(MemberVO member) throws Exception;
+	public List<MemberVO> selectMember() throws Exception;
+	public void resetLeader() throws Exception;
+	public void updateLeader(MemberVO member) throws Exception;
+	
 }
