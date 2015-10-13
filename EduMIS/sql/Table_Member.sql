@@ -102,6 +102,8 @@ values(seq_t_member_no.nextVal, '조아라', 'pic2.jpg', 'memberFile') ;
 
 insert into t_member (no, name, real_File_Name, file_Path)
 values(seq_t_member_no.nextVal, '김자영', 'pic2.jpg', 'memberFile') ;
+insert into t_member (no, name, real_File_Name, file_Path)
+values(seq_t_member_no.nextVal, '안수정', 'pic2.jpg', 'memberFile') ;
 
 commit;
 

@@ -29,10 +29,50 @@ img {
 
 </style>
 <script>
+var count =0;
+var list = null;
 function remake() {
   
-  location.href = "/EduMIS/makegroups/remake.do";
+  $.ajax({
+    Type : "post",
+    url : "/EduMIS/makegroups/remake"
+  }).done(function(data) {
+    alert(data);
+    list = eval(data);
+    count = 0;
+    for(var i = 0; i<list.length;i++){
+    $("#list"+list[i].team).html('<div style="clear: both;"><h2>'+list[i].team+'조</h2></div>');
+    }
+    
+    setTimeout(dummy, 1000);
+    
+  });
+  
+//   location.href = "/EduMIS/makegroups/remake.do";
 } 
+
+function dummy() {
+  var i = count;
+  var filePath = list[i].filePath + "/" + list[i].realFileName;
+
+  if (list[i].filePath == "null") {
+    filePath = "/jsp/admin/groupmaker/images/pic1.jpg";
+
+  }
+      
+  var div ='<div style="display: block;" class="member"><input type="hidden" value="1">';
+  div += '<img src ="/EduMIS/'+filePath+'" width="60px" height="60px" style="margin-right: 3px">';
+  div += 	'<p align="center">'+list[i].name+'</p>';
+  $("#list"+list[i].team).append(div);
+  count++;
+  if(count<list.length){
+	setTimeout(dummy, 700);
+    
+  }
+	
+	
+  }
+
 
 </script>
 
@@ -47,50 +87,55 @@ function remake() {
 				<div class="container-inner">
 					<div class="content">
 						<section class="groupsShow common">
-							<h2>각 조 현황 보기</h2>
-							<input type="button" value="" onclick="remake()" id="button2"
+							<h2>각 조 현황 보기 <input type="button" value="" onclick="remake()" id="button2"
 							style="display: inline-block; width: 100px; height: 40px; margin-left: 10px;"
-								class="btn txt-leader-make-s btn-txt btn-blue">
+								class="btn txt-leader-make-s btn-txt btn-blue"></h2>
+						
 							<div id="mybody">
 								<br>
-
+								
 
 								<c:forEach begin="1" end="${gNum/2}" var="i">
-
+									<div id ="list${i}">
+									
 									<div style="clear: both;">
 
 
 
 										<h2>${i}조</h2>
 									</div>
+									
 
-									<c:forEach var="list" items="${mlist}">
+<%-- 									<c:forEach var="list" items="${mlist}"> --%>
 
-										<c:if test="${list.team eq i}">
-											<div style="display: block;" class="member">
-												<input type="hidden" value="1">
-												<c:if test="${list.filePath eq 'null' }">
-												<img src="/EduMIS/jsp/admin/groupmaker/images/pic1.jpg" width="90px"
-													height="90px" style="margin-right: 3px">
-												</c:if>
-												<c:if test="${list.filePath ne 'null' }">
-												<img src="/EduMIS/${list.filePath}/${list.realFileName}" width="90px"
-													height="90px" style="margin-right: 3px">
-												</c:if>
+<%-- 										<c:if test="${list.team eq i}"> --%>
+<!-- 											<div style="display: block;" class="member"> -->
+<!-- 												<input type="hidden" value="1"> -->
+<%-- 												<c:if test="${list.filePath eq 'null' }"> --%>
+<!-- 												<img src="/EduMIS/jsp/admin/groupmaker/images/pic1.jpg" width="90px" -->
+<!-- 													height="90px" style="margin-right: 3px"> -->
+<%-- 												</c:if> --%>
+<%-- 												<c:if test="${list.filePath ne 'null' }"> --%>
+<%-- 												<img src="/EduMIS/${list.filePath}/${list.realFileName}" width="90px" --%>
+<!-- 													height="90px" style="margin-right: 3px"> -->
+<%-- 												</c:if> --%>
 												 
-												<p align="center">${list.name}</p>
-											</div>
-										</c:if>
+<%-- 												<p align="center">${list.name}</p> --%>
+<!-- 											</div> -->
+<%-- 										</c:if> --%>
 
-									</c:forEach>
-
+<%-- 									</c:forEach> --%>
+							</div>
 								</c:forEach>
+								
+							
 								<br />
 								<br />
 								<br />
 								<br />
 								<br />
 								<br />
+										
 								<br />
 								<br />
 								<br />
