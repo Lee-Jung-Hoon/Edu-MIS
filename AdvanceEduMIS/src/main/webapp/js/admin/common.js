@@ -244,16 +244,14 @@ $('.btn-plus').on('click', function(){
       if(!content){
         alert("내용을 입력해주세요");
       } else {
-          $.post("/AdvanceEduMIS/talk/sub", {
+          $.post("/AdvanceEduMIS/talk/reTalk.do", {
           no : no,
-          content : content,
-          type : "re"
+          content : content
         }, function() {
           con.parents('li').remove();
-//           $("#countView").html($("#countView").html()-1);
           $(".count").html($(".count").html()-1);
         });
-        socket.emit("msg", {recvNo : recvNo, sendName : sendName } );
+//        socket.emit("msg", {recvNo : recvNo, sendName : sendName } );
       }
       
     } else {   
@@ -269,13 +267,12 @@ $('.btn-plus').on('click', function(){
         } else {
           for(var i = 0; i < sendNameList.length; i++) {
             name += "/" + sendNameList[i].value;
-            socket.emit("msg", {recvNo : sendNameList[i].value, sendName : sendName } );
+//            socket.emit("msg", {recvNo : sendNameList[i].value, sendName : sendName } );
           }
           console.log("name : " + name);
-          $.post("/AdvanceEduMIS/talk/sub", {
+          $.post("/AdvanceEduMIS/talk/newTalk.do", {
 	          name : name,
-	          content : content,
-	          type : "new"
+	          content : content
           }, function() {
         	  $('.btn-return').click();
           });
@@ -285,9 +282,8 @@ $('.btn-plus').on('click', function(){
   
   // x버튼 클릭시 처리할 함수
   function checkTalk(no) {
-    $.post("/AdvanceEduMIS/talk/sub", {
-      no : no,
-      type : "check"
+    $.post("/AdvanceEduMIS/talk/changeCheck.do", {
+      no : no
     }, function () {
       $("#" + no).parents('li').remove();
       $(".count").html($(".count").html()-1);
