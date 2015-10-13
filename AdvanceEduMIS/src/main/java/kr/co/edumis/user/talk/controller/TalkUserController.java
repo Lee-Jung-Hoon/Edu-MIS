@@ -27,7 +27,7 @@ public class TalkUserController {
 
 	@RequestMapping("/receiveList.do")
 	public ModelAndView receiveList(HttpServletRequest req) {
-		ModelAndView mav = new ModelAndView("/jsp/user/talk/receiveList.jsp");
+		ModelAndView mav = new ModelAndView("user/talk/receiveList");
 		try {
 			HttpSession session = req.getSession();
 			LoginVO member = (LoginVO)session.getAttribute("user");
@@ -46,7 +46,7 @@ public class TalkUserController {
 	@RequestMapping("/memberList.do")
 	public ModelAndView memberList(HttpServletRequest req) throws Exception {
 		req.setCharacterEncoding("UTF-8");
-		ModelAndView mav = new ModelAndView("/jsp/user/talk/memberList.jsp");
+		ModelAndView mav = new ModelAndView("user/talk/memberList");
 		try {
 			HttpSession session = req.getSession();
 			LoginVO member = (LoginVO)session.getAttribute("user");
@@ -84,7 +84,7 @@ public class TalkUserController {
 	
 	@RequestMapping("/recvList.do")
 	public ModelAndView ReceiveTalkList(HttpServletRequest req, HttpServletResponse res){
-		ModelAndView mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView("user/talk/receiveHistory");
 		System.out.println("1");
 
 		// 임시
@@ -103,7 +103,6 @@ public class TalkUserController {
 				System.out.println(talk.getNo());
 			}
 			System.out.println();
-//			mav.setView("/jsp/user/talk/receiveHistory.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -127,7 +126,7 @@ public class TalkUserController {
 					System.out.println(talk.getName());
 					service.deleteCheckTalk(talk);
 				}
-				return new ModelAndView("redirect:/EduMIS/talk/user/recvList.do");
+				return new ModelAndView("redirect:/AdvanceEduMIS/talk/user/recvList.do");
 			} else {
 				for (int i = 0; i < delList.length; i++) {
 					int tNo = Integer.parseInt(delList[i]);
@@ -138,7 +137,7 @@ public class TalkUserController {
 					service.deleteCheckTalk(talk);
 				}
 			}
-			return new ModelAndView("redirect:/EduMIS/talk/user/sendList.do");
+			return new ModelAndView("redirect:/AdvanceEduMIS/talk/user/sendList.do");
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -158,7 +157,7 @@ public class TalkUserController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ModelAndView("redirect:/EduMIS/talk/user/talkTrash.do");
+		return new ModelAndView("redirect:/AdvanceEduMIS/talk/user/talkTrash.do");
 	}
 
 	@RequestMapping("/realDelete.do")
@@ -176,7 +175,7 @@ public class TalkUserController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ModelAndView("redirect:/EduMIS/talk/user/talkTrash.do");
+		return new ModelAndView("redirect:/AdvanceEduMIS/talk/user/talkTrash.do");
 	}
 
 	@RequestMapping("/allCheckDelete.do")
@@ -201,12 +200,12 @@ public class TalkUserController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ModelAndView("redirect:/EduMIS/talk/user/recvList.do");
+		return new ModelAndView("redirect:/AdvanceEduMIS/talk/user/recvList.do");
 	}
 
 	@RequestMapping("/sendList.do")
 	public ModelAndView SendTalkList(HttpServletRequest req, HttpServletResponse res) {
-		ModelAndView mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView("user/talk/sendHistory");
 
 		HttpSession session = req.getSession();
 		LoginVO member = (LoginVO)session.getAttribute("user");
@@ -216,7 +215,7 @@ public class TalkUserController {
 			System.out.println(list.size());
 			mav.addObject("list", list);
 
-//			mav.setView("/jsp/user/talk/sendHistory.jsp");
+//			mav.setView();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -225,7 +224,7 @@ public class TalkUserController {
 
 	@RequestMapping("/datilTalk.do")
 	public ModelAndView DetailTalk(HttpServletRequest req, HttpServletResponse res) {
-		ModelAndView mav = new ModelAndView();
+		ModelAndView mav = new ModelAndView("user/talk/detailTalk");
 		System.out.println("no : " + req.getParameter("no"));
 		int tNo = Integer.parseInt(req.getParameter("no"));
 		String name = req.getParameter("name");
@@ -243,7 +242,6 @@ public class TalkUserController {
 			talk.setReceiveMemberNo(receivemNo);
 			talk.setpNo(pNo);
 			mav.addObject("detail", talk);
-//			mav.setView("/jsp/user/talk/detailTalk.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -271,7 +269,7 @@ public class TalkUserController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ModelAndView("redirect:/EduMIS/talk/user/recvList.do");
+		return new ModelAndView("redirect:/AdvanceEduMIS/talk/user/recvList.do");
 	}
 
 	@RequestMapping("/deleteTalk.do")
@@ -283,7 +281,7 @@ public class TalkUserController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ModelAndView("redirect:/EduMIS/talk/user/recvList.do");
+		return new ModelAndView("redirect:/AdvanceEduMIS/talk/user/recvList.do");
 	}
 
 	@RequestMapping("/searchTalk.do")
@@ -295,21 +293,17 @@ public class TalkUserController {
 		LoginVO member = (LoginVO)session.getAttribute("user");
 
 		int no = member.getNo();
+		TalkUserVO talk = new TalkUserVO();
+		talk.setName(type);
+		talk.setContent(text);
+		talk.setNo(no);
 
-		ModelAndView mav = new ModelAndView("/jsp/user/talk/receiveHistory.jsp");
+		ModelAndView mav = new ModelAndView("user/talk/receiveHistory");
 		try {
 			if (type.equals("content")) {
-				TalkUserVO talk = new TalkUserVO();
-				talk.setName(type);
-				talk.setContent(text);
-				talk.setNo(no);
 				List<TalkUserVO> list = service.searchTalk(talk);
 				mav.addObject("list", list);
 			} else {
-				TalkUserVO talk = new TalkUserVO();
-				talk.setName(type);
-				talk.setContent(text);
-				talk.setNo(no);
 				List<TalkUserVO> list = service.searchNameTalk(talk);
 				mav.addObject("list", list);
 			}
@@ -328,21 +322,17 @@ public class TalkUserController {
 		LoginVO member = (LoginVO)session.getAttribute("user");
 
 		int no = member.getNo();
+		TalkUserVO talk = new TalkUserVO();
+		talk.setName(type);
+		talk.setContent(text);
+		talk.setNo(no);
 
-		ModelAndView mav = new ModelAndView("/jsp/user/talk/user/sendHistory.jsp");
+		ModelAndView mav = new ModelAndView("user/talk/sendHistory");
 		try {
 			if (type.equals("content")) {
-				TalkUserVO talk = new TalkUserVO();
-				talk.setName(type);
-				talk.setContent(text);
-				talk.setNo(no);
 				List<TalkUserVO> list = service.searchTalk2(talk);
 				mav.addObject("list", list);
 			} else {
-				TalkUserVO talk = new TalkUserVO();
-				talk.setName(type);
-				talk.setContent(text);
-				talk.setNo(no);
 				List<TalkUserVO> list = service.searchNameTalk2(talk);
 				mav.addObject("list", list);
 			}
@@ -353,8 +343,8 @@ public class TalkUserController {
 	}
 
 	@RequestMapping("/talkTrash.do")
-	public ModelAndView TalkTrash(HttpServletRequest req, HttpServletResponse res) {
-		ModelAndView mav = new ModelAndView();
+	public ModelAndView TalkTrash(HttpServletRequest req) {
+		ModelAndView mav = new ModelAndView("user/talk/talkTrash.jsp");
 
 		HttpSession session = req.getSession();
 		LoginVO member = (LoginVO)session.getAttribute("user");
@@ -368,7 +358,6 @@ public class TalkUserController {
 				System.out.println(talk.getNo());
 			}
 			System.out.println();
-//			mav.setView("/jsp/user/talk/talkTrash.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
