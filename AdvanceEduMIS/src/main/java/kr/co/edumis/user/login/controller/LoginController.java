@@ -1,21 +1,17 @@
 package kr.co.edumis.user.login.controller;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import kr.co.edumis.user.login.service.LoginService;
+import kr.co.edumis.user.login.vo.LoginVO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-
-import kr.co.edumis.user.login.service.LoginService;
-import kr.co.edumis.user.login.vo.LoginVO;
 
 @Controller
 @RequestMapping("/user")
@@ -24,7 +20,7 @@ public class LoginController {
 	@Autowired
 	private LoginService service;
 
-	@RequestMapping("/login.do")
+	@RequestMapping("/login/login.do")
 	public String login(@RequestParam("id") String id, LoginVO login, HttpServletRequest req,
 			HttpServletResponse res) throws Exception {
 
