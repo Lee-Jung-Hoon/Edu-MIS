@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div align="center">
-		<form method="post" action="/EduMIS/login/login.do">
+		<form method="post" action="${pageContext.request.contextPath}/login/login.do">
 			<table border="1">
 				<tr>
 					<th>아이디</th>

@@ -9,6 +9,6 @@
 <body>
 
 	<h1>회원가입이 완료되었습니다.</h1>
-	<a href="/EduMIS/jsp/user/member/joinForm.jsp">회원가입폼으로</a>
+	<a href="${pageContext.request.contextPath}/user/member/joinForm.jsp">회원가입폼으로</a>
 </body>
 </html>

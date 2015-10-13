@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width">
 <title>회원가입</title>
-<c:import url="/jsp/user/include/common.jsp" />	
+<c:import url="${pageContext.request.contextPath}/user/include/common.jsp" />	
 <script>
 	
 function chkForm() {
@@ -188,16 +188,16 @@ function callBack() {
 <body class="page-join btn-page">
 	<div class="wrap">
 		<div class="wrap-inner">
-			<%@ include file="/jsp/user/include/leftMenu.jsp" %>	
+			<%@ include file="${pageContext.request.contextPath}/user/include/leftMenu.jsp" %>	
 			<div class="container">
-					<%@ include file="/jsp/user/include/topMenu.jsp" %>
+					<%@ include file="${pageContext.request.contextPath}/user/include/topMenu.jsp" %>
 				<div class="container-inner">
 					<div class="content">
 						<section class="join common">
 							<h2>회원가입</h2>
 							<div class="table-common">
 								<form name="memberForm" onsubmit="return chkForm()"
-									action="/EduMIS/user/member/join.do" method="POST" enctype="multipart/form-data">
+									action="${pageContext.request.contextPath}/user/member/join.do" method="POST" enctype="multipart/form-data">
 									<table>
 										<colgroup>
 											<col style="width: 20%;" />
