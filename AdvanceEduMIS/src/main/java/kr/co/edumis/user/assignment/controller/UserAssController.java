@@ -6,23 +6,27 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.edumis.admin.assignment.vo.AdminAssVO;
-import kr.co.edumis.framework.Controller;
-import kr.co.edumis.framework.ModelAndView;
-import kr.co.edumis.framework.RequestMapping;
 import kr.co.edumis.user.assignment.service.UserAssService;
 import kr.co.edumis.user.assignment.service.UserAssServiceImpl;
 import kr.co.edumis.user.assignment.vo.UserAssVO;
@@ -35,9 +39,12 @@ public class UserAssController {
 	@Autowired
 	private UserAssService service;
 	
+	@Autowired
+	ServletContext servletContext;
+	
 	//과제목록
 	@RequestMapping("/assList.do")
-	public ModelAndView userAssList(HttpServletRequest req, HttpServletResponse res)
+	public ModelAndView userAssList(HttpServletRequest req)
 			throws ServletException, IOException {
 		
 		ModelAndView mav = new ModelAndView("/jsp/user/assignment/userAssList.jsp");
@@ -111,7 +118,7 @@ public class UserAssController {
 	
 	//상세조회
 	@RequestMapping("/assDetail.do")
-	public ModelAndView userDetail(HttpServletRequest req, HttpServletResponse res)
+	public ModelAndView userDetail(HttpServletRequest req)
 			throws ServletException, IOException {
 		String no = req.getParameter("no");
 		
@@ -136,10 +143,12 @@ public class UserAssController {
 	}
 	
 	//과제등록
-	@RequestMapping("/assRegist.do")
-	public String userAssRegist(UserAssVO userass,HttpServletRequest req) throws ServletException, IOException {
+	@RequestMapping(value="/assRegist.do", method=RequestMethod.POST)
+	public String userAssRegist(UserAssVO userass,MultipartHttpServletRequest mRequest) throws ServletException, IOException {
 	   
-		String realPath = req.getServletContext().getRealPath("/assignmentFile");
+//		String realPath = req.getServletContext().getRealPath("/assignmentFile");
+		
+		String realPath = servletContext.getRealPath("/assignmentFile/");
 		
 		File file = new File(realPath);
 		if( !file.exists() ) {
@@ -148,53 +157,61 @@ public class UserAssController {
 			System.out.println("디렉토리 존재함..");
 		}
 		
-		MultipartRequest multi = new MultipartRequest(
-	    		req,
-	    		realPath,
-				1024*1024*10, 
-				"UTF-8",
-				new DefaultFileRenamePolicy() 
-				);
-	    
-	    Enumeration<String> e = multi.getFileNames();
-	    
-	    while(e.hasMoreElements()){
-	    	String filename = e.nextElement();
-	    	
-	    	File f = multi.getFile(filename);
-	    	
-	    	if(f != null){
-	    	
-	    	String orgFileName = multi.getOriginalFileName(filename);
-	    	String realFileName = multi.getFilesystemName(filename);
-	    	
-	    	userass.setContent(multi.getParameter("usertext"));
-	    	userass.setOrgFileName(orgFileName);
-	    	userass.setRealFileName(realFileName);
-	    	userass.setNo(Integer.parseInt(multi.getParameter("no")));
-	    	userass.setName(multi.getParameter("name"));
-	    	userass.setId(multi.getParameter("id"));
-	    	userass.setFilePath("/assignmentFile");
-	    	}else{
+		Iterator<String> iter = mRequest.getFileNames();
+		while(iter.hasNext()) {
+			
+			String formFileName = iter.next();
+			
+			// 폼에서 파일을 선택하지 않아도 객체 생성됨
+			MultipartFile multi = mRequest.getFile(formFileName);
+			
+			// 원본 파일명
+			String oriFileName = multi.getOriginalFilename();
+			
+			// 고유한 파일명 만들기	
+			
+			if(oriFileName != null && !oriFileName.equals("")) {
+			
+				// 확장자 처리
+				String ext = "";
+				// 뒤쪽에 있는 . 의 위치 
+				int index = oriFileName.lastIndexOf(".");
+				if (index != -1) {
+					// 파일명에서 확장자명(.포함)을 추출
+					ext = oriFileName.substring(index);
+					
+				}
+				String realFileName = "mlec-" + UUID.randomUUID().toString() + ext;
+				
+				userass.setContent(mRequest.getParameter("usertext"));
+		    	userass.setOrgFileName(oriFileName);
+		    	userass.setRealFileName(realFileName);
+		    	userass.setNo(Integer.parseInt(mRequest.getParameter("no")));
+		    	userass.setName(mRequest.getParameter("name"));
+		    	userass.setId(mRequest.getParameter("id"));
+		    	userass.setFilePath("/assignmentFile");
 
-	    		userass.setContent(multi.getParameter("usertext"));
-	    		userass.setNo(Integer.parseInt(multi.getParameter("no")));
-	    		userass.setName(multi.getParameter("name"));
-	    		userass.setId(multi.getParameter("id"));
+			
+				// 임시저장된 파일을 원하는 경로에 저장
+				multi.transferTo(new File(realPath + "/" + realFileName));
+			} else{
+
+	    		userass.setContent(mRequest.getParameter("usertext"));
+	    		userass.setNo(Integer.parseInt(mRequest.getParameter("no")));
+	    		userass.setName(mRequest.getParameter("name"));
+	    		userass.setId(mRequest.getParameter("id"));
 	    		userass.setFilePath("/assignmentFile");
 	    		
 	    	}
-	    }
-	    
-	    
+		} 
+
 	    try {
 			service.registAssignment(userass);
-			System.out.println(multi.getParameter("id"));
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
 
-		return  "redirect:/EduMIS/user/assList.do";
+		return  "redirect:/AdvanceEduMIS/user/assList.do";
 		
 	}
 	
@@ -228,10 +245,10 @@ public class UserAssController {
 		
 	}
 	@RequestMapping("/assModify.do")
-	public String userAssModify(UserAssVO userass,HttpServletRequest req)
+	public String userAssModify(UserAssVO userass,MultipartHttpServletRequest mRequest)
 			throws ServletException, IOException {
 		
-		String realPath = req.getServletContext().getRealPath("/assignmentFile");
+String realPath = servletContext.getRealPath("/assignmentFile/");
 		
 		File file = new File(realPath);
 		if( !file.exists() ) {
@@ -240,42 +257,60 @@ public class UserAssController {
 			System.out.println("디렉토리 존재함..");
 		}
 		
-		MultipartRequest multi = new MultipartRequest(
-	    		req,
-	    		realPath,
-				1024*1024*10, 
-				"UTF-8",
-				new DefaultFileRenamePolicy() //파일의 이름이 같을 때 사용할 정책 설정
-				);
-	    
-	    Enumeration<String> e = multi.getFileNames();
-	    
-	    while(e.hasMoreElements()){
-	    	String filename = e.nextElement();
-	    	
-	    	File f = multi.getFile(filename);
-	    	
-	    	if(f != null){
-	    	
-	    	String orgFileName = multi.getOriginalFileName(filename);
-	    	String realFileName = multi.getFilesystemName(filename);
-	    	
-	    	userass.setContent(multi.getParameter("usertext"));
-	    	userass.setOrgFileName(orgFileName);
-	    	userass.setRealFileName(realFileName);
-	    	userass.setNo(Integer.parseInt(multi.getParameter("no")));
-	    	userass.setName(multi.getParameter("name"));
-	    	userass.setId(multi.getParameter("id"));
-	    	userass.setFilePath("/assignmentFile");
+		Iterator<String> iter = mRequest.getFileNames();
+		while(iter.hasNext()) {
+			
+			String formFileName = iter.next();
+			
+			// 폼에서 파일을 선택하지 않아도 객체 생성됨
+			MultipartFile multi = mRequest.getFile(formFileName);
+			
+			// 원본 파일명
+			String oriFileName = multi.getOriginalFilename();
+			
+			// 고유한 파일명 만들기	
+			
+			if(oriFileName != null && !oriFileName.equals("")) {
+			
+				// 확장자 처리
+				String ext = "";
+				// 뒤쪽에 있는 . 의 위치 
+				int index = oriFileName.lastIndexOf(".");
+				if (index != -1) {
+					// 파일명에서 확장자명(.포함)을 추출
+					ext = oriFileName.substring(index);
+					
+				}
+				String realFileName = "mlec-" + UUID.randomUUID().toString() + ext;
+				
+				userass.setContent(mRequest.getParameter("usertext"));
+		    	userass.setOrgFileName(oriFileName);
+		    	userass.setRealFileName(realFileName);
+		    	userass.setNo(Integer.parseInt(mRequest.getParameter("no")));
+		    	userass.setName(mRequest.getParameter("name"));
+		    	userass.setId(mRequest.getParameter("id"));
+		    	userass.setFilePath("/assignmentFile");
+
+			
+				// 임시저장된 파일을 원하는 경로에 저장
+				multi.transferTo(new File(realPath + "/" + realFileName));
+			} else{
+
+	    		userass.setContent(mRequest.getParameter("usertext"));
+	    		userass.setNo(Integer.parseInt(mRequest.getParameter("no")));
+	    		userass.setName(mRequest.getParameter("name"));
+	    		userass.setId(mRequest.getParameter("id"));
+	    		userass.setFilePath("/assignmentFile");
+	    		
 	    	}
-	    }
+		} 
 	    try {
 			service.updateUserAss(userass);
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
 
-		return "redirect:/EduMIS/user/assList.do";
+		return "redirect:/AdvanceEduMIS/user/assList.do";
 		
 	}
 	
