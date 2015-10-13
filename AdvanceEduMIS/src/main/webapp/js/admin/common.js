@@ -95,10 +95,9 @@ $(document).ready(function(){
       //쪽지추가 부분
       $.ajax({
         type : "get",
-        url : "/EduMIS/talk/receiveList.do"
+        url : "/AdvanceEduMIS/talk/receiveList.do"
       }).done (function (data) {
         $("#messageUL").html(data);
-//        $("#countView").html($("#count").val());
         $(".count").html($("#count").val());
         //쪽지추가 부분
         
@@ -144,7 +143,7 @@ $(document).ready(function(){
 $('.btn-plus').on('click', function(){
   $.ajax({
     type : "get",
-    url : "/EduMIS/talk/memberList.do"
+    url : "/AdvanceEduMIS/talk/memberList.do"
   }).done (function (data) {
     $("#memberUL").html(data);
     // 쪽지추가 부분
@@ -245,7 +244,7 @@ $('.btn-plus').on('click', function(){
       if(!content){
         alert("내용을 입력해주세요");
       } else {
-          $.post("/EduMIS/talk/sub", {
+          $.post("/AdvanceEduMIS/talk/sub", {
           no : no,
           content : content,
           type : "re"
@@ -273,7 +272,7 @@ $('.btn-plus').on('click', function(){
             socket.emit("msg", {recvNo : sendNameList[i].value, sendName : sendName } );
           }
           console.log("name : " + name);
-          $.post("/EduMIS/talk/sub", {
+          $.post("/AdvanceEduMIS/talk/sub", {
 	          name : name,
 	          content : content,
 	          type : "new"
@@ -286,7 +285,7 @@ $('.btn-plus').on('click', function(){
   
   // x버튼 클릭시 처리할 함수
   function checkTalk(no) {
-    $.post("/EduMIS/talk/sub", {
+    $.post("/AdvanceEduMIS/talk/sub", {
       no : no,
       type : "check"
     }, function () {

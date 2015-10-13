@@ -48,7 +48,7 @@ $(document).ready(function(){
 	        //쪽지추가 부분
 	        $.ajax({
 	          type : "get",
-	          url : "/EduMIS/talk/user/receiveList.do"
+	          url : "/AdvanceEduMIS/talk/user/receiveList.do"
 	        }).done (function (data) {
 	          $("#messageUL").html(data);
 //	          $("#countView").html($("#count").val());
@@ -99,7 +99,7 @@ $(document).ready(function(){
 	  $('.btn-plus').on('click', function(){
 	    $.ajax({
 	      type : "get",
-	      url : "/EduMIS/talk/user/memberList.do"
+	      url : "/AdvanceEduMIS/talk/user/memberList.do"
 	    }).done (function (data) {
 	      $("#memberUL").html(data);
 	      // 쪽지추가 부분
@@ -163,7 +163,7 @@ $(document).ready(function(){
 	        if(!content){
 	          alert("내용을 입력해주세요");
 	        } else {
-	            $.post("/EduMIS/talk/user/sub", {
+	            $.post("/AdvanceEduMIS/talk/user/sub", {
 	            no : no,
 	            content : content,
 	            type : "re"
@@ -183,7 +183,7 @@ $(document).ready(function(){
 	            alert("내용을 입력해주세요");
 	          } 
 	          else {
-	            $.post("/EduMIS/talk/user/sub", {
+	            $.post("/AdvanceEduMIS/talk/user/sub", {
 	            	content : content,
 	            	type : "new"
 	            }, function() {
@@ -197,7 +197,7 @@ $(document).ready(function(){
 	    
 	  //x버튼 클릭시 처리할 함수
 	    function checkTalk(no) {
-	      $.post("/EduMIS/talk/user/sub", {
+	      $.post("/AdvanceEduMIS/talk/user/sub", {
 	        no : no,
 	        type : "check"
 	      }, function () {
