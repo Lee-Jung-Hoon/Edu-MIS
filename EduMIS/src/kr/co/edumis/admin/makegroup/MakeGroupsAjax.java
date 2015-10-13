@@ -21,6 +21,7 @@ import kr.co.edumis.framework.RequestMapping;
 import kr.co.edumis.user.member.dao.MemberDAO;
 import kr.co.edumis.user.member.vo.MemberVO;
 
+
 @WebServlet("/makegroups/ajax")
 public class MakeGroupsAjax extends HttpServlet {
 
@@ -40,8 +41,10 @@ public class MakeGroupsAjax extends HttpServlet {
 			String name = mvo.getName();
 			String no = mvo.getNo();
 			String team = mvo.getTeam();
+			String realFileName = mvo.getRealFileName();
+			String filePath = mvo.getFilePath();
 			json+= "{ name : '"
-					+name+ "', no : '"+no+"', team: '"+team+"'} ";
+					+name+ "', no : '"+no+"', team: '"+team+"', filePath : '"+filePath+"', realFileName : '"+realFileName+"'} ";
 			if(i!=list.size()-1){
 				json+=",";
 			}
