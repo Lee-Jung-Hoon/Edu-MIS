@@ -5,10 +5,11 @@ package kr.co.edumis.user.member.dao;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.stereotype.Repository;
 
 import kr.co.edumis.user.member.vo.MemberVO;
 
-
+@Repository
 public class MemberDAO {
 
 	private static SqlSessionTemplate session = null;
