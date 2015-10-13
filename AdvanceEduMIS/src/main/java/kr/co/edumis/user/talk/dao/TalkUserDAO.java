@@ -38,12 +38,10 @@ public class TalkUserDAO {
 	
 	public void insertTalk(TalkUserVO talk) {
 		session.insert("user.talk.dao.TalkMapper.registTalk", talk);
-		session.commit();
 	}
 	
 	public void updateCheck(int no) {
 		session.update("user.talk.dao.TalkMapper.setCheck", no);
-		session.commit();
 	}
 	
 	public int selectSeq() {
@@ -52,7 +50,6 @@ public class TalkUserDAO {
 	
 	public void insertNewTalk(TalkUserVO talk) {
 		session.insert("user.talk.dao.TalkMapper.registNewTalk", talk);
-		session.commit();
 	}
 	
 	public List<TalkUserVO> selectReceiveTalkList(int no) throws Exception{
@@ -69,12 +66,10 @@ public class TalkUserDAO {
 	}
 	public void insertSendTalk(TalkUserVO talk) throws Exception{
 		session.insert("user.talk.dao.TalkMapper.insertSendTalk", talk);
-		session.commit();
 	}
 
 	public void setCheck(int tNo) throws Exception{
 		session.update("user.talk.dao.TalkMapper.changeCheck", tNo);
-		session.commit();
 	}
 
 	public List<TalkUserVO> searchTalk(TalkUserVO talk) throws Exception {
@@ -97,21 +92,17 @@ public class TalkUserDAO {
 
 	public void deleteCheckTalk(TalkUserVO talk) throws Exception{
 		session.update("user.talk.dao.TalkMapper.deleteCheckTalk", talk);
-		session.commit();
 	}
 
 	public void deleteTalk(int no) {
 		session.update("user.talk.dao.TalkMapper.deleteTalk", no);
-		session.commit();		
 	}
 
 	public void realDeleteCheckTalk(int tNo) {
 		session.update("user.talk.dao.TalkMapper.realDeleteCheckTalk", tNo);
-		session.commit();	
 	}
 
 	public void reviveCheckTalk(int tNo) {
 		session.update("user.talk.dao.TalkMapper.reviveCheckTalk", tNo);
-		session.commit();
 	}
 }
