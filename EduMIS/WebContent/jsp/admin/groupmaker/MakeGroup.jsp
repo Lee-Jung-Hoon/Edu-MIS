@@ -94,6 +94,7 @@
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 <script>
+ var httpParams;
   var httpRequest;
   var gNum = 0; //전체조의 갯수를 저장할 변수
   var sLeader = new Array(); //선택된 조장들을 저장해놓을 배열
@@ -132,7 +133,7 @@
         });
     refreshValue();
     var send = 0;
-    var httpParams = "";
+    httpParams = "";
     if (memberLoading != 100 && memberLoading != 0) {
       for (var i = 1; i <= gNum; i++) {
         httpParams += 'leader' + i + '=' + sLeader[i];
