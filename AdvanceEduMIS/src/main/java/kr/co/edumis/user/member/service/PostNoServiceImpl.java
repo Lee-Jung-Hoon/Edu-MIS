@@ -2,9 +2,12 @@ package kr.co.edumis.user.member.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import kr.co.edumis.user.member.dao.PostNoDAO;
 import kr.co.edumis.user.member.vo.PostNoVO;
 
+@Service
 public class PostNoServiceImpl implements PostNoService{
 	private PostNoDAO dao = null;
 	

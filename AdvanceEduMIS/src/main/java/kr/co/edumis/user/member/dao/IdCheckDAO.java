@@ -1,7 +1,9 @@
 package kr.co.edumis.user.member.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class IdCheckDAO {
 
 	private static SqlSessionTemplate session = null;
