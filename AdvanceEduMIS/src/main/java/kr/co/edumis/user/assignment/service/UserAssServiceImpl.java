@@ -5,13 +5,14 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import kr.co.edumis.admin.assignment.vo.AdminAssVO;
 import kr.co.edumis.user.assignment.dao.UserAssDAO;
 import kr.co.edumis.user.assignment.vo.UserAssVO;
 
 
-@Repository
+@Service 
 public class UserAssServiceImpl implements UserAssService{
 	
 	@Autowired
