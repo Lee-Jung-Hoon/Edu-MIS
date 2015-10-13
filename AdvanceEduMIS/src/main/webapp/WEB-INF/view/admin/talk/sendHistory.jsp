@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width">
 	<title>메인</title>
-	<%@ include file="/jsp/admin/include/common.jsp" %>
+<%-- 	<%@ include file="/jsp/admin/include/common.jsp" %> --%>
 	<style>
 table.table-board {
 	/* width: 100%; */ /* Optional */
@@ -123,9 +123,9 @@ tbody td:last-child, thead th:last-child {
 <body class="page-main btn-page">
 	<div class="wrap">
 		<div class="wrap-inner">
-			<%@ include file="/jsp/admin/include/leftMenu.jsp" %>	
+<%-- 			<%@ include file="/jsp/admin/include/leftMenu.jsp" %>	 --%>
 			<div class="container">
-				<%@ include file="/jsp/admin/include/topMenu.jsp" %>
+<%-- 				<%@ include file="/jsp/admin/include/topMenu.jsp" %> --%>
 					<script>
 				$(document).ready(function () {
 				$(".allCheck").on('click', function () {
