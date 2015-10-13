@@ -11,7 +11,7 @@ public interface TalkService {
 	
 	public int selectReCount(int no) throws Exception;
 
-	public List<MemberVO> selectMemberList() throws Exception;
+	public List<MemberVO> selectMemberList(int no) throws Exception;
 
 	public TalkVO selectNo(int no) throws Exception;
 

@@ -2,13 +2,12 @@ package kr.co.edumis.user.talk.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
+import kr.co.edumis.user.member.vo.MemberVO;
+import kr.co.edumis.user.talk.vo.TalkUserVO;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import kr.co.edumis.user.member.vo.MemberVO;
-import kr.co.edumis.user.talk.vo.TalkUserVO;
 
 @Repository
 public class TalkUserDAO {
@@ -25,6 +24,7 @@ public class TalkUserDAO {
 	}
 	
 	public int selectReCount(int no) {
+		System.out.println("no --- ");
 		return session.selectOne("user.talk.dao.TalkMapper.getReceiveCount", no);
 	}
 	
