@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width">
 <title>회원가입</title>
-<c:import url="${pageContext.request.contextPath}/user/include/common.jsp" />	
+<%@ include file="/WEB-INF/view/user/include/common.jsp" %>	
 <script>
 	
 function chkForm() {
@@ -188,9 +188,9 @@ function callBack() {
 <body class="page-join btn-page">
 	<div class="wrap">
 		<div class="wrap-inner">
-			<%@ include file="${pageContext.request.contextPath}/user/include/leftMenu.jsp" %>	
+			<%@ include file="/WEB-INF/view/user/include/leftMenu.jsp" %>
 			<div class="container">
-					<%@ include file="${pageContext.request.contextPath}/user/include/topMenu.jsp" %>
+					<%@ include file="/WEB-INF/view/user/include/topMenu.jsp" %>
 				<div class="container-inner">
 					<div class="content">
 						<section class="join common">
