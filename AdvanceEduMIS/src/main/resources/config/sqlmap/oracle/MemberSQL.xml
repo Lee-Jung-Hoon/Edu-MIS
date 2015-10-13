@@ -60,8 +60,11 @@
 		id,
 		name,
 		tech_Leader as techLeader,
-		team
+		team,
+		real_file_name as realFileName,
+		file_path as filePath
 		from t_member
+		
 
 
 	</select>
