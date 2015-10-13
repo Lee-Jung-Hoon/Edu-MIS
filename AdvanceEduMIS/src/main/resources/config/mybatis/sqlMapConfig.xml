@@ -5,23 +5,23 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="memberVO" type="kr.co.edumis.user.member.vo.MemberVO"/>
-		<typeAlias alias="ExamBoardVO" type="kr.co.edumis.admin.examgrade.vo.ExamBoardVO"/>
-		<typeAlias alias="ExamGradeVO" type="kr.co.edumis.admin.examgrade.vo.ExamGradeVO"/>
+<!-- 		<typeAlias alias="ExamBoardVO" type="kr.co.edumis.admin.examgrade.vo.ExamBoardVO"/> -->
+<!-- 		<typeAlias alias="ExamGradeVO" type="kr.co.edumis.admin.examgrade.vo.ExamGradeVO"/> -->
 		<typeAlias alias="userAssVO" type="kr.co.edumis.user.assignment.vo.UserAssVO"/>
 		<typeAlias alias="AdminAssVO" type="kr.co.edumis.admin.assignment.vo.AdminAssVO"/>
 		<typeAlias alias="TalkVO" type="kr.co.edumis.admin.talk.vo.TalkVO"/> 
-		<typeAlias alias="UserTalkVO" type="kr.co.edumis.user.talk.vo.TalkVO"/> 
-		<typeAlias  alias ="VoteVO" type="kr.co.edumis.user.vote.vo.VoteVO"/>
-		<typeAlias alias="ScheduleVO" type="kr.co.edumis.admin.schedule.vo.ScheduleVO"/>
-		<typeAlias alias="MemoVO" type="kr.co.edumis.user.memo.vo.MemoVO"/>
+		<typeAlias alias="UserTalkVO" type="kr.co.edumis.user.talk.vo.TalkUserVO"/> 
+<!-- 		<typeAlias  alias ="VoteVO" type="kr.co.edumis.user.vote.vo.VoteVO"/> -->
+<!-- 		<typeAlias alias="ScheduleVO" type="kr.co.edumis.admin.schedule.vo.ScheduleVO"/> -->
+<!-- 		<typeAlias alias="MemoVO" type="kr.co.edumis.user.memo.vo.MemoVO"/> -->
 		<typeAlias alias="PostNoVO" type="kr.co.edumis.user.member.vo.PostNoVO"/>
-		<typeAlias alias="CommentVO" type="kr.co.edumis.admin.comment.vo.CommentVO"/>
-		<typeAlias alias="bookBoardVO" type="kr.co.edumis.user.bookboard.vo.BookBoardVO"/>
+<!-- 		<typeAlias alias="CommentVO" type="kr.co.edumis.admin.comment.vo.CommentVO"/> -->
+<!-- 		<typeAlias alias="bookBoardVO" type="kr.co.edumis.user.bookboard.vo.BookBoardVO"/> -->
 		<typeAlias alias="MypageVO" type = "kr.co.edumis.user.mypage.vo.MypageVO"/>
 		<typeAlias alias="LoginVO" type="kr.co.edumis.user.login.vo.LoginVO"/>
-		<typeAlias alias="VideoLectureVO" type="kr.co.edumis.user.videoLecture.vo.VideoLectureVO"/>
-		<typeAlias alias="lecCommentVO" type="kr.co.edumis.user.videoLecture.vo.LecCommentVO"/>
-		<typeAlias alias="AdminAttVO" type="kr.co.edumis.admin.attendance.vo.AdminAttVO"/>
+<!-- 		<typeAlias alias="VideoLectureVO" type="kr.co.edumis.user.videoLecture.vo.VideoLectureVO"/> -->
+<!-- 		<typeAlias alias="lecCommentVO" type="kr.co.edumis.user.videoLecture.vo.LecCommentVO"/> -->
+<!-- 		<typeAlias alias="AdminAttVO" type="kr.co.edumis.admin.attendance.vo.AdminAttVO"/> -->
 	</typeAliases>
 </configuration>
 
