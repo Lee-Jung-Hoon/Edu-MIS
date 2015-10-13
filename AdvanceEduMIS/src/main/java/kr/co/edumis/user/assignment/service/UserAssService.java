@@ -9,8 +9,6 @@ import org.springframework.stereotype.Repository;
 import kr.co.edumis.admin.assignment.vo.AdminAssVO;
 import kr.co.edumis.user.assignment.vo.UserAssVO;
 
-
-@Repository
 public interface UserAssService {
 	
 	//과제해야 할 전체목록
