@@ -3,14 +3,12 @@ package kr.co.edumis.user.assignment.service;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
-
 import kr.co.edumis.admin.assignment.vo.AdminAssVO;
 import kr.co.edumis.user.assignment.dao.UserAssDAO;
 import kr.co.edumis.user.assignment.vo.UserAssVO;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service 
 public class UserAssServiceImpl implements UserAssService{
@@ -18,13 +16,11 @@ public class UserAssServiceImpl implements UserAssService{
 	@Autowired
 	private UserAssDAO uasdao;
 	
-
 	public List<AdminAssVO> getList(Map<String, String> param) throws Exception{
 		return uasdao.selectAssignment(param);
 	}
 	
 	public AdminAssVO admdetail(String no) throws Exception{
-		
 		return uasdao.selectDetailAssignment(no);
 	}
 	
