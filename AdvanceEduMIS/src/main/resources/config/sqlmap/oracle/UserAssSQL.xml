@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="userAssMapper">
+
+
+<!-- 과제목록을 불러오는 쿼리 -->
+ <select id="adminAssList" parameterType="map" resultType="AdminAssVO">
+    select a.no,
+           a.title, 
+           a.startDate,
+           a.endDate,
+           case when (select count(*) from t_user_assignment_board where no = a.no and id = #{id}) = 0 then 'X'
+                else 'O'
+            end isSubmit
+    from 
+			(
+				select no, 
+					startDate,
+					endDate,
+					title,
+					content,
+					rownum rnum
+				from 
+				(
+					select 
+						no, 
+						to_char(start_date, 'yyyy-mm-dd') as startDate,
+						to_char(end_date, 'yyyy-mm-dd') as endDate,
+						title,
+						content 
+					from t_adm_assignment_board 
+					order by no desc
+				))a
+				where rnum between #{startIndex} and #{endIndex}
+ </select>
+ 
+ <!-- 해야할 과제 상세 조회 -->
+  <select id="adminAssDetail" parameterType="String" resultType="AdminAssVO">
+    select no,
+           title,
+           content,
+           to_char(start_Date,'yyyy-mm-dd')as startDate,
+           to_char(end_Date,'yyyy-mm-dd')as endDate,
+           org_File_Name as orgFileName,
+           real_File_Name as realFileName,
+           file_Path
+    from t_adm_assignment_board
+    where no = #{no}
+ </select>
+ 
+<!-- 과제제출하는 쿼리 -->
+<insert  id="assRegist" parameterType="UserAssVO" >
+insert into t_user_assignment_board(
+   id, 
+   name,
+   no,
+   content,
+   <if test="orgFileName != null">
+   org_File_Name,
+   real_File_Name,
+   </if>
+   file_Path
+   )
+   values(
+   #{id},
+   #{name},
+   #{no},
+   #{content},
+      <if test="orgFileName != null">
+   #{orgFileName},
+   #{realFileName},
+   </if>
+   #{filePath}
+   )
+</insert>
+
+<!-- 내가 제출한 과제 조회 -->
+<select id="userAssDetail" parameterType="map" resultType="UserAssVO">
+  select id,
+         name,
+         no,
+         content,
+         org_File_Name as orgFileName,
+         real_File_Name as realFileName,
+         file_Path as filePath
+    from t_user_assignment_board
+    where no =#{no} and id=#{id}
+</select>
+
+<!-- 내가 제출한 과제 수정 -->
+<update id="userAssUpdate" parameterType="UserAssVO">
+  update t_user_assignment_board set
+         content = #{content},
+         org_File_Name = #{orgFileName},
+         real_File_Name = #{realFileName},
+         file_Path = #{filePath}
+   where no =#{no}
+</update>
+
+<!-- 전체 게시물 갯수 조회 -->
+<select id="AssCount" resultType="int">
+ select count(*) as count
+ from t_adm_assignment_board
+</select>
+
+<!-- 페이징하려고 과제 조회 -->
+<select id="AdminListPage" parameterType="map" resultType="AdminAssVO">
+		select 
+			no, 
+			startDate,
+			endDate,
+			title,
+			content
+			from 
+			(
+				select no, 
+					startDate,
+					endDate,
+					title,
+					content,
+					rownum rnum
+				from 
+				(
+					select 
+						no, 
+						to_char(start_date, 'yyyy-mm-dd') as startDate,
+						to_char(end_date, 'yyyy-mm-dd') as endDate,
+						title,
+						content 
+					from t_adm_assignment_board 
+					order by no desc
+				))
+			where rnum between #{startIndex} and #{endIndex}
+</select>
+
+
+</mapper>
