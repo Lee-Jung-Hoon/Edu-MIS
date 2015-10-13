@@ -25,6 +25,7 @@
 		and att_type = 4
 	</select>
 
+<!-- 
 	<select id="selectBookBoard" resultType="bookBoardVO">
 		select
 		no,
@@ -109,5 +110,6 @@
 		and to_number(to_char(start_date,'dd')) >= #{day}
 		and to_number(to_char(end_date,'dd')) &lt;= #{day}
 	</select>
+ -->
 
 </mapper>
