@@ -1,5 +1,6 @@
 package kr.co.edumis.admin.talk.controller;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,7 @@ import kr.co.edumis.user.member.vo.MemberVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -331,5 +333,75 @@ public class TalkController {
 	      }
 	      return mav;
 	   }
+	   
+	   
+	   //톡 답변
+	   @ResponseBody
+	   @RequestMapping("/reTalk.do")
+	   public void sendReTalk(HttpServletRequest req){
+		   	HttpSession session = req.getSession();
+			LoginVO member = (LoginVO)session.getAttribute("admin");
+			String content = req.getParameter("content");
+			int no = Integer.parseInt(req.getParameter("no"));
+			try {
+				service.updateCheck(no);
+				TalkVO talk = service.selectNo(no); // 글번호로 보낸 사람 번호와 부모 넘버를 받아옴(부모번호, 보낸사람번호, 받는사람 번호, 내용,)
+				talk.setReceiveMemberNo(talk.getSendMemberNo());
+				talk.setSendMemberNo(member.getNo()); // session number 로 지정해야 함
+				talk.setContent(content);
+				service.insertTalk(talk);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	   }
+	   
+		@ResponseBody
+		@RequestMapping("/newTalk.do")
+		public void sendNewTalk(HttpServletRequest req) {
+			HttpSession session = req.getSession();
+			LoginVO member = (LoginVO) session.getAttribute("admin");
+			String content = req.getParameter("content");
+			String[] arr = req.getParameter("name").split("/");
+			try {
+				for (int i = 1; i < arr.length; i++) {
+					TalkVO talk = new TalkVO();
+					int seq;
+					seq = service.selectSeq();
+					talk.setNo(seq);
+					talk.setpNo(seq);
+					talk.setSendMemberNo(member.getNo()); // session number 로 지정해야 함
+					talk.setReceiveMemberNo(Integer.parseInt(arr[i]));
+					talk.setContent(content);
+					service.insertNewTalk(talk);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		@ResponseBody
+		@RequestMapping("/sub.do")
+		public void getCount(HttpServletRequest req, HttpServletResponse res){
+			HttpSession session = req.getSession();
+			LoginVO member = (LoginVO) session.getAttribute("admin");
+			try {
+				List<TalkVO> list = service.selectReList(member.getNo());
+				PrintWriter out = res.getWriter();
+				out.println(list.size());
+				out.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		@ResponseBody
+		@RequestMapping("/changeCheck.do")
+		public void changeCheck(int no){
+//			int no = Integer.parseInt(req.getParameter("no"));
+			try {
+				service.updateCheck(no);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} // 체크로 update
+		}
 }
-	
