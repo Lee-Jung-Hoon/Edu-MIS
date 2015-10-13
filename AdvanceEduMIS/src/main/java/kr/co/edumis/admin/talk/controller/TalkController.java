@@ -40,17 +40,17 @@ public class TalkController {
 		return mav;
 	}
 	
-	@ResponseBody
 	@RequestMapping("/memberList.do")
-	public List<MemberVO> memberList() throws Exception {
-		List<MemberVO> list = null;
+	public ModelAndView memberList(){
+		ModelAndView mav = new ModelAndView("admin/talk/memberList");
 		try {
-			list = service.selectMemberList();
+			List<MemberVO> list = service.selectMemberList();
+			mav.addObject("list", list);
 			System.out.println(list.size());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return list;
+		return mav;
 	}
 	
 	@RequestMapping("/login.do")
