@@ -18,7 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+@Controller("adminMainController")
 public class MainController extends HttpServlet {
 
 	@Resource(name="adminMainService")
@@ -26,11 +26,6 @@ public class MainController extends HttpServlet {
 
 	@Autowired
 	private TalkService talkService;
-
-	public MainController() {
-		service = new MainServiceImpl();
-		talkService = new TalkServiceImpl();
-	}
 	
 	@RequestMapping("/admin/main.do")
 	public ModelAndView main(HttpServletRequest req) throws Exception {
