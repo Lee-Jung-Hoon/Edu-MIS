@@ -103,7 +103,7 @@ public class TalkController {
 	   }
 
 	   @RequestMapping("/checkDelete.do")
-	   public ModelAndView DeleteCheckTalk(HttpServletRequest req, HttpServletResponse res) {
+	   public String DeleteCheckTalk(HttpServletRequest req, HttpServletResponse res) {
 	      ModelAndView mav = new ModelAndView();
 
 	      String type = req.getParameter("type");
@@ -119,7 +119,7 @@ public class TalkController {
 	               System.out.println(talk.getName());
 	               service.deleteCheckTalk(talk);
 	            }
-	            return new ModelAndView("redirect:/EduMIS/talk/recvList.do");
+	            return "redirect:/AdvanceEduMIS/talk/recvList.do";
 	         } else {
 	            for (int i = 0; i < delList.length; i++) {
 	               int tNo = Integer.parseInt(delList[i]);
@@ -130,15 +130,14 @@ public class TalkController {
 	               service.deleteCheckTalk(talk);
 	            }
 	         }
-	         return new ModelAndView("redirect:/EduMIS/talk/sendList.do");
+	         return "redirect:/AdvanceEduMIS/talk/recvList.do";
 	      } catch (Exception e) {
 	         e.printStackTrace();
-
 	      }
-	      return null;
+	      return null;//jsp바꺼 다쉬면//jsp바꺼 다쉬면//jsp바꺼 다쉬면//jsp바꺼 다쉬면
 	   }
 	   @RequestMapping("/reviveTalk.do")
-	   public ModelAndView ReviveCheckTalk(HttpServletRequest req){
+	   public String ReviveCheckTalk(HttpServletRequest req){
 	      ModelAndView mav = new ModelAndView();
 	      
 	      String[] delList = req.getParameter("delCheck").split(",");
@@ -150,11 +149,11 @@ public class TalkController {
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	      }
-	      return new ModelAndView("redirect:/EduMIS/talk/talkTrash.do");
+	      return "redirect:/AdvanceEduMIS/talk/recvList.do";
 	   }
 
 	   @RequestMapping("/realDelete.do")
-	   public ModelAndView RealDeleteCheckTalk(HttpServletRequest req) {
+	   public String RealDeleteCheckTalk(HttpServletRequest req) {
 	      
 	      
 	      ModelAndView mav = new ModelAndView();
@@ -168,11 +167,11 @@ public class TalkController {
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	      }
-	      return new ModelAndView("redirect:/EduMIS/talk/talkTrash.do");
+	      return "redirect:/AdvanceEduMIS/talk/recvList.do";
 	   }
 
 	   @RequestMapping("/allCheckDelete.do")
-	   public ModelAndView DeleteAllCheckTalk(HttpServletRequest req) {
+	   public String DeleteAllCheckTalk(HttpServletRequest req) {
 	      ModelAndView mav = new ModelAndView();
 
 	      String type = req.getParameter("type");
@@ -193,7 +192,7 @@ public class TalkController {
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	      }
-	      return new ModelAndView("redirect:/EduMIS/talk/recvList.do");
+	      return "redirect:/AdvanceEduMIS/talk/recvList.do";
 	   }
 
 	   @RequestMapping("/sendList.do")
@@ -240,7 +239,7 @@ public class TalkController {
 	   }
 
 	   @RequestMapping("/insertSendTalk.do")
-	   public ModelAndView insertTalk(HttpServletRequest req) {
+	   public String insertTalk(HttpServletRequest req) {
 	      int sendmNo = Integer.parseInt(req.getParameter("sendMemberNo"));
 	      int receivemNo = Integer.parseInt(req.getParameter("receiveMemberNo"));
 	      int tNo = Integer.parseInt(req.getParameter("tNo"));
@@ -260,11 +259,11 @@ public class TalkController {
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	      }
-	      return new ModelAndView("redirect:/EduMIS/talk/recvList.do");
+	      return "redirect:/AdvanceEduMIS/talk/recvList.do";
 	   }
 
 	   @RequestMapping("/deleteTalk.do")
-	   public ModelAndView deleteTalk(HttpServletRequest req) {
+	   public String deleteTalk(HttpServletRequest req) {
 	      int no = Integer.parseInt(req.getParameter("no"));
 	      try {
 	         service.deleteTalk(no);
@@ -272,7 +271,7 @@ public class TalkController {
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	      }
-	      return new ModelAndView("redirect:/EduMIS/talk/recvList.do");
+	      return "redirect:/AdvanceEduMIS/talk/recvList.do";
 	   }
 
 	   @RequestMapping("/searchTalk.do")
