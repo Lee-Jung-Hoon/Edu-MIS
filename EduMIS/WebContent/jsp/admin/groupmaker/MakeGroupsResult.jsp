@@ -69,9 +69,15 @@ function timeDelay() {
 
 										<c:if test="${list.team eq i}">
 											<div style="display: block;" class="member">
-												<input type="hidden" value="1"> <img
-													src="/EduMIS/jsp/admin/groupmaker/images/pic1.jpg" width="70px"
+												<input type="hidden" value="1"> 
+												<c:if test="${list.filePath eq 'null' }">
+												<img src="/EduMIS/jsp/admin/groupmaker/images/pic1.jpg" width="70px"
 													height="70px" style="margin-right: 3px">
+												</c:if>
+												<c:if test="${list.filePath ne 'null' }">
+												<img src="/EduMIS/${list.filePath}/${list.realFileName}" width="70px"
+													height="70px" style="margin-right: 3px">
+												</c:if>
 												<p align="center">${list.name}</p>
 											</div>
 										</c:if>

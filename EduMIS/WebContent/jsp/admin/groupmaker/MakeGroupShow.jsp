@@ -23,7 +23,18 @@ img {
 .mybody {
 	padding-bottom: 300px;
 }
+.button2{
+	width : 90px;
+}
+
 </style>
+<script>
+function remake() {
+  
+  location.href = "/EduMIS/makegroups/remake.do";
+} 
+
+</script>
 
 </head>
 <body class="page-main btn-page">
@@ -37,6 +48,9 @@ img {
 					<div class="content">
 						<section class="groupsShow common">
 							<h2>각 조 현황 보기</h2>
+							<input type="button" value="" onclick="remake()" id="button2"
+							style="display: inline-block; width: 100px; height: 40px; margin-left: 10px;"
+								class="btn txt-leader-make-s btn-txt btn-blue">
 							<div id="mybody">
 								<br>
 
@@ -54,9 +68,16 @@ img {
 
 										<c:if test="${list.team eq i}">
 											<div style="display: block;" class="member">
-												<input type="hidden" value="1"> <img
-													src="/EduMIS/jsp/admin/groupmaker/images/pic1.jpg" width="90px"
+												<input type="hidden" value="1">
+												<c:if test="${list.filePath eq 'null' }">
+												<img src="/EduMIS/jsp/admin/groupmaker/images/pic1.jpg" width="90px"
 													height="90px" style="margin-right: 3px">
+												</c:if>
+												<c:if test="${list.filePath ne 'null' }">
+												<img src="/EduMIS/${list.filePath}/${list.realFileName}" width="90px"
+													height="90px" style="margin-right: 3px">
+												</c:if>
+												 
 												<p align="center">${list.name}</p>
 											</div>
 										</c:if>
