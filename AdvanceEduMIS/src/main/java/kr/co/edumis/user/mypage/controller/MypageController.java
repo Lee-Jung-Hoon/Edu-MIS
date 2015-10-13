@@ -30,10 +30,11 @@ public class MypageController {
 	
 	@RequestMapping("/detailMyinfo.do")
 	public ModelAndView detailMyinfo(HttpServletRequest req) throws Exception{
-//		HttpSession session = req.getSession();
-//		LoginVO lvo = (LoginVO)session.getAttribute("user");
-//		String id = lvo.getId();
-		String id = "scot1234";
+		System.out.println(1);
+		HttpSession session = req.getSession();
+		LoginVO lvo = (LoginVO)session.getAttribute("user");
+		String id = lvo.getId();
+//		String id = "scot1234";
 		ModelAndView mav = new ModelAndView("/user/mypage/detail_myinfo");
 		MypageVO mvo = service.getMyInfo(id);
 		
@@ -65,23 +66,23 @@ public class MypageController {
 	public ModelAndView modifyMyinfoForm(MypageVO mypageVO) throws Exception{
 		ModelAndView mav = new ModelAndView("/user/mypage/modify_myinfo");
 		switch(mypageVO.getEmailDomain()){
-		case "1":
-			mypageVO.setEmailDomain("naver.com");
+		case "naver.com":
+			mypageVO.setEmailDomain("1");
 			break;
-		case "2":
-			mypageVO.setEmailDomain("daum.net");
+		case "daum.net":
+			mypageVO.setEmailDomain("2");
 			break;
-		case "3":
-			mypageVO.setEmailDomain("google.com");
+		case "google.com":
+			mypageVO.setEmailDomain("3");
 			break;
 		}
 		
 		switch(mypageVO.getMajor()){
-		case "1":
-			mypageVO.setMajor("전공");
+		case "전공":
+			mypageVO.setMajor("1");
 			break;
-		case "2":
-			mypageVO.setMajor("비전공");
+		case "비전공":
+			mypageVO.setMajor("2");
 		}
 		System.out.println(mypageVO.getEmailDomain());
 		System.out.println(mypageVO.getMajor());
