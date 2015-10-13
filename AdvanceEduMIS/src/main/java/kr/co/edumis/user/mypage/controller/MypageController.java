@@ -1,11 +1,11 @@
 package kr.co.edumis.user.mypage.controller;
 
 import java.io.File;
-import java.util.Iterator;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.edumis.user.login.vo.LoginVO;
 import kr.co.edumis.user.mypage.service.MypageService;
 import kr.co.edumis.user.mypage.vo.MypageVO;
 
@@ -82,7 +83,8 @@ public class MypageController {
 		case "2":
 			mypageVO.setMajor("비전공");
 		}
-		
+		System.out.println(mypageVO.getEmailDomain());
+		System.out.println(mypageVO.getMajor());
 		mav.addObject("mvo", mypageVO);
 		return mav;
 	}
@@ -118,10 +120,10 @@ public class MypageController {
 			MultipartFile mFile = mReq.getFile("attachFile");
 			
 			String oriFileName = mFile.getOriginalFilename();
-			System.out.println("원본 파일명 : " + oriFileName);
-			mvo.setOrgFileName(oriFileName);
 			
 			if(oriFileName != null && !oriFileName.equals("")){
+				System.out.println("원본 파일명 : " + oriFileName);
+				mvo.setOrgFileName(oriFileName);
 				String ext = "";
 				int index = oriFileName.lastIndexOf(".");
 				if(index != -1){
@@ -133,10 +135,9 @@ public class MypageController {
 				String realFileName = "mlec-" + UUID.randomUUID().toString() + ext;
 				
 				mFile.transferTo(new File(uploadDir + "/" + realFileName));
-				
 				mvo.setRealFileName(realFileName);
+				mvo.setFilePath("/memberFile");
 			}
-			mvo.setFilePath("/memberFile");
 			
 		switch(mvo.getEmailDomain()){
 		case "1":
@@ -157,6 +158,8 @@ public class MypageController {
 		case "2":
 			mvo.setMajor("비전공");
 		}
+		System.out.println(mvo.getEmailDomain());
+		System.out.println(mvo.getMajor());
 		service.updateMyinfo(mvo);
 		ModelAndView mav = new ModelAndView("redirect:detailMyinfo.do");
 		return mav;

@@ -9,6 +9,7 @@
 	<meta name="viewport" content="width=device-width">
 	<title>메인</title>
 <%-- 	<%@ include file="/jsp/user/include/common.jsp" %>	 --%>
+	<c:import url="/WEB-INF/view/user/include/common.jsp"></c:import>	
 <script>
 <c:if test="${not empty member}">
 	var socket = io.connect("192.168.200.72:10004");
@@ -20,8 +21,11 @@
 	<div class="wrap">
 		<div class="wrap-inner">
 <%-- 			<%@ include file="/jsp/user/include/leftMenu.jsp" %>	 --%>
+	<c:import url="/WEB-INF/view/user/include/leftMenu.jsp"></c:import>	
+
 			<div class="container">
 <%-- 				<%@ include file="/jsp/user/include/topMenu.jsp" %> --%>
+	<c:import url="/WEB-INF/view/user/include/topMenu.jsp"></c:import>	
 
 				<div class="container-inner">
 					<div class="content">

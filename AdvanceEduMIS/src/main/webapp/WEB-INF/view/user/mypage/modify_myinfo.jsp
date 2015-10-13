@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width">
 	<title>메인</title>
-<%-- 	<%@ include file="/jsp/user/include/common.jsp" %>	 --%>
+	<c:import url="/WEB-INF/view/user/include/common.jsp"></c:import>	
 <script>
 $(document).ready(function(){
   $("#year").val("${mvo.year}");
@@ -111,9 +111,9 @@ if (major == "") {
 <body class="page-main btn-page">
 	<div class="wrap">
 		<div class="wrap-inner">
-<%-- 			<%@ include file="/jsp/user/include/leftMenu.jsp" %>	 --%>
+			<c:import url="/WEB-INF/view/user/include/leftMenu.jsp"></c:import>		
 			<div class="container">
-<%-- 				<%@ include file="/jsp/user/include/topMenu.jsp" %> --%>
+				<c:import url="/WEB-INF/view/user/include/topMenu.jsp"></c:import>	
 
 				<div class="container-inner">
 					<div class="content">
