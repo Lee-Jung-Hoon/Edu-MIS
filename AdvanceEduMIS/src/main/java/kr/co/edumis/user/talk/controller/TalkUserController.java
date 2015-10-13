@@ -371,7 +371,7 @@ public class TalkUserController {
 	   @RequestMapping("/reTalk.do")
 	   public void sendReTalk(HttpServletRequest req){
 		   	HttpSession session = req.getSession();
-			LoginVO member = (LoginVO)session.getAttribute("admin");
+			LoginVO member = (LoginVO)session.getAttribute("user");
 			String content = req.getParameter("content");
 			int no = Integer.parseInt(req.getParameter("no"));
 			try {
@@ -410,7 +410,7 @@ public class TalkUserController {
 		@RequestMapping("/sub.do")
 		public void getCount(HttpServletRequest req, HttpServletResponse res){
 			HttpSession session = req.getSession();
-			LoginVO member = (LoginVO) session.getAttribute("admin");
+			LoginVO member = (LoginVO) session.getAttribute("user");
 			try {
 				List<TalkUserVO> list = service.selectReList(member.getNo());
 				PrintWriter out = res.getWriter();
