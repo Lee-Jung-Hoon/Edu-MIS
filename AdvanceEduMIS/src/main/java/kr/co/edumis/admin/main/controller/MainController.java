@@ -24,6 +24,7 @@ public class MainController extends HttpServlet {
 	@Resource(name="adminMainService")
 	private MainService service;
 
+	@Autowired
 	private TalkService talkService;
 
 	public MainController() {
@@ -35,7 +36,7 @@ public class MainController extends HttpServlet {
 	public ModelAndView main(HttpServletRequest req) throws Exception {
 		try {
 			// main페이지 일일 출석 결과 불러오기
-			ModelAndView mav = new ModelAndView("/jsp/admin/main.jsp");
+			ModelAndView mav = new ModelAndView("admin/main");
 
 			List<String> attend = service.selectDailyAttend();
 			List<String> absent = service.selectDailyAbsent();
