@@ -9,8 +9,16 @@ import kr.co.edumis.admin.assignment.vo.AdminAssVO;
 import kr.co.edumis.user.assignment.vo.UserAssVO;
 import kr.co.edumis.user.member.vo.MemberVO;
 
-
+/**
+ * 
+ * @author Administrator
+ */
 public interface AdminAssService {
+	/**
+	 *  관리자가 과제를 등록하는 기능
+	 * @param adAssvo
+	 * @throws Exception
+	 */
 	public void insert(AdminAssVO adAssvo) throws Exception;
 	public List<AdminAssVO> list(Map<String, Integer> param) throws Exception;
 	public AdminAssVO detail(String no) throws Exception;
