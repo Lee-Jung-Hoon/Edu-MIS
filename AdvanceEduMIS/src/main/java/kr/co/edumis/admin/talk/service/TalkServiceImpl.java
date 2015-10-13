@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.edumis.admin.talk.dao.TalkDAO;
 import kr.co.edumis.admin.talk.vo.TalkVO;
+import kr.co.edumis.user.member.vo.MemberVO;
 
 @Service
 public class TalkServiceImpl implements TalkService {
@@ -19,9 +20,9 @@ public class TalkServiceImpl implements TalkService {
 		return dao.selectReList(no);
 	}
 
-	/*public List<MemberVO> selectMemberList() throws Exception {
+	public List<MemberVO> selectMemberList() throws Exception {
 		return dao.selectMemberList();
-	}*/
+	}
 
 	public TalkVO selectNo(int no) throws Exception {
 		return dao.selectNo(no);

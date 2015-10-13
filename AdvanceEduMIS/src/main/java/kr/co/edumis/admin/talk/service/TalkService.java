@@ -3,12 +3,13 @@ package kr.co.edumis.admin.talk.service;
 import java.util.List;
 
 import kr.co.edumis.admin.talk.vo.TalkVO;
+import kr.co.edumis.user.member.vo.MemberVO;
 
 public interface TalkService {
 
 	public List<TalkVO> selectReList(int no) throws Exception;
 
-	//public List<MemberVO> selectMemberList() throws Exception;
+	public List<MemberVO> selectMemberList() throws Exception;
 
 	public TalkVO selectNo(int no) throws Exception;
 

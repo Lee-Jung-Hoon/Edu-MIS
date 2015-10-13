@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.edumis.admin.talk.vo.TalkVO;
+import kr.co.edumis.user.member.vo.MemberVO;
 
 @Repository
 public class TalkDAO {
@@ -19,9 +20,9 @@ public class TalkDAO {
 		return session.selectList("talk.dao.TalkMapper.getReceiveList", no);
 	}
 	
-	/*public List<MemberVO> selectMemberList() {
+	public List<MemberVO> selectMemberList() {
 		return session.selectList("talk.dao.TalkMapper.getMember");
-	}*/
+	}
 	
 	public TalkVO selectNo(int no) {
 		return session.selectOne("talk.dao.TalkMapper.getNo", no);
