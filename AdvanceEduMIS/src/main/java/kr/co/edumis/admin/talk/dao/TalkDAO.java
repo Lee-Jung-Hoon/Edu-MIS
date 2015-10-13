@@ -20,6 +20,10 @@ public class TalkDAO {
 		return session.selectList("talk.dao.TalkMapper.getReceiveList", no);
 	}
 	
+	public int selectReCount(int no) {
+		return session.selectOne("talk.dao.TalkMapper.getReceiveCount", no);
+	}
+	
 	public List<MemberVO> selectMemberList() {
 		return session.selectList("talk.dao.TalkMapper.getMember");
 	}
