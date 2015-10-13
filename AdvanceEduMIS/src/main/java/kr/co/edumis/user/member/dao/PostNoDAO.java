@@ -12,12 +12,12 @@ public class PostNoDAO {
 	
 	private static SqlSessionTemplate session = null;
 	
-	public List<PostNoVO> getPostNoList(String dong) {
+	public List<PostNoVO> getPostNoList(String dong)  throws Exception {
 		List<PostNoVO> list = session.selectList("postno.getPostNoList", dong);
 		return list;
 	}
 
-	public String selectAddr(String zipcode) {
+	public String selectAddr(String zipcode)  throws Exception {
 		PostNoVO addrArr = session.selectOne("postno.selectAddr", zipcode);
 		
 		String addr = "";
