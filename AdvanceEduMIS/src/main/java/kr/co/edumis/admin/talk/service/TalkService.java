@@ -8,6 +8,8 @@ import kr.co.edumis.user.member.vo.MemberVO;
 public interface TalkService {
 
 	public List<TalkVO> selectReList(int no) throws Exception;
+	
+	public int selectReCount(int no) throws Exception;
 
 	public List<MemberVO> selectMemberList() throws Exception;
 

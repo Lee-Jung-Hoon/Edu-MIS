@@ -11,13 +11,18 @@ import kr.co.edumis.user.member.vo.MemberVO;
 
 @Service
 public class TalkServiceImpl implements TalkService {
-	
+
 	@Autowired
 	private TalkDAO dao;
 
 	public List<TalkVO> selectReList(int no) throws Exception {
 
 		return dao.selectReList(no);
+	}
+
+	public int selectReCount(int no) throws Exception {
+
+		return dao.selectReCount(no);
 	}
 
 	public List<MemberVO> selectMemberList() throws Exception {
@@ -43,51 +48,60 @@ public class TalkServiceImpl implements TalkService {
 	public void insertNewTalk(TalkVO talk) throws Exception {
 		dao.insertNewTalk(talk);
 	}
-	public List<TalkVO> selectReceiveTalkList(int no) throws Exception{
+
+	public List<TalkVO> selectReceiveTalkList(int no) throws Exception {
 		return dao.selectReceiveTalkList(no);
 	}
-	
-	public List<TalkVO> selectSendTalkList(int no) throws Exception{
+
+	public List<TalkVO> selectSendTalkList(int no) throws Exception {
 		return dao.selectSendTalkList(no);
 	}
 
 	public TalkVO selectDetailTalk(int tNo) throws Exception {
 		return dao.selectDetailTalk(tNo);
 	}
-	public void insertSendTalk(TalkVO talk) throws Exception{
+
+	public void insertSendTalk(TalkVO talk) throws Exception {
 		dao.insertSendTalk(talk);
 	}
-	public void setCheck(int tNo) throws Exception{
+
+	public void setCheck(int tNo) throws Exception {
 		dao.setCheck(tNo);
 	}
-	
-	public List<TalkVO> searchTalk(TalkVO talk)throws Exception{
+
+	public List<TalkVO> searchTalk(TalkVO talk) throws Exception {
 		return dao.searchTalk(talk);
 	}
-	public List<TalkVO> searchNameTalk(TalkVO talk) throws Exception{
+
+	public List<TalkVO> searchNameTalk(TalkVO talk) throws Exception {
 		return dao.searchNameTalk(talk);
 	}
-	public List<TalkVO> searchTalk2(TalkVO talk) throws Exception{
+
+	public List<TalkVO> searchTalk2(TalkVO talk) throws Exception {
 		return dao.searchTalk2(talk);
 	}
+
 	public List<TalkVO> searchNameTalk2(TalkVO talk) throws Exception {
 		return dao.searchNameTalk2(talk);
 	}
-	
-	public List<TalkVO> talkTrash(int no) throws Exception{
+
+	public List<TalkVO> talkTrash(int no) throws Exception {
 		return dao.talkTrash(no);
 	}
-	
-	public void deleteCheckTalk(TalkVO talk) throws Exception{
+
+	public void deleteCheckTalk(TalkVO talk) throws Exception {
 		dao.deleteCheckTalk(talk);
 	}
-	public void deleteTalk(int no) throws Exception{
+
+	public void deleteTalk(int no) throws Exception {
 		dao.deleteTalk(no);
 	}
-	public void realDeleteCheckTalk(int tNo) throws Exception{
+
+	public void realDeleteCheckTalk(int tNo) throws Exception {
 		dao.realDeleteCheckTalk(tNo);
 	}
-	public void reviveCheckTalk(int tNo) throws Exception{
-		dao.reviveCheckTalk(tNo);		
+
+	public void reviveCheckTalk(int tNo) throws Exception {
+		dao.reviveCheckTalk(tNo);
 	}
 }
