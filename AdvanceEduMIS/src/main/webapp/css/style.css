@@ -49,7 +49,7 @@ html, body {
 	padding-right:30px;
 	-webkit-appearance:none;
    appearance:none;
-   background:url('${pageContext.request.contextPath}/images/formArrow.png') no-repeat right 10px center;
+   background:url('/AdvanceEduMIS/images/formArrow.png') no-repeat right 10px center;
    background-size:10px 6px;
 }
 .btn-page textarea {
@@ -85,7 +85,7 @@ html, body {
 }
 */
 .page-board .container {
-	background:url('${pageContext.request.contextPath}/images/brown-paper-bg.jpg') repeat; 
+	background:url('/AdvanceEduMIS/images/brown-paper-bg.jpg') repeat; 
 }
 .page-lecture .container {
 	background:#eee; 
@@ -216,7 +216,7 @@ html, body {
 	height:337px;
 	background:#fff;
 	/*
-	background:url('${pageContext.request.contextPath}/images/note-bg.png') no-repeat;
+	background:url('/AdvanceEduMIS/images/note-bg.png') no-repeat;
 	background-position:-80px -15px;
 	*/
 	position:relative;
@@ -260,11 +260,11 @@ html, body {
 }
 .message-frame .btn-write {
 	background-size:30px 30px;
-	background-image:url('${pageContext.request.contextPath}/images/icon-write.png');
+	background-image:url('/AdvanceEduMIS/images/icon-write.png');
 }
 .message-frame .btn-return {
 	background-size:20px 20px;
-	background-image:url('${pageContext.request.contextPath}/images/icon-return.png');
+	background-image:url('/AdvanceEduMIS/images/icon-return.png');
 }
 .message-frame .message-list li {
 	position:relative;
@@ -289,7 +289,7 @@ html, body {
 	top:0;
 	left:0;
 	box-sizing:border-box;
-	background:url('${pageContext.request.contextPath}/images/btn-close.png') no-repeat center 7px;
+	background:url('/AdvanceEduMIS/images/btn-close.png') no-repeat center 7px;
 	background-size:20px 20px;
 	text-indent:-5000px;
 }
@@ -398,7 +398,7 @@ html, body {
 	width:100%;
 	height:30px;
 	text-indent:-5000px;
-	background:#00528c url('${pageContext.request.contextPath}/images/txt-check.png') no-repeat center;
+	background:#00528c url('/AdvanceEduMIS/images/txt-check.png') no-repeat center;
 	box-sizing:border-box;
 	border:1px solid #092b68;
 }
@@ -463,7 +463,7 @@ html, body {
 	height:22px;
 	vertical-align:top;
 	overflow:hidden;
-	background:url('${pageContext.request.contextPath}/images/btn-cancel-s.png') no-repeat center;
+	background:url('/AdvanceEduMIS/images/btn-cancel-s.png') no-repeat center;
 }
 .btn-plus {
 	display:block;
@@ -473,7 +473,7 @@ html, body {
 	width:22px;
 	height:22px;
 	overflow:hidden;
-	background:#00528c url('${pageContext.request.contextPath}/images/btn-plus.png') no-repeat center;
+	background:#00528c url('/AdvanceEduMIS/images/btn-plus.png') no-repeat center;
 	border-radius:50%;
 	text-indent:-5000px;
 }
@@ -490,7 +490,7 @@ html, body {
     display:block;
     width:30px;
     height:30px;
-    background:url('${pageContext.request.contextPath}/images/btn-close.png') no-repeat center;
+    background:url('/AdvanceEduMIS/images/btn-close.png') no-repeat center;
     background-size:100%;
     overflow:hidden;
     z-index:99;
@@ -510,184 +510,189 @@ html, body {
 
 /* 회원가입 */
 .txt-join {
-	background-image:url('${pageContext.request.contextPath}/images/txt-join.png');
+	background-image:url('/AdvanceEduMIS/images/txt-join.png');
 }
 /* 재작성 */
 .txt-reset {
-	background-image:url('${pageContext.request.contextPath}/images/txt-reset.png');
+	background-image:url('/AdvanceEduMIS/images/txt-reset.png');
 }
 /* 취소 */
 .txt-cancel {
-	background-image:url('${pageContext.request.contextPath}/images/txt-cancel.png');
+	background-image:url('/AdvanceEduMIS/images/txt-cancel.png');
 }
 /* 프로필 사진 등록 */
 .txt-photo {
-	background-image:url('${pageContext.request.contextPath}/images/txt-photo.png');
+	background-image:url('/AdvanceEduMIS/images/txt-photo.png');
 }
 /* 검색 */
 .txt-search {
-	background-image:url('${pageContext.request.contextPath}/images/txt-sch.png');
+	background-image:url('/AdvanceEduMIS/images/txt-sch.png');
 }
 /* 장소검색 */
 .txt-sch-a {
-	background-image:url('${pageContext.request.contextPath}/images/txt-sch-a.png');
+	background-image:url('/AdvanceEduMIS/images/txt-sch-a.png');
 }
 /* 일간 */
 .txt-daily {
-	background-image:url('${pageContext.request.contextPath}/images/txt-daily.png');
+	background-image:url('/AdvanceEduMIS/images/txt-daily.png');
 }
 /* 주간 */
 .txt-weekly {
-	background-image:url('${pageContext.request.contextPath}/images/txt-weekly.png');
+	background-image:url('/AdvanceEduMIS/images/txt-weekly.png');
 }
 /* 월간 */
 .txt-monthly {
-	background-image:url('${pageContext.request.contextPath}/images/txt-monthly.png');
+	background-image:url('/AdvanceEduMIS/images/txt-monthly.png');
 }
 /* 일정등록 */
 .txt-plan {
-	background-image:url('${pageContext.request.contextPath}/images/txt-plan.png');
+	background-image:url('/AdvanceEduMIS/images/txt-plan.png');
 }
 /* 삭제(소) */
 .txt-del {
-	background-image:url('${pageContext.request.contextPath}/images/txt-del.png');
+	background-image:url('/AdvanceEduMIS/images/txt-del.png');
 }
 /*  수정 */
 .txt-edit {
-	background-image:url('${pageContext.request.contextPath}/images/txt-edit.png');
+	background-image:url('/AdvanceEduMIS/images/txt-edit.png');
 }
 /* 투표 */
 .txt-vote {
-	background-image:url('${pageContext.request.contextPath}/images/txt-vote.png');
+	background-image:url('/AdvanceEduMIS/images/txt-vote.png');
 }
 /* 결과 */
 .txt-result {
-	background-image:url('${pageContext.request.contextPath}/images/txt-result.png');
+	background-image:url('/AdvanceEduMIS/images/txt-result.png');
 }
 /* 글 등록 */
 .txt-write {
-	background-image:url('${pageContext.request.contextPath}/images/txt-write.png');
+	background-image:url('/AdvanceEduMIS/images/txt-write.png');
 }
 /* 시험별 */
 .txt-exam {
-	background-image:url('${pageContext.request.contextPath}/images/txt-exam.png');
+	background-image:url('/AdvanceEduMIS/images/txt-exam.png');
 }
 /* 학생별 */
 .txt-student {
-	background-image:url('${pageContext.request.contextPath}/images/txt-student.png');
+	background-image:url('/AdvanceEduMIS/images/txt-student.png');
 }
 /* 돌아가기 */
 .txt-back {
-	background-image:url('${pageContext.request.contextPath}/images/txt-back.png');
+	background-image:url('/AdvanceEduMIS/images/txt-back.png');
 }
 /* 수정하기 */
 .txt-modify {
-	background-image:url('${pageContext.request.contextPath}/images/txt-modify.png');
+	background-image:url('/AdvanceEduMIS/images/txt-modify.png');
 }
 /* 삭제하기 (소) */
 .txt-del-s {
-	background-image:url('${pageContext.request.contextPath}/images/txt-del-s.png');
+	background-image:url('/AdvanceEduMIS/images/txt-del-s.png');
 }
 /* 등록하기 */
 .txt-regist {
-	background-image:url('${pageContext.request.contextPath}/images/txt-regist.png');
+	background-image:url('/AdvanceEduMIS/images/txt-regist.png');
 }
 /* 등록하기(소) */
 .txt-regist-s {
-	background-image:url('${pageContext.request.contextPath}/images/txt-regist-s.png');
+	background-image:url('/AdvanceEduMIS/images/txt-regist-s.png');
 }
 /* 중도포기 */
 .txt-drop {
-	background-image:url('${pageContext.request.contextPath}/images/txt-drop.png');
+	background-image:url('/AdvanceEduMIS/images/txt-drop.png');
 }
 /* 멤버추가 */
 .txt-add-member {
-	background-image:url('${pageContext.request.contextPath}/images/txt-add-member.png');
+	background-image:url('/AdvanceEduMIS/images/txt-add-member.png');
 }
 /* 과제수정 */
 .txt-modi-assign {
-	background-image:url('${pageContext.request.contextPath}/images/txt-modi-assign.png');
+	background-image:url('/AdvanceEduMIS/images/txt-modi-assign.png');
 }
 /* 목록 */
 .txt-list {
-	background-image:url('${pageContext.request.contextPath}/images/txt-list.png');
+	background-image:url('/AdvanceEduMIS/images/txt-list.png');
 }
 /* 과제제출 */
 .txt-send-assign {
-	background-image:url('${pageContext.request.contextPath}/images/txt-send-assign.png');
+	background-image:url('/AdvanceEduMIS/images/txt-send-assign.png');
 }
 /* 메모생성 */
 .txt-new-memo {
-	background-image:url('${pageContext.request.contextPath}/images/txt-new-memo.png');
+	background-image:url('/AdvanceEduMIS/images/txt-new-memo.png');
 }
 /* 완전삭제 */
 .txt-del-c {
-	background-image:url('${pageContext.request.contextPath}/images/txt-del-c.png');
+	background-image:url('/AdvanceEduMIS/images/txt-del-c.png');
 }
 /* 복원 */
 .txt-restore {
-	background-image:url('${pageContext.request.contextPath}/images/txt-restore.png');
+	background-image:url('/AdvanceEduMIS/images/txt-restore.png');
 }
 /* 강의목록 */
 .txt-list-lecture {
-	background-image:url('${pageContext.request.contextPath}/images/txt-list-lecture.png');
+	background-image:url('/AdvanceEduMIS/images/txt-list-lecture.png');
 }
 /* 강의목록(소) */
 .txt-list-lecture-s {
-	background-image:url('${pageContext.request.contextPath}/images/txt-list-lecture-s.png');
+	background-image:url('/AdvanceEduMIS/images/txt-list-lecture-s.png');
 }
 /* 과제등록(소) */
 .txt-assign-regist-s {
-	background-image:url('${pageContext.request.contextPath}/images/txt-assign-regist-s.png');
+	background-image:url('/AdvanceEduMIS/images/txt-assign-regist-s.png');
 }
 /* 과제수정(소) */
 .txt-assign-modify-s {
-	background-image:url('${pageContext.request.contextPath}/images/txt-assign-modify-s.png');
+	background-image:url('/AdvanceEduMIS/images/txt-assign-modify-s.png');
 }
 /* 과제삭제(소) */
 .txt-assign-del-s {
-	background-image:url('${pageContext.request.contextPath}/images/txt-assign-del-s.png');
+	background-image:url('/AdvanceEduMIS/images/txt-assign-del-s.png');
 }
 /* 첨부파일(소) */
 .txt-file {
-	background-image:url('${pageContext.request.contextPath}/images/txt-file.png');
+	background-image:url('/AdvanceEduMIS/images/txt-file.png');
 }
 /* 과제목록(소) */
 .txt-assign-list-s {
-	background-image:url('${pageContext.request.contextPath}/images/txt-assign-list-s.png');
+	background-image:url('/AdvanceEduMIS/images/txt-assign-list-s.png');
 }
 /* 조장초기화(소) */
 .txt-leader-reset-s {
-	background-image:url('${pageContext.request.contextPath}/images/txt-leader-reset-s.png');
+	background-image:url('/AdvanceEduMIS/images/txt-leader-reset-s.png');
 }
 /* 삭제(대) */
 .txt-del-b {
-	background-image:url('${pageContext.request.contextPath}/images/txt-del-b.png');
+	background-image:url('/AdvanceEduMIS/images/txt-del-b.png');
 }
 /* 보내기(소) */
 .txt-send-s {
-	background-image:url('${pageContext.request.contextPath}/images/txt-send-s.png');
+	background-image:url('/AdvanceEduMIS/images/txt-send-s.png');
 }
 /* 출석등록(소) */
 .txt-attan-regist-s {
-	background-image:url('${pageContext.request.contextPath}/images/txt-attan-regist-s.png');
+	background-image:url('/AdvanceEduMIS/images/txt-attan-regist-s.png');
 }
 /* 시험등록(소) */
 .txt-test-regist-s {
-	background-image:url('${pageContext.request.contextPath}/images/txt-test-regist-s.png');
+	background-image:url('/AdvanceEduMIS/images/txt-test-regist-s.png');
 }
 /* 성적등록(소) */
 .txt-test-score-s {
-	background-image:url('${pageContext.request.contextPath}/images/txt-test-score-s.png');
+	background-image:url('/AdvanceEduMIS/images/txt-test-score-s.png');
 }
 /* 시험별(소) */
 .txt-test-sort-s {
-	background-image:url('${pageContext.request.contextPath}/images/txt-test-sort-s.png');
+	background-image:url('/AdvanceEduMIS/images/txt-test-sort-s.png');
 }
 /* 학생별(소) */
 .txt-test-student-s {
-	background-image:url('${pageContext.request.contextPath}/images/txt-test-student-s.png');
+	background-image:url('/AdvanceEduMIS/images/txt-test-student-s.png');
 }
+/* 학생별(소) */
+.txt-test-student-s {
+	background-image:url('/AdvanceEduMIS/images/txt-test-student-s.png');
+}
+
 
 /* 버튼 이미지 텍스트 모음 끝*/
 .btn-txt {
@@ -745,7 +750,7 @@ html, body {
 	cursor:pointer;
 	font-weight:bold;
 	text-indent:-5000px;
-	background:#00528c url('${pageContext.request.contextPath}/images/btn-login.png') no-repeat center;
+	background:#00528c url('/AdvanceEduMIS/images/btn-login.png') no-repeat center;
 	border:0;
 }
 .header .login-form .btn-close {
@@ -755,7 +760,7 @@ html, body {
 	display:block;
 	width:30px;
 	height:30px;
-	background:url('${pageContext.request.contextPath}/images/btn-close.png') no-repeat center;
+	background:url('/AdvanceEduMIS/images/btn-close.png') no-repeat center;
 	background-size:100%;
 	overflow:hidden;
 	z-index:99;
@@ -918,7 +923,7 @@ section.common h2 {
 	width:100px; 
 	height:30px; 
 	margin-left:10px; 
-	background-image:url('${pageContext.request.contextPath}/images/btn-post.png'); 
+	background-image:url('/AdvanceEduMIS/images/btn-post.png'); 
 	vertical-align:middle; 
 	text-indent:-5000px;
 }
@@ -989,11 +994,11 @@ section.common h2 {
 	overflow:hidden;
 }
 .board-paging .btn-paging-prev {
-	background-image:url('${pageContext.request.contextPath}/images/btn-arr-prev.png');
+	background-image:url('/AdvanceEduMIS/images/btn-arr-prev.png');
 	margin-right:20px;
 }
 .board-paging .btn-paging-next {
-	background-image:url('${pageContext.request.contextPath}/images/btn-arr-next.png');
+	background-image:url('/AdvanceEduMIS/images/btn-arr-next.png');
 	margin-left:20px;
 }
 .board-style1 td:first-child {
@@ -1016,7 +1021,7 @@ section.board {
 	margin:0 auto;
 	padding:250px 80px 0 120px;
 	box-sizing:border-box;
-	background:url('${pageContext.request.contextPath}/images/note-bg.jpg') repeat-y;
+	background:url('/AdvanceEduMIS/images/note-bg.jpg') repeat-y;
 	background-size:100%;
 } 
 .board table {
@@ -1046,7 +1051,7 @@ section.board {
 	top:100px; 
 	left:200px; 
 	font-size:50px; 
-	background:url('${pageContext.request.contextPath}/images/scribble-doodle-black-color.png') no-repeat left top; 
+	background:url('/AdvanceEduMIS/images/scribble-doodle-black-color.png') no-repeat left top; 
 	text-indent:50px; 
 	background-size:50px; 
 	line-height:60px; 
@@ -1065,7 +1070,7 @@ section.board {
 	width:300px; 
 	height:300px; 
 	padding:100px 0 0 100px; 
-	background:url('${pageContext.request.contextPath}/images/Sticky-Notes-Yellow-Wallpaper1.png') no-repeat; 
+	background:url('/AdvanceEduMIS/images/Sticky-Notes-Yellow-Wallpaper1.png') no-repeat; 
 	background-size:100%; 
 	box-sizing:border-box;
 }
@@ -1084,7 +1089,7 @@ section.board {
 	color:#ff0004; 
 	padding-bottom:8px; 
 	transform:rotate(-7deg); 
-	background:url('${pageContext.request.contextPath}/images/underline_1.png') no-repeat bottom center; 
+	background:url('/AdvanceEduMIS/images/underline_1.png') no-repeat bottom center; 
 	background-size:120%;
 }
 .img-heart {
@@ -1202,7 +1207,7 @@ section.board {
 	line-height:105px; 
 	margin-bottom:10px; 
 	border:2px solid #ddd; 
-	background:url('${pageContext.request.contextPath}/images/icon-camera.png') no-repeat center; 
+	background:url('/AdvanceEduMIS/images/icon-camera.png') no-repeat center; 
 	background-size:70px 50px; 
 	overflow:hidden;
 }
@@ -1369,7 +1374,7 @@ section.board {
 	display:inline-block; 
 	width:300px; 
 	height:275px; 
-	background:url('${pageContext.request.contextPath}/images/bg-film.png') no-repeat; 
+	background:url('/AdvanceEduMIS/images/bg-film.png') no-repeat; 
 	background-size:100%; 
 	box-sizing:border-box; 
 	text-align:center; 
@@ -1423,7 +1428,7 @@ section.board {
 	left:0; 
 	width:100%; 
 	height:100%; 
-	background:url('${pageContext.request.contextPath}/images/txt-save.png') no-repeat center;
+	background:url('/AdvanceEduMIS/images/txt-save.png') no-repeat center;
 }
 .btn-m-del {
 	bottom:5px; 
@@ -1436,7 +1441,7 @@ section.board {
 	left:0; 
 	width:100%; 
 	height:100%; 
-	background:url('${pageContext.request.contextPath}/images/txt-del-s.png') no-repeat center;
+	background:url('/AdvanceEduMIS/images/txt-del-s.png') no-repeat center;
 }
 /* 조장 추천 게시판 */
 .leader-frame {
@@ -1523,7 +1528,7 @@ section.board {
 	height:70px; 
 	margin-bottom:30px; 
 	padding:10px 0 0 20px; 
-	background:url('${pageContext.request.contextPath}/images/bubble.png') no-repeat center; 
+	background:url('/AdvanceEduMIS/images/bubble.png') no-repeat center; 
 	background-size:200px 70px; 
 	font-size:13px; 
 	box-sizing:border-box; 
@@ -1541,7 +1546,7 @@ section.board {
 	display:block; 
 	width:20px; 
 	height:20px; 
-	background:url('${pageContext.request.contextPath}/images/btn-close.png') no-repeat center; 
+	background:url('/AdvanceEduMIS/images/btn-close.png') no-repeat center; 
 	background-size:20px 20px; 
 	text-indent:-5000px;
 }
@@ -1645,7 +1650,7 @@ section.board {
 	margin-top:30px;
 	border:1px solid #ddd;
 	border-radius:10px;
-	background:url('${pageContext.request.contextPath}/images/wood-pattern.jpg') repeat;
+	background:url('/AdvanceEduMIS/images/wood-pattern.jpg') repeat;
 }
 .room li:nth-child(even) {
 	float:right;
@@ -1665,7 +1670,7 @@ section.board {
 	margin:0 auto;
 	width:80px;
 	height:78px;
-	background:url('${pageContext.request.contextPath}/images/icon-computer.png') no-repeat center;
+	background:url('/AdvanceEduMIS/images/icon-computer.png') no-repeat center;
 	background-size:100%;
 	z-index:10;
 }
@@ -1697,7 +1702,7 @@ section.board {
 	line-height:50px;
 	border:1px solid #ddd;
 	border-radius:10px;
-	background:url('${pageContext.request.contextPath}/images/wood-pattern.jpg') repeat;
+	background:url('/AdvanceEduMIS/images/wood-pattern.jpg') repeat;
 	text-align:center;
 	color:#000;
 	font-family:'Arial';
@@ -1712,7 +1717,7 @@ section.board {
 	line-height:20px;
 	text-align:center;
 	font-family:'Arial';
-	background:url('${pageContext.request.contextPath}/images/bg-line.png') repeat;
+	background:url('/AdvanceEduMIS/images/bg-line.png') repeat;
 	font-weight:bold;
 }
 /*
@@ -1853,11 +1858,11 @@ section.board {
     overflow: hidden;
 }
 .vod .btn-paging-prev {
-    background-image:url('${pageContext.request.contextPath}/images/btn-arr-prev.png');
+    background-image:url('/AdvanceEduMIS/images/btn-arr-prev.png');
     margin-right:20px;
 }
 .vod .btn-paging-next {
-    background-image:url('${pageContext.request.contextPath}/images/btn-arr-next.png');
+    background-image:url('/AdvanceEduMIS/images/btn-arr-next.png');
     margin-left:20px;
 }
 /* 학습 영상 게시판 끝*/
