@@ -2,6 +2,7 @@ package kr.co.edumis.user.talk.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.edumis.user.talk.dao.TalkUserDAO;
@@ -10,11 +11,9 @@ import kr.co.edumis.user.member.vo.MemberVO;
 
 @Service
 public class TalkUserServiceImpl implements TalkService {
-	private TalkUserDAO dao;
 
-	public TalkUserServiceImpl() {
-		dao = new TalkUserDAO();
-	}
+	@Autowired
+	private TalkUserDAO dao;
 	
 	public int selectAdminNo() throws Exception {
 		
