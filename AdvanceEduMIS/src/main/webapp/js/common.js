@@ -40,7 +40,7 @@ $(document).ready(function(){
       //쪽지추가 부분
       $.ajax({
         type : "get",
-        url : "/EduMIS/talk/receiveList.do"
+        url : " /AdvanceEduMIS/talk/receiveList.do"
       }).done (function (data) {
         $("#messageUL").html(data);
         $("#countView").html($("#count").val());
@@ -91,9 +91,16 @@ $(document).ready(function(){
 $('.btn-plus').on('click', function(){
   $.ajax({
     type : "get",
-    url : "/EduMIS/talk/memberList.do"
+    url : "/AdvanceEduMIS/talk/memberList.do"
   }).done (function (data) {
-    $("#memberUL").html(data);
+    $("#memberUL").html("");
+    var list = eval(data);
+    $.each(list, function(index, value){
+      $("#memberUL").append("<li>" +
+      		                    "<label for='"+ list[index].no +"'>"+ list[index].name + "</label>" +
+      		                    "<input type='checkbox' id='"+ list[index].no +"' value='"+ list[index].name +"' />" +
+      		                  "</li>");
+    })
     // 쪽지추가 부분
     $('.layer-side').show();
     $('.layer-side').find(':checkbox').prop('checked', false);
@@ -155,7 +162,7 @@ $('.btn-plus').on('click', function(){
       if(!content){
         alert("내용을 입력해주세요");
       } else {
-          $.post("/EduMIS/talk/sub", {
+          $.post("/AdvanceEduMIS/talk/sub", {
           no : no,
           content : content,
           type : "re"
@@ -192,7 +199,7 @@ $('.btn-plus').on('click', function(){
   
 //x버튼 클릭시 처리할 함수
   function checkTalk(no) {
-    $.post("/EduMIS/talk/sub", {
+    $.post("/AdvanceEduMIS/talk/sub", {
       no : no,
       type : "check"
     }, function () {
