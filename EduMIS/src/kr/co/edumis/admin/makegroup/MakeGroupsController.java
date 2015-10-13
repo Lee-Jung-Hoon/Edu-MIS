@@ -122,6 +122,7 @@ public class MakeGroupsController {
 	public ModelAndView remakeController(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		req.setCharacterEncoding("UTF-8");
 		res.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = res.getWriter();
 //		
 		ModelAndView mav = new ModelAndView();
 		MemberDAO mda = new MemberDAO();
@@ -140,10 +141,34 @@ public class MakeGroupsController {
 		MakeGroupsExecute mge = new MakeGroupsExecute();
 		mge.Execute(list,gNum);
 		
-		mav.addObject("mlist", mda.selectMember());
-		mav.addObject("gNum", gNum);
+		String json ="[";
+		List<MemberVO> list2 = mda.selectMember();
+		for(int i =0; i<list2.size();i++){
+			MemberVO mvo = list2.get(i);
+			String name = mvo.getName();
+			String no = mvo.getNo();
+			String team = mvo.getTeam();
+			String realFileName = mvo.getRealFileName();
+			String filePath = mvo.getFilePath();
+			json+= "{ name : '"
+					+name+ "', no : '"+no+"', team: '"+team+"', filePath : '"+filePath+"', realFileName : '"+realFileName+"'} ";
+			if(i!=list.size()-1){
+				json+=",";
+			}
+		}
+		json +="]";
+
 		
-		mav.setView("/jsp/admin/groupmaker/MakeGroupShow.jsp");
+		System.out.println(json);
+		out.println(json);
+		
+		out.close();
+		
+		
+//		mav.addObject("mlist", mda.selectMember());
+//		mav.addObject("gNum", gNum);
+		
+//		mav.setView("/jsp/admin/groupmaker/MakeGroupShow.jsp");
 		
 		
 		return mav;
@@ -164,8 +189,10 @@ public class MakeGroupsController {
 			String name = mvo.getName();
 			String no = mvo.getNo();
 			String team = mvo.getTeam();
+			String realFileName = mvo.getRealFileName();
+			String filePath = mvo.getFilePath();
 			json+= "{ name : '"
-					+name+ "', no : '"+no+"', team: '"+team+"'} ";
+					+name+ "', no : '"+no+"', team: '"+team+"', filePath : '"+filePath+"', realFileName : '"+realFileName+"'} ";
 			if(i!=list.size()-1){
 				json+=",";
 			}
