@@ -25,33 +25,34 @@ public class TalkController {
 	@Autowired
 	private TalkService service;
 
-	@ResponseBody
 	@RequestMapping("/receiveList.do")
-	public List<TalkVO> receiveList(HttpServletRequest req) {
-		List<TalkVO> list = null;
+	public ModelAndView receiveList(HttpServletRequest req) {
+		ModelAndView mav = new ModelAndView("admin/talk/receiveList");
 		try {
 			HttpSession session = req.getSession();
 			LoginVO member = (LoginVO)session.getAttribute("admin");
-			list = service.selectReList(member.getNo());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return list;
-	}
-	
-	@RequestMapping("/memberList.do")
-	public ModelAndView memberList(HttpServletRequest req) throws Exception {
-		req.setCharacterEncoding("UTF-8");
-		ModelAndView mav = new ModelAndView("admin/talk/memberList");
-		try {
-			List<MemberVO> list = service.selectMemberList();
-			System.out.println(list.size());
+			List<TalkVO> list = service.selectReList(member.getNo());
+			mav.addObject("size", list.size());
 			mav.addObject("list", list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return mav;
 	}
+	
+	@ResponseBody
+	@RequestMapping("/memberList.do")
+	public List<MemberVO> memberList() throws Exception {
+		List<MemberVO> list = null;
+		try {
+			list = service.selectMemberList();
+			System.out.println(list.size());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 	@RequestMapping("/login.do")
 	public ModelAndView login(HttpServletRequest req) throws Exception {
 		req.setCharacterEncoding("UTF-8");
