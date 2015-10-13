@@ -1,15 +1,10 @@
 package kr.co.edumis.user.member.dao;
 
-import org.apache.ibatis.session.SqlSession;
-import kr.co.edumis.common.db.MyAppSqlConfig;
+import org.mybatis.spring.SqlSessionTemplate;
 
 public class IdCheckDAO {
 
-	private static SqlSession session = null;
-
-	public IdCheckDAO() {
-		session = MyAppSqlConfig.getSqlSessionInstance();
-	}
+	private static SqlSessionTemplate session = null;
 
 	public int selectId(String id) {
 //		 int no = session.selectOne("idCheck.dao.IdCheckMapper.idCheck",id);
