@@ -6,17 +6,22 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.edumis.user.member.dao.MemberDAO;
+import kr.co.edumis.user.member.service.MemberService;
 import kr.co.edumis.user.member.vo.MemberVO;
 
 @Controller
 @RequestMapping("/makegroups")
 public class MakeGroupsController {
+	
+	@Autowired
+	public MemberService service;
 
 	@RequestMapping("/makecontroller.do")
 	public ModelAndView makeController(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -25,8 +30,8 @@ public class MakeGroupsController {
 		PrintWriter out = res.getWriter();
 
 		ModelAndView mav = new ModelAndView("/admin/groupmaker/MakeGroup");
-		MemberDAO mda = new MemberDAO();
-		List<MemberVO> list = mda.selectMember();
+		
+		List<MemberVO> list = service.selectMember();
 		for (int i = 0; i < list.size(); i++) {
 			MemberVO mvo = list.get(i);
 			System.out.println(mvo.getName());
@@ -46,8 +51,8 @@ public class MakeGroupsController {
 		ModelAndView mav = new ModelAndView("/admin/groupmaker/MakeGroupsResult");
 		int gNum = Integer.parseInt(req.getParameter("gNum"));
 		System.out.println(gNum);
-		MemberDAO mda = new MemberDAO();
-		mda.resetLeader();
+		
+		service.resetLeader();
 
 		for (int i = 1; i <= gNum; i++) {
 			MemberVO mvo = new MemberVO();
@@ -59,14 +64,14 @@ public class MakeGroupsController {
 				mvo.setTechLeader("2");
 			}
 			mvo.setTeam(" ");
-			mda.updateLeader(mvo);
+			service.updateLeader(mvo);
 
 		}
-		List<MemberVO> list = mda.selectMember();
+		List<MemberVO> list = service.selectMember();
 		MakeGroupsExecute mge = new MakeGroupsExecute();
 		mge.Execute(list, gNum);
 
-		mav.addObject("mlist", mda.selectMember());
+		mav.addObject("mlist", service.selectMember());
 		mav.addObject("gNum", gNum);
 
 		return mav;
@@ -77,8 +82,8 @@ public class MakeGroupsController {
 		req.setCharacterEncoding("UTF-8");
 		res.setContentType("text/html; charset=UTF-8");
 		ModelAndView mav = new ModelAndView("/admin/groupmaker/MakeGroupShow");
-		MemberDAO mda = new MemberDAO();
-		List<MemberVO> list = mda.selectMember();
+		
+		List<MemberVO> list = service.selectMember();
 		int temp = 0;
 		for (int i = 0; i < list.size(); i++) {
 			MemberVO mvo = list.get(i);
@@ -90,7 +95,7 @@ public class MakeGroupsController {
 		int gNum = temp * 2;
 		System.out.println(gNum);
 
-		mav.addObject("mlist", mda.selectMember());
+		mav.addObject("mlist", service.selectMember());
 		mav.addObject("gNum", gNum);
 
 		return mav;
@@ -102,8 +107,8 @@ public class MakeGroupsController {
 		req.setCharacterEncoding("UTF-8");
 		res.setContentType("text/html; charset=UTF-8");
 
-		MemberDAO mda = new MemberDAO();
-		List<MemberVO> list = mda.selectMember();
+		
+		List<MemberVO> list = service.selectMember();
 		int temp = 0;
 		for (int i = 0; i < list.size(); i++) {
 			MemberVO mvo = list.get(i);
@@ -118,7 +123,7 @@ public class MakeGroupsController {
 		MakeGroupsExecute mge = new MakeGroupsExecute();
 		mge.Execute(list, gNum);
 
-		return mda.selectMember();
+		return service.selectMember();
 	}
 
 	@ResponseBody
@@ -128,9 +133,9 @@ public class MakeGroupsController {
 		res.setContentType("text/html; charset=UTF-8");
 		
 
-		MemberDAO mda = new MemberDAO();
+		
 
-		return mda.selectMember();
+		return service.selectMember();
 	}
 
 }
