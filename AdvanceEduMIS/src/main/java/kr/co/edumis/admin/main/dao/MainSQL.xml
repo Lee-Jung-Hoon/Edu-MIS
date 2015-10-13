@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="main.dao.mainMapper">
+
+	<select id="attendance" resultType="String">
+		select mName
+		from t_attend
+		where to_char(att_date) = to_char(sysdate)
+		and att_type = 1
+	</select>
+
+	<select id="late" resultType="String">
+		select mName
+		from t_attend
+		where to_char(att_date) = to_char(sysdate)
+		and att_type = 2
+	</select>
+
+	<select id="absent" resultType="String">
+		select mName
+		from t_attend
+		where to_char(att_date) = to_char(sysdate)
+		and att_type = 4
+	</select>
+
+	<select id="selectBookBoard" resultType="bookBoardVO">
+		select
+		no,
+		id,
+		title,
+		content,
+		org_file_name orgFileName ,
+		real_file_name realFileName,
+		file_path filePath,
+		reg_date regDate
+		from t_book_board
+		order by no desc
+	</select>
+
+	<select id="selectAssList" resultType="AdminAssVO">
+		select
+		no,
+		start_date startDate,
+		end_date endDate,
+		title title,
+		content,
+		org_file_name orgFileName,
+		real_file_name realFileName,
+		file_path filePath
+		from t_adm_assignment_board
+		where rownum &lt;= 5
+		order by no desc
+	</select>
+
+	<select id="selectVideo" resultType="VideoLectureVO">
+		select
+		no,
+		title,
+		contents,
+		video,
+		time
+		from t_lecture
+		where rownum &lt;= 5
+		order by no desc
+	</select>
+
+	<select id="selectGrade" resultType="ExamGradeVO" parameterType="string">
+		select
+		id,
+		name,
+		title,
+		content,
+		no,
+		score,
+		reg_date regDate
+		from t_exam_grade
+		where rownum &lt;= 5 and id=#{id}
+		order by no desc
+	</select>
+
+	<select id="selectAtt" resultType="AdminAttVO" parameterType="int">
+		select
+		mno mNo,
+		mname mName,
+		att_date attDate,
+		att_type attType
+		from t_attend
+		where to_number(to_char(att_date,'mm'))=#{month}
+		order by to_char(att_date,'dd')
+	</select>
+
+	<select id="selectSchedule" resultType="ScheduleVO" parameterType="map">
+		select
+		no,
+		title,
+		content,
+		reg_date regDate,
+		start_date startDate,
+		end_date endDate,
+		importance,
+		latitude,
+		place,
+		longitude
+		from t_schedule
+		where to_number(to_char(start_date,'mm')) &lt;= #{month}
+		and to_number(to_char(end_date,'mm')) >= #{month}
+		and to_number(to_char(start_date,'dd')) >= #{day}
+		and to_number(to_char(end_date,'dd')) &lt;= #{day}
+	</select>
+
+</mapper>
