@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="postno">
+	<select id="getPostNoList" parameterType="string" resultType="PostNoVO">
+		select zipcode, sido, gugun, dong, ri, bunji
+		  from zipcode
+		 where dong like '%' || #{dong} || '%'
+	</select>
+	
+	<select id="selectAddr" parameterType="string" resultType="PostNoVo">
+		select sido, gugun, dong, ri, bunji
+		  from zipcode
+		 where zipcode = #{value}
+	</select>		
+</mapper>
