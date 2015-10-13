@@ -10,50 +10,34 @@
 	<title>제목</title>
 	<%-- <%@ include file="/jsp/admin/include/common.jsp" %> --%>
 	<style type="text/css">
-	table {border:0;border-collapse:separate;border-spacing:0;}
-	.tb-test{
-	width: 900px;
-	height: auto;
-	border: 1px;
-	}
-	.tb-test td, .tb-test th{
-	border-bottom: 1px solid #cccccc;
-	}
-	.tb-test th{
-	text-align: center;
-	width: 25%;
-	}
-	.tb-test tr{
-	text-align: center;
-	width: 25%;
-	}
-	.tb-test2{
-	width: 900px;
-	height: auto;
-	text-align: right;
-	}
+		table {border:0;border-collapse:separate;border-spacing:0;}
+		.tb-test{
+			width: 900px;
+			height: auto;
+			border: 1px;
+		}
+		.tb-test td, .tb-test th{
+			border-bottom: 1px solid #cccccc;
+		}
+		.tb-test th{
+			text-align: center;
+			width: 25%;
+		}
+		.tb-test tr{
+			text-align: center;
+			width: 25%;
+		}
+		.tb-test2{
+			width: 900px;
+			height: auto;
+			text-align: right;
+		}
 	</style>
+	<script src="${pageContext.request.contextPath}/js/assignment/assignment.js"></script>
 	<script>
-	
-	function ckSDate() {
-		alert("날짜확인함수")
-		return true;
-	}
-		
-	function moveRegist() {
-		location.href = "adAssRegist.do";
-	}
-	$(document).ready(function () {
-	  $("#a${thisPage}").addClass("on");
-	});
-	
-	function prePage() {
-	  location.href = "assList.do?reqIndex=${thisPage-1}";
-	}
-	
-	function nextPage() {
-	  location.href = "assList.do?reqIndex=${thisPage+1}";
-	}
+		$(document).ready(function () {
+		  $("#a${thisPage}").addClass("on");
+		});
 	</script>
 </head>
 <body class="page-join  btn-page">
@@ -114,4 +98,4 @@
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="/EduMIS/js/common.js"></script>
+</html>
