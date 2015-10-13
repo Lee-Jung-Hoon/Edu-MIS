@@ -147,14 +147,14 @@ tbody td:last-child, thead th:last-child {
 						switch (param) {
 						case "send":
 							//sendRequest("/EduMIS/talk/sendList.do", true);
-							location.href = '/EduMIS/talk/sendList.do';
+							location.href = '${pageContext.request.contextPath}/talk/sendList.do';
 							break;
 						case "receive":
 							//sendRequest("/EduMIS/talk/receiveList.do", true);
-							location.href = '/EduMIS/talk/recvList.do';
+							location.href = '${pageContext.request.contextPath}/talk/recvList.do';
 							break;
 						case "basket":
-							location.href = '/EduMIS/talk/talkTrash.do';
+							location.href = '${pageContext.request.contextPath}/talk/talkTrash.do';
 							//sendRequest("/EduMIS/talk/receiveList.do", true);
 							break;
 						}
@@ -192,7 +192,7 @@ tbody td:last-child, thead th:last-child {
 									<option value="basket">휴지통</option>
 								</select>
 
-								<form action="/EduMIS/talk/checkDelete.do">
+								<form action="${pageContext.request.contextPath}/talk/checkDelete.do">
 
 										<input type="hidden" name = "type" value="receive_del" />
 										<input type="submit" style="width:50px; height:30px;" class="btn btn-txt txt-del-s btn-blue btn-del" value="삭제" />	
@@ -221,7 +221,7 @@ tbody td:last-child, thead th:last-child {
 												<tr>
 													<td><input type="checkbox" class="delCheck" name="delCheck" value="${list.no}" /></td>
 													<td>${list.name}</td>
-													<td><a href="/EduMIS/talk/datilTalk.do?no=${list.no}&name=${list.name}&sendNo=${list.sendMemberNo}&receiveNo=${list.receiveMemberNo}&pNo=${list.pNo}" style="display:block; width:350px; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">${list.content}</a></td>
+													<td><a href="${pageContext.request.contextPath}/talk/datilTalk.do?no=${list.no}&name=${list.name}&sendNo=${list.sendMemberNo}&receiveNo=${list.receiveMemberNo}&pNo=${list.pNo}" style="display:block; width:350px; text-overflow:ellipsis; overflow:hidden; white-space:nowrap;">${list.content}</a></td>
 													<td>${list.sendDate}</td>
 												</tr>
 											</c:forEach>
@@ -233,13 +233,13 @@ tbody td:last-child, thead th:last-child {
 							<!-- 페이징 -->
 							<!-- 페이징 -->
 							
-							<form action="/EduMIS/talk/searchTalk.do">
+							<form action="${pageContext.request.contextPath}/talk/searchTalk.do">
 								<div class="talk-form-inner-last">
 									<select name="searchType">
 										<option value="content" selected="selected">제목</option>
 										<option value="send_member_no">보낸사람</option>
 									</select> 
-									<input type="text" name="searchTalk" /> 
+									<input type="text" name="content" /> 
 									<input type="submit" style="width:50px; height:30px;" class="btn btn-txt txt-search btn-blue" value="검색" />
 								</div>
 								</form>
