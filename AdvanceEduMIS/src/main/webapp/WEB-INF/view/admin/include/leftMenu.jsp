@@ -13,7 +13,7 @@
 		<li><a href="${pageContext.request.contextPath}/user/admin/attendance/attendance.jsp">출석부</a></li>
 		<li><a href="${pageContext.request.contextPath}/attend/attend.do">출석통계</a></li>
 		<li><a href="${pageContext.request.contextPath}/makegroups/result.do">조 현황보기</a></li>
-		<li><a href="${pageContext.request.contextPath}/user/admin/groupmaker/MakeGroup.jsp">인연나비 조만들기</a></li>
+		<li><a href="${pageContext.request.contextPath}/makegroups/MakeGroup.do">인연나비 조만들기</a></li>
 		<li><a href="${pageContext.request.contextPath}/user/admin/schedule/schedule.jsp">스케줄</a></li>
 		<li><a href="${pageContext.request.contextPath}/talk/recvList.do">메시지 히스토리</a></li>
 		<li><a href="${pageContext.request.contextPath}/admin/memo/open.do">나의메모</a></li>
