@@ -8,15 +8,20 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width">
 	<title>메인</title>
+
 	<%@ include file="/WEB-INF/view/user/include/common.jsp" %>	
 
 </head>
 <body class="page-main btn-page">
 	<div class="wrap">
 		<div class="wrap-inner">
+
 			<%@ include file="/WEB-INF/view/user/include/leftMenu.jsp" %>
+
 			<div class="container">
+
 				<%@ include file="/WEB-INF/view/user/include/topMenu.jsp" %>
+
 
 				<div class="container-inner">
 					<div class="content">
@@ -53,7 +58,7 @@
 								</form>
 								<hr/>
 								
-								<form action="/EduMIS/user/assModify.do" method="POST"
+								<form action="/${pageContext.request.contextPath}/user/assModify.do" method="POST"
 									enctype="multipart/form-data">
 										<input type="hidden" name="no" value="${ass.no}" />
 										<input type="hidden" name="id" value="${user.id}" />

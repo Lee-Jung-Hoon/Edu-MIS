@@ -8,16 +8,18 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width">
 	<title>메인</title>
+
 	<%@ include file="/WEB-INF/view/user/include/common.jsp" %>	
+
 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 	<script>
 
 	function prePage() {
-	  location.href = "/EduMIS/user/assList.do?reqIndex=${thisPage-1}";
+	  location.href = "/${pageContext.request.contextPath}/user/assList.do?reqIndex=${thisPage-1}";
 	}
 	
 	function nextPage() {
-	  location.href = "/EduMIS/user/assList.do?reqIndex=${thisPage+1}";
+	  location.href = "/${pageContext.request.contextPath}/user/assList.do?reqIndex=${thisPage+1}";
 	}
 
 	</script>
@@ -25,9 +27,14 @@
 <body class="page-main btn-page">
 	<div class="wrap">
 		<div class="wrap-inner">
+
+
 			<%@ include file="/WEB-INF/view/user/include/leftMenu.jsp" %>
+
 			<div class="container">
+
 				<%@ include file="/WEB-INF/view/user/include/topMenu.jsp" %>
+
 				<div class="container-inner">
 					<div class="content">
 						<section class="userAssList board common">
@@ -69,7 +76,7 @@
 								<div class="board-paging">
 									<button type="button" class="btn-paging btn-paging-prev">이전</button>
 									<c:forEach var="i" begin = "1" end = "${pageIndex}">
-												<a href="/EduMIS/user/assList.do?reqIndex=${i}" id = "a${i}" style="text-decoration: none;">${i}</a>
+												<a href="/${pageContext.request.contextPath}/user/assList.do?reqIndex=${i}" id = "a${i}" style="text-decoration: none;">${i}</a>
 											</c:forEach>
 									<button type="button" class="btn-paging btn-paging-next">다음</button>
 								</div>
