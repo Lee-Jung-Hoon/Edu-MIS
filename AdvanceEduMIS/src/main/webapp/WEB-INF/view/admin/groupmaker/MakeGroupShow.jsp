@@ -37,7 +37,6 @@ function remake() {
     Type : "post",
     url : "remake.json"
   }).done(function(data) {
-    alert(data);
     list = eval(data);
     count = 0;
     for(var i = 0; i<list.length;i++){
