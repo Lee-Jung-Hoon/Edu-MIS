@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Memo.dao">
+
+	<!-- 게시물을 저장하는 쿼리 -->
+	<insert id="insertMemo" parameterType="MemoVO">
+		insert into
+		t_memo(
+		memo_no,
+		user_no,
+		content,
+		pos_x,
+		pos_y
+		) values (
+		#{memoNo},
+		#{userNo},
+		#{content},
+		#{posX},
+		#{posY}
+		)
+	</insert>
+
+	<!-- 게시판 목록을 처리하는 쿼리 -->
+	<select id="selectMemo" parameterType="string" resultType="MemoVO">
+		select
+		memo_no as memoNo,
+		user_no as userNo,
+		content,
+		pos_x as posX,
+		pos_y as posY
+		from t_memo
+		where user_no = #{value}
+	</select>
+
+	<delete id="deleteMemo" parameterType="string">
+		delete
+		from t_memo
+		where
+		memo_no = #{memoNo}
+	</delete>
+
+	<update id="updateMemo" parameterType="MemoVO">
+		update t_memo
+		set
+			content = #{content},
+			pos_x = #{posX},
+			pos_y = #{posY}
+		where memo_no = #{memoNo}
+	</update>
+
+	<select id="selectMemoNo" resultType="int">
+		select seq_t_memo_no.nextVal
+		  from dual
+	</select>
+
+</mapper>
