@@ -15,12 +15,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.edumis.admin.assignment.service.AdminAssService;
 import kr.co.edumis.admin.assignment.vo.AdminAssVO;
+import kr.co.edumis.common.Constants;
+import kr.co.edumis.common.PageVO;
+import kr.co.edumis.common.SearchVO;
 import kr.co.edumis.user.assignment.vo.UserAssVO;
 import kr.co.edumis.user.member.vo.MemberVO;
 
@@ -125,55 +129,50 @@ public class AdminAssController {
 	}
 
 	@RequestMapping("/assList.do")
-	public ModelAndView adAssList(AdminAssVO adminassVO, HttpServletRequest req) throws Exception {
+	public ModelAndView adAssList(AdminAssVO adminassVO, HttpServletRequest req, @RequestParam(value="reqIndex", required=false, defaultValue="1") int pageNo) throws Exception {
 		ModelAndView mav = new ModelAndView("/admin/assignment/adAssList");
-
-		// 표시할 페이지 수
-		int pageIndex = (int) Math.ceil(service.selectCount() / 10d);
-		mav.addObject("pageIndex", pageIndex);
 		
-		// 한 페이지에 표시할 게시물
-		int reqIndex = 1; 	// 요청받은 페이지 번호
+		SearchVO vo = new SearchVO();
+		vo.setStart( (pageNo -1) * Constants.PAGE_LIST_COUNT + 1 );
+		vo.setEnd( pageNo * Constants.PAGE_LIST_COUNT );
 		
-		if (req.getParameter("reqIndex") != null) {
-			reqIndex = Integer.parseInt(req.getParameter("reqIndex"));
-		}
+		Map<String,Object> result = service.list(vo);
+		System.out.println("종료1");
 		
-		if(reqIndex > pageIndex) {
-			reqIndex = pageIndex;
-		} else if(reqIndex < 1){
-			reqIndex = 1;
-		}
+		int count = (Integer)result.get("count");
 		
-		int startIndex = 1 + (reqIndex - 1) * 10;
-		int endIndex = 10 + (reqIndex - 1) * 10;
-		Map<String, Integer> param = new HashMap<>();
-		param.put("startIndex", startIndex);
-		param.put("endIndex", endIndex);
-		mav.addObject("thisPage", reqIndex);
-	
-		List<AdminAssVO> list = service.list(param);
-		mav.addObject("asslist", list);
-
+		PageVO pageVO = new PageVO("list.do" , pageNo, count);
+		
+//		mav.addObject("list", result.get("list"));
+		mav.addObject("pageVO", pageVO);
+		
+				
+//		List<AdminAssVO> list = service.list(pageVO);
+		System.out.println("종료2");
+		mav.addObject("asslist", result.get("list"));
+		List<AdminAssVO> list = (List<AdminAssVO>) result.get("list");
 		// 진행여부 체크
 		List<String> ckArr = new ArrayList<String>();
 		Calendar c = Calendar.getInstance();
 		c.setTimeInMillis(System.currentTimeMillis());
 		String nowDate = String.valueOf(c.get(c.YEAR))
-				+ String.valueOf(c.get(c.MONTH) < 10 ? "0" + (c.get(c.MONTH) + 1) : (c.get(c.MONTH)) + 1)
+				+ String.valueOf(c.get(c.MONTH)+1 < 10 ? "0" + (c.get(c.MONTH) + 1) : (c.get(c.MONTH)) + 1)
 				+ String.valueOf(c.get(c.DATE) < 10 ? "0" + c.get(c.DATE) : c.get(c.DATE));
 		int nDate = Integer.parseInt(nowDate);
-		for (AdminAssVO vo : list) {
-			int startDate = Integer.parseInt(vo.getStartDate().replace("-", ""));
-			int endDate = Integer.parseInt(vo.getEndDate().replace("-", ""));
+		System.out.println(nDate);
+		int i = 0;
+		for (AdminAssVO avo : list) {
+			System.out.println(avo.getStartDate());
+			int startDate = Integer.parseInt(avo.getStartDate().replace("-", ""));
+			int endDate = Integer.parseInt(avo.getEndDate().replace("-", ""));
 
 			if (nDate >= startDate && nDate <= endDate) {
 				ckArr.add("O");
 			} else
 				ckArr.add("X");
+			System.out.println(ckArr.get(i));
 		}
 		mav.addObject("ckArr", ckArr);
-
 		return mav;
 	}
 	
