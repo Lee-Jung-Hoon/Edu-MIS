@@ -16,11 +16,9 @@ public class ScheduleDAO {
 	private SqlSessionTemplate sqlSession;
 	
 	public List<ScheduleVO> infoSchedule(String day) {
+		List<ScheduleVO> list = sqlSession.selectList("schedule.dao.SchduleDAO.listSchedule" , day);
 		
-		
-		return sqlSession.selectList("schedule.dao.SchduleDAO.listSchedule" , day);
-	
-	
+		return list;
 	}
 	
 	

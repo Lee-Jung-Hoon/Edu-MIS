@@ -15,6 +15,12 @@ public class ScheduleServiceImpl implements ScheduleService {
 	@Autowired
 	private  ScheduleDAO dao;
 	
+	@Override
+	public List<ScheduleVO> listInfoSchedule(String day) {
+
+		return dao.infoSchedule(day);
+	}
+
 	public List<List<ScheduleVO>> infoSchedule(ScheduleVO scheduleVO) {
 		int year = scheduleVO.getYear();
 		int month = scheduleVO.getMonth();
