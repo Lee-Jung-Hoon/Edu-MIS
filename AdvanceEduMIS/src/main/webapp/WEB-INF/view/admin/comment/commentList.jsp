@@ -8,8 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width">
 <title>수강생 관리</title>
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-	<%@ include file="/WEB-INF/view/user/include/common.jsp" %>	
+<%@ include file="/WEB-INF/view/admin/include/common.jsp" %>	
 <style>
 table.scroll {
 	/* width: 100%; */ /* Optional */
@@ -139,11 +138,11 @@ $(document).ready(function () {
 	<div class="wrap">
 		<div class="wrap-inner">
 		
-			<%@ include file="/WEB-INF/view/user/include/leftMenu.jsp" %>
+			<%@ include file="/WEB-INF/view/admin/include/leftMenu.jsp" %>
 
 			<div class="container">
 
-				<%@ include file="/WEB-INF/view/user/include/topMenu.jsp" %>
+				<%@ include file="/WEB-INF/view/admin/include/topMenu.jsp" %>
 				
 
 				<div class="container-inner">
@@ -215,7 +214,4 @@ $(document).ready(function () {
 		</div>
 	</div>
 </body>
-
-<script type="text/javascript" src="/AdvanceEduMIS/js/common.js"></script>
-
 </html>
