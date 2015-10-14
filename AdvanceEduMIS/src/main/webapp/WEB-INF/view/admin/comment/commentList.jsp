@@ -123,7 +123,9 @@ $(document).ready(function () {
 	     }
 	  })
 
-					
+		function chkcomment(){
+	  
+	}	
 
 
 	</script>
@@ -149,7 +151,7 @@ $(document).ready(function () {
 
 								<ul>
 									<li><c:forEach var="student" items="${list}">
-											<form action="/AdvanceEduMIS/admin/commentInsert.do" method="post">
+											<form action="/AdvanceEduMIS/admin/commentInsert.do" method="post" onsubmit="return chkcomment()">
 
 												<div class="all-frame">
 													<div class="img-frame" style="margin-right: 20px;">
