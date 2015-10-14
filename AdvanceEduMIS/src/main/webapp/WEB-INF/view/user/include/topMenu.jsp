@@ -112,10 +112,9 @@
 			<li><a href="${pageContext.request.contextPath}/user/member/joinForm.do">회원가입</a></li>
 			</c:when>
 			<c:otherwise>
-				<li><a href="#"><img src="${pageContext.request.contextPath}/images/icon-user.png" alt="" />마이페이지</a></li>
+				<li><a href="${pageContext.request.contextPath}/user/mypage/detailMyinfo.do"><img src="${pageContext.request.contextPath}/images/icon-user.png" alt="" />마이페이지</a></li>
 			<li><a href="${pageContext.request.contextPath}/user/login/logout.do">로그아웃</a> </li>
 			</c:otherwise>
 			</c:choose>
-			
 	</ul>
 </header>

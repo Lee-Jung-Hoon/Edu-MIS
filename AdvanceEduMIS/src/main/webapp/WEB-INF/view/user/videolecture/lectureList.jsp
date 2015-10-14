@@ -80,6 +80,4 @@
 			</div>
 		</div>
 	</div>
-	</div>
 </body>
-<script type="text/javascript" src="/EduMIS/js/common.js"></script>

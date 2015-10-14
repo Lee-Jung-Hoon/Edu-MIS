@@ -172,7 +172,7 @@ function idCheck() {
 	var idVal = document.getElementById("id").value;
 	httpRequest = new XMLHttpRequest();
 	httpRequest.onreadystatechange = callBack;
-	httpRequest.open("GET", "/EduMIS/member/idCheck.do?id=" + idVal, true);
+	httpRequest.open("GET", "/AdvanceEduMIS/member/idCheck.ajax?id=" + idVal, true);
 	httpRequest.send(null);
 }
 function callBack() {
@@ -347,8 +347,9 @@ function callBack() {
 	$('#reset').on('click', function(){
 		$('#imgFrame').find('img').remove();
 	});
+	
 	$('.btn-post').on('click',function(){
-		var popUrl = "${pageContext.request.contextPath}/jsp/user/member/post_popup.jsp";	//팝업창에 출력될 페이지 URL
+		var popUrl = "${pageContext.request.contextPath}/user/member/postPopup.do";	//팝업창에 출력될 페이지 URL
 		var popOption = "width=500, height=400, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
 		window.open(popUrl,"",popOption);
 	});

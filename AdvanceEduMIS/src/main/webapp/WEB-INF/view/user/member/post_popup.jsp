@@ -13,7 +13,7 @@
 <body class="page-popup btn-page">
 	<div class="wrap">
 		<div class="pop-inner">
-			<form action="${pageContext.request.contextPath}/postno/PostNo.do">	
+			<form action="${pageContext.request.contextPath}/user/member/PostNo.do">	
 				<div class="area-wrap">
 					<label for="area">동 입력</label>
 					<input type="text" id="dong" name="dong"/>
