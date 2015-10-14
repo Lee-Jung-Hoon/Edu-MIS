@@ -6,6 +6,16 @@
 #chart_div {
 	border: 2px solid black;
 }
+
+
+.txt-writeExam-s {
+/*  		background-image:url('/AdvanceEduMIS/images/ExamGrade_writeBtn.png'); */
+	color: white;
+	border: solid 1px white;
+	text-decoration: none;
+	font-weight: bold;
+ }
+ 
 </style>
 
 <link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
@@ -69,8 +79,6 @@
     }
   }
 </script>
-<input type="button" value="수정" onclick="doModify(${board.no})">
-<input type="button" value="삭제" onclick="DeleteBoard()">
 <table class="table-board">
 	<tr>
 		<th width="100px">시험제목</th>
@@ -86,8 +94,11 @@
 		<td>${board.content}</td>
 	</tr>
 </table>
-<br/>
 <table>
+	<tr style="margin-top: 10px"><td align="right">
+	<a href="#" class="btn btn-txt btn-blue txt-writeExam-s" onclick="doModify(${board.no}">수정</a>
+<a href="#" class="btn btn-txt btn-blue txt-writeExam-s" onclick="DeleteBoard()">삭제</a>
+	</td></tr>
 	<tr>
 		<th>성적 통계</th>
 	</tr>

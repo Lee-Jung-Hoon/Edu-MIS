@@ -14,6 +14,14 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/examgrade/jquery.battatech.excelexport.js"></script>
 <script src="${pageContext.request.contextPath}/js/examgrade/jquery.colorbox.js"></script>
 <style>
+.txt-writeExam-sm {
+	color: white !important;
+	border: solid 1px black;
+	text-decoration: none !important;
+	font-weight: bold !important;
+	text-indent:0 !important;
+	line-height: 40px  !important;
+ }
 	.iframe {
 		background-image:url('/AdvanceEduMIS/images/txt-test-regist-s.png');
 		display:inline-block;
@@ -54,7 +62,13 @@
       width : "30%",
       height : "45%"
     });
-    $("#datepicker").datepicker();
+    
+    $("#excelExport").colorbox({
+      iframe : true,
+      title : "엑셀 저장",
+      width : "40%",
+      height : "50%"
+    });
   });
 </script>
 
@@ -81,6 +95,7 @@
 								
 									<a href="javascript:void(0);" class="btn btn-txt btn-blue txt-test-sort-s" id="exam">시험별</a> 
 									<a href="javascript:void(0);" class="btn btn-txt btn-blue txt-test-student-s" id="student">학생별</a>
+									<a href="${pageContext.request.contextPath}/examgrade/excelExport.do" id="excelExport" class="btn btn-txt btn-blue txt-writeExam-sm">엑셀</a>
 								</div>
 								
 								<div id="content"></div>

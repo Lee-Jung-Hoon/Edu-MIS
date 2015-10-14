@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
-<link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
+<link href="/AdvanceEduMIS/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="/AdvanceEduMIS/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script>
 google.load('visualization', '1', {packages: ['corechart', 'line']});
