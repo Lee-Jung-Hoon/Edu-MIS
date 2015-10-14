@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.edumis.user.member.dao.IdCheckDAO;
 
-@WebServlet("/member/idCheck.do")
+@WebServlet("/member/idCheck.ajax")
 public class idCheck extends HttpServlet {
 
 	@Override
