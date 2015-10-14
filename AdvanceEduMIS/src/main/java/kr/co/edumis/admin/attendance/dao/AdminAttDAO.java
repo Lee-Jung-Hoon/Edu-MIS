@@ -19,6 +19,6 @@ public class AdminAttDAO {
 		return sql.selectList("attendance.dao.AdminAttDAO.selectAttList");
 	}
 	public List<AdminAttListVO> selectAttTermList(AdminAttListVO adm) throws Exception{
-		return sql.selectList("attendance.dao.AdminAttDAO.selectAttList2",adm);
+		return sql.selectList("attendance.dao.AdminAttDAO.selectAttList2", adm);
 	}
 }
