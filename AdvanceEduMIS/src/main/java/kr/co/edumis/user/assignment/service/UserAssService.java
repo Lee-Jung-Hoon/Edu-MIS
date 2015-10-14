@@ -26,8 +26,6 @@ public interface UserAssService {
 	//과제 수정
 	public void updateUserAss(UserAssVO userass)throws Exception;
 	
-//	//제출한 과제 번호 목록
-//	public List<String> userSubmitCheck(String id)throws Exception; 
 	
 	//전체 게시물  꺼내오기
 	public int AssCount() throws Exception;
