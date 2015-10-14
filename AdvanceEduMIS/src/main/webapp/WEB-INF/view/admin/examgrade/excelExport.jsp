@@ -2,14 +2,21 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<script type="text/javascript" src="/AdvanceEduMIS/js/examgrade/jquery.battatech.excelexport.js"></script>
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/AdvanceEduMIS/js/examgrade/jquery.battatech.excelexport.js"></script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script>
   $(document).ready(function() {
     excelList();
+    
+    $("#btnExport").click(function() {
+      $("#tblExport").battatech_excelexport({
+        containerid : "tblExport",
+        datatype : 'table'
+      });
+    });
   });
 
   function excelList() {
