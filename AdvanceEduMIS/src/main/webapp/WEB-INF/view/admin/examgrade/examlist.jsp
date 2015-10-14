@@ -113,6 +113,9 @@ td:nth-child(5) {
 td:last-child {
 	
 }
+.table-board tr:last-child td {
+ 	border-bottom: 1px !important;
+}
 </style>
 <a
 	href="${pageContext.request.contextPath}/examgrade/excelExport.do"
@@ -133,7 +136,7 @@ td:last-child {
 			<c:forEach var="exam" items="${list}">
 				<tr align="center">
 					<td>${exam.no}</td>
-					<td>${exam.title}</td>
+					<td>${exam.title}${exam.ck}</td>
 
 					<td><c:choose>
 							<c:when test="${exam.ck eq 'n'}">
