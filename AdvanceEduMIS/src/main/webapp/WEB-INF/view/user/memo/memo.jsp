@@ -142,9 +142,9 @@ var saveMemo = function(memoDiv) {
 
 	// 메모 생성
 	$('.btn-memo').on('click', function(){
-		$('<div class="memo"> <textarea></textarea> <button type="button" class="btn-m btn-m-del">삭제</button>	</div>')
+	  saveMemo($('<div class="memo"> <textarea></textarea> <button type="button" class="btn-m btn-m-del">삭제</button>	</div>')
 		.appendTo('.inner-layer')
-		.draggable();
+		.draggable());
 	});
 
 	
