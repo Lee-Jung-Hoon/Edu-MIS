@@ -99,7 +99,7 @@ public class TalkController {
 	               System.out.println(talk.getName());
 	               service.deleteCheckTalk(talk);
 	            }
-	            return "redirect:/AdvanceEduMIS/talk/recvList.do";
+	            return "redirect:/talk/recvList.do";
 	         } else {
 	            for (int i = 0; i < delList.length; i++) {
 	               int tNo = Integer.parseInt(delList[i]);
@@ -110,7 +110,7 @@ public class TalkController {
 	               service.deleteCheckTalk(talk);
 	            }
 	         }
-	         return "redirect:/AdvanceEduMIS/talk/recvList.do";
+	         return "redirect:/talk/recvList.do";
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	      }
@@ -129,7 +129,7 @@ public class TalkController {
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	      }
-	      return "redirect:/AdvanceEduMIS/talk/recvList.do";
+	      return "redirect:/talk/recvList.do";
 	   }
 
 	   @RequestMapping("/realDelete.do")
@@ -147,7 +147,7 @@ public class TalkController {
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	      }
-	      return "redirect:/AdvanceEduMIS/talk/recvList.do";
+	      return "redirect:/talk/recvList.do";
 	   }
 
 	   @RequestMapping("/allCheckDelete.do")
@@ -172,7 +172,7 @@ public class TalkController {
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	      }
-	      return "redirect:/AdvanceEduMIS/talk/recvList.do";
+	      return "redirect:/talk/recvList.do";
 	   }
 
 	   @RequestMapping("/sendList.do")
@@ -239,7 +239,7 @@ public class TalkController {
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	      }
-	      return "redirect:/AdvanceEduMIS/talk/recvList.do";
+	      return "redirect:/talk/recvList.do";
 	   }
 
 	   @RequestMapping("/deleteTalk.do")
@@ -251,7 +251,7 @@ public class TalkController {
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	      }
-	      return "redirect:/AdvanceEduMIS/talk/recvList.do";
+	      return "redirect:/talk/recvList.do";
 	   }
 
 	   @RequestMapping("/searchTalk.do")
