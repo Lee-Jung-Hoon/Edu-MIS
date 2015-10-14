@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="attendance.dao.AdminAttDAO">
+
+<!-- 리스트 -->
+<select id="selectAttList" resultType="AdminAttListVO">
+	select mName,
+       sum(case when att_type = 1 then 1 else 0 end) as type1,
+       sum(case when att_type = 2 then 1 else 0 end) as type2,
+       sum(case when att_type = 3 then 1 else 0 end) as type3,
+       sum(case when att_type = 4 then 1 else 0 end) as type4
+	from t_attend
+	group by mName
+	order by mName
+</select>
+<select id="selectAttList2" resultType="AdminAttListVO">
+	select mName,
+       sum(case when att_type = 1 then 1 else 0 end) as type1,
+       sum(case when att_type = 2 then 1 else 0 end) as type2,
+       sum(case when att_type = 3 then 1 else 0 end) as type3,
+       sum(case when att_type = 4 then 1 else 0 end) as type4
+	from t_attend
+	where att_date between to_date(#{startDate},'yyyyMMdd') and to_date(#{endDate},'yyyyMMdd')
+	group by mName
+	order by mName
+</select>
+
+
+
+</mapper>
