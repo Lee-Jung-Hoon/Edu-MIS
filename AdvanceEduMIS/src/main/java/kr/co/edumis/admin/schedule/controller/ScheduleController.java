@@ -23,13 +23,10 @@ public class ScheduleController {
 	@Autowired
 	private ScheduleService service;
 	
-	
-	
 	@RequestMapping("/info.json")
 	@ResponseBody
-	public List<ScheduleVO> info(Model model, @RequestParam(value="day" , required=false ) String day ) throws Exception{
-		System.out.println(day);
-		return service.infoSchedule(day);
+	public List<List<ScheduleVO>> info(ScheduleVO scheduleVO) throws Exception{
+		return service.infoSchedule(scheduleVO);
 	};
 	
 	
