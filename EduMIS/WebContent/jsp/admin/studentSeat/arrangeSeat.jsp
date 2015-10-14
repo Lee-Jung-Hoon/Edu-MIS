@@ -58,7 +58,10 @@
 	  .right-side {float:right;}
 	  .inner-div {width:80%; margin:0 auto 20px; height:80px;}
 	  .inner-div li {position:relative; margin-left:-1px; background:url('/EduMIS/images/wood-pattern.jpg') repeat-x left top;}
-	  .inner-div .dropSpan {position:absolute; top:50%; left:0; display:block; width:100%; height:100%; text-align:center; margin-top:-40px;}
+	  .inner-div .stu-photo {position:absolute; top:50%; left:0; display:block; width:100%; height:100%; text-align:center; margin-top:-40px; color:#000; text-decoration:none;}
+	  .inner-div .stu-photo .img-frame {position:absolute; bottom:20px; left:50%; margin-left:-60px; display:none; width:120px; height:150px; box-sizing:border-box; border:1px solid #999; z-index:99; background:#fff; line-height:150px;}
+	  .inner-div .stu-photo.show .img-frame {display:block;}
+	  .inner-div .stu-photo .img-frame img {width:100%; vertical-align:middle;}
 	  .content-seat .btn-save {display:inline-block !important; width:100px; height:40px; vertical-align:top;}
 	  .content-seat h2 {text-indent:20px; font-size:24px; font-weight:bold; letter-spacing:-1px;}
 	  .content-seat .student h2 {display:inline-block; height:40px; margin-right:10px; line-height:35px; margin-bottom:20px;}
@@ -74,7 +77,7 @@
     function dragEvent() {
       $('.student_info').on({
         dragstart: function (event) {
-  		console.log(event.target.id);    	  
+  			console.log(event.target.id);    	  
         	event.originalEvent.dataTransfer.setData("dragId", event.target.id);
         }
       });
@@ -86,11 +89,13 @@
           "drop": function (event) {
       		var dragId = event.originalEvent.dataTransfer.getData("dragId");
   				console.log("drop : " + dragId);
-  					$(this).html("<span class='dropSpan'>"+$("#" + dragId).text()+"</span>")
+  					$(this).html("<a class='stu-photo' href='#'>"+$("#" + dragId).text()+"<span class='img-frame'><img src='/EduMIS/images/icon-user.png' alt='' /></span></a>");
           	//$(this).text($("#" + dragId).text());
           	$("#" + dragId).remove();
-  		}
-      }); 
+          	stuPhoto();
+  				}
+      });
+      
     }
    
     
@@ -112,11 +117,17 @@
     		  }
     		}
     		dragEvent();
-
+    		stuPhoto();
    	});
     
+    function stuPhoto() {
+      $(".stu-photo").on("click", function(){
+        $(this).toggleClass("show");
+        return false;
+      }); 
+    }
   });
-  
+  //$(".stu-photo").on("click")
   </script>
 </head>
 <body class="page-seat btn-page">
