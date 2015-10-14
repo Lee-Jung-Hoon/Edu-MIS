@@ -12,11 +12,28 @@ public class ScheduleVO {
 	private String    endDate;
 	private String    latitude;
 	private String    longitude;
+	private int year;
+	private int month;
+	private int lastDay;
 	
-	
-	
-	
-	
+	public int getYear() {
+		return year;
+	}
+	public void setYear(int year) {
+		this.year = year;
+	}
+	public int getMonth() {
+		return month;
+	}
+	public void setMonth(int month) {
+		this.month = month;
+	}
+	public int getLastDay() {
+		return lastDay;
+	}
+	public void setLastDay(int lastDay) {
+		this.lastDay = lastDay;
+	}
 	public String getPlace() {
 		return place;
 	}
