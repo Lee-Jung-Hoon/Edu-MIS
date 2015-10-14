@@ -6,7 +6,7 @@
 <aside>
 	<h2><a href="${pageContext.request.contextPath}/admin/main.do">홈</a></h2>
 	<ul>
-		<li><a href="${pageContext.request.contextPath}/user/admin/studentSeat/arrangeSeat.jsp">좌석 배치 관리</a></li>
+		<li><a href="${pageContext.request.contextPath}/admin/studentSeat/arrangeSeat.do">좌석 배치 관리</a></li>
 		<li><a href="${pageContext.request.contextPath}/admin/assList.do">과제 제출 게시판</a></li>
 		<li><a href="${pageContext.request.contextPath}/admin/commentList.do">교육생관리</a></li>
 		<li><a href="${pageContext.request.contextPath}/user/admin/examgrade/exammain.jsp">성적관리</a></li>
