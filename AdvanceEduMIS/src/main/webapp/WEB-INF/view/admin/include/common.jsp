@@ -3,6 +3,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="${pageContext.request.contextPath}/js/examgrade/jquery.colorbox.js"></script>	
 <!-- 메세지 전송 부분 추가 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/admin/common.js"></script>
