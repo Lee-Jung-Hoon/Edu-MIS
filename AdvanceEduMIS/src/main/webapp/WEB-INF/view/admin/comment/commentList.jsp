@@ -82,10 +82,13 @@ $(document).ready(function () {
 	  
 	  $("input[type='button']").on("click", function () {
 				 if ($(this).val() == '등록') {
+				   if($("#s" + this.id).val() == "") {
+				     alert("입력해주세용ㄱ(ㅇㅅㅇ)ㄴ");
+				     return;
+				   }
 			   if(confirm("등록하시겠습니까?")){
 					var id = this.id;
-					var content = $("#" + id).val();
-										
+					var content = $("#s" + id).val();
 	         $.ajax({
 	           url:"/EduMIS/comment/RegistComment.do",
 	           type:"POST",
@@ -100,7 +103,7 @@ $(document).ready(function () {
 		 								"<td><input type = 'button' value = '삭제' id = " + jsondata.no + " style=\"display:block; width:20px; height:20px; background:url(\'../images/btn-close.png\') no-repeat center; background-size:100%; overflow:hidden; z-index:99; text-indent:-5000px;\"></td>" + 
 		 								"</tr>"
 						 )
-						 $("#" + id).val("");
+						 $("#s" + id).val("");
 						 
 	           }
 	         })
@@ -163,7 +166,7 @@ $(document).ready(function () {
 
 													<div>
 														<input type="text" style="height: 30px; width: 500px;"
-															name="content" id="${student.id}" size="100" />
+															name="content" id="s${student.id}" size="100" />
 														<input type="button"
 															id = "${student.id}"
 															style="width: 80px; height: 30px; float: right;"
