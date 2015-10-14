@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width">
 	<title>메인</title>
-<%-- 	<%@ include file="/jsp/admin/include/common.jsp" %> --%>
+	<%@ include file="/WEB-INF/view/admin/include/common.jsp" %>
 	<style>
 table.table-board {
 	/* width: 100%; */ /* Optional */
