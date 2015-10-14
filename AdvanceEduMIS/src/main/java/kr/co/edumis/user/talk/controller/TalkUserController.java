@@ -60,30 +60,7 @@ public class TalkUserController {
 		}
 		return mav;
 	}
-//	@RequestMapping("/talk/user/login.do")
-//	public ModelAndView login(HttpServletRequest req) throws Exception {
-//		req.setCharacterEncoding("UTF-8");
-//		LoginVO member = new LoginVO();
-//		member.setNo(Integer.parseInt(req.getParameter("no")));
-//		member.setName(req.getParameter("name"));
-//		member.setGrade(req.getParameter("grade"));
-//		
-//		HttpSession session = req.getSession();
-//		session.setAttribute("member", member);
-//		
-//		
-////		ModelAndView mav = new ModelAndView("/jsp/user/main.jsp");
-//		ModelAndView mav = new ModelAndView("/template/global_memo02.jsp");
-//		try {
-//			List<MemberVO> list = service.selectMemberList();
-//			System.out.println(list.size());
-//			mav.addObject("list", list);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return mav;
-//	}
-	
+
 	@RequestMapping("/recvList.do")
 	public ModelAndView ReceiveTalkList(HttpServletRequest req, HttpServletResponse res){
 		ModelAndView mav = new ModelAndView("user/talk/receiveHistory");
@@ -128,7 +105,7 @@ public class TalkUserController {
 					System.out.println(talk.getName());
 					service.deleteCheckTalk(talk);
 				}
-				return new ModelAndView("redirect:/AdvanceEduMIS/talk/user/recvList.do");
+				return new ModelAndView("redirect:/talk/user/recvList.do");
 			} else {
 				for (int i = 0; i < delList.length; i++) {
 					int tNo = Integer.parseInt(delList[i]);
@@ -139,7 +116,7 @@ public class TalkUserController {
 					service.deleteCheckTalk(talk);
 				}
 			}
-			return new ModelAndView("redirect:/AdvanceEduMIS/talk/user/sendList.do");
+			return new ModelAndView("redirect:/talk/user/sendList.do");
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -159,7 +136,7 @@ public class TalkUserController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ModelAndView("redirect:/AdvanceEduMIS/talk/user/talkTrash.do");
+		return new ModelAndView("redirect:/talk/user/talkTrash.do");
 	}
 
 	@RequestMapping("/realDelete.do")
@@ -177,7 +154,7 @@ public class TalkUserController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ModelAndView("redirect:/AdvanceEduMIS/talk/user/talkTrash.do");
+		return new ModelAndView("redirect:/talk/user/talkTrash.do");
 	}
 
 	@RequestMapping("/allCheckDelete.do")
@@ -202,7 +179,7 @@ public class TalkUserController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ModelAndView("redirect:/AdvanceEduMIS/talk/user/recvList.do");
+		return new ModelAndView("redirect:/talk/user/recvList.do");
 	}
 
 	@RequestMapping("/sendList.do")
@@ -271,7 +248,7 @@ public class TalkUserController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ModelAndView("redirect:/AdvanceEduMIS/talk/user/recvList.do");
+		return new ModelAndView("redirect:/talk/user/recvList.do");
 	}
 
 	@RequestMapping("/deleteTalk.do")
@@ -283,7 +260,7 @@ public class TalkUserController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ModelAndView("redirect:/AdvanceEduMIS/talk/user/recvList.do");
+		return new ModelAndView("redirect:/talk/user/recvList.do");
 	}
 
 	@RequestMapping("/searchTalk.do")
@@ -346,7 +323,7 @@ public class TalkUserController {
 
 	@RequestMapping("/talkTrash.do")
 	public ModelAndView TalkTrash(HttpServletRequest req) {
-		ModelAndView mav = new ModelAndView("user/talk/talkTrash.jsp");
+		ModelAndView mav = new ModelAndView("user/talk/talkTrash");
 
 		HttpSession session = req.getSession();
 		LoginVO member = (LoginVO)session.getAttribute("user");
