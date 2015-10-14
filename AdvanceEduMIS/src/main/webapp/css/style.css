@@ -660,6 +660,10 @@ html, body {
 .txt-leader-reset-s {
 	background-image:url('/AdvanceEduMIS/images/txt-leader-reset-s.png');
 }
+/* 조짜기(소) */
+.txt-leader-make-s {
+	background-image:url('../images/txt-leader-make-s.png');
+}
 /* 삭제(대) */
 .txt-del-b {
 	background-image:url('/AdvanceEduMIS/images/txt-del-b.png');
@@ -692,6 +696,15 @@ html, body {
 .txt-test-student-s {
 	background-image:url('/AdvanceEduMIS/images/txt-test-student-s.png');
 }
+/* 저장(대) */
+.txt-save-b {
+	background-image:url('../images/txt-save-b.png');
+}
+/* 줄추가(소) */
+.txt-line-s {
+	background-image:url('../images/txt-line-s.png');
+}
+
 
 
 /* 버튼 이미지 텍스트 모음 끝*/
