@@ -64,7 +64,7 @@
 		real_file_name as realFileName,
 		file_path as filePath
 		from t_member
-		
+		where grade != 1
 
 	</select>
 
