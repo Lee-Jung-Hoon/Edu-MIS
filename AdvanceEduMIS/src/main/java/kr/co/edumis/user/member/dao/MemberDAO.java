@@ -12,24 +12,29 @@ import kr.co.edumis.user.member.vo.MemberVO;
 public class MemberDAO {
 
 	@Autowired
-	private static SqlSessionTemplate session ;
+	private SqlSessionTemplate SqlSessionTemplate ;
 
 	public void insertMember(MemberVO member) throws Exception {
-		session.insert("member.dao.MemberMapper.memberJoin", member);
+		SqlSessionTemplate.insert("member.dao.MemberMapper.memberJoin", member);
 		
 	}
 
-	public void resetLeader() throws Exception {
-		session.update("member.dao.MemberMapper.resetLeader");
+	public void resetLeader()  {
+		SqlSessionTemplate.update("member.dao.MemberMapper.resetLeader");
 		
 	}
 
-	public List<MemberVO> selectMember() throws Exception {
-		return session.selectList("member.dao.MemberMapper.getMemberList");
+	public List<MemberVO> selectMember()  {
+		System.out.println("테스트");
+		
+		List<MemberVO> list = SqlSessionTemplate.selectList("member.dao.MemberMapper.getMember");
+		System.out.println(list.size());
+		
+		return list;
 	}
 
-	public void updateLeader(MemberVO mvo)  throws Exception {
-		session.update("member.dao.MemberMapper.updateLeader", mvo);
+	public void updateLeader(MemberVO member)   {
+		SqlSessionTemplate.update("member.dao.MemberMapper.updateLeader", member);
 		
 	}
 

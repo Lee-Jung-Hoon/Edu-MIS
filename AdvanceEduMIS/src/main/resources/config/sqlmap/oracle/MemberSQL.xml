@@ -55,17 +55,16 @@
 
 
 
-	<select id="getMemberList" resultType="memberVO">
+	<select id="getMember" resultType="memberVO">
 		select no,
 		id,
 		name,
-		tech_Leader as techLeader,
 		team,
+		tech_Leader as techLeader,
 		real_file_name as realFileName,
 		file_path as filePath
 		from t_member
 		
-
 
 	</select>
 
@@ -73,8 +72,9 @@
 		update t_member
 		set tech_Leader = #{techLeader}, team = #{team}
 		where no = #{no}
-
 	</update>
+	
+	
 	<update id="resetLeader">
 		update t_member
 		set tech_Leader = '3', team = ' '
