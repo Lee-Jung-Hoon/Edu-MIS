@@ -4,11 +4,11 @@
 <c:if test="${not empty sessionScope.admin}">
 	<script>
 		// 소켓서버에 접속
-// 	  	socket = io.connect("http://localhost:10004");
-// 	  	socket.emit("login", {no: "${admin.no}", name: "${admin.name}"});
-// 	  	socket.on("msg", function (sendName) {
-// 	  		$.noticeAdd({stayTime: 30000, "text": sendName + "님에게메시지가 도착했습니다."});
-// 	  	});
+	  	socket = io.connect("http://localhost:10004");
+	  	socket.emit("login", {no: "${admin.no}", name: "${admin.name}"});
+	  	socket.on("msg", function (sendName) {
+	  		$.noticeAdd({stayTime: 30000, "text": sendName + "님에게메시지가 도착했습니다."});
+	  	});
 	  	$(document).ready(function() {
 	  	  $.ajax({
 	  	    type : "get",
