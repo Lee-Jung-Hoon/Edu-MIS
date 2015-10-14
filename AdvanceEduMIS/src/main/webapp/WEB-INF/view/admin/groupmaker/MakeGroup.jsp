@@ -267,7 +267,7 @@
             var filePath = value[i].filePath + "/" + value[i].realFileName;
 
             if (value[i].filePath == "null") {
-              filePath = "/jsp/admin/groupmaker/images/pic1.jpg";
+              filePath = "memberFile/pic1.jpg";
 
             }
 
@@ -434,7 +434,7 @@
 							<div id="memberlist" style="display: block; clear: both;">
 								<div id="draggable" style="display: block;">
 									<input type="hidden" value="1"> <img
-										src="/AdvanceEduMIS/WEB-INF/view/admin/groupmaker/images/pic1.jpg"
+										src="/AdvanceEduMIS/memberFile/pic1.jpg"
 										width="90px" height="90px">
 									<p align="justify">손예진</p>
 								</div>

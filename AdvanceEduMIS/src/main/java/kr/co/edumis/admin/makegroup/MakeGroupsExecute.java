@@ -4,10 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import kr.co.edumis.user.member.dao.MemberDAO;
+import kr.co.edumis.user.member.service.MemberServiceImpl;
 import kr.co.edumis.user.member.vo.MemberVO;
 
+@Service
 public class MakeGroupsExecute {
+	
+	@Autowired
+	private MemberServiceImpl mda;
 
 	public void Execute(List<MemberVO> list, int gNum) {
 
@@ -15,7 +23,7 @@ public class MakeGroupsExecute {
 		ArrayList<MemberVO> list2 = new ArrayList<MemberVO>();
 		ArrayList<MemberVO> list3 = new ArrayList<MemberVO>();
 		try {
-		MemberDAO mda = new MemberDAO();
+		
 		for (int i = 0; i < list.size(); i++) {
 			MemberVO mvo = list.get(i);
 			if (mvo.getTechLeader().equals("1")) {
@@ -51,7 +59,7 @@ public class MakeGroupsExecute {
 			System.out.println("조장 이름 : " +mvo.getName()+", 조 : "+mvo.getTeam());
 			list1.remove(number);
 			
-				mda.updateLeader(mvo);
+			mda.updateLeader(mvo);
 			
 		}
 		

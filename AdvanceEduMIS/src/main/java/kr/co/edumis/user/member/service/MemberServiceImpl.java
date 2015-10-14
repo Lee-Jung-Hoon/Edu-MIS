@@ -18,13 +18,13 @@ public class MemberServiceImpl implements MemberService {
 	public void insertMember(MemberVO member) throws Exception {
 		dao.insertMember(member);
 	}
-	public List<MemberVO> selectMember() throws Exception {
+	public List<MemberVO> selectMember()  {
 		return dao.selectMember();
 	}
-	public void resetLeader() throws Exception {
+	public void resetLeader()  {
 		dao.resetLeader();
 	}
-	public void updateLeader(MemberVO member) throws Exception {
+	public void updateLeader(MemberVO member)  {
 		dao.updateLeader(member);
 	}
 }
