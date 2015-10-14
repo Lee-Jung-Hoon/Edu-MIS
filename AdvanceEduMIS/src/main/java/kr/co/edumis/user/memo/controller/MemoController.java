@@ -17,7 +17,7 @@ import kr.co.edumis.user.memo.service.MemoService;
 import kr.co.edumis.user.memo.vo.MemoVO;
 
 @Controller
-@RequestMapping("/memo")
+@RequestMapping(value={"/user/memo", "/admin/memo"})
 public class MemoController {
 	
 	@Autowired
@@ -25,7 +25,9 @@ public class MemoController {
 
 	@RequestMapping("/open.do")
 	public ModelAndView openMemo(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		ModelAndView mav = new ModelAndView("/user/memo/memo");
+		String reqPath = req.getRequestURI();
+		String type = reqPath.contains("admin") ? "/admin" : "/user";
+		ModelAndView mav = new ModelAndView(type + "/memo/memo");
 		HttpSession session = req.getSession();
 		LoginVO member = (LoginVO) session.getAttribute("user");
 		List<MemoVO> list;

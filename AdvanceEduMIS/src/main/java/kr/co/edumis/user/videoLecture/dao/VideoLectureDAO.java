@@ -50,7 +50,6 @@ public class VideoLectureDAO {
 		lec.put("video",lecture.getVideo());
 		lec.put("no",lecture.getNo()+"");		
 		session.update("videoLecture.dao.LectureMapper.lectureModify",lec);
-		session.commit();
 	}
 	
 	public void lecCommentRegist(LecCommentVO lecComment) {

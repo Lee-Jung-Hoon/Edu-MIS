@@ -3,6 +3,7 @@ package kr.co.edumis.user.member.dao;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.edumis.user.member.vo.PostNoVO;
@@ -10,7 +11,8 @@ import kr.co.edumis.user.member.vo.PostNoVO;
 @Repository
 public class PostNoDAO {
 	
-	private static SqlSessionTemplate session = null;
+	@Autowired
+	private SqlSessionTemplate session;
 	
 	public List<PostNoVO> getPostNoList(String dong)  throws Exception {
 		List<PostNoVO> list = session.selectList("postno.getPostNoList", dong);
