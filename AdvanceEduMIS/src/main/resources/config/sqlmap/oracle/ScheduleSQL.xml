@@ -8,7 +8,7 @@
 
 
 	<!-- 해당 날짜의 스케줄 전체를 가져오는 쿼리 -->
-	<select id="listSchedule" resultType="schedule" parameterType="String">
+	<select id="listSchedule" resultType="ScheduleVO" parameterType="String">
 		select no, title, content, start_date as startDate, end_date as endDate , importance, place
 		from t_schedule
 		where start_date &lt;= #{value} and end_date &gt;= #{value}
