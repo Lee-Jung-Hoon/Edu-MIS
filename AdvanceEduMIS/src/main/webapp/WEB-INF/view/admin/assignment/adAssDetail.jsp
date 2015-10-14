@@ -9,36 +9,7 @@
 	<meta name="viewport" content="width=device-width">
 	<title>메인</title>
 <%-- 	<%@ include file="/jsp/admin/include/common.jsp" %> --%>
-	<script>
-	function modifyAss() {
-		location.href = "assBfModify.do?no=${detail.no}";
-	}
-	
-	function deleteAss() {
-		if (confirm("삭제 하시겠습니까?")) {
-			location.href = "assDelete.do?no=${detail.no}";
-		}
-	}
-	
-	function listAss() {
-		location.href = "assList.do";
-	}
-	
-	function popUp(type, no, id){
-		switch (type) {
-		case "O":
-			window.open("assUserDetail.do?no=" + no + "&id=" + id, // 팝업창에 띄울 페이지 주소
-			"제출 상세", // 팝업창에 이름 설정
-			"width=600, height=500, resizable=no");
-			break;
-		/* case "X":
-			window.open("http://localhost:8000/EduMIS/jsp/admin/assignment/noSubmit.jsp","제출 상세", // 팝업창에 이름 설정
-					"width=600, height=500, resizable=no")
-			break; */
-		}
-	}
-	
-</script>	
+<script src="${pageContext.request.contextPath}/js/assignment/assignment.js"></script>
 </head>
 <body class="page-board btn-page">
 	<div class="wrap">
@@ -73,23 +44,10 @@
 								</table>
 							</div>
 							<div class="btn-area" style="text-align:right; margin-bottom:20px;">
-								<input style="width:70px; height:40px; display:inline-block;" type="submit" value="과제 수정" onclick="modifyAss()" class="btn txt-assign-modify-s btn-txt btn-blue" />
-								<input style="width:70px; height:40px; display:inline-block;" type="reset" value="과제 삭제" onclick="deleteAss()" class="btn txt-assign-del-s btn-txt btn-blue" />
-								<input style="width:70px; height:40px; display:inline-block;" type="reset" value="과제 목록" onclick="listAss()" class="btn txt-assign-list-s btn-txt btn-blue" />
+								<input style="width:70px; height:40px; display:inline-block;" type="submit" value="과제 수정" onclick="modifyAss(${detail.no})" class="btn txt-assign-modify-s btn-txt btn-blue" />
+								<input style="width:70px; height:40px; display:inline-block;" type="reset" value="과제 삭제" onclick="deleteAss(${detail.no})" class="btn txt-assign-del-s btn-txt btn-blue" />
+								<input style="width:70px; height:40px; display:inline-block;" type="reset" value="과제 목록" onclick="moveList()" class="btn txt-assign-list-s btn-txt btn-blue" />
 							</div>
-							<!--
-							  <div>
-									<table class="tb-test2 table-board">
-									<tr>
-										<td>
-											<span><input type="button" value="과제 수정" onclick="modifyAss()"></span>	
-											<span><input type="button" value="과제 삭제" onclick="deleteAss()"></span>	
-											<span><input type="button" value="과제 목록" onclick="listAss()"></span>	
-										</td>
-									</tr>
-									</table>
-							</div>
-							-->
 							<div>
 							<h2>제출 목록</h2>
 								<table class="tb-test table-board">

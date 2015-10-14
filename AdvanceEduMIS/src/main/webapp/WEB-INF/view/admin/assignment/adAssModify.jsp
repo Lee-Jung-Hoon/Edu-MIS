@@ -9,49 +9,11 @@
 	<meta name="viewport" content="width=device-width">
 	<title>제목</title>
 	<%-- <%@ include file="/jsp/admin/include/common.jsp" %> --%>
+	<script src="${pageContext.request.contextPath}/js/assignment/assignment.js"></script>
 	<script>	
-	function ckForm() {
-		
-		if($("#title").val() == ""){
-			alert("제목을 입력하세요")
-			$("#title").focus();
-			return false;
-		}
-		
-		if($("#startDate").val() == "") {
-			alert("시작 날짜를 입력하세요")
-			$("#startDate").focus();
-			return false;
-		}
-		
-		if($("#endDate").val() == "") {
-			alert("종료 날짜를 입력하세요")
-			$("#endDate").focus();
-			return false;
-		}
-		
-		if($("#content").val() == "") {
-			alert("내용을 입력하세요")
-			$("#content").focus();
-			return false;
-		}
-		
-		if($("#startDate").val() > $("#endDate").val()){
-			alert("종료날짜가 시작날짜보다 빠릅니다.");
-			$("#endDate").focus();
-			return false;
-		}
-		if (confirm("과제를 수정 하시겠습니까?")) {
-		return true;
-		}
-		return false;
-	}
-		
-	function moveList() {
-	
-			location.href = "assList.do";
-		
-	}
+	$('input:file').on('change', function(){
+	  $('.val-txt').val($(this).val())
+	});
 	</script>
 </head>
 <body class="page-join btn-page">
@@ -66,7 +28,8 @@
 						<section class="test-class common">
 							<!--  작업부분 제목 써주세요 --><h2>과제 수정</h2>
 							<!-- 작업시작부분 div안에 클래스명 넣어서 작업 해 주세요 나머지 url부분은 추후 취합할 예정이니 일단 MENU 부분의 링크태그에 값 넣어서 작업 해주시면 됩니다. 게시판 담당하시는 분들은 추후 공통 클래스 드릴테니 일단 테이블로 작업 부탁드립니다. -->
-								<form method="POST" action="assModify.do" name = "regForm" enctype="multipart/form-data" onsubmit="return ckForm();" >
+								<form method="POST" action="assRegist.do" name = "regForm" enctype="multipart/form-data" onsubmit="return ckForm();" >
+								<input type="hidden" name="type" value="M" />
 								<div class="adAssRegist">
 									<table class="tb-test table-common" align="center">
 										<colgourp>
@@ -128,9 +91,4 @@
 		</div>
 	</div>
 </body>
-<!-- <script type="text/javascript" src="/EduMIS/js/common.js"></script> -->
-<script>
-	$('input:file').on('change', function(){
-	  $('.val-txt').val($(this).val())
-	});
-</script>
+</html>
