@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="videoLecture.dao.LectureMapper">
+	<insert id="lectureRegist" parameterType="VideoLectureVO">
+		insert into
+		t_lecture(no, title, contents, video)
+		values
+		(seq_t_lecture_no.nextVal, #{title}, #{contents}, #{video})
+	</insert>
+
+	<select id="lectureList" resultType="VideoLectureVO"
+		parameterType="map">
+		select no, title, time, rownum as rnum
+		from(select no,
+		title, time, rownum as rnum
+		from(select no, title,
+		to_char(time,'yyyy-mm-dd') as time
+		from t_lecture
+		order by no desc))
+		where rnum between #{startPage} and #{endPage}
+	</select>
+
+	<select id="lectureDetail" parameterType="VideoLectureVO"
+		resultType="VideoLectureVO">
+		select no, title, contents, video,
+		to_char(time,'yyyy-mm-dd') as time
+		from t_lecture
+		where no=#{no}
+
+	</select>
+
+	<select id="lectureCount" resultType="int">
+		select count(no)
+		from
+		t_lecture
+	</select>
+
+	<delete id="lectureDelete" parameterType="int">
+		delete t_lecture
+		where no=#{no}
+	</delete>
+
+	<select id="lectureSelect" resultType="VideoLectureVO" parameterType="int">
+		select no, title, contents, video
+		from t_lecture
+		where no=#{no}
+	</select>
+
+	<update id="lectureModify" parameterType="map">
+		update t_lecture
+		set title=#{title}, contents=#{contents}, video=#{video} 
+		where no=#{no}
+	</update>
+	
+	<insert id="lecCommentRegist" parameterType="LecCommentVO">
+		insert into	t_lecComment(comno, no, id, comments)
+		values (seq_t_lecComment_comno.nextVal, #{no}, #{id}, #{comments})
+	</insert>
+
+	<select id="lecCommentList" resultType="LecCommentVO">
+		select comno, no, id, comments
+		from t_lecComment
+		where no =#{no}
+		order by comno desc
+	</select>
+	
+	<delete id="lecCommentDelete" parameterType="int">
+		delete t_lecComment 
+		where comno=#{comno}
+	</delete>
+</mapper>
