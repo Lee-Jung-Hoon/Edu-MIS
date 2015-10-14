@@ -57,7 +57,7 @@
 	  .left-side {float:left;}
 	  .right-side {float:right;}
 	  .inner-div {width:80%; margin:0 auto 20px; height:80px;}
-	  .inner-div li {position:relative; margin-left:-1px; background:url('/EduMIS/images/wood-pattern.jpg') repeat-x left top;}
+	  .inner-div li {position:relative; margin-left:-1px; background:url('/AdvanceEduMIS/images/wood-pattern.jpg') repeat-x left top;}
 	  .inner-div .stu-photo {position:absolute; top:50%; left:0; display:block; width:100%; height:100%; text-align:center; margin-top:-40px; color:#000; text-decoration:none;}
 	  .inner-div .stu-photo .img-frame {position:absolute; bottom:20px; left:50%; margin-left:-60px; display:none; width:120px; height:150px; box-sizing:border-box; border:1px solid #999; z-index:99; background:#fff; line-height:150px;}
 	  .inner-div .stu-photo.show .img-frame {display:block;}
@@ -70,6 +70,8 @@
 	  .seat-info select, .seat-info input[type="number"] {height:30px;}
 	  .seat-info input[type="number"] {box-sizing:border-box;}
 	  .seat-info .btn-line {display:inline-block !important; width:70px; height:30px;}
+	  .seat::after {content: "칠판"; display:block; width:80%; margin:15px auto; font-size:24px; height:40px; line-height:40px; overflow:hidden; background:url('/AdvanceEduMIS/images/bg-line.png') repeat-x; font-weight:bold; text-align:center;}
+	  
   </style>
   <script>
   $(function() {
