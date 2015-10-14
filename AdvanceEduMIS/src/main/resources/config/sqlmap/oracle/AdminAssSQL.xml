@@ -76,7 +76,7 @@
 		from t_user_assignment_board
 	</select>
 	
-	<select id="getSubject" parameterType="map" resultType="userAssVO">
+	<select id="getSubject" parameterType="memberVO" resultType="userAssVO">
 		select
 		id,
 		name,
