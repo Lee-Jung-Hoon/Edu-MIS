@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.edumis.admin.assignment.vo.AdminAssVO;
+import kr.co.edumis.common.SearchVO;
 import kr.co.edumis.user.assignment.vo.UserAssVO;
 import kr.co.edumis.user.member.vo.MemberVO;
 
@@ -20,7 +21,8 @@ public class AdminAssDAO {
 		sqlMapper.insert("adminAssignment.registAssignment", adAssvo);
 	}
 	
-	public List<AdminAssVO> selectList(Map<String, Integer> param) {
+	public List<AdminAssVO> selectList(Map<String, Object> param) {
+//		SearchVO search = param.put(key, value)
 		List<AdminAssVO> list = sqlMapper.selectList("adminAssignment.selectAssignment", param);
 		return list;
 	}
@@ -56,5 +58,13 @@ public class AdminAssDAO {
 	
 	public int selectCount() {
 		return sqlMapper.selectOne("adminAssignment.selectCount");
+	}
+
+	public List<AdminAssVO> selectBoard(SearchVO vo) {
+		return sqlMapper.selectList("adminAssignment.selectBoard", vo);
+	}
+
+	public int selectBoardCount() {
+		return sqlMapper.selectOne("adminAssignment.selectBoardCount");
 	}
 }
