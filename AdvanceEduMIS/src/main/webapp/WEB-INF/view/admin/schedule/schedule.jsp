@@ -58,7 +58,7 @@ $(document).on("click" , ".dayClick" , function(){
 	 var id = $(this).attr("id");
 	 
 	 // 클릭한 날짜정보를 가져온다.
-	 var listDate 			=  $(this).text();
+	 var listDate 			=  $(this).find("strong").text();
 	 var listMonth 	= m+1;
 	 var listYear 			= y;
 	 
@@ -81,7 +81,7 @@ $(document).on("click" , ".dayClick" , function(){
 				 // 해당 날짜의 정보를 가져온다.
 			   $.ajax({
 				    
-				    url : "info.json",
+				    url : "listInfo.json",
 				    dataType : "json",
 				    data : "day=" + listData
 				    
@@ -132,9 +132,24 @@ $(document).on("click" , ".dayClick" , function(){
 				    
 			   });
 
+		  }else{
+			   
+			   var returnChk = confirm("일정을 추가하시겠습니까?");
+			   if (returnChk == true) {
+								
+				    
+				    
+			   } 
 		  }
 
 });
+
+
+
+
+
+
+
 
 	// 화면이 실행되고 나서 각각의  <td> 태그에 날짜를 입력한다.
 	$(document).ready(function() {
@@ -162,7 +177,7 @@ $(document).on("click" , ".dayClick" , function(){
 
 				 console.log(   i+"-"+ScheduleVO.importance+"-"+startnum  );
 				 
-				 dayInfoDivHtml += i;
+				 dayInfoDivHtml += "<strong>"+i+"</strong>";
 				 
 		     // 중요도에 따라 색상이 다른 색상 값들을 출력
 				 if(ScheduleVO.importance == '1'){
@@ -362,7 +377,42 @@ $(document).on("click" , ".dayClick" , function(){
 							
 							
 							
-							
+								<div class="plan_form" style="position: fixed; top: 110px; left: 200%; width: 450px; padding: 30px; z-index: 99; background: #fff; box-shadow: 0px 0px 50px rgba(10,10,10,10); border-radius: 40px; " >
+								<div style="font-size: 20px;">일정 등록</div>
+								<hr />
+								<form name="regscheduleForm" id="regscheduleForm" action="">
+									<table id="reg-Form" style="border-collapse: collapse;">
+										<tr>
+											<th>일 시</th>
+											<td style="width: 230px">
+											<input type="text"		id="datepicker" name="startDate" size="10px"			style="width: 100px" /> ~ <input type="text"	id="datepicker2" name="endDate" size="10px"	style="width: 100px" />
+											</td>
+											<th>중요도</th>
+											<td width="30px"><select id="importance" name="importance">
+													<option value="1" selected="selected">보통</option>
+													<option value="2">중요함</option>
+													<option value="3">매우중요함</option>
+											</select></td>
+										</tr>
+										<tr>
+											<th>제 목</th>
+											<td colspan="3"><input type="text" id="title" size="46"		maxlength="20px" name="title" /></td>
+										</tr>
+										<tr>
+											<th>내 용</th>
+											<td colspan="3"><textarea rows="5" id="content"
+													name="content" cols="45" maxlength="100px"></textarea></td>
+										</tr>
+									</table>
+									<br />
+									<div align="center">
+										<span>
+											<input style="width: 100%;" type="button" class="btn-txt txt-regist" id="regScheduleBtn" name="regScheduleBtn" value="저장" size="10px" />
+										</span>
+									</div>
+								</form>
+								<input  style="width: 100%;" type="button" class="btn-txt txt-cancel" size="30px">
+							</div>
 							
 							
 							

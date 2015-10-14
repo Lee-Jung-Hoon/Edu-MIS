@@ -30,6 +30,14 @@ public class ScheduleController {
 	};
 	
 	
+	@RequestMapping("/listInfo.json")
+	@ResponseBody
+	public List<ScheduleVO> listInfo(@RequestParam(value="day" , required=false) String day) throws Exception{
+		System.out.println("day : " + day);
+		return service.listInfoSchedule(day);
+	};
+	
+	
 	
 }
 

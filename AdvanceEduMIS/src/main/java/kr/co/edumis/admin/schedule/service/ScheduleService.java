@@ -7,5 +7,7 @@ import kr.co.edumis.admin.schedule.vo.ScheduleVO;
 public interface ScheduleService {
 
 	public List<List<ScheduleVO>> infoSchedule(ScheduleVO scheduleVO) throws Exception;
+
+	public List<ScheduleVO> listInfoSchedule(String day);
 	
 }
