@@ -8,13 +8,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width">
 <title>메인</title>
+<%@ include file="/WEB-INF/view/admin/include/common.jsp" %>	
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-<link rel="stylesheet" href="/AdvanceEduMIS/css/examgrade/colorbox.css" />
-<script type="text/javascript" src="/AdvanceEduMIS/js/examgrade/jquery.battatech.excelexport.js"></script>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
-<script src="/AdvanceEduMIS/js/examgrade/jquery.colorbox.js"></script>
-<%-- <%@ include file="/jsp/admin/include/common.jsp"%> --%>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/examgrade/colorbox.css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/examgrade/jquery.battatech.excelexport.js"></script>
+<script src="${pageContext.request.contextPath}/js/examgrade/jquery.colorbox.js"></script>
 <style>
 	.iframe {
 		background-image:url('/AdvanceEduMIS/images/txt-test-regist-s.png');
@@ -41,13 +39,13 @@
 </style>
 <script type="text/javascript">
   $(document).ready(function() {
-    $('#content').load('/AdvanceEduMIS/examgrade/ExamTurnList.do');
+    $('#content').load('ExamTurnList.do');
     $('#exam').click(function() {
-      $('#content').load('/AdvanceEduMIS/examgrade/ExamTurnList.do');
+      $('#content').load('ExamTurnList.do');
       return false;
     });
     $('#student').click(function() {
-      $('#content').load('/AdvanceEduMIS/examgrade/ExamStudentList.do');
+      $('#content').load('ExamStudentList.do');
       return false;
     });
     $(".iframe").colorbox({
@@ -64,10 +62,9 @@
 <body class="page-main btn-page">
 	<div class="wrap">
 		<div class="wrap-inner">
-<%-- 			<%@ include file="/jsp/admin/include/leftMenu.jsp" %>	 --%>
+			<%@ include file="/WEB-INF/view/admin/include/leftMenu.jsp" %>	
 			<div class="container">
-<%-- 				<%@ include file="/jsp/admin/include/topMenu.jsp" %> --%>
-
+				<%@ include file="/WEB-INF/view/admin/include/topMenu.jsp" %>
 				<div class="container-inner">
 					<div class="content">
 						<div id="wrap">
@@ -96,5 +93,4 @@
 		</div>
 	</div>
 </body>
-<script src="${pageContext.request.contextPath}/js/common.js"></script>
 </html>
