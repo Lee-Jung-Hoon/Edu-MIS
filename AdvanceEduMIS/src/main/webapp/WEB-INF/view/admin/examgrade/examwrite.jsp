@@ -122,7 +122,7 @@ tbody td:last-child, thead th:last-child {
 							<th width="20%" rowspan="${fn:length(list)}">입력</th>
 						</c:if>
 						<td width="20%"><c:out value="${member.name}" /></td>
-						<td width="60%"><input type="text" id="${member.id}" name="${member.id}"></td>
+						<td width="60%"><input type="text" id="${member.id}" name="${member.id}" value="0" /></td>
 					</tr>
 				</c:forEach>
 			</tbody>
