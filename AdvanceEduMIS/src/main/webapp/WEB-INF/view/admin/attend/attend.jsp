@@ -85,78 +85,8 @@
 						<section class="test-class common">
 							<!--  작업부분 제목 써주세요 --><h2>자바반 출석률 통계</h2>
 							<!-- 작업시작부분 div안에 클래스명 넣어서 작업 해 주세요 나머지 url부분은 추후 취합할 예정이니 일단 MENU 부분의 링크태그에 값 넣어서 작업 해주시면 됩니다. 게시판 담당하시는 분들은 추후 공통 클래스 드릴테니 일단 테이블로 작업 부탁드립니다. -->
-
-<!-- 							<div id="chart_term"> -->
-<%-- 									<form action="<%=request.getContextPath()%>/attend/attendterm.do"> --%>
-<!-- 												<label for="year">기간설정</label>									 -->
-<!-- 												<select id="year" name="year"> -->
-<!-- 														<option value="year">년도</option> -->
-<%-- 														<% --%>
-// 															for (int i = 2010; i < 2016; i++) {
-<%-- 														%> --%>
-<%-- 														<option value="<%=i%>"><%=i + "년"%></option> --%>
-<%-- 														<% --%>
-// 															}
-<%-- 														%> --%>
-<!-- 												</select>  -->
-<!-- 												<select id="month" name="month"> -->
-<!-- 														<option value="month">월</option> -->
-<%-- 														<c:forEach var="i" begin="1" end="12"> --%>
-<%-- 															<option value="${i}"> --%>
-<%-- 															<c:choose>  --%>
-<%-- 															<c:when test="i<10"> ${0i월}</c:when> --%>
-<%-- 															<c:otherwise>${i}</c:otherwise>  --%>
-<%-- 															</c:choose> --%>
-															
-<!-- 															</option> -->
-<%-- 														</c:forEach> --%>
-<!-- 												</select>  -->
-<!-- 												<select id="day" name="day"> -->
-<!-- 														<option value="day">일</option> -->
-<%-- 														<% --%>
-// 															for (int i = 1; i < 32; i++) {
-<%-- 														%> --%>
-<%-- 														<option value="<%=i%>"><%=i + "일"%></option> --%>
-<%-- 														<% --%>
-// 															}
-<%-- 														%> --%>
-<!-- 												</select> -->
-<!-- 											&nbsp;	~ &nbsp; -->
-<!-- 											<select id="endyear" name="endyear"> -->
-<!-- 														<option value="endyear">년도</option> -->
-<%-- 														<% --%>
-// 															for (int i = 2010; i < 2016; i++) {
-<%-- 														%> --%>
-<%-- 														<option value="<%=i%>"><%=i + "년"%></option> --%>
-<%-- 														<% --%>
-// 															}
-<%-- 														%> --%>
-<!-- 												</select>  -->
-<!-- 												<select id="endmonth" name="endmonth"> -->
-<!-- 														<option value="endmonth">월</option> -->
-<%-- 														<% --%>
-// 															for (int i = 1; i < 13; i++) {
-<%-- 														%> --%>
-<%-- 														<option value="<%=i%>"><%=i + "월"%></option> --%>
-<%-- 														<% --%>
-// 															}
-<%-- 														%> --%>
-<!-- 												</select>  -->
-<!-- 												<select id="endday" name="endday"> -->
-<!-- 														<option value="endday">일</option> -->
-<%-- 														<% --%>
-// 															for (int i = 1; i < 32; i++) {
-<%-- 														%> --%>
-<%-- 														<option value="<%=i%>"><%=i + "일"%></option> --%>
-<%-- 														<% --%>
-// 															}
-<%-- 														%> --%>
-<!-- 												</select> -->
-<!-- 												<input type="submit" value="확인" /> -->
-<!-- 											</form> -->
-												
-
-<!-- 							</div> -->
+ 
+							
 
 
 							<div id="chart_div" style="width: 938px; height: 1000px;">
