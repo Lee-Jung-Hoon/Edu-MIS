@@ -123,9 +123,9 @@ tbody td:last-child, thead th:last-child {
 <body class="page-main btn-page">
 	<div class="wrap">
 		<div class="wrap-inner">
-<%-- 			<%@ include file="/jsp/admin/include/leftMenu.jsp" %>	 --%>
+					<%@ include file="/WEB-INF/view/admin/include/leftMenu.jsp" %>
 			<div class="container">
-<%-- 				<%@ include file="/jsp/admin/include/topMenu.jsp" %> --%>
+						<%@ include file="/WEB-INF/view/admin/include/topMenu.jsp" %>
 					<script>
 				$(document).ready(function () {
 				$(".allCheck").on('click', function () {
