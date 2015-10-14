@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.edumis.user.vote.dao">
+
+
+
+	<select id="vote" resultType="VoteVO">
+
+		select Id, Name,real_file_name as realFileName
+		from t_member
+	</select>
+
+
+<select id="voteResult" resultType="VoteVO">
+
+		select vName, count(vCount) as vcount
+		from t_recommend
+		group by vName
+
+
+</select>
+
+<insert id="voteInsert" parameterType="VoteVO">
+
+		insert into t_recommend 
+		(mId,vName,vCount) 
+		values(#{id}, (select name from t_member where id = #{id}) ,1)
+
+
+</insert>
+
+
+</mapper>
