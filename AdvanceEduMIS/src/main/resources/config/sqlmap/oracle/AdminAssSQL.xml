@@ -97,8 +97,8 @@
 	<select id="selectAssignment" parameterType="map" resultType="AdminAssVO">
 		select 
 			no, 
-			startDate,
-			endDate,
+			start_date,
+			end_date,
 			title,
 			content
 			from 
@@ -122,5 +122,22 @@
 				))
 			where rnum between #{startIndex} and #{endIndex}
 	</select>
+	
+	<select id="selectBoard" resultType="AdminAssVO" parameterType="searchVO">
+    		select no, to_char(start_date, 'yyyy-mm-dd') startDate, to_char(end_date, 'yyyy-mm-dd') as endDate, title, content
+         from (select rownum rnum, b.*
+                     from ( select a.*
+                                  from t_adm_assignment_board a
+                                 order by no desc ) b )
+       where rnum between #{start}
+                                and #{end}
+    </select>
+    
+    <select id="selectBoardCount" resultType="int">
+				select count(*)
+				from t_adm_assignment_board
+	</select>
+	
+	
 	
 </mapper>
