@@ -3,11 +3,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<!-- 
+
 <link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
 <link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- -->
+
 <title>수강생 정보</title>
 </head>
 <body class="page-popup">
