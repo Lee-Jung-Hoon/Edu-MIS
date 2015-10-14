@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
+<link href="/AdvanceEduMIS/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="/AdvanceEduMIS/css/style.css" rel="stylesheet" type="text/css" />
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script>
@@ -101,17 +103,17 @@ tbody td:last-child, thead th:last-child {
 	<c:if test="${!empty member}">
 		<table class="table-board scrollwrite">
 			<thead>
-				<tr>
-					<th width="40%">시험제목</th>
-					<td width="60%">${board.title}</td>
+				<tr style="display:table; width:100%;">
+					<th width="20%">시험제목</th>
+					<td width="80%">${board.title}</td>
 				</tr>
-				<tr>
-					<th width="">시험내용</th>
-					<td width="">${board.content}</td>
+				<tr style="display:table; width:100%;">
+					<th width="20%">시험내용</th>
+					<td width="80%">${board.content}</td>
 				</tr>
-				<tr>
-					<th width="">시험일자</th>
-					<td width="">${board.regDate}</td>
+				<tr style="display:table; width:100%;">
+					<th width="20%">시험일자</th>
+					<td width="80%">${board.regDate}</td>
 				</tr>
 			</thead>
 			<tbody>
@@ -121,8 +123,8 @@ tbody td:last-child, thead th:last-child {
 						<c:if test="${loop.first}">
 							<th width="20%" rowspan="${fn:length(list)}">입력</th>
 						</c:if>
-						<td width="20%"><c:out value="${member.name}" /></td>
-						<td width="60%"><input type="text" id="${member.id}" name="${member.id}" value="0" /></td>
+						<td width="40%"><c:out value="${member.name}" /></td>
+						<td width="40%"><input type="text" id="${member.id}" name="${member.id}" value="0" /></td>
 					</tr>
 				</c:forEach>
 			</tbody>

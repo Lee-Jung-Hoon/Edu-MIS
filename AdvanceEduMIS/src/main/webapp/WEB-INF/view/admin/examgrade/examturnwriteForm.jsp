@@ -66,6 +66,6 @@
 				<textarea rows="10" cols="50" name="content"></textarea>
 		</tr>
 	</table>
-	<div> <p align="center"><a class="btn btn-txt btn-blue txt-writeExam-s" href="javascript:regist_submit()" >글등록</a>
+	<div style="padding-top: 10px;"> <p align="center"><a class="btn btn-txt btn-blue txt-writeExam-s" href="javascript:regist_submit()" >글등록</a>
 	<a class="btn btn-txt btn-blue txt-writeExam-s" href="javascript:jsClose()" >취소</a></p></div>
 </form>

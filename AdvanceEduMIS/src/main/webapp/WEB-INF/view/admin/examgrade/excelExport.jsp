@@ -7,6 +7,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style>
+
+.txt-writeExam-sm {
+	color: white !important;
+	border: solid 1px black;
+	text-decoration: none !important;
+	font-weight: bold !important;
+	text-indent:0 !important;
+	line-height: 40px  !important;
+ }
+</style>
 <script>
   $(document).ready(function() {
     excelList();

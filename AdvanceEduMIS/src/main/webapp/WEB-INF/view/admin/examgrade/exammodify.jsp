@@ -5,6 +5,16 @@
 <link href="/EduMIS/css/reset.css" rel="stylesheet" type="text/css" />
 <link href="/EduMIS/css/style.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<style>
+
+.txt-writeExam-s {
+/*  		background-image:url('/AdvanceEduMIS/images/ExamGrade_writeBtn.png'); */
+	color: white;
+	border: solid 1px white;
+	text-decoration: none;
+	font-weight: bold;
+ }
+</style>
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script>
@@ -51,6 +61,8 @@ function modifyGrade_submit() {
 			</c:forEach>
 		</tbody>
 	</table>
-	<a href="javascript:modifyGrade_submit()">성적 수정</a>
+	<div style="padding-top: 10px;" align="center">
+	<a class="btn btn-txt btn-blue txt-writeExam-s"  href="javascript:modifyGrade_submit()">성적 수정</a>
+	</div>
 </form>
 <script type="text/javascript" src="/EduMIS/js/common.js"></script>

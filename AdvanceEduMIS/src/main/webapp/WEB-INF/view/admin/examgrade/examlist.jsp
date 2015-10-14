@@ -21,12 +21,6 @@
     width : "25%",
     height : "50%"
   });
-  $(".excelExport").colorbox({
-    iframe : true,
-    title : "엑셀 저장",
-    width : "40%",
-    height : "50%"
-  });
 
   //Change the selector if needed
   var $table = $('table.scrollmain'), $bodyCells = $table
@@ -117,9 +111,6 @@ td:last-child {
  	border-bottom: 1px !important;
 }
 </style>
-<a
-	href="${pageContext.request.contextPath}/examgrade/excelExport.do"
-	class="excelExport">엑셀저장</a>
 <table class="table-board scrollmain">
 	<thead>
 		<tr>
