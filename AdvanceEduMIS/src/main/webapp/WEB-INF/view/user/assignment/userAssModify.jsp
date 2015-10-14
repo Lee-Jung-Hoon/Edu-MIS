@@ -58,7 +58,7 @@
 								</form>
 								<hr/>
 								
-								<form action="/${pageContext.request.contextPath}/user/assModify.do" method="POST"
+								<form action="${pageContext.request.contextPath}/user/assModify.do" method="POST"
 									enctype="multipart/form-data">
 										<input type="hidden" name="no" value="${ass.no}" />
 										<input type="hidden" name="id" value="${user.id}" />

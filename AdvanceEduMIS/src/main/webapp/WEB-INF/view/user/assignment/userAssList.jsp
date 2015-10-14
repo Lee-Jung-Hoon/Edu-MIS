@@ -76,7 +76,7 @@
 								<div class="board-paging">
 									<button type="button" class="btn-paging btn-paging-prev">이전</button>
 									<c:forEach var="i" begin = "1" end = "${pageIndex}">
-												<a href="/${pageContext.request.contextPath}/user/assList.do?reqIndex=${i}" id = "a${i}" style="text-decoration: none;">${i}</a>
+												<a href="${pageContext.request.contextPath}/user/assList.do?reqIndex=${i}" id = "a${i}" style="text-decoration: none;">${i}</a>
 											</c:forEach>
 									<button type="button" class="btn-paging btn-paging-next">다음</button>
 								</div>
