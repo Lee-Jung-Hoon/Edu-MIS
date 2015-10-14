@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width">
 	<title>제목</title>
-	<%-- <%@ include file="/jsp/admin/include/common.jsp" %> --%>
+	<%@ include file="/WEB-INF/view/admin/include/common.jsp" %>
 	<script src="${pageContext.request.contextPath}/js/assignment/assignment.js"></script>
 	<script>	
 	$('input:file').on('change', function(){
@@ -19,9 +19,9 @@
 <body class="page-join btn-page">
 	<div class="wrap">
 		<div class="wrap-inner">
-				<%-- <%@ include file="/jsp/admin/include/leftMenu.jsp" %> --%>	
+				<%@ include file="/WEB-INF/view/admin/include/leftMenu.jsp" %>
 			<div class="container">
-				<%-- <%@ include file="/jsp/admin/include/topMenu.jsp" %> --%>
+				<%@ include file="/WEB-INF/view/admin/include/topMenu.jsp" %>
 				<div class="container-inner">
 					<div class="content">
 					<!--  test-class 부분을  s-aaa 형식의 이름으로 클래스 잡아주세요  common 클래스 이름은 지우지 마세요 -->

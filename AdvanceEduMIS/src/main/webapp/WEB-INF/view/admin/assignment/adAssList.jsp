@@ -3,12 +3,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="navi" %> 
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width">
 	<title>제목</title>
-	<%-- <%@ include file="/jsp/admin/include/common.jsp" %> --%>
+	<%@ include file="/WEB-INF/view/admin/include/common.jsp" %> 
 	<style type="text/css">
 		table {border:0;border-collapse:separate;border-spacing:0;}
 		.tb-test{
@@ -43,9 +44,9 @@
 <body class="page-join  btn-page">
 	<div class="wrap">
 		<div class="wrap-inner">
-				<%-- <%@ include file="/jsp/admin/include/leftMenu.jsp" %> --%>	
+				<%@ include file="/WEB-INF/view/admin/include/leftMenu.jsp" %>	
 			<div class="container">
-				<%-- <%@ include file="/jsp/admin/include/topMenu.jsp" %> --%>
+				<%@ include file="/WEB-INF/view/admin/include/topMenu.jsp" %>
 				<div class="container-inner">
 					<div class="content">
 					<!--  test-class 부분을  s-aaa 형식의 이름으로 클래스 잡아주세요  common 클래스 이름은 지우지 마세요 -->
@@ -82,14 +83,16 @@
 								<div style="text-align:right; margin:10px 0">
 									<input style="width:70px; height:40px; display:inline-block;" type="submit" onclick="moveRegist();" value="과제 등록" class="btn txt-assign-regist-s btn-txt btn-blue" />
 								</div>
-								<div align="center" class="board-paging">
+								<%-- <div align="center" class="board-paging">
 									<button type="button" class="btn-paging btn-paging-prev" onclick="prePage()">이전</button>
 									<c:forEach var="i" begin = "1" end = "${pageIndex}">
 										<a href="/EduMIS/admin/assList.do?reqIndex=${i}" id = "a${i}" style="text-decoration: none;">${i}</a>
 									</c:forEach>
 									<button type="button" class="btn-paging btn-paging-next" onclick="nextPage()">다음</button>
-								</div>
+								</div> --%>
 						</div>
+						
+					<%-- <navi:pageNavi /> --%>
 							<!--  작업완료 부분 -->
 						</section>				
 					</div>
