@@ -67,5 +67,8 @@ public class MemberController {
 		}
 		return mav;
 	}
-
+	@RequestMapping("/joinForm.do")
+	public String joinForm() throws Exception {
+		return "user/member/joinForm";
+	}
 }
