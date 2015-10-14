@@ -136,90 +136,49 @@ $(document).on("click" , ".dayClick" , function(){
 
 });
 
-
-
-
-
-// 화면이 실행되고 나서 각각의  <td> 태그에 날짜를 입력한다.
-	 $(document).ready(function() {
-
-		  
-		  // 달력의 <td> 에 각각의 날짜 정보를 입력.
-		  for (var i = 1; i <= lastday;) {
-			   
-// 			   $("#day" + startnum).html(i);
-			   
-			   
-			   var listDate = i ;
-			   var listMonth = m+1;
-			   var listYear = y;
-			   
-			// 일수가 10미만 일 경우 날짜 앞에  0을 붙여준다.
-			   if ( listDate < 10) {
-				    listDate = "0" + listDate ;
-			   }
-				 
-				 // 월수가 10미만 일 경우 월 앞에 0을 붙여준다.
-				 if ( listMonth < 10){
-					  listMonth = "0" + listMonth ;
-				 }
-				 
-				 var listData = listMonth +"/"+ listDate +"/"+ listYear;
-
-				 console.log(listData);
-				 
-				 // 해당 날짜의 정보를 가져온다.
-			   $.ajax({
-				    
-				    url : "info.json",
-				    dataType : "json",
-				    data : "day=" + listData
-				    
-			   }).done(function(response) {
-
-				    
-						var dayInfoDivHtml = "";
-						// 결과값을 뿌린다.						
-// 						reponse[count]
-// 						reponse.count
-
-
-						response.forEach(function(ScheduleVO, index){
-
-							 console.log(   i+"-"+ScheduleVO.importance+"-"+startnum  );
-							 
-							 dayInfoDivHtml += lisdftDate;
-							 
-					     // 중요도에 따라 색상이 다른 색상 값들을 출력
-							 if(ScheduleVO.importance == '1'){
-								  dayInfoDivHtml += "	 <em style='color:green;'>● 보통</em> ";
-							 }else if ( ScheduleVO.importance == '2' ){
-								  dayInfoDivHtml += "	 <em style='color:orange;'>★ 중요</em> ";
-							 }else{
-								  dayInfoDivHtml += "	 <em style='color:orange;'>★ 중요</em> ";
-							 }
-				
-					     
-				    });
-			   
-						// 정보 초기화
-						//  받아온 정보 뿌려주기
-				    $("#day" + startnum).html(dayInfoDivHtml);
-				    
-			   });
-			   
-		  startnum++;
-		  i++;
-			   
-		  }
-
-		  
-		  
-		  
+	// 화면이 실행되고 나서 각각의  <td> 태그에 날짜를 입력한다.
+	$(document).ready(function() {
+		// 최초 로딩 시 해당 월의 일정 조회
+		$.ajax({
+		    url : "info.json",
+		    dataType : "json",
+		    data : "year=" + y + "&month=" + (m + 1) + "&lastDay=" + lastday 
+	    }).done(function(response) {
+	    	showDateInfo(response);
+		});	   	
 	 });
 	 
-	 
-	 
+	 function showDateInfo(dateList) {
+		  // 달력의 <td> 에 각각의 날짜 정보를 입력.
+		  for (var i = 1; i <= lastday; i++) {
+			var dayInfoDivHtml = "";
+			if (dateList[i - 1].length == 0) {
+				dayInfoDivHtml += i;
+				$("#day" + startnum).html(dayInfoDivHtml);
+				startnum++;
+				continue;
+			} 
+			dateList[i-1].forEach(function(ScheduleVO, index){
+
+				 console.log(   i+"-"+ScheduleVO.importance+"-"+startnum  );
+				 
+				 dayInfoDivHtml += i;
+				 
+		     // 중요도에 따라 색상이 다른 색상 값들을 출력
+				 if(ScheduleVO.importance == '1'){
+					  dayInfoDivHtml += "	 <em style='color:green;'>● 보통</em> ";
+				 } else if ( ScheduleVO.importance == '2' ){
+					  dayInfoDivHtml += "	 <em style='color:orange;'>★ 중요</em> ";
+				 } else {
+					  dayInfoDivHtml += "	 <em style='color:orange;'>★ 중요</em> ";
+				 }
+		    });
+			// 정보 초기화
+			//  받아온 정보 뿌려주기
+		    $("#day" + startnum).html(dayInfoDivHtml);
+			startnum++;
+		  }
+	 }
 </script>
 
 
