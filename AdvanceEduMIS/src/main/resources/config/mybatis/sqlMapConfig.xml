@@ -7,6 +7,8 @@
 		<typeAlias alias="memberVO" type="kr.co.edumis.user.member.vo.MemberVO"/>
 		<typeAlias alias="ExamBoardVO" type="kr.co.edumis.admin.examgrade.vo.ExamBoardVO"/>
 		<typeAlias alias="ExamGradeVO" type="kr.co.edumis.admin.examgrade.vo.ExamGradeVO"/>
+		<typeAlias alias="searchVO" type="kr.co.edumis.common.SearchVO"/>
+		<typeAlias alias="ExamGradeVO" type="kr.co.edumis.admin.examgrade.vo.ExamGradeVO"/>
 		<typeAlias alias="userAssVO" type="kr.co.edumis.user.assignment.vo.UserAssVO"/>
 		<typeAlias alias="AdminAssVO" type="kr.co.edumis.admin.assignment.vo.AdminAssVO"/>
 		<typeAlias alias="TalkVO" type="kr.co.edumis.admin.talk.vo.TalkVO"/> 
