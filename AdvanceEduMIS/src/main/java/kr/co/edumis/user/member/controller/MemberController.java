@@ -68,8 +68,4 @@ public class MemberController {
 		return mav;
 	}
 
-	@RequestMapping("/joinForm.do")
-	public String joinForm() throws ServletException, IOException {
-		return "redirect:/user/joinForm";
-	}
 }
