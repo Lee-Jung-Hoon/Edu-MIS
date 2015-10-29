@@ -56,6 +56,34 @@
 	.tb-test tr,td,th{
 	border: 1px solid black;
 	}
+	table.type {
+	    border-collapse: collapse;
+	    text-align: left;
+	    border-left: 3px solid #369;
+	    line-height: 1.5;
+	
+	}
+	table.type thead th {
+	    padding: 10px;
+	    font-weight: bold;
+	    vertical-align: top;
+	    color: #ce4869;
+	    border-bottom: 3px solid #036;
+	}
+	table.type tbody th {
+	    width: 150px;
+	    padding: 10px;
+	    font-weight: bold;
+	    vertical-align: top;
+	    border-bottom: 1px solid #ccc;
+	    background: #f3f6f7;
+	}
+	table.type td {
+	    width: 350px;
+	    padding: 10px;
+	    vertical-align: top;
+	    border-bottom: 1px solid #ccc;
+	}
 	#chart_div2 {
 		padding-left:1px;
 	}
@@ -93,7 +121,7 @@
 								
 							</div>
 							<div id="chart_div2" style="overflow:hidden; width:100%;">
-								<table border="1" solid black>
+								<table class="type">
 									<tr>
 										<th>이름</th>
 										<th>출석</th>

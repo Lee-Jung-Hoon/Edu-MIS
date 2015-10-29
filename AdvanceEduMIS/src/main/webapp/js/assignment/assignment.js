@@ -49,7 +49,7 @@ function ckForm() {
     $("#endDate").focus();
     return false;
   }
-  if (confirm("과제를 수정 하시겠습니까?")) {
+  if (confirm("과제를 등록 하시겠습니까?")) {
   return true;
   
   }

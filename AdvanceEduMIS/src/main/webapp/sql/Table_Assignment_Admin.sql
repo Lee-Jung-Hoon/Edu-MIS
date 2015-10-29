@@ -8,6 +8,7 @@ content varchar2(3000),
 org_File_Name varchar2(1000),
 real_File_Name varchar2(1000),
 file_Path varchar2(1000)
+
 );
 
  -- as_no sequence문 --

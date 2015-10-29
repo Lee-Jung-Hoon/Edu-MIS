@@ -45,9 +45,9 @@
       }
 
       $.get("lecCommentRegist.do", {
-        //     id : "${user.id}",
+             id : "${user.id}",
         no : "${lecture.no}",
-        id : "test",
+       // id : "test",
         comments : $("#comments").val()
       });
 

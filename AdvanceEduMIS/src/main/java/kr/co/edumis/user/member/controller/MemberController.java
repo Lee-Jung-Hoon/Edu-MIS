@@ -63,6 +63,7 @@ public class MemberController {
 				mult.transferTo(new File(realPath + "/" + saveFileName));
 
 				service.insertMember(member);
+				System.out.println(member.toString());
 			}
 		}
 		return mav;

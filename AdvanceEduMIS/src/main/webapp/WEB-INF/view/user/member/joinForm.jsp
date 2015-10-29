@@ -207,8 +207,9 @@ function callBack() {
 										<tbody>
 											<tr>
 												<th><label for="id">ID</label></th>
-												<td><input type="text" id="id" name="id"
-													onkeyup="idCheck()" placeholder="아이디 입력"
+<!-- 												onkeyup="idCheck()"  -->
+												<td><input type="text" id="id" name="id"  
+													placeholder="아이디 입력"
 													class="size-input01" /> <span id="idResult"></span></td>
 												<td rowspan="11" class="table-photo">
 													<div>

@@ -72,6 +72,8 @@
 	<mvc:view-controller path="/admin/schedule/schedule.do" view-name="admin/schedule/schedule"/>
 	<mvc:view-controller path="/user/lecRegistForm.do" view-name="user/videolecture/lectureRegist"/>
 	<mvc:view-controller path="/user/member/postPopup.do" view-name="user/member/post_popup"/>
+	<mvc:view-controller path="/admin/adAssRegist.do" view-name="admin/assignment/adAssRegist"/>
+	<mvc:view-controller path="/admin/attendance/attendance.do" view-name="admin/attendance/attendance"/>
 	<mvc:view-resolvers>
 		<mvc:jsp prefix="/WEB-INF/view/" suffix=".jsp" />
 	</mvc:view-resolvers>

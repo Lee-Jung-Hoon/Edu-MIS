@@ -3,8 +3,20 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="attendance.dao.AdminAttDAO">
 
-<!-- 리스트 -->
+<!-- 출석 통계를 위한 리스트 -->
 <select id="selectAttList" resultType="AdminAttListVO">
+    select 
+       mName,
+       sum(case when att_type = 1 then 1 else 0 end) as type1,
+       sum(case when att_type = 2 then 1 else 0 end) as type2,
+       sum(case when att_type = 3 then 1 else 0 end) as type3,
+       sum(case when att_type = 4 then 1 else 0 end) as type4
+    from t_attend
+    group by mName
+    order by mName
+</select>
+<!-- 출석 통계를 위한 리스트2 -->
+<select id="selectAttList2" parameterType="AdminAttListVO" resultType="AdminAttListVO">
     select 
        max((select name from t_member where no = a.mno)) mName,
        sum(case when att_type = 1 then 1 else 0 end) as type1,
@@ -14,21 +26,38 @@
     from t_attend a, t_member m
     where a.mno = m.no
       and m.grade != 1
+		  and att_date between to_date(#{startDate},'yyyyMMdd') and to_date(#{endDate},'yyyyMMdd')
     group by a.mno
     order by a.mno
 </select>
-<select id="selectAttList2" parameterType="AdminAttListVO" resultType="AdminAttListVO">
-	select mName,
-       sum(case when att_type = 1 then 1 else 0 end) as type1,
-       sum(case when att_type = 2 then 1 else 0 end) as type2,
-       sum(case when att_type = 3 then 1 else 0 end) as type3,
-       sum(case when att_type = 4 then 1 else 0 end) as type4
-	from t_attend
-	where att_date between to_date(#{startDate},'yyyyMMdd') and to_date(#{endDate},'yyyyMMdd')
-	group by mName
-	order by mName
-</select>
 
+	<select id="memList" resultType="memberVO">
+		select no, name, grade 
+		from t_member 
+	</select>
 
-
+	<select id="attList" resultType="AdminAttVO"> 
+		select att_type, to_char(att_date, 'yyyy-mm-dd') as att_date, mName, mNo
+		from t_attend 
+	</select>
+	
+	<select id="attMemList" parameterType="string" resultType="AdminAttVO"> 
+		select att_type, to_char(att_date, 'yyyy-mm-dd') as att_date
+		from t_attend 
+		where mNo = #{mNo}
+	</select>
+	
+	<insert id="insertAttendance" parameterType="AdminAttVO">
+        insert into t_attend (
+            mNo, mName, att_type
+        ) values (
+            #{mNo}, #{mName}, #{attType}
+        )
+  </insert>
+  
+  <update id="updateAttendance" parameterType="AdminAttVO" >
+      update t_attend
+         set att_type = #{attType}
+       where mNo  = #{mNo} and to_char(att_date, 'yyyy-mm-dd') = #{attDate}
+  </update>
 </mapper>

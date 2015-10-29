@@ -89,7 +89,7 @@ $(document).ready(function () {
 					var id = this.id;
 					var content = $("#s" + id).val();
 	         $.ajax({
-	           url:"/EduMIS/comment/RegistComment.do",
+	           url:"${pageContext.request.contextPath}/comment/RegistComment.do",
 	           type:"POST",
 	           datatype:"json",
 	           data:{id:id, content:content},

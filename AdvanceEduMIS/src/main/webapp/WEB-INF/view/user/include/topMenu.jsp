@@ -93,7 +93,7 @@
 	<ul>
 		<c:choose>
 		<c:when test="${empty sessionScope.user}">
-			<li class="login"><a href="#">로그인</a>
+			<li class="login"><a href="/user/login/login.do">로그인</a>
 				<div class="login-form">
 					<form action="${pageContext.request.contextPath}/user/login/login.do" method="POST">
 										<input type="text" placeholder="아이디" name="id" value="${cookie.loginId.value}" />

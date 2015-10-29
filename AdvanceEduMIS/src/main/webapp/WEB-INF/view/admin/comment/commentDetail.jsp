@@ -38,15 +38,6 @@
 		</tr>
 
 		<tr>
-			<th>중도포기 일시</th>
-			<td>${vo.dropDate}${vo.dropReason}</td>
-		</tr>
-		<tr>
-		<tr>
-			<th>중도포기 이유</th>
-			<td>${vo.dropReason}</td>
-		</tr>
-		<tr>
 		  <th>핸드폰</th>
 			<td>${vo.phone1}-${vo.phone2}-${vo.phone3}</td>
 		</tr>
@@ -54,10 +45,7 @@
 		<th>이메일</th>
 		<td>${vo.email}@${vo.emailDomain}</td>
 		</tr>
-		<tr>
-			<th>기술조장</th>
-			<td>${vo.techLeader}</td>
-		</tr>
+
 		<tr>
 			<th>학점</th>
 			<td>${vo.grade}</td>
