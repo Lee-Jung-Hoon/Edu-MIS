@@ -38,6 +38,7 @@ public class VoteController {
 	
 	@RequestMapping("/voteInsert.do")
 	public String voteInsert(VoteVO vote)throws Exception {
+		    System.out.println(vote.toString());
 			service.voteInsert(vote);
 			return "redirect:voteResult.do";
 	}

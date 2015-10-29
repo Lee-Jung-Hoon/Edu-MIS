@@ -54,7 +54,7 @@ function timeDelay() {
 					<div class="content">
 						<section class="groupsShow common">
 							<div id="mybody">
-							<h2>인연나비 - 새로운 인연이 만들어졌습니다.</h2>
+							<h2>새로운 조가 만들어졌습니다.</h2>
 								<br/>
 								<div id = "groups">
 								<c:forEach begin="1" end="${gNum/2}" var="i">

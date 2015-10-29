@@ -144,31 +144,31 @@
 						  <div class="info">
 						    <ul>
 						      <li class="student_info" id="e1" draggable="true">빈자리</li>
-						      <li class="student_info" id="s1" draggable="true">홍길동1</li>
-						      <li class="student_info" id="s2" draggable="true">홍길동2</li>
-						      <li class="student_info" id="s3" draggable="true">홍길동3</li>
-						      <li class="student_info" id="s4" draggable="true">홍길동4</li>
-						      <li class="student_info" id="s5" draggable="true">홍길동5</li>
-						      <li class="student_info" id="s6" draggable="true">홍길동2</li>
-						      <li class="student_info" id="s7" draggable="true">홍길동3</li>
-						      <li class="student_info" id="s8" draggable="true">홍길동4</li>
-						      <li class="student_info" id="s9" draggable="true">홍길동5</li>
-						      <li class="student_info" id="s10" draggable="true">홍길동2</li>
-						      <li class="student_info" id="s11" draggable="true">홍길동3</li>
-						      <li class="student_info" id="s12" draggable="true">홍길동4</li>
-						      <li class="student_info" id="s13" draggable="true">홍길동5</li>
-						      <li class="student_info" id="s14" draggable="true">홍길동2</li>
-						      <li class="student_info" id="s15" draggable="true">홍길동3</li>
-						      <li class="student_info" id="s16" draggable="true">홍길동4</li>
-						      <li class="student_info" id="s17" draggable="true">홍길동5</li>
-						      <li class="student_info" id="s18" draggable="true">홍길동2</li>
-						      <li class="student_info" id="s19" draggable="true">홍길동3</li>
-						      <li class="student_info" id="s20" draggable="true">홍길동4</li>
-						      <li class="student_info" id="s21" draggable="true">홍길동5</li>
-						      <li class="student_info" id="s22" draggable="true">홍길동2</li>
-						      <li class="student_info" id="s23" draggable="true">홍길동3</li>
-						      <li class="student_info" id="s24" draggable="true">홍길동4</li>
-						      <li class="student_info" id="s25" draggable="true">홍길동5</li>
+						      <li class="student_info" id="s1" draggable="true">김우중</li>
+						      <li class="student_info" id="s2" draggable="true">정현빈</li>
+						      <li class="student_info" id="s3" draggable="true">김찬민</li>
+						      <li class="student_info" id="s4" draggable="true">조보성</li>
+						      <li class="student_info" id="s5" draggable="true">채희민</li>
+						      <li class="student_info" id="s6" draggable="true">정현무</li>
+						      <li class="student_info" id="s7" draggable="true">홍상선</li>
+						      <li class="student_info" id="s8" draggable="true">이상헌</li>
+						      <li class="student_info" id="s9" draggable="true">전영진</li>
+						      <li class="student_info" id="s10" draggable="true">한차웅</li>
+						      <li class="student_info" id="s11" draggable="true">정유성</li>
+						      <li class="student_info" id="s12" draggable="true">이호진</li>
+						      <li class="student_info" id="s13" draggable="true">여인택</li>
+						      <li class="student_info" id="s14" draggable="true">김건태</li>
+						      <li class="student_info" id="s15" draggable="true">김담희</li>
+						      <li class="student_info" id="s16" draggable="true">김동준</li>
+						      <li class="student_info" id="s17" draggable="true">김민경</li>
+						      <li class="student_info" id="s18" draggable="true">김주영</li>
+						      <li class="student_info" id="s19" draggable="true">심명화</li>
+						      <li class="student_info" id="s20" draggable="true">오기석</li>
+						      <li class="student_info" id="s21" draggable="true">이성원</li>
+						      <li class="student_info" id="s22" draggable="true">양종원</li>
+						      <li class="student_info" id="s23" draggable="true">이이슬</li>
+						      <li class="student_info" id="s24" draggable="true">이지은</li>
+						      <li class="student_info" id="s25" draggable="true">박용현</li>
 						    </ul>
 						  </div>
 						</div>

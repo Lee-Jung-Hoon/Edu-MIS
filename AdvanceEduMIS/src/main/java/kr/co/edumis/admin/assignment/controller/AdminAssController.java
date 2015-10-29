@@ -76,7 +76,7 @@ public class AdminAssController {
 		return mav;
 	}
 
-	@RequestMapping(value="/assRegist.do", method=RequestMethod.POST)
+	@RequestMapping(value="/assRegist.do")
 	public String adAssRegist(AdminAssVO adAssvo, MultipartHttpServletRequest mRequest) throws Exception {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!:"+ adAssvo.getContent());
 	String uploadDir = servletContext.getRealPath("/upload/");

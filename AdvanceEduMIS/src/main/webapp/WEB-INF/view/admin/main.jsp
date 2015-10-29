@@ -20,9 +20,8 @@
 					<div class="content">
 						<section class="main-section">		
 							<div id="page2" class="intro">
-								<h2>좌석배치도</h2>
 								<div id="seatContainer" style="width:100%; height:500px;">
-									<img src="${pageContext.request.contextPath}/memberFile/pic3.jpg"/>
+<%-- 									<img src="${pageContext.request.contextPath}/memberFile/pic3.jpg"/> --%>
 								</div>
 							</div>
 							<div id="page1" class="intro">

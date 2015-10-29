@@ -38,4 +38,9 @@ public class CommentVO {
 		this.content = content;
 	}
 
+	@Override
+	public String toString() {
+		return "CommentVO [no=" + no + ", id=" + id + ", reg_date=" + reg_date + ", content=" + content + "]";
+	}
+
 }

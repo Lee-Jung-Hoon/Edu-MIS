@@ -405,11 +405,11 @@
 					<div class="content">
 						<section class="groups common">
 						<div id="mybody">
-							<h2>조짜기- 어떤 인연이..?</h2>
+							<h2>조짜기</h2>
 							전체 몇개의 조가 필요하신가요? <select id="groupNumber"
 								onchange="selectNumber(0)" style="height: 30px; margin: 0 10px;">
 								<option>선택하세요</option>
-								<c:forEach begin="2" end="10" var="i">
+								<c:forEach begin="1" end="10" var="i">
 									<option>${i}</option>
 								</c:forEach>
 							</select>개 <input type="button" value="조장초기화"

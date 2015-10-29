@@ -27,9 +27,11 @@ public class RegistComment extends HttpServlet{
 		CommentVO vo = new CommentVO();
 		vo.setId(req.getParameter("id"));
 		vo.setContent(req.getParameter("content"));
+		System.out.println(vo.toString());
 		
 		try {
 			service.commentInsert(vo);
+			System.out.println(vo.toString());
 			vo = service.selectOneComment();
 			
 			String json= "";

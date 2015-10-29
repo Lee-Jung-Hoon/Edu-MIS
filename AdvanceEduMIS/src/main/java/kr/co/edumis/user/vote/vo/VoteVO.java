@@ -47,4 +47,10 @@ public class VoteVO {
 		this.vcount = vcount;
 	}
 
+	@Override
+	public String toString() {
+		return "VoteVO [id=" + id + ", name=" + name + ", vname=" + vname + ", vcount=" + vcount + ", realFileName="
+				+ realFileName + "]";
+	}
+
 }

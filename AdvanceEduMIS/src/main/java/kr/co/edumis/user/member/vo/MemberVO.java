@@ -183,6 +183,16 @@ public class MemberVO {
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
+	@Override
+	public String toString() {
+		return "MemberVO [no=" + no + ", id=" + id + ", name=" + name + ", pass=" + pass + ", year=" + year + ", month="
+				+ month + ", day=" + day + ", postNo=" + postNo + ", basicAddr=" + basicAddr + ", detailAddr="
+				+ detailAddr + ", phone1=" + phone1 + ", phone2=" + phone2 + ", phone3=" + phone3 + ", email=" + email
+				+ ", emailDomain=" + emailDomain + ", major=" + major + ", orgFileName=" + orgFileName
+				+ ", realFileName=" + realFileName + ", filePath=" + filePath + ", joinDate=" + joinDate
+				+ ", dropCheck=" + dropCheck + ", dropDate=" + dropDate + ", dropReason=" + dropReason + ", team="
+				+ team + ", techLeader=" + techLeader + ", grade=" + grade + "]";
+	}
 	
 	
 }
